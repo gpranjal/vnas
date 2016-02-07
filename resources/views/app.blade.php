@@ -4,12 +4,37 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>VNA-Visting Nurse Association</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
+
+	<!-- Added the styles from Laravel v_5.2 #Farhan -->
+
+	    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <style>
+        body {
+            font-family: 'Lato';
+            background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
+        }
+        .fa-btn {
+            margin-right: 6px;
+        }
+        img
+        {
+        	max-width: 100%;
+    		height: auto;
+        }
+    </style>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,30 +44,30 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" style="background-color: #1A5276">
 		<div class="container-fluid">
-			<div class="navbar-header">
+			 <div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
+				<!-- <a class="navbar-brand" href="#">Laravel</a> -->
+			</div> 
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/') }}"><font color="#cccccc">Home</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
+						<li><a href="{{ url('/auth/login') }}"><font color="#cccccc">Login</font></a></li>
+						<li><a href="{{ url('/auth/register') }}"><font color="#cccccc">Register</font></a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#cccccc">{{ Auth::user()->name }}</font><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -53,17 +78,14 @@
 		</div>
 	</nav>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
+	<div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border-radius: 25px; height: 150px; " align="center">
+                @yield('content')
+            </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+    </div>
 
-					@yield('content')
-
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
