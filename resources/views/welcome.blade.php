@@ -1,48 +1,38 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('app')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('content')
+<div class="container-fluid"> 
+	<div class="col-md-10 col-md-offset-1">   
+		<div class="row">
+	            <div class="panel panel-default">
+	                <div class="panel-heading" style="background-color:#F58E31">
+	                    <h1><font color="white">Care In Your Home</font> </h1>
+	                </div>
+	                <br/>
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+	                <div class="panel-body">
+	                    <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA" style="width:470px;height:80px;">
+	                 </div>           
+	                 <br/>
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+	                 <div class="contact">
+	                 	<a href="http://www.thevnacares.org/index.php/contact-us">
+	                     	<img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/contact_button.png" class="contact_button">
+	                 	</a>
+	                 </div>
+	             
+	                <div>
+	                    <p class="contact_number">402-342-5566</p>
+	                </div>
+	
+	                <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button"><b>Donate To VNA</b></a>
+	            	
+	            	<div style="background-color:">
+	                	<p><a href="" target="_self"><font color="white"></font></a></p>
+	            	</div>
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
-</html>
+	            </div>
+	        </div>
+	</div>
+</div>
+@endsection

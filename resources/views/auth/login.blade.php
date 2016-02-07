@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
+				<div class="panel-heading" style="background-color:#F58E31"><font color="White" size="3">Login</font></div>
 				<div class="panel-body">
+				<img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -20,7 +20,7 @@
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+						<br/>
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
@@ -37,7 +37,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
+								<div class="checkbox" align="left">
 									<label>
 										<input type="checkbox" name="remember"> Remember Me
 									</label>
@@ -46,7 +46,7 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
+							<div class="col-md-6 col-md-offset-4" align="left">
 								<button type="submit" class="btn btn-primary">Login</button>
 
 								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
@@ -56,6 +56,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 </div>
 @endsection
+
+
+
+
