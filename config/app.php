@@ -144,6 +144,9 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		Collective\Html\HtmlServiceProvider::class,
+    	Sukohi\Cahen\CahenServiceProvider::class,
+    	Sukohi\Maven\MavenServiceProvider::class
 
 	],
 
@@ -192,6 +195,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Form' => Collective\Html\FormFacade::class,
+  	    'Html' => Collective\Html\HtmlFacade::class,
+    	'Cahen'   => Sukohi\Cahen\Facades\Cahen::class,
+    	'Maven'   => Sukohi\Maven\Facades\Maven::class,
 
 	],
 
