@@ -4,6 +4,7 @@ use DateTime;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Session\Store as Session;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Support\Collection;
 
 class FormBuilder {
 
@@ -70,7 +71,7 @@ class FormBuilder {
 	 *
 	 * @var array
 	 */
-	protected $skipValueTypes = array('file', 'password', 'checkbox', 'radio');
+	protected $skipValueTypes = array('file', 'password', 'checkbox', 'radio', 'datetime-local');
 
 	/**
 	 * Create a new form builder instance.
@@ -331,6 +332,26 @@ class FormBuilder {
 	}
 
 	/**
+	 * Create a datetime input field.
+	 *
+	 * @param  string  $name
+	 * @param  string  $value
+	 * @param  array   $options
+	 * @return string
+	 */
+	public function datetime($name, $value = null, $options = array())
+	{
+		$value = $this->getValueAttribute($name, $value);
+
+		if ($value instanceof DateTime)
+		{
+			$value = $value->format('Y-m-d\TH:i:s');
+		}
+
+		return $this->input('datetime-local', $name, $value, $options);
+	}
+
+	/**
 	 * Create a url input field.
 	 *
 	 * @param  string  $name
@@ -437,6 +458,11 @@ class FormBuilder {
 		// so we will use that when checking the model or session for a value which
 		// should provide a convenient method of re-populating the forms on post.
 		$selected = $this->getValueAttribute($name, $selected);
+		// Transform to array if it is a collection
+		if ($selected instanceof Collection)
+		{
+			$selected = $selected->all();
+		}
 
 		$options['id'] = $this->getIdAttribute($name, $options);
 
@@ -674,9 +700,20 @@ class FormBuilder {
 
 		if ($this->missingOldAndModel($name)) return $checked;
 
-		$posted = $this->getValueAttribute($name);
+		$posted = $this->getValueAttribute($name, $checked);
 
-		return is_array($posted) ? in_array($value, $posted) : (bool) $posted;
+		if (is_array($posted))
+		{
+			return in_array($value, $posted);
+		}
+		else if ($posted instanceof Collection)
+		{
+			return $posted->contains('id', $value);
+		}
+		else
+		{
+			return (bool) $posted;
+		}
 	}
 
 	/**
@@ -935,14 +972,7 @@ class FormBuilder {
 	 */
 	protected function getModelValueAttribute($name)
 	{
-		if (is_object($this->model))
-		{
-			return object_get($this->model, $this->transformKey($name));
-		}
-		elseif (is_array($this->model))
-		{
-			return array_get($this->model, $this->transformKey($name));
-		}
+		return data_get($this->model, $this->transformKey($name));
 	}
 
 	/**
