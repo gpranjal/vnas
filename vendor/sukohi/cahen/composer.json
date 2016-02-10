@@ -1,0 +1,20 @@
+{
+    "name": "sukohi/cahen",
+    "description": "A PHP package mainly developed for Laravel to manage sort values of DB table automatically.",
+    "authors": [
+        {
+            "name": "Sukohi",
+            "email": "capilano.sukohi@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sukohi\\Cahen\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

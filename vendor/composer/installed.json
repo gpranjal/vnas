@@ -3070,5 +3070,135 @@
             "testing",
             "xunit"
         ]
+    },
+    {
+        "name": "sukohi/cahen",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SUKOHI/Cahen.git",
+            "reference": "53028ac4b57ab973689e7139f17700d054219185"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SUKOHI/Cahen/zipball/53028ac4b57ab973689e7139f17700d054219185",
+            "reference": "53028ac4b57ab973689e7139f17700d054219185",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "~5.0"
+        },
+        "time": "2015-08-12 01:27:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Sukohi\\Cahen\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sukohi",
+                "email": "capilano.sukohi@gmail.com"
+            }
+        ],
+        "description": "A PHP package mainly developed for Laravel to manage sort values of DB table automatically."
+    },
+    {
+        "name": "laravelcollective/html",
+        "version": "v5.0.4",
+        "version_normalized": "5.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/LaravelCollective/html.git",
+            "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/LaravelCollective/html/zipball/c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
+            "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/http": "~5.0",
+            "illuminate/routing": "~5.0",
+            "illuminate/session": "~5.0",
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2015-05-06 14:23:37",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Collective\\Html\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            },
+            {
+                "name": "Adam Engebretson",
+                "email": "adam@laravelcollective.com"
+            }
+        ]
+    },
+    {
+        "name": "sukohi/maven",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SUKOHI/Maven.git",
+            "reference": "64a087e9464e24321c1c99d1ed8e5271615f726b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SUKOHI/Maven/zipball/64a087e9464e24321c1c99d1ed8e5271615f726b",
+            "reference": "64a087e9464e24321c1c99d1ed8e5271615f726b",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "~5.0",
+            "laravelcollective/html": "~5.0",
+            "sukohi/cahen": "2.*"
+        },
+        "time": "2015-11-13 01:26:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Sukohi\\Maven\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sukohi",
+                "email": "capilano.sukohi@gmail.com"
+            }
+        ],
+        "description": "A Laravel package to manage FAQ."
     }
 ]
