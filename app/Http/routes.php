@@ -20,7 +20,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::match(['get', 'post'], 'maven_manage', function () {
+Route::match(['get', 'post'], 'faq', function () {
 
     return \Maven::manage_view();
 
