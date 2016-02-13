@@ -33,7 +33,7 @@
     <br>
     @endif
     <div class="text-right">
-        <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('maven::manage.add') }}</button>
+        <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
     </div>
     @if(Request::has('remove_id') || (!Request::has('_token') && !Request::has('id')))
         {!! Form::open(['id' => 'save_form', 'style' => 'display:none']) !!}
@@ -43,26 +43,26 @@
     <br>
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title text-bold">{{ trans('maven::manage.faq_form') }}</h3>
+            <h3 class="panel-title text-bold">{{ trans('New FAQ form') }}</h3>
         </div>
         <div class="panel-body">
             <div class="form-group">
-                {!! Form::label(trans('maven::manage.question')) !!}<br>
+                {!! Form::label(trans('Question')) !!}<br>
                 {!! Form::text('question', Request::get('question'), ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label(trans('maven::manage.answer')) !!}<br>
+                {!! Form::label(trans('Answer')) !!}<br>
                 {!! Form::textarea('answer', Request::get('answer'), ['rows' => 7, 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label(trans('maven::manage.sort')) !!}<br>
+                {!! Form::label(trans('Sort')) !!}<br>
                 {!! Form::select('sort', $sort_values, Request::get('sort')) !!}
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    {!! Form::label(trans('maven::manage.tags')) !!}<br>
+                    {!! Form::label(trans('FAQ Tags')) !!}<br>
                     {!! Form::text('tags', Request::get('tags'), ['id' => 'tags', 'class' => 'form-control']) !!}
-                    <br><span class="text-muted">{{ trans('maven::manage.tag_e_g') }}</span>
+                    <br><span class="text-muted">{{ trans('Example: Forget Password') }}</span>
                 </div>
                 <div class="form-group col-md-6">
                     <br>
@@ -76,11 +76,11 @@
                 </div>
             </div>
             <div class="clearfix form-group checkbox">
-                <label>{!! Form::checkbox('draft_flag', '1', Request::get('draft_flag')) !!} {{ trans('maven::manage.save_as_draft') }}</label>
+                <label>{!! Form::checkbox('draft_flag', '1', Request::get('draft_flag')) !!} {{ trans('Save as draft') }}</label>
             </div>
-            <div class="text-right">
-                {!! link_to(URL::current(), trans('maven::manage.cancel'), ['class' => 'btn btn-md btn-default']) !!}&nbsp;
-                {!! Form::button(trans('maven::manage.save'), ['type' => 'submit', 'class' => 'btn btn-md btn-primary']) !!}
+            <div class="text-center">
+                {!! link_to(URL::current(), trans('Cancel'), ['class' => 'btn btn-md btn-default']) !!}&nbsp;
+                {!! Form::button(trans('Save'), ['type' => 'submit', 'class' => 'btn btn-md btn-primary']) !!}
             </div>
         </div>
     </div>
@@ -95,11 +95,11 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th><nobr>{{ trans('maven::manage.q_and_a') }}</nobr></th>
-                    <th><nobr>{{ trans('maven::manage.tags') }}</nobr></th>
-                    <th class="text-center"><nobr>{{ trans('maven::manage.draft') }}</nobr></th>
-                    <th></th>
+                    <th>Order</th>
+                    <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
+                    <th><nobr>{{ trans('FAQ Tags') }}</nobr></th>
+                    <th class="text-center"><nobr>{{ trans('Drafts') }}</nobr></th>
+                    <th class="text-right">User Action</th>
                 </tr>
             </thead>
             <tbody>
