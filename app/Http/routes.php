@@ -25,3 +25,5 @@ Route::match(['get', 'post'], 'faq', function () {
     return \Maven::manage_view();
 
 });
+
+Route::get('/manage' , 'ManagementController@index');
