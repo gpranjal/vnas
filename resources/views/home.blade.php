@@ -10,25 +10,25 @@
     <br />
 
     <div class="row">
-       <button name="" id="">My Account</button>
+        <a class="btn btn-default" href="http://www.thevnacares.org/" role="button">My Account</a>
     </div>
 
     <br />
 
     <div class="row">
-       <button name="" id="">My Schedule</button>
+        <a class="btn btn-default" href="http://www.thevnacares.org/" role="button">My Schedule</a>
     </div>
 
     <br />
 
     <div class="row">
-       <button name="" id="">FAQ</button>
+        <a class="btn btn-default" href="{{ url('faq') }}" role="button">FAQ</a>
     </div>
 
     <br />
 
     <div class="row">
-       <button name="" id="">Donate to VNA</button>
+        <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button">Donate to VNA</a>
     </div>
 </div>
 
