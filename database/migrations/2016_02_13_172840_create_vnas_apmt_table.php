@@ -7,7 +7,7 @@ class CreateVnasApmtTable extends Migration {
 
 	/**
 	 * Run the migrations.
-	 *
+	 * Making a change for commit
 	 * @return void
 	 */
 	public function up()
