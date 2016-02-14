@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"sukohi/maven": "1.*"
+		"sukohi/maven": "1.*",
+		"todstoychev/table-sorter": "^0.1.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

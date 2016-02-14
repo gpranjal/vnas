@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e501b47af4aef38fab7dd8b319783bd8",
-    "content-hash": "c666515ee5352c198d8f436dd1dc6182",
+    "hash": "7ddc18786695492eac4f2bfdf7ce4544",
+    "content-hash": "718c031193a2904a85e2100728e21960",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1989,6 +1989,49 @@
             "time": "2015-07-01 10:03:42"
         },
         {
+            "name": "todstoychev/table-sorter",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/todstoychev/table-sorter.git",
+                "reference": "de476f3b4d18bdadaaf65c721a0ecf9b507b32c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/todstoychev/table-sorter/zipball/de476f3b4d18bdadaaf65c721a0ecf9b507b32c9",
+                "reference": "de476f3b4d18bdadaaf65c721a0ecf9b507b32c9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*",
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Todstoychev\\TableSorter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todor Todorov",
+                    "email": "todstoychev@gmail.com"
+                }
+            ],
+            "description": "Table sorter module for Laravel 5",
+            "homepage": "https://github.com/todstoychev/table-sorter",
+            "keywords": [
+                "column",
+                "sort",
+                "table"
+            ],
+            "time": "2015-11-12 07:59:25"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -2553,16 +2596,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.22",
+            "version": "4.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72"
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dfb11aa5236376b4fc63853cf746af39fe780e72",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6e351261f9cd33daf205a131a1ba61c6d33bd483",
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "shasum": ""
             },
             "require": {
@@ -2621,7 +2664,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-02-02 09:01:21"
+            "time": "2016-02-11 14:56:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

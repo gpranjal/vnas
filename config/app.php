@@ -146,7 +146,8 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
     	'Sukohi\Cahen\CahenServiceProvider',
-    	'Sukohi\Maven\MavenServiceProvider'
+    	'Sukohi\Maven\MavenServiceProvider',
+    	'Todstoychev\TableSorter\ServiceProvider'
 
 	],
 
@@ -199,6 +200,7 @@ return [
   	    'Html' => 'Collective\Html\HtmlFacade',
     	'Cahen'   => 'Sukohi\Cahen\Facades\Cahen',
     	'Maven'   => 'Sukohi\Maven\Facades\Maven',
+    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter'
 
 	],
 
