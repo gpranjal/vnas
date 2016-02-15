@@ -2,37 +2,41 @@
 
 @section('content')
 
-    <h1>Enter new VNA User</h1>
+    <h1>Enter New Appointment</h1>
 
     <hr/>
 
-    {!! Form::open(['url' => 'vnas_users']) !!}
+    {!! Form::open(['url' => 'appointments']) !!}
 
         <div class="form-group">
-            {!! Form::label('name', 'Name:') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Form::label('title', 'Title:') !!}
+            {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('patient_id', 'Patient ID:') !!}
-            {!! Form::text('patient_id', null, ['class' => 'form-control']) !!}
+            {!! Form::label('date', 'Date:') !!}
+            {!! Form::date('date', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('email', 'Email:') !!}
-            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+            {!! Form::label('time', 'Time:') !!}
+            {!! Form::text('time', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('patient_phone', 'Phone:') !!}
-            {!! Form::text('patient_phone', null, ['class' => 'form-control']) !!}
+            {!! Form::label('duration', 'LOV:') !!}
+            {!! Form::text('duration', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('patient_address', 'Address:') !!}
+            {!! Form::label('vna_user_id', 'Care Giver ID:') !!}
             {!! Form::text('patient_address', null, ['class' => 'form-control']) !!}
         </div>
+        <div class="form-group">
+            {!! Form::label('comments', 'Comments:') !!}
+            {!! Form::textarea('comments', null, ['class' => 'form-control']) !!}
+        </div>
 
 
         <div class="form-group">
-            {!! Form::submit('Add User', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Add Appointment', ['class' => 'btn btn-primary form-control']) !!}
         </div>
 
     {!! Form::close() !!}

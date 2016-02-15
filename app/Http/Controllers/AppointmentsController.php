@@ -3,30 +3,30 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\vnas_user;
+use App\appointment;
 use Request;
-class VnasUsersController extends Controller {
+class AppointmentsController extends Controller {
 
 	//
 
     public function index()
     {
-        $vnas_users = vnas_user::all();
+        $appointments = appointment::all();
 
-        return view('vnas_users.index', compact('vnas_users'));
+        return view('appointments.index', compact('appointments'));
     }
 
     public function show($id)
     {
-        $vnas_user = vnas_user::findOrFail($id);
+        $appointment = appointment::findOrFail($id);
 
-        return view('vnas_users.show', compact('vnas_user'));
+        return view('appointments.show', compact('appointments'));
 
     }
 
     public function create()
     {
-        return view('vnas_users.create');
+        return view('appointments.create');
 
     }
 
@@ -34,9 +34,9 @@ class VnasUsersController extends Controller {
     {
         $input = Request::all();
 
-        vnas_user::create($input);
+        appointment::create($input);
 
-        return redirect('vnas_users');
+        return redirect('appointments');
 
     }
 }

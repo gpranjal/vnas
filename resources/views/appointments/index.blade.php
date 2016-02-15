@@ -2,19 +2,20 @@
 
 @section('content')
 
-    <h1>VNAS USERS</h1>
+    <h1>Appointments</h1>
 
-        @foreach ($vnas_users as $vnas_user)
+        @foreach ($appointments as $appointment)
 
-            <vnas_user>
+            <appointment>
 
                 <h2>
-                    <a href="{{ action('VnasUsersController@show', [$vnas_user->id]) }}">{{ $vnas_user->name }}</a>
+                    <a href="{{ action('AppointmentsController@show', [$appointment->id]) }}">{{ $appointment->title }}</a>
                 </h2>
 
-                <div class="'body">{{ $vnas_user->email  }}</div>
+                <div class="'body">{{ $appointment->date  }}</div>
 
-             </vnas_user>
+             </appointment>
+
         @endforeach
 
 @stop

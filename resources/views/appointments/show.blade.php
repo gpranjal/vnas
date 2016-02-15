@@ -2,26 +2,28 @@
 
 @section('content')
 
-    <h1>{{ $vnas_user->name }}</h1>
+    <h1>{{ $appointment->title }}</h1>
 
 
 
-            <vnas_user>
+            <appointment>
 
                 <div class="'body">
 
-                    <b>Email:</b> {{ $vnas_user->email  }} </br>
+                    <b>Date:</b> {{ $appointment->date  }} </br>
 
-                    <b>Patient-ID:</b> {{ $vnas_user->patient_id  }} </br>
+                    <b>Time:</b> {{ $appointment->time  }} </br>
 
-                    <b>Mobile:</b> {{ $vnas_user->patient_phone }} </br>
+                    <b>LOV:</b> {{ $appointment->duration }} </br>
 
-                    <b>Address:</b> {{ $vnas_user->patient_address  }}
+                    <b>Comments:</b> {{ $appointment->comments }} </br>
+
+                    <b>CareGiver ID:</b> {{ $vnas_user->vnas_user_id }}
 
 
                 </div>
 
-             </vnas_user>
+             </appointment>
 
 
 @stop

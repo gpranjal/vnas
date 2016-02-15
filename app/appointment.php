@@ -6,11 +6,13 @@ class appointment extends Model {
 
 	//
     protected $fillable = [
-        'patient_id',
-        'name',
-        'email',
-        'patient_phone',
-        'patient_address',
+
+        'title',
+        'date',
+        'time',
+        'duration',
+        'comments',
+        'vnas_user_id',
 
     ];
 }

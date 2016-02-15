@@ -31,3 +31,8 @@ Route::get('vnas_users/create', 'VnasUsersController@create');
 Route::post('vnas_users', 'VnasUsersController@store');
 Route::get('vnas_users/{id}', 'VnasUsersController@show');
 
+Route::get('appointments', 'AppointmentsController@index');
+Route::get('appointments/create', 'AppointmentsController@create');
+Route::post('appointments', 'AppointmentsController@store');
+Route::get('appointments/{id}', 'AppointmentsController@show');
+
