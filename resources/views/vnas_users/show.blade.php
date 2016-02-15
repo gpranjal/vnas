@@ -2,19 +2,26 @@
 
 @section('content')
 
-    <h1>VNAS USERS</h1>
+    <h1>{{ $vnas_user->name }}</h1>
 
-        @foreach ($vnas_users as $vnas_user)
+
 
             <vnas_user>
 
-                <h2>
-                    <a href="#">{{ $vnas_user->name }}</a>
-                </h2>
+                <div class="'body">
 
-                <div class="'body">{{ $vnas_user->email  }}</div>
+                    <b>Email:</b> {{ $vnas_user->email  }} </br>
+
+                    <b>Patient-ID:</b> {{ $vnas_user->patient_id  }} </br>
+
+                    <b>Mobile:</b> {{ $vnas_user->patient_phone }} </br>
+
+                    <b>Address:</b> {{ $vnas_user->patient_address  }}
+
+
+                </div>
 
              </vnas_user>
-        @endforeach
+
 
 @stop

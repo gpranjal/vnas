@@ -25,3 +25,9 @@ Route::match(['get', 'post'], 'faq', function () {
     return \Maven::manage_view();
 
 });
+
+Route::get('vnas_users', 'VnasUsersController@index');
+Route::get('vnas_users/create', 'VnasUsersController@create');
+Route::post('vnas_users', 'VnasUsersController@store');
+Route::get('vnas_users/{id}', 'VnasUsersController@show');
+
