@@ -10,7 +10,7 @@
     <br />
 
     <div class="row">
-        <a class="btn btn-default" href="http://www.thevnacares.org/" role="button">My Account</a>
+        <a class="btn btn-default" href="{{ url('vnas_users/') }}" role="button">My Account</a>
     </div>
 
     <br />
