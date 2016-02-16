@@ -5,8 +5,8 @@
 	<div class="col-md-10 col-md-offset-1">   
 		<div class="row">
 	            <div class="panel panel-default">
-	                <div class="panel-heading" style="background-color:#F58E31">
-	                    <h1><font color="white">Care In Your Home</font> </h1>
+	                <div class="panel-heading">
+	                    <h1>CARE IN YOUR HOME</h1>
 	                </div>
 	                <br/>
 
