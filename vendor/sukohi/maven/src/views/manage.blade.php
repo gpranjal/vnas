@@ -1,32 +1,8 @@
 @extends('app')
-<html lang="{{ \App::getLocale() }}">
-<head>
-    <title>VNAS FAQ</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
 
-        .text-bold {
+@section('content')
 
-            font-weight:bold;
-
-        }
-
-        .line-height-2 {
-
-            line-height: 2em !important;
-
-        }
-
-    </style>
-
-    
-</head>
-<body>
-<div class="container">
-    @if(!empty($message))
+@if(!empty($message))
     <br>
     <div class="alert alert-danger">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -35,6 +11,7 @@
     @else
     <br>
     @endif
+    <body>
     <div class="text-right">
         <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
     </div>
@@ -143,7 +120,9 @@
     {!! Form::open(['id' => 'remove_form']) !!}
         {!! Form::hidden('remove_id', '', ['id' => 'remove_id']) !!}
     {!! Form::close() !!}
-</div>
+
+    </body>
+
 <script>
     $(document).ready(function(){
 
@@ -191,5 +170,5 @@
 
     });
 </script>
-</body>
-</html>
+
+@endsection

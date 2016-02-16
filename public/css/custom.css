@@ -887,7 +887,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
+  background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
 }
 input,
 button,
@@ -911,6 +911,7 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+
 figure {
   margin: 0;
 }
@@ -2771,6 +2772,7 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
+  width: 120px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -2778,8 +2780,8 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333333;
-  background-color: #e6e6e6;
+  color: #ffffff;
+  background-color: #00b9d7;
   border-color: #adadad;
 }
 .btn-default:active,
@@ -4160,8 +4162,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #e7e7e7;
+  background-color: #00b9d7;
   color: #555555;
+  
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -5211,6 +5214,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
+    background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
 }
 .panel-default > .panel-heading {
   color: white;
