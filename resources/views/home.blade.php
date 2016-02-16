@@ -10,10 +10,6 @@
                 <br />
             </div>
 
-
-            <br />
-
-
             <div class="row">
                 <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
             </div>
@@ -25,7 +21,7 @@
             <br />
 
             <div class="row">
-                <a class="btn btn-default" href="http://www.thevnacares.org/" role="button">My Schedule</a>
+                <a class="btn btn-default" href="{{ url('appointments') }}" role="button">My Schedule</a>
             </div>
 
             <br />
