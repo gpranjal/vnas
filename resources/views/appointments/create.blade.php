@@ -15,7 +15,7 @@
 
         <div class="form-group">
             {!! Form::label('date', 'Date:') !!}
-            {!! Form::date('date', null, ['class' => 'form-control']) !!}
+            {!! Form::input('date', 'date', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('time', 'Time:') !!}

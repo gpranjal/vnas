@@ -18,7 +18,7 @@
 
                     <b>Comments:</b> {{ $appointment->comments }} </br>
 
-                    <b>CareGiver ID:</b> {{ $vnas_user->vnas_user_id }}
+                    <b>CareGiver ID:</b> {{ $appointment->vnas_user_id }}
 
 
                 </div>
