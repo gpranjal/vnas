@@ -28,4 +28,8 @@ class Vnas_record extends Model {
 
     ];
 
+    public function Vnas_record()
+    {
+        return $this->hasMany('App\Vnas_record');
+    }
 }

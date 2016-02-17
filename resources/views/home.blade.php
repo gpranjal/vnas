@@ -21,7 +21,7 @@
             <br />
 
             <div class="row">
-                <a class="btn btn-default" href="{{ url('appointments') }}" role="button">My Schedule</a>
+                <a class="btn btn-default" href="{{ url('vnas_records') }}" role="button">My Schedule</a>
             </div>
 
             <br />

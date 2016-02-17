@@ -2,35 +2,63 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 
 use App\Vnas_record;
 use Request;
+use DB;
+use View;
+use Auth;
+
 class VnasRecordsController extends Controller {
 
 	//
+    var $vnas_records;
+
+    public function __construct()
+    {
+        $this->vnas_records = Vnas_record::all();
+    }
 
     public function index()
     {
-        $Vnas_records = Vnas_record::all();
+        // Check to see if the user is logged in
+        if( Auth::check() )
+        {
+            $myCurrUserEmail = Auth::user()->email; 
 
-        return view('Vnas_records.index', compact('Vnas_records'));
+            //If admin here, go ahead and show the list of patients
+
+            //if not show only the currently logged in patient
+            $Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','ap_title','ap_date','ap_time','ap_lov','caregiver_id','caregiver_fname','caregiver_lname'));
+
+            return view('Vnas_records.index', compact('Vnas_records'));
+        }
+        else
+        {
+            return 'You aren\'t logged in.';
+        }
     }
 
+
+    /* You are working here */
     public function patientsch($patient_id)
     {
-        $Vnas_record = Vnas_record::findOrFail($patient_id);
+        //return Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','ap_title','ap_date','ap_time','ap_lov','caregiver_fname'));
+        $patient_records = Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','patient_id','ap_title','ap_date','ap_time','ap_lov','caregiver_id','caregiver_fname','caregiver_lname'));
+        return view('Vnas_records.patientsch', compact('patient_records'));
+       
+    }
+
+    /*
+    public function caregiversch($caregiver_id)
+    {
+        $Vnas_records = Vnas_record::findOrFail($caregiver_id);
 
         return view('Vnas_records.patientsch', compact('Vnas_records'));
 
     }
-
-    public function caregiversch($caregiver_id)
-    {
-        $Vnas_record = Vnas_record::findOrFail($caregiver_id);
-
-        return view('Vnas_records.caregiversch', compact('Vnas_records'));
-
-    }
+    */
 
 
     public function create()
