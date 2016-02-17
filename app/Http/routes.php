@@ -26,6 +26,12 @@ Route::match(['get', 'post'], 'faq', function () {
 
 });
 
+Route::get('Vnas_records', 'VnasRecordsController@index');
+Route::get('Vnas_records/create', 'VnasRecordsController@create');
+Route::post('Vnas_records', 'VnasRecordsController@store');
+Route::get('Vnas_records/{id}', 'VnasRecordsController@patientsch');
+Route::get('Vnas_records/{id}', 'VnasRecordsController@caregiversch');
+
 Route::get('vnas_users', 'VnasUsersController@index');
 Route::get('vnas_users/create', 'VnasUsersController@create');
 Route::post('vnas_users', 'VnasUsersController@store');

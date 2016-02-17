@@ -2,32 +2,35 @@
 
 @section('content')
 
-    <h1>Appointments</h1>
+    <h1>VNAS RECORDS</h1>
 
-        @foreach ($appointments as $appointment)
+        @foreach ($Vnas_records as $Vnas_record)
 
-            <appointment>
+            <Vnas_record>
 
                 <h2>
-                    <a href="{{ action('AppointmentsController@show', [$appointment->id]) }}">{{ $appointment->title }}</a>
+                    {{ $Vnas_record->ap_title }}
                 </h2>
 
                 <div class="'body">
 
-                    <b>Date:</b> {{ $appointment->date  }} </br>
+                    <b>Date:</b> {{ $Vnas_record->ap_date  }} </br>
 
-                    <b>Time:</b> {{ $appointment->time  }} </br>
+                    <b>Time:</b> {{ $Vnas_record->ap_time  }} </br>
 
-                    <b>LOV:</b> {{ $appointment->duration }} </br>
+                    <b>LOV:</b> {{ $Vnas_record->ap_lov }} </br>
 
-                    <b>Comments:</b> {{ $appointment->comments }} </br>
+                    <b>Patient ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->patient_id }}</a> </br>
 
-                    <b>CareGiver ID:</b> {{ $appointment->vnas_user_id }}
+                    <b>Patient Name:</b> {{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname  }} </br>
 
+                    <b>Caregiver ID:</b><a href="{{ action('VnasRecordsController@caregiversch', [$Vnas_record->caregiver_id]) }}">{{ $Vnas_record->caregiver_id }}</a></br>
+
+                    <b>Caregiver Name:</b> {{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }} </br>
 
                 </div>
 
-             </appointment>
+             </Vnas_record>
 
         @endforeach
 

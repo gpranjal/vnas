@@ -4,6 +4,7 @@
 
     <h1>{{ $Vnas_record->ap_title }}</h1>
 
+    @foreach ($Vnas_records as $Vnas_record)
 
 
             <Vnas_record>
@@ -18,9 +19,11 @@
 
                     <b>Comments:</b> {{ $Vnas_record->ap_comments }} </br>
 
-                    <b>CareGiver Name:</b> {{ $Vnas_record->caregiver_name }} </br>
+                    <b>Patient ID:</b> {{ $Vnas_record->patient_id }} </br>
 
-                    <b>CareGiver Name:</b> {{ $Vnas_record->caregiver_mob }} </br>
+                    <b>Patient Phone:</b> {{ $Vnas_record->patient_phone }} </br>
+
+                    <b>Patient Address:</b> {{ $Vnas_record->patient_address }} </br>
 
 
 
@@ -28,5 +31,6 @@
 
              </Vnas_record>
 
+    @endforeach
 
 @stop

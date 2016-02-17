@@ -6,7 +6,7 @@
 
 
 
-            <appointment>
+            <Vnas_record>
 
                 <div class="'body">
 
@@ -16,14 +16,15 @@
 
                     <b>LOV:</b> {{ $Vnas_record->ap_love }} </br>
 
-                    <b>Comments:</b> {{ $Vnas_record->ap_comments }} </br>
+                    <b>CareGiver Name:</b> {{ $Vnas_record->caregiver_name }} </br>
 
-                    <b>CareGiver ID:</b> {{ $Vnas_record->caregiver_name }}
+                    <b>CareGiver Mobile:</b> {{ $Vnas_record->caregiver_phone }} </br>
 
+                    <b>CareGiver Mobile:</b> {{ $Vnas_record->caregiver_mob }} </br>
 
                 </div>
 
-             </appointment>
+             </Vnas_record>
 
 
 @stop

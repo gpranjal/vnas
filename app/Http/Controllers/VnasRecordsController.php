@@ -3,40 +3,48 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\vnas_user;
+use App\Vnas_record;
 use Request;
-class VnasUsersController extends Controller {
+class VnasRecordsController extends Controller {
 
 	//
 
     public function index()
     {
-        $vnas_users = vnas_user::all();
+        $Vnas_records = Vnas_record::all();
 
-        return view('vnas_users.index', compact('vnas_users'));
+        return view('Vnas_records.index', compact('Vnas_records'));
     }
 
-    public function show($id)
+    public function patientsch($patient_id)
     {
-        $vnas_user = vnas_user::findOrFail($id);
+        $Vnas_record = Vnas_record::findOrFail($patient_id);
 
-        return view('vnas_users.show', compact('vnas_user'));
+        return view('Vnas_records.patientsch', compact('Vnas_records'));
 
     }
+
+    public function caregiversch($caregiver_id)
+    {
+        $Vnas_record = Vnas_record::findOrFail($caregiver_id);
+
+        return view('Vnas_records.caregiversch', compact('Vnas_records'));
+
+    }
+
 
     public function create()
     {
-        return view('vnas_users.create');
+        return view('Vnas_records.create');
 
     }
 
     public function store()
     {
         $input = Request::all();
+        Vnas_record::create($input);
 
-        vnas_user::create($input);
-
-        return redirect('vnas_users');
+        return redirect('Vnas_records');
 
     }
 }

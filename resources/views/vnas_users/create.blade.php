@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Enter new VNA User</h1>
+    <h1>Enter NEW VNA User</h1>
 
     <hr/>
 
