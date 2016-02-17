@@ -1,35 +1,42 @@
 @extends('app')
 
 @section('content')
+<div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2">
 
-<div style="border-radius: 25px; border: 2px solid #00447C; padding: 20px; width: 200px;"> <!-- #00447c is the VNA Logo Color-->
-    <div class="row">
-        <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
-    </div>
+       <div class="panel panel-default">
 
-    <br />
+            <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
+                <br />
+            </div>
 
-    <div class="row">
-        <a class="btn btn-default" href="{{ url('vnas_users') }}"  role="button">My Account</a>
-    </div>
+            <div class="row">
+                <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
+            </div>
+     
+            <div class="row">
+                <a class="btn btn-default" href="{{ url('vnas_users/') }}" role="button">My Account</a> 
+            </div>
 
-    <br />
+            <br />
 
-    <div class="row">
-        <a class="btn btn-default" href="{{ url('appointments') }}"  role="button">My Schedule</a>
-    </div>
+            <div class="row">
+                <a class="btn btn-default" href="{{ url('appointments') }}" role="button">My Schedule</a>
+            </div>
 
-    <br />
+            <br />
+    
+            <div class="row">
+            <a class="btn btn-default" role="button" href="{{ url('faq') }}">FAQ</a>
+            </div>
 
-    <div class="row">
-        <a class="btn btn-default" href="{{ url('faq') }}" role="button">FAQ</a>
-    </div>
+            <br />
 
-    <br />
-
-    <div class="row">
-        <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button">Donate to VNA</a>
-    </div>
+            <div class="row">
+                <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button">Donate to VNA</a>
+            </div>
+    </div>    
 </div>
-
+</div>
+</div>
 @endsection

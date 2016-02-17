@@ -1,17 +1,37 @@
-@extends('app')
+<!DOCTYPE html>
+<html lang="{{ \App::getLocale() }}">
+<head>
+    <title>VNAS FAQ</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
 
-@section('content')
+        .text-bold {
 
-@if(!empty($message))
-    <br>
-    <div class="alert alert-danger">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {!! $message !!}
-    </div>
+            font-weight:bold;
+
+        }
+
+        .line-height-2 {
+
+            line-height: 2em !important;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    @if(!empty($message))
+        <br>
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {!! $message !!}
+        </div>
     @else
-    <br>
+        <br>
     @endif
-    <body>
     <div class="text-right">
         <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
     </div>
@@ -40,19 +60,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    {!! Form::label(trans('FAQ Tags')) !!}<br>
-                    {!! Form::text('tags', Request::get('tags'), ['id' => 'tags', 'class' => 'form-control']) !!}
-                    <br><span class="text-muted">{{ trans('Example: Forget Password') }}</span>
-                </div>
-                <div class="form-group col-md-6">
                     <br>
-                    <div>
-                    @if(count($tag_values) > 0)
-                        @foreach($tag_values as $tag_value)
-                            <a href="#" class="label label-info tags">{{ $tag_value }}</a>
-                        @endforeach
-                    @endif
-                    </div>
                 </div>
             </div>
             <div class="clearfix form-group checkbox">
@@ -74,13 +82,13 @@
     @if($faqs->count() > 0)
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>Order</th>
-                    <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
-                    <th><nobr>{{ trans('FAQ Tags') }}</nobr></th>
-                    <th class="text-center"><nobr>{{ trans('Drafts') }}</nobr></th>
-                    <th class="text-right">User Action</th>
-                </tr>
+            <tr>
+                <th>Order</th>
+                <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
+
+                <th class="text-center"><nobr>{{ trans('Drafts') }}</nobr></th>
+                <th class="text-right">User Action</th>
+            </tr>
             </thead>
             <tbody>
             @foreach($faqs as $index => $faq)
@@ -91,22 +99,17 @@
                         <br>
                         {!! $faq->answer !!}
                     </td>
-                    <td class="line-height-2">
-                        @foreach($faq->tags as $tag)
-                            <span class="label label-default">{{ $tag }}</span>
-                        @endforeach
-                    </td>
                     <td class="text-center">{!! $faq->draft_flag_icon !!}</td>
                     <td class="text-right">
                         <nobr>
-                        &nbsp;
-                        &nbsp;
-                        <a href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-warning">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </a>
-                        <button href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-danger remove-button" data-id="{{ $faq->id }}">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
+                            &nbsp;
+                            &nbsp;
+                            <a href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-warning">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <button href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-danger remove-button" data-id="{{ $faq->id }}">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </button>
                         </nobr>
                     </td>
                 </tr>
@@ -118,11 +121,9 @@
         </div>
     @endif
     {!! Form::open(['id' => 'remove_form']) !!}
-        {!! Form::hidden('remove_id', '', ['id' => 'remove_id']) !!}
+    {!! Form::hidden('remove_id', '', ['id' => 'remove_id']) !!}
     {!! Form::close() !!}
-
-    </body>
-
+</div>
 <script>
     $(document).ready(function(){
 
@@ -170,5 +171,5 @@
 
     });
 </script>
-
-@endsection
+</body>
+</html>
