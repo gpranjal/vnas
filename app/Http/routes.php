@@ -7,7 +7,7 @@ use Illuminate\Routing\Matching\UriValidator;
 $validators = IlluminateRoute::getValidators();
 $validators[] = new CaseInsensitiveUriValidator;
 IlluminateRoute::$validators = array_filter($validators, function($validator) { 
-  return get_class($validator) != UriValidator::class;
+  return get_class($validator) != 'Illuminate\Routing\Matching\UriValidator';
 });
 
 /*
