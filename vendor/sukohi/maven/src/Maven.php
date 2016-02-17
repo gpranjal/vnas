@@ -110,4 +110,19 @@ class Maven {
 
 	}
 
+	public function view($limit = 30) {
+		$message = '';
+		$faqs = Faq::orderBy('sort', 'ASC')
+					->paginate($limit);
+		$sort_values = Faq::sortSelectValues();
+		$tag_values = Faq::tagValues();
+
+		return view('maven::untag', [
+				'faqs' => $faqs,
+				'sort_values' => $sort_values,
+				'tag_values' => $tag_values,
+				'message' => $message
+		])->render();
+	}
+
 }
