@@ -17,6 +17,8 @@ return array(
     'Sukohi\\Maven\\' => array($vendorDir . '/sukohi/maven/src'),
     'Sukohi\\Cahen\\' => array($vendorDir . '/sukohi/cahen/src'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
+    'Shin1x1\\ForceHttpsUrlScheme\\Test\\' => array($vendorDir . '/shin1x1/laravel-force-https-url-scheme/tests'),
+    'Shin1x1\\ForceHttpsUrlScheme\\' => array($vendorDir . '/shin1x1/laravel-force-https-url-scheme/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Illuminate\\Html\\' => array($vendorDir . '/illuminate/html'),
