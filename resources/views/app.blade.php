@@ -8,12 +8,9 @@
 
 	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-	<!-- Fonts -->
-	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
-
 	<!-- Added the styles from Laravel v_5.2 #Farhan -->
 
-	    <!-- Fonts -->
+    <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
@@ -21,19 +18,16 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    {{-- <link href="{{ elixir('css/custom.css') }}" rel="stylesheet"> --}}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <style>
-        body {
-            font-family: 'Lato';
-            background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
-        }
         .fa-btn {
-            margin-right: 6px;
+            margin-right: 10px;
         }
-        img
-        {
-        	max-width: 100%;
-    		height: auto;
-        }
+
     </style>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

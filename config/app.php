@@ -135,6 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -144,6 +145,10 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
+    	'Sukohi\Cahen\CahenServiceProvider',
+    	'Sukohi\Maven\MavenServiceProvider',
+    	'Todstoychev\TableSorter\ServiceProvider'
 
 	],
 
@@ -192,6 +197,12 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Form'		=> 'Illuminate\Html\FormFacade',
+  	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
+    	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen',
+    	'Maven'   	=> 'Sukohi\Maven\Facades\Maven',
+    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter',
+
 
 	],
 

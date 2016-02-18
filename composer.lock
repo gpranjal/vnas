@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d06d26dec617490c4f674bd4fb580c62",
-    "content-hash": "5fd7134886112f1f007768c20daa4f42",
+    "hash": "ec3efe78bd3eafeefc874d26b1efc9ef",
+    "content-hash": "a7f31eb55ad941fd825f83943450814d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -222,6 +222,52 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "illuminate/html",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/html.git",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/html/zipball/3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Html\\": ""
+                },
+                "files": [
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2015-01-01 16:31:18"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -535,6 +581,56 @@
                 "laravel"
             ],
             "time": "2016-02-02 14:55:52"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
+                "reference": "c55fda58b1a9a1b58bd04f97e0fb9ebc238a0a94",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/routing": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "time": "2015-05-06 14:23:37"
         },
         {
             "name": "league/flysystem",
@@ -989,6 +1085,129 @@
                 "shell"
             ],
             "time": "2015-03-26 18:43:54"
+        },
+        {
+            "name": "shin1x1/laravel-force-https-url-scheme",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shin1x1/laravel-force-https-url-scheme.git",
+                "reference": "992877cc3b9d12bca04e63acce4378bc428489b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shin1x1/laravel-force-https-url-scheme/zipball/992877cc3b9d12bca04e63acce4378bc428489b4",
+                "reference": "992877cc3b9d12bca04e63acce4378bc428489b4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "~5.0",
+                "illuminate/http": "~5.0",
+                "php": ">5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shin1x1\\ForceHttpsUrlScheme\\": "src",
+                    "Shin1x1\\ForceHttpsUrlScheme\\Test\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Masashi Shinbara",
+                    "email": "shin1x1@gmail.com",
+                    "homepage": "https://github.com/shin1x1"
+                }
+            ],
+            "description": "Force https url schema middleware for Laravel 5",
+            "homepage": "https://github.com/shin1x1/laravel-force-https-url-scheme",
+            "keywords": [
+                "laravel",
+                "middleware"
+            ],
+            "time": "2015-04-16 10:35:40"
+        },
+        {
+            "name": "sukohi/cahen",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SUKOHI/Cahen.git",
+                "reference": "53028ac4b57ab973689e7139f17700d054219185"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SUKOHI/Cahen/zipball/53028ac4b57ab973689e7139f17700d054219185",
+                "reference": "53028ac4b57ab973689e7139f17700d054219185",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sukohi\\Cahen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sukohi",
+                    "email": "capilano.sukohi@gmail.com"
+                }
+            ],
+            "description": "A PHP package mainly developed for Laravel to manage sort values of DB table automatically.",
+            "time": "2015-08-12 01:27:07"
+        },
+        {
+            "name": "sukohi/maven",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SUKOHI/Maven.git",
+                "reference": "64a087e9464e24321c1c99d1ed8e5271615f726b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SUKOHI/Maven/zipball/64a087e9464e24321c1c99d1ed8e5271615f726b",
+                "reference": "64a087e9464e24321c1c99d1ed8e5271615f726b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.0",
+                "laravelcollective/html": "~5.0",
+                "sukohi/cahen": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sukohi\\Maven\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sukohi",
+                    "email": "capilano.sukohi@gmail.com"
+                }
+            ],
+            "description": "A Laravel package to manage FAQ.",
+            "time": "2015-11-13 01:26:55"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1865,6 +2084,49 @@
             "time": "2015-07-01 10:03:42"
         },
         {
+            "name": "todstoychev/table-sorter",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/todstoychev/table-sorter.git",
+                "reference": "de476f3b4d18bdadaaf65c721a0ecf9b507b32c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/todstoychev/table-sorter/zipball/de476f3b4d18bdadaaf65c721a0ecf9b507b32c9",
+                "reference": "de476f3b4d18bdadaaf65c721a0ecf9b507b32c9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*",
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Todstoychev\\TableSorter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todor Todorov",
+                    "email": "todstoychev@gmail.com"
+                }
+            ],
+            "description": "Table sorter module for Laravel 5",
+            "homepage": "https://github.com/todstoychev/table-sorter",
+            "keywords": [
+                "column",
+                "sort",
+                "table"
+            ],
+            "time": "2015-11-12 07:59:25"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -2129,22 +2391,24 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7"
+                "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4745ded9307786b730d7a60df5cb5a6c43cf95f7",
-                "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3c91bdf81797d725b14cb62906f9a4ce44235972",
+                "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
+                "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "~2.0",
-                "sebastian/comparator": "~1.1"
+                "sebastian/comparator": "~1.1",
+                "sebastian/recursion-context": "~1.0"
             },
             "require-dev": {
                 "phpspec/phpspec": "~2.0"
@@ -2152,7 +2416,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5.x-dev"
                 }
             },
             "autoload": {
@@ -2185,7 +2449,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-08-13 10:07:40"
+            "time": "2016-02-15 07:46:21"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2429,16 +2693,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.22",
+            "version": "4.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72"
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dfb11aa5236376b4fc63853cf746af39fe780e72",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6e351261f9cd33daf205a131a1ba61c6d33bd483",
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "shasum": ""
             },
             "require": {
@@ -2497,7 +2761,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-02-02 09:01:21"
+            "time": "2016-02-11 14:56:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
