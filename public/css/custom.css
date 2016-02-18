@@ -80,6 +80,7 @@ sub {
   bottom: -0.25em;
 }
 img {
+  display: inline-block;
   border: 0;
   max-width: 100%;
   height: auto;
@@ -1394,6 +1395,7 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
 }
+
 .row {
   margin-left: -15px;
   margin-right: -15px;
@@ -2203,6 +2205,10 @@ table th[class*="col-"] {
 .table-hover > tbody > tr:hover > .warning,
 .table-hover > tbody > tr.warning:hover > th {
   background-color: #faf2cc;
+}
+
+.table-hover > thead > th:hover{
+  background-color: #6CF;
 }
 .table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
@@ -6243,4 +6249,7 @@ body,
 label,
 .checkbox label {
   font-weight: 300;
+}
+logo{
+
 }
