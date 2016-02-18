@@ -40,7 +40,10 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Role</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="role" value="{{ old('role') }}">
+								<select name="role" class="form-control" value="{{old('role')}}">
+									<option value="admin">Admin</option>
+									<option value="regular">Regular</option>
+								</select>
 							</div>
 						</div>
 

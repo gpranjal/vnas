@@ -25,6 +25,27 @@ class ManagementController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+
+
+	public function edit_user($id)
+	{
+
+
+		$edit = User::find($id);
+		return view('admin\edit',compact('edit'));
+	}
+
+	public function post_edit_user($id)
+	{
+		$update_edit = new User;
+
+
+
+		$edit = User::find($id);
+		return view('admin\edit',compact('edit'));
+	}
+
 	public function create()
 	{
 		//
@@ -83,5 +104,6 @@ class ManagementController extends Controller {
 	{
 		//
 	}
+
 
 }

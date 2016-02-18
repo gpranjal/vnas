@@ -12,8 +12,8 @@
     @foreach($users as $meh)
         <tr>
             <td>{{$meh ->name}} </td>
-            <td><a href="{{url('admin/edit')}}">Edit</a> </td>
-            <td><a href="{{url('admin/reset')}}">Reset</a> </td>
+            <td><a href="{{url('edit/')}}/{{$meh->id}}">Edit</a> </td>
+            <td><a href="{{url('reset/')}}/{{$meh->id}}">Reset</a> </td>
         </tr>
     @endforeach
 
