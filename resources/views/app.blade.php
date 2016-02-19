@@ -38,7 +38,7 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default" style="background-color: #1A5276">
+	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<div class="container-fluid">
 			 <div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -52,18 +52,18 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}"><font color="#cccccc">Home</font></a></li>
+					<li><a href="{{ url('/') }}"><font color="#fffff">Home</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}"><font color="#cccccc">Login</font></a></li>
-						<li><a href="{{ url('/auth/register') }}"><font color="#cccccc">Register</font></a></li>
+						<li><a href="{{ url('/auth/login') }}"><font color="#fffff">Login</font></a></li>
+						<li><a href="{{ url('/auth/register') }}"><font color="#fffff">Register</font></a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#cccccc">{{ Auth::user()->name }}</font><span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#fffff">{{ Auth::user()->name }}</font><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
 							</ul>
 						</li>
 					@endif

@@ -3,20 +3,22 @@
 @section('content')
 
 	<div class="container-fluid">
-	    <div class="col-md-8 col-md-offset-2">
+	    <div class="col-md-10 col-md-offset-1">
 
 	       <div class="panel panel-default">
 
 	            <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
-	               
+	            <h4>My Account</h4>
 	            </div>
-
-	             <h1>My Account</h1>
+	            <br />
+	             <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+	             <br />
+	             <br />
 	            
 	            @if( count($vnas_users) == 0 )
 	                You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 	            @else
-		            <table>
+		            <table class="table table-hover">
 		            @foreach ($vnas_users as $vnas_user)
 		            	<tr>
 		            		<td align="right"><strong>My ID:</strong></td>

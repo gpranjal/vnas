@@ -12,6 +12,7 @@
               <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
             </div>
 
+            <div id="FAQ">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -33,6 +34,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
             
             <div class="text-center">
                 {!! $faqs->render() !!}

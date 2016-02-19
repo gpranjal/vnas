@@ -3,13 +3,13 @@
 @section('content')
 <div class="container-fluid">
     <div class="col-md-8 col-md-offset-2">
-       <div class="panel panel-default">
+        <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
+            <h4>Home</h4>
+        </div>
             <br />
-            </div>
-            <div class="row">
-              <img src="{{ asset('img/brandmark_main.png') }}" />
-            </div>
+              <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+
             <div class="row">
             </div>
             <br />
@@ -26,7 +26,7 @@
             </div>
             <br />
             <div class="row">
-            <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button">Donate to VNA</a>
+            <a class="btn btn-default" href="" role="button">Donate</a>
             </div>
             <br />
         </div>    
