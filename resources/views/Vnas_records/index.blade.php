@@ -13,7 +13,7 @@
                 </div>
                 <br />
 
-                <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+                <img src="{{ asset('img/brandmark_main.png') }}">
                 <br />
 
 

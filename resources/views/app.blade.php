@@ -18,8 +18,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/custom.css"> -->
+    <link rel="stylesheet" href="<?php echo asset('css/custom.css')?>" type="text/css">
     {{-- <link href="{{ elixir('css/custom.css') }}" rel="stylesheet"> --}}
+
+
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 

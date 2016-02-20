@@ -4,9 +4,9 @@
 <div class="container-fluid">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
-			<div class="panel-heading"  style="background-color:#F58E31"><font color="White" size="3">Register</font></div>
+			<div class="panel-heading"><h4>Register</h4></div>
 			<div class="panel-body">
-			 <!-- <img src="{{ asset('img/brandmark_main.png') }}"> -->
+			 <img src="{{ asset('img/brandmark_main.png') }}">
 			 <br />
 			 <br />
 
