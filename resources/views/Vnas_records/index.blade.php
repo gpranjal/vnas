@@ -1,37 +1,54 @@
 @extends('app')
 
 @section('content')
+            
+<Vnas_record>
 
-    <h1>VNAS RECORDS</h1>
+    <div class="container-fluid">
+        <div class="col-md-8 col-md-offset-2">
 
-        @foreach ($Vnas_records as $Vnas_record)
-
-            <Vnas_record>
-
-                <h2>
-                    {{ $Vnas_record->ap_title }}
-                </h2>
-
-                <div class="'body">
-
-                    <b>Date:</b> {{ $Vnas_record->ap_date  }} </br>
-
-                    <b>Time:</b> {{ $Vnas_record->ap_time  }} </br>
-
-                    <b>LOV:</b> {{ $Vnas_record->ap_lov }} </br>
-
-                    <b>Patient ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->patient_id }}</a> </br>
-
-                    <b>Patient Name:</b> {{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname  }} </br>
-
-                    <b>Caregiver ID:</b><a href="{{ action('VnasRecordsController@caregiversch', [$Vnas_record->caregiver_id]) }}">{{ $Vnas_record->caregiver_id }}</a></br>
-
-                    <b>Caregiver Name:</b> {{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }} </br>
-
+           <div class="panel panel-default">
+                <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
+                    <h4>My Schedule</h4>
                 </div>
+                <br />
 
-             </Vnas_record>
+                <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+                <br />
 
-        @endforeach
+
+                @if( count($Vnas_records) == 0 )
+                    You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
+                @else
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Caregiver</th>
+                                <th>LOV</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($Vnas_records as $Vnas_record)
+                                <tr>
+                                    <td>{{ $Vnas_record->ap_date  }}</td>
+                                    <td>{{ $Vnas_record->ap_time  }}</td>
+                                    <td>{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
+                                    <td>{{ $Vnas_record->ap_lov }} </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            </div>
+        </div>
+    </div>
+
+</Vnas_record>
+             
+
+        
 
 @stop

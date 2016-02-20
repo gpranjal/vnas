@@ -1,30 +1,34 @@
 @extends('app')
 
 @section('content')
-
-    <h1>{{ $Vnas_record->ap_title }}</h1>
-
-
+    
+     @foreach ($patient_records as $Vnas_record)
 
             <Vnas_record>
 
-                <div class="'body">
+                <h2>
+                    {{ $Vnas_record->ap_title }}
+                </h2>
+
+                <div class="body">
 
                     <b>Date:</b> {{ $Vnas_record->ap_date  }} </br>
 
                     <b>Time:</b> {{ $Vnas_record->ap_time  }} </br>
 
-                    <b>LOV:</b> {{ $Vnas_record->ap_love }} </br>
+                    <b>LOV:</b> {{ $Vnas_record->ap_lov }} </br>
 
-                    <b>CareGiver Name:</b> {{ $Vnas_record->caregiver_name }} </br>
+                    <b>Patient ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->patient_id }}</a> </br>
 
-                    <b>CareGiver Mobile:</b> {{ $Vnas_record->caregiver_phone }} </br>
+                    <b>Patient Name:</b> {{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname  }} </br>
 
-                    <b>CareGiver Mobile:</b> {{ $Vnas_record->caregiver_mob }} </br>
+                    <b>Caregiver ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->caregiver_id]) }}">{{ $Vnas_record->caregiver_id }}</a></br>
+
+                    <b>Caregiver Name:</b> {{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }} </br>
 
                 </div>
 
              </Vnas_record>
 
-
+        @endforeach
 @stop

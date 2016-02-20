@@ -1,12 +1,14 @@
 @extends('app')
 
+
+
 @section('content')
 <div class="container-fluid">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="background-color:#F58E31"><font color="White" size="3">Login</font></div>
 				<div class="panel-body">
-				<img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
+				<img src="{{ asset('img/brandmark_main.png') }}">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -56,8 +58,7 @@
 				</div>
 			</div>
 		</div>
-	
-</div>
+	</div>
 @endsection
 
 

@@ -10,9 +10,9 @@
     </div>
     @else
     <br>
-    @endif
-    <body>
-    <div class="text-right">
+@endif
+
+<div class="text-right">
         <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
     </div>
     @if(Request::has('remove_id') || (!Request::has('_token') && !Request::has('id')))
@@ -72,7 +72,7 @@
     <br>
     <br>
     @if($faqs->count() > 0)
-        <table class="table table-hover">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Order</th>
@@ -120,8 +120,6 @@
     {!! Form::open(['id' => 'remove_form']) !!}
         {!! Form::hidden('remove_id', '', ['id' => 'remove_id']) !!}
     {!! Form::close() !!}
-
-    </body>
 
 <script>
     $(document).ready(function(){
