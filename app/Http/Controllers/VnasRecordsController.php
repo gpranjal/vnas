@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 use App\Vnas_record;
 use Request;
@@ -24,9 +25,9 @@ class VnasRecordsController extends Controller {
 
     }
 
-    public function caregiversch($caregiver_id)
+    public function caregiversch($id)
     {
-        $Vnas_record = Vnas_record::findOrFail($caregiver_id);
+        $Vnas_record = Vnas_record::findOrFail($patient_id);
 
         return view('Vnas_records.caregiversch', compact('Vnas_records'));
 
