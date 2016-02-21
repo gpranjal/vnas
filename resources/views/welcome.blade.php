@@ -2,31 +2,25 @@
 
 @section('content')
 <div class="container-fluid"> 
-	<div class="col-md-8 col-md-offset-2">   
+	<div class="col-md-10 col-md-offset-1">   
 		
 	            <div class="panel panel-default">
-	                <div class="panel-heading">
-	                    <h1>CARE IN YOUR HOME</h1>
-	                </div>
-	                
+	                <div class="panel-heading"><h4>Care in Your Home</h4></div>
 
 	                <div class="panel-body">
-	                    <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA" style="width:470px;height:80px;">
+	                    <img src="{{ asset('img/brandmark_main.png') }}">
 	                 </div>           
-	                 <br/>
+                 	<h3>Omaha's Choice for Senior Care</h3>
 
-                 	<a class="btn btn-default" href="http://www.thevnacares.org/index.php/contact-us" role="button">Contact Us   	<!--<img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/contact_button.png" class="contact_button"> -->
-	                </a>
-
-					<br/>
-					<br/>
-	                <!-- <p class="contact_number">402-342-5566</p> -->
+                 	<br/>
+                 	<a class="btn btn-default" href="" role="button">Contact Us</a>
+		            <p>402-342-5566</p>
 	                
-	                <a class="btn btn-default" href="http://www.thevnacares.org/donate-to-vna/" role="button">Donate To VNA</a>
+	                <a class="btn btn-default" href="" role="button">Donate To VNA</a>
 
 	                <br/>
 	                <br/>
-	            	
+           	
 	            	</div>
 	        </div>
 	</div>

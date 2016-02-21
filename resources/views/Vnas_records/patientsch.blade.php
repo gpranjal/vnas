@@ -10,7 +10,7 @@
                     {{ $Vnas_record->ap_title }}
                 </h2>
 
-                <div class="'body">
+                <div class="body">
 
                     <b>Date:</b> {{ $Vnas_record->ap_date  }} </br>
 

@@ -1,13 +1,14 @@
 @extends('app')
-
 @section('content')
+
 <div class="container-fluid">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color:#F58E31"><font color="White" size="3">Login</font></div>
+				<div class="panel-heading"><h4>Login</h4></div>
 				<div class="panel-body">
-				<img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA">
+				<img src="{{ asset('img/brandmark_main.png') }}">
 					@if (count($errors) > 0)
+
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
@@ -37,7 +38,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox" align="left">
+								<div class="checkbox">
 									<label>
 										<input type="checkbox" name="remember"> Remember Me
 									</label>
@@ -46,8 +47,8 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4" align="left">
-								<button type="submit" class="btn btn-primary">Login</button>
+							<div class="col-md-6 col-md-offset-4">
+								<button type="submit" class="btn btn-default">Login</button>
 
 								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
 							</div>
@@ -57,7 +58,9 @@
 			</div>
 		</div>
 	</div>
+
 @endsection
+
 
 
 

@@ -82,7 +82,7 @@ sub {
 img {
   display: inline-block;
   border: 0;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 }
 svg:not(:root) {
@@ -888,7 +888,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
+  background-image: url("../img/bodybg.jpg");
 }
 input,
 button,
@@ -2109,7 +2109,8 @@ th {
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
-  background-color: #f5f5f5;
+  background-color: #00b9d7;
+  color: white;
 }
 table col[class*="col-"] {
   position: static;
@@ -2118,7 +2119,7 @@ table col[class*="col-"] {
 }
 table td[class*="col-"],
 table th[class*="col-"] {
-  position: static;
+  position: relative;
   float: none;
   display: table-cell;
 }
@@ -2402,6 +2403,8 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+  text-align: left;
+  
 }
 .radio,
 .checkbox {
@@ -2778,7 +2781,6 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
-  width: 120px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3804,7 +3806,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-header {
-    background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/wingbg.jpg");
+    background-image: url("../img/wingbg.jpg");
     float: left;
   }
 }
@@ -4169,7 +4171,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   background-color: #00b9d7;
-  color: #555555;
+  color: #ffffff;
   
 }
 @media (max-width: 767px) {
@@ -4997,15 +4999,15 @@ a.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
-}
+ }
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   background-color: #F58E31;
-  h2{
-    color: white;
+  h1,h2,h3,h4,h5,h6{
+    color: #ffffff;
   }
 }
 .panel-heading > .dropdown .dropdown-toggle {
@@ -5220,7 +5222,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
-    background-image: url("http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/bodybg.jpg");
+    
 }
 .panel-default > .panel-heading {
   color: white;
@@ -6249,7 +6251,4 @@ body,
 label,
 .checkbox label {
   font-weight: 300;
-}
-logo{
-
 }
