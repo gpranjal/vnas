@@ -29,4 +29,4 @@ Route::match(['get', 'post'], 'faq', function () {
 Route::get('/manage' , 'ManagementController@index');
 Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
-Route::post('/edit' , 'ManagementController@post_edit_user');
+Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');

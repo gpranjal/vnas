@@ -38,12 +38,11 @@ class ManagementController extends Controller {
 
 	public function post_edit_user($id)
 	{
-		$update_edit = new User;
+		$update_edit = User::find($id);
+		$update_edit->name = $_POST['name'];
+		$update_edit->save();
+  		return Redirect('manage');
 
-
-
-		$edit = User::find($id);
-		return view('admin\edit',compact('edit'));
 	}
 
 	public function create()
