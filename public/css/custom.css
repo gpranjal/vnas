@@ -245,6 +245,7 @@ th {
   }
   .table {
     border-collapse: collapse !important;
+    width: 100%;
   }
   .table td,
   .table th {
@@ -5222,6 +5223,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
+  display: table;
     
 }
 .panel-default > .panel-heading {
