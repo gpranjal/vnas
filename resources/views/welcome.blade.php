@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid"> 
+<div class="container"> 
 	<div class="col-md-10 col-md-offset-1">   
 		
 	            <div class="panel panel-default">
@@ -14,6 +14,8 @@
 
                  	<br/>
                  	<a class="btn btn-default" href="" role="button">Contact Us</a>
+                 	<div>
+                 	</div>
 		            <p>402-342-5566</p>
 	                
 	                <a class="btn btn-default" href="" role="button">Donate To VNA</a>

@@ -5241,7 +5241,12 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
+<<<<<<< HEAD
   display: table;    
+=======
+  display: table;
+    
+>>>>>>> 4b62eca5f69057dfc68521f2b18d966387bebc13
 }
 .panel-default > .panel-heading {
   color: white;
