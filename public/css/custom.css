@@ -110,10 +110,15 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-
+  color: #444444;
+  font: normal 1em/1.4em "Tahoma", arial, sans-serif;
+  padding: 6px 6px 6px 8px;
+  margin: 0 0 4px 0;
+  width: 250px;
+  border-collapse: collapse;
+  border: 1px solid #CDCDCD;
+  vertical-align: baseline;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCCCCC), to(#B3B3B3));
 }
 button {
   overflow: visible;
@@ -176,6 +181,7 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border-color: #808080;
 }
 td,
 th {
@@ -245,6 +251,7 @@ th {
   }
   .table {
     border-collapse: collapse !important;
+    width: 100%;
   }
   .table td,
   .table th {
@@ -2299,6 +2306,7 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
+  cursor: pointer;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -2776,6 +2784,7 @@ fieldset[disabled] .btn {
   opacity: 0.65;
   filter: alpha(opacity=65);
   box-shadow: none;
+  width: auto;
 }
 .btn-default {
   color: #333333;
@@ -3609,6 +3618,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 .nav > li > a {
+  font-size: 14px;
   position: relative;
   display: block;
   padding: 10px 15px;
@@ -3616,7 +3626,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #00b9d7;
+  border-radius: 0px;
+  border-left: 0px;
+  min-width: 12.05em;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -4477,12 +4490,18 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+  margin-top: 0em;
+  float: left;
 }
 a.label:hover,
 a.label:focus {
-  color: #ffffff;
+  color: #FFAA00;
   text-decoration: none;
   cursor: pointer;
+}
+a.label:visited
+{
+    color:#027ABB;
 }
 .label:empty {
   display: none;
@@ -5222,7 +5241,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
-    
+  display: table;    
 }
 .panel-default > .panel-heading {
   color: white;
