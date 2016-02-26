@@ -67,6 +67,10 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#fffff">{{ Auth::user()->name }}</font><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
+								<li><a href="{{ url( '/edit/'.Auth::user()->id ) }}"><font color="black">Edit Your Information</font></a></li>
+								@if(Auth::user()->role == 'admin')
+								<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
+									@endif
 							</ul>
 						</li>
 					@endif
