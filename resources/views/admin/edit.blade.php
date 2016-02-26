@@ -44,7 +44,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         Edit
                                     </button>
+                                    <a class="btn btn-primary" role="button" href="{{url('home')}}">Cancel</a>
                                 </div>
+
                             </div>
                         </form>
                     </div>
