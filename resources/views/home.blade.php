@@ -2,14 +2,15 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="col-md-8 col-md-offset-2">
+<!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
+    <div class="col-md-8 col-md-offset-2" >
         <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
             <h4>Home</h4>
-        </div>
-            <br />
-              <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
-
+            </div>
+            <div class="panel-body">
+              <img src="{{ asset('img/brandmark_main.png') }}">
+              <br />
             <div class="row">
             </div>
             <br />
@@ -29,6 +30,7 @@
             <a class="btn btn-default" href="" role="button">Donate</a>
             </div>
             <br />
+        </div>
         </div>    
     </div>
 </div>

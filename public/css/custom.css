@@ -82,7 +82,7 @@ sub {
 img {
   display: inline-block;
   border: 0;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 }
 svg:not(:root) {
@@ -245,6 +245,7 @@ th {
   }
   .table {
     border-collapse: collapse !important;
+    width: 100%;
   }
   .table td,
   .table th {
@@ -2403,6 +2404,8 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+  text-align: left;
+  
 }
 .radio,
 .checkbox {
@@ -2779,7 +2782,6 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
-  width: 100px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -4998,15 +5000,15 @@ a.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
-}
+ }
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   background-color: #F58E31;
-  h2{
-    color: white;
+  h1,h2,h3,h4,h5,h6{
+    color: #ffffff;
   }
 }
 .panel-heading > .dropdown .dropdown-toggle {
@@ -5221,6 +5223,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default {
   border-color: #dddddd;
+  display: table;
     
 }
 .panel-default > .panel-heading {

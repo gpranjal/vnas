@@ -18,8 +18,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/custom.css"> -->
+    <link rel="stylesheet" href="<?php echo asset('css/custom.css')?>" type="text/css">
     {{-- <link href="{{ elixir('css/custom.css') }}" rel="stylesheet"> --}}
+
+
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -64,6 +67,10 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#fffff">{{ Auth::user()->name }}</font><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
+								<li><a href="{{ url( '/edit/'.Auth::user()->id ) }}"><font color="black">Edit Your Information</font></a></li>
+								@if(Auth::user()->role == 'admin')
+								<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
+									@endif
 							</ul>
 						</li>
 					@endif
