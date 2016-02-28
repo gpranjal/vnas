@@ -1,6 +1,7 @@
 package Tests;
 
 import Framework.BaseTestCase;
+import Repo.HomeScreen;
 import Repo.LoginScreen;
 import org.openqa.selenium.*;
 
@@ -30,6 +31,7 @@ public class LoginTests extends BaseTestCase {
 	    	LoginScreen.getEmailTextbox(driver).sendKeys("automation.user@gmail.com");
 	    	LoginScreen.getPasswordTextbox(driver).sendKeys("automationpassword");
 	    	LoginScreen.getLoginButton(driver).click();
+	    	assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());	    	
     	}
     }
     
@@ -40,7 +42,9 @@ public class LoginTests extends BaseTestCase {
 	    	LoginScreen.getEmailTextbox(driver).sendKeys("incorrect.user@gmail.com");
 	    	LoginScreen.getPasswordTextbox(driver).sendKeys("automationpassword");
 	    	LoginScreen.getLoginButton(driver).click();
-	    	LoginScreen.getLoginErrorMessageLabel(driver).getText();
+	    	String actualText = LoginScreen.getLoginErrorMessageLabel(driver).getText();
+	    	String testText = "Whoops! There were some problems with your input.\n\nThese credentials do not match our records.";
+	    	assertEquals(testText, actualText);		
     	}
     }
     
@@ -51,7 +55,9 @@ public class LoginTests extends BaseTestCase {
 	    	LoginScreen.getEmailTextbox(driver).sendKeys("automation.user@gmail.com");
 	    	LoginScreen.getPasswordTextbox(driver).sendKeys("incorrectpassword");
 	    	LoginScreen.getLoginButton(driver).click();
-	    	//LoginScreen.getLoginErrorMessageLabel(driver)
+	    	String actualText = LoginScreen.getLoginErrorMessageLabel(driver).getText();
+	    	String testText = "Whoops! There were some problems with your input.\n\nThese credentials do not match our records.";
+	    	assertEquals(testText, actualText);	
     	}
     }
     

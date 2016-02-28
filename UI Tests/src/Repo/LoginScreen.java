@@ -4,10 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginScreen {
+public class LoginScreen extends BaseScreen{
 	
 	public static String getURL() {
-		return "http://app-vnasdev.rhcloud.com/auth/login";
+		return BaseScreen.getURL() + getPath();
+	}
+	
+	public static String getPath() {
+		return "/auth/login";
 	}
 	
 	public static WebElement getEmailTextbox(WebDriver driver) {
@@ -23,7 +27,7 @@ public class LoginScreen {
 	}
 	
 	public static WebElement getLoginButton(WebDriver driver) {
-		return driver.findElement(By.name("submit"));
+		return driver.findElement(By.name("loginButton"));
 	}
 	
 	public static WebElement getForgotPasswordLink(WebDriver driver) {
