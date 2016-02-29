@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,19 +24,23 @@ public class BaseTestCase extends TestCase{
 		//Setup the Firefox Web Driver
 		WebDriver firefoxDriver = new FirefoxDriver();
 		drivers.add(firefoxDriver);
-		
-		System.getProperty("user.dir");
+				
 		//Setup the Chrome Web Driver
 		System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver.exe");
 		WebDriver chromeDriver = new ChromeDriver();
 		drivers.add(chromeDriver);
 		
 		//Setup the Internet Explorer Web Driver
-		//WebDriver ieDriver = new InternetExplorerDriver();
-		
+		//System.setProperty("webdriver.ie.driver", "WebDrivers/IEDriverServer.exe");		
+		//DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
+		//caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);		
+		//WebDriver ieDriver = new InternetExplorerDriver(caps);
+		//drivers.add(ieDriver);
 		
 		//Setup the Edge Web Driver
+		//System.setProperty("webdriver.edge.driver", "WebDrivers/MicrosoftWebDriver.exe");
 		//WebDriver edgeDriver = new EdgeDriver();
+		//drivers.add(edgeDriver);
 	}
 	
 	public void tearDown() {
