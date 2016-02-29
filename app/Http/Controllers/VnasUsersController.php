@@ -37,13 +37,13 @@ class VnasUsersController extends Controller {
         }
     }
 
-    public function show($id)
-    {
-        $vnas_user = vnas_user::findOrFail($id);
-
-        return view('vnas_users.show', compact('vnas_user'));
-
-    }
+//    public function show($id)
+//    {
+//        $vnas_user = vnas_user::find($id);
+//
+//        return view('vnas_users.show', compact('vnas_user'));
+//
+//    }
 
     public function create()
     {

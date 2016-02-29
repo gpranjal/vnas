@@ -9,7 +9,7 @@
 				<img src="{{ asset('img/brandmark_main.png') }}">
 					@if (count($errors) > 0)
 
-						<div class="alert alert-danger">
+						<div class="alert alert-danger" name="loginErrorMessage">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
@@ -48,7 +48,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-default">Login</button>
+								<button type="submit" class="btn btn-default" name="loginButton">Login</button>
 
 								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
 							</div>

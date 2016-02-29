@@ -30,7 +30,7 @@ class VnasRecordsController extends Controller {
             //If admin here, go ahead and show the list of patients
 
             //if not show only the currently logged in patient
-            $Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','ap_title','ap_date','ap_time','ap_lov','caregiver_id','caregiver_fname','caregiver_lname'));
+            $Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
 
             return view('Vnas_records.index', compact('Vnas_records'));
         }
@@ -42,12 +42,17 @@ class VnasRecordsController extends Controller {
 
 
     /* You are working here */
-    public function patientsch($patient_id)
+    public function sch($id)
+
     {
+//        $Vnas_record = Vnas_record::findOrFail($id);
+//        return view('Vnas_records.sch', compact('Vnas_records'));
+
+
         //return Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','ap_title','ap_date','ap_time','ap_lov','caregiver_fname'));
-        $patient_records = Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','patient_id','ap_title','ap_date','ap_time','ap_lov','caregiver_id','caregiver_fname','caregiver_lname'));
-        return view('Vnas_records.patientsch', compact('patient_records'));
-       
+        $vnas_records = vnas_record::where( 'id' , '=' , $id )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+        return view('vnas_records.sch', compact('vnas_records'));
+
     }
 
     /*
