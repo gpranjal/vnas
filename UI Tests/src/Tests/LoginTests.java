@@ -17,6 +17,8 @@ import org.openqa.selenium.*;
 
 public class LoginTests extends BaseTestCase {
 	
+	//function name format:
+	//test<action><Expected Result>
     public void testLoginScreenTitleShouldBeCorrect() throws Exception {    	
     	for (WebDriver driver : super.getDrivers()) {    	
 	    	driver.get(LoginScreen.getURL());
@@ -60,6 +62,4 @@ public class LoginTests extends BaseTestCase {
 	    	assertEquals(testText, actualText);	
     	}
     }
-    
-
 }

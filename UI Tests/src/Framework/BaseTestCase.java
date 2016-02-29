@@ -24,9 +24,11 @@ public class BaseTestCase extends TestCase{
 		WebDriver firefoxDriver = new FirefoxDriver();
 		drivers.add(firefoxDriver);
 		
+		System.getProperty("user.dir");
 		//Setup the Chrome Web Driver
-		//WebDriver chromeDriver = new ChromeDriver();
-		//System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver.exe");
+		WebDriver chromeDriver = new ChromeDriver();
+		drivers.add(chromeDriver);
 		
 		//Setup the Internet Explorer Web Driver
 		//WebDriver ieDriver = new InternetExplorerDriver();
