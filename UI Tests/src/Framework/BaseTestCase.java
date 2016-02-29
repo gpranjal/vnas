@@ -30,6 +30,7 @@ public class BaseTestCase extends TestCase{
 		WebDriver chromeDriver = new ChromeDriver();
 		drivers.add(chromeDriver);
 		
+		//Notes: https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration
 		//Setup the Internet Explorer Web Driver
 		//System.setProperty("webdriver.ie.driver", "WebDrivers/IEDriverServer.exe");		
 		//DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
