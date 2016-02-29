@@ -37,4 +37,40 @@ public class LoginScreen extends BaseScreen{
 	public static WebElement getLoginErrorMessageLabel(WebDriver driver) {
 		return driver.findElement(By.name("loginErrorMessage"));
 	}
+	
+	public static void loginAsAutomationUser(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("automation.user@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("automationpassword");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
+	
+	public static void loginAsPatientUser(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("patient.user@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("patientpassword");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
+	
+	public static void loginAsCaregiverUser(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("caregiver.user@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("caregiverpassword");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
 }
