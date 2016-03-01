@@ -198,10 +198,13 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
+		'FORM'		=> 'Illuminate\Html\FormFacade',
+  	    'HTML' 		=> 'Illuminate\Html\HtmlFacade',
   	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
     	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen',
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven',
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter',
+
 
 
 	],

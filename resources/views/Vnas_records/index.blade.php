@@ -52,7 +52,7 @@
 
                <br />
                <div class="row">
-                   <a class="btn btn-default" role="button" href=" {{ ::mailto('gpranjal@gmail.com') }}">Email US</a>
+                   <a class="btn btn-default" role="button" href="{{ HTML::mailto('gpranjal@gmail.com') }}">Email US</a>
                </div>
                <br />
                <div class="row">
