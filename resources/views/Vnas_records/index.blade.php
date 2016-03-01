@@ -24,8 +24,7 @@
                         <thead>
                             <tr>
                                 <th>Schedule ID</th>
-                                <th>Patient ID</th>
-                                <th>Appointment Title</th>
+                                <th>Schedule Title</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Caregiver</th>
@@ -37,7 +36,6 @@
                             @foreach ($Vnas_records as $Vnas_record)
                                 <tr>
                                     <td><a href="{{ action('VnasRecordsController@sch', [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
-                                    <td>{{ $Vnas_record->patient_id }}</td>
                                     <td>{{ $Vnas_record->ap_title }}</td>
                                     {{--<td><a href="{{ url('/Vnas_records', $Vnas_record->id) }}">{{ $Vnas_record->ap_title  }}</a></td>--}}
                                     <td>{{ $Vnas_record->ap_date }}</td>
@@ -49,16 +47,6 @@
                         </tbody>
                     </table>
                 @endif
-
-               <br />
-               <div class="row">
-                   <a class="btn btn-default" role="button" href=" {{ ::mailto('gpranjal@gmail.com') }}">Email US</a>
-               </div>
-               <br />
-               <div class="row">
-                   <a class="btn btn-default" href="" role="button">Contact US</a>
-               </div>
-               <br />
             </div>
         </div>
     </div>
