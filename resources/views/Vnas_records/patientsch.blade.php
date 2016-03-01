@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
-    
-     @foreach ($patient_records as $Vnas_record)
+
+     @foreach ($Vnas_records as $Vnas_record)
 
             <Vnas_record>
 
@@ -18,11 +18,11 @@
 
                     <b>LOV:</b> {{ $Vnas_record->ap_lov }} </br>
 
-                    <b>Patient ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->patient_id }}</a> </br>
+                    <b>Patient ID:</b> {{ $Vnas_record->patient_id }} </br>
 
                     <b>Patient Name:</b> {{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname  }} </br>
 
-                    <b>Caregiver ID:</b><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->caregiver_id]) }}">{{ $Vnas_record->caregiver_id }}</a></br>
+                    <b>Caregiver ID:</b>{{ $Vnas_record->caregiver_id }}</br>
 
                     <b>Caregiver Name:</b> {{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }} </br>
 
