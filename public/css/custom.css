@@ -6,6 +6,8 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 article,
 aside,
@@ -43,7 +45,6 @@ a {
 a:active,
 a:hover {
   outline: 0;
-  color: #ff6600;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -110,15 +111,9 @@ input,
 optgroup,
 select,
 textarea {
-  color: #444444;
-  font: normal 1em/1.4em "Tahoma", arial, sans-serif;
-  padding: 6px 6px 6px 8px;
-  margin: 0 0 4px 0;
-  width: 250px;
-  border-collapse: collapse;
-  border: 1px solid #CDCDCD;
-  vertical-align: baseline;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCCCCC), to(#B3B3B3));
+  color: inherit;
+  font: inherit;	
+  margin: 0;
 }
 button {
   overflow: visible;
@@ -218,6 +213,7 @@ th {
   }
   thead {
     display: table-header-group;
+
   }
   tr,
   img {
@@ -911,7 +907,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #ff6600;
   text-decoration: underline;
 }
 a:focus {
@@ -2126,7 +2122,7 @@ table col[class*="col-"] {
 }
 table td[class*="col-"],
 table th[class*="col-"] {
-  position: relative;
+  position: static;
   float: none;
   display: table-cell;
 }
@@ -2790,6 +2786,7 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
+  width: auto;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3077,7 +3074,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #ff6600;;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3618,7 +3615,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 .nav > li > a {
-  font-size: 14px;
   position: relative;
   display: block;
   padding: 10px 15px;
@@ -3627,9 +3623,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #00b9d7;
-  border-radius: 0px;
-  border-left: 0px;
-  min-width: 12.05em;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3819,7 +3812,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-header {
-    background-image: url("../img/wingbg.jpg");
     float: left;
   }
 }
@@ -4490,8 +4482,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-  margin-top: 0em;
-  float: left;
 }
 a.label:hover,
 a.label:focus {
@@ -5240,13 +5230,11 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #dddddd;
-<<<<<<< HEAD
-  display: table;    
-=======
+  border-color: #dddddd; 
   display: table;
-    
->>>>>>> 4b62eca5f69057dfc68521f2b18d966387bebc13
+  width: 90%;
+  height: auto;
+  background-image: url("../img/bodybg.jpg");  
 }
 .panel-default > .panel-heading {
   color: white;
