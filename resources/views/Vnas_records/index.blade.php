@@ -49,23 +49,15 @@
                         </tbody>
                     </table>
                 @endif
-
-               <br />
-               <div class="row">
-                   <a class="btn btn-default" role="button" href=" {{ ::mailto('gpranjal@gmail.com') }}">Email US</a>
-               </div>
-               <br />
-               <div class="row">
-                   <a class="btn btn-default" href="" role="button">Contact US</a>
-               </div>
-               <br />
             </div>
         </div>
     </div>
 
 </Vnas_record>
-             
 
-        
+
+
+
+
 
 @stop
