@@ -9,7 +9,7 @@
             <h4>Home</h4>
             </div>
             <div class="panel-body">
-              <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}">
               <br />
             <div class="row">
             </div>

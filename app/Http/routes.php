@@ -46,7 +46,7 @@ Route::get('vnas_records', 'VnasRecordsController@index');
 Route::get('vnas_records/create', 'VnasRecordsController@create');
 Route::post('vnas_records', 'VnasRecordsController@store');
 Route::get('vnas_records/{id}', 'VnasRecordsController@sch');
-//Route::get('vnas_records/{id}', 'VnasRecordsController@patientsch');
+Route::get('vnas_records/{patient_id}', 'VnasRecordsController@patientsch');
 
 
 

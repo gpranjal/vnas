@@ -66,6 +66,20 @@ class VnasRecordsController extends Controller {
     */
 
 
+    public function patientsch($patient_id)
+
+    {
+//        $Vnas_record = Vnas_record::findOrFail($id);
+//        return view('Vnas_records.sch', compact('Vnas_records'));
+
+
+        //return Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','ap_title','ap_date','ap_time','ap_lov','caregiver_fname'));
+        $Vnas_records = vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+        return view('vnas_records.patientsch', compact('Vnas_records'));
+
+    }
+
+
     public function create()
     {
         return view('Vnas_records.create');
