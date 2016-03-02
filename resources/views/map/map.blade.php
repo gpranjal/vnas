@@ -136,9 +136,9 @@
       control.style.display = 'block';
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
-      calculateAndDisplayRoute(directionsService, directionsDisplay);
+      //calculateAndDisplayRoute(directionsService, directionsDisplay);
       
-      /*
+      
       var onChangeHandler = function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
       };
@@ -147,7 +147,7 @@
       document.getElementById('mode').addEventListener('change', function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
       });
-    */
+    
     }
 
 
