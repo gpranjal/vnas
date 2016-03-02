@@ -1,9 +1,20 @@
 @extends('app')
-
 @section('content')
 
-<div class="container">
-    <div class="col-md-8 col-md-offset-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#q1").click(function(){
+        $("#a1").fadeIn("slow");
+    });
+    $("#a1").click(function(){
+        $("#a1").fadeOut("slow");
+    });
+});
+</script>
+
+<div class="container col-md-12">
+    <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
                 <h4>FAQ</h4>
@@ -12,40 +23,30 @@
             <div class="row">
               <img src="{{ asset('img/brandmark_main.png') }}">
             </div>
-            <br />
+
+           <div class="panel panel-body">
             <div id="FAQ">
-                <!-- HTML for SEARCH BAR -->
-    <div id="tfheader">
-        <form id="tfnewsearch" method="get" action="">
-                <input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search FAQ"><input type="submit" value=">" class="tfbutton2">
-        </form>
-        <div class="tfclear"></div>
-    </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                    <th>Order</th>
-                     <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($faqs as $index => $faq)
+                <table class="table table-hover table-responsive" style="cursor: default;">
+                    <thead>
+                        <tr>
+                        <th>Order</th>
+                         <th><nobr>{{ trans('Questions') }}</nobr></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($faqs as $index => $faq)
                         <tr>
                             <td>{!! $faq->sort_number !!}</td>
-                            <td>
-                                <div class="text-bold">{!! $faq->question !!}</div>
-                                <br>
-                                {!! $faq->answer !!}
+                            <td><div id="q1" class="text-bold" style="cursor: pointer; display: block;">{!! $faq->question !!}</div>
+                            
+                            <div id="a1" class="text-bold" style="cursor: pointer; display: none;">
+                            {!! $faq->answer !!}</div>
                             </td>
-                            <td class="text-center">{!! $faq->draft_flag_icon !!}</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            </div>
-            
-            <div class="text-center">
-                {!! $faqs->render() !!}
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
             </div>
         </div>
     </div>
