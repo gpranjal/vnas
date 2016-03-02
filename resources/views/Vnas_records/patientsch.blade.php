@@ -2,33 +2,65 @@
 
 @section('content')
 
-     @foreach ($Vnas_records as $Vnas_record)
 
-            <Vnas_record>
 
-                <h2>
-                    {{ $Vnas_record->ap_title }}
-                </h2>
+    <div class="container-fluid">
+        <div class="col-md-8 col-md-offset-2">
 
-                <div class="body">
-
-                    <b>Date:</b> {{ $Vnas_record->ap_date  }} </br>
-
-                    <b>Time:</b> {{ $Vnas_record->ap_time  }} </br>
-
-                    <b>LOV:</b> {{ $Vnas_record->ap_lov }} </br>
-
-                    <b>Patient ID:</b> {{ $Vnas_record->patient_id }} </br>
-
-                    <b>Patient Name:</b> {{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname  }} </br>
-
-                    <b>Caregiver ID:</b>{{ $Vnas_record->caregiver_id }}</br>
-
-                    <b>Caregiver Name:</b> {{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }} </br>
-
+            <div class="panel panel-default">
+                <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
+                    <h4>Patient Calendar Details</h4>
                 </div>
+                <br />
 
-             </Vnas_record>
+                <img src="{{ asset('img/brandmark_main.png') }}">
+                <br />
 
-        @endforeach
+                <table class="table table-hover">
+                    @foreach ($Vnas_records as $Vnas_record)
+
+                        <tr>
+                            <td align="right"><strong>Schedule Title</strong></td>
+                            <td align="left">&nbsp;&nbsp;{{ $Vnas_record->ap_title }}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="right"><strong>Caregiver ID:</strong></td>
+                            <td align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_id  }}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="right"><strong>Caregiver Name:</strong></td>
+                            <td align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="right"><strong>Caregiver Phone:</strong></td>
+                            <td align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_phone  }}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="right"><strong>Caregiver Mobile:</strong></td>
+                            <td align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_mob  }}</td>
+                        </tr>
+
+                    @endforeach
+
+                </table>
+
+                <br />
+                <div class="row">
+                    <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
+                </div>
+                <br />
+                <div class="row">
+                    <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+
+
 @stop

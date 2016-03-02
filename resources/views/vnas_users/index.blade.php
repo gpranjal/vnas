@@ -49,6 +49,15 @@
 		        	</table>
 		        @endif
 
+			   <br />
+			   <div class="row">
+				   <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
+			   </div>
+			   <br />
+			   <div class="row">
+				   <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
+			   </div>
+			   <br />
 
 	        </div>
 	    </div>
