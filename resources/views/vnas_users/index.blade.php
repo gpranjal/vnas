@@ -2,8 +2,8 @@
 
 @section('content')
 
-	<div class="container-fluid">
-	    <div class="col-md-8 col-md-offset-1">
+	<div class="container">
+	    <div class="col-md-8 col-md-offset-2">
 
 	       <div class="panel panel-default">
 
@@ -11,7 +11,7 @@
 	            <h4>My Account</h4>
 	            </div>
 	            <br />
-	             <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+	             <img src="{{ asset('img/brandmark_main.png') }}">
 	             <br />
 	             <br />
 	            

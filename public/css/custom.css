@@ -6,6 +6,8 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 article,
 aside,
@@ -43,7 +45,6 @@ a {
 a:active,
 a:hover {
   outline: 0;
-  color: #ff6600;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -111,9 +112,8 @@ optgroup,
 select,
 textarea {
   color: inherit;
-  font: inherit;
+  font: inherit;	
   margin: 0;
-
 }
 button {
   overflow: visible;
@@ -176,6 +176,7 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border-color: #808080;
 }
 td,
 th {
@@ -212,6 +213,7 @@ th {
   }
   thead {
     display: table-header-group;
+
   }
   tr,
   img {
@@ -905,7 +907,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #ff6600;
   text-decoration: underline;
 }
 a:focus {
@@ -2120,7 +2122,7 @@ table col[class*="col-"] {
 }
 table td[class*="col-"],
 table th[class*="col-"] {
-  position: relative;
+  position: static;
   float: none;
   display: table-cell;
 }
@@ -2300,6 +2302,7 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
+  cursor: pointer;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -2777,11 +2780,13 @@ fieldset[disabled] .btn {
   opacity: 0.65;
   filter: alpha(opacity=65);
   box-shadow: none;
+  width: auto;
 }
 .btn-default {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
+  width: auto;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3069,7 +3074,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #ff6600;;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3617,7 +3622,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #00b9d7;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3807,7 +3812,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-header {
-    background-image: url("../img/wingbg.jpg");
     float: left;
   }
 }
@@ -4481,9 +4485,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 a.label:hover,
 a.label:focus {
-  color: #ffffff;
+  color: #FFAA00;
   text-decoration: none;
   cursor: pointer;
+}
+a.label:visited
+{
+    color:#027ABB;
 }
 .label:empty {
   display: none;
@@ -5222,9 +5230,11 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #dddddd;
+  border-color: #dddddd; 
   display: table;
-    
+  width: 90%;
+  height: auto;
+  background-image: url("../img/bodybg.jpg");  
 }
 .panel-default > .panel-heading {
   color: white;
