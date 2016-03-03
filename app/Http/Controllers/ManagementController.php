@@ -20,11 +20,7 @@ class ManagementController extends Controller {
 		return view('admin.management' , compact('users'));
 	}
 
-	public function index_test()
-	{
-//		$users = User::all();
-		return "hello";
-	}
+	
 
 	/**
 	 * Show the form for creating a new resource.
@@ -39,7 +35,7 @@ class ManagementController extends Controller {
 
 
 		$edit = User::find($id);
-		return view('admin\edit',compact('edit'));
+		return view('admin.edit',compact('edit'));
 	}
 
 	public function post_edit_user($id)
