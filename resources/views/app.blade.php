@@ -52,7 +52,21 @@
 	<![endif]-->
 	 <!-- Define a few view dependent global scope variables here -->
 	 <?php
+	 	use Jenssegers\Agent\Agent;
 		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current view
+
+		/* Agent can be used to tell you anything you need to know about the current browser.
+		*	$agent->is('Windows');
+		*	$agent->is('Firefox');
+		*	$agent->is('iPhone');
+		*	$agent->is('OS X');
+		*	$agent->isAndroidOS();
+		*	$agent->isNexus();
+		*	$agent->isSafari();
+		*	$agent->isMobile();
+		*	$agent->isTablet();
+		*/
+		$agent = new Agent(); 
 	?>
 
 </head>

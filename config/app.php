@@ -146,9 +146,10 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
-    	'Sukohi\Cahen\CahenServiceProvider',
-    	'Sukohi\Maven\MavenServiceProvider',
-    	'Todstoychev\TableSorter\ServiceProvider'
+    	'Sukohi\Cahen\CahenServiceProvider', // FAQ
+    	'Sukohi\Maven\MavenServiceProvider', // FAQ
+    	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
+    	'Jenssegers\Agent\AgentServiceProvider' // Browser Detection
 
 	],
 
@@ -201,9 +202,10 @@ return [
 		'FORM'		=> 'Illuminate\Html\FormFacade',
   	    'HTML' 		=> 'Illuminate\Html\HtmlFacade',
   	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
-    	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen',
-    	'Maven'   	=> 'Sukohi\Maven\Facades\Maven',
-    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter',
+    	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen', //FAQ
+    	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
+    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
+    	'Agent' => 'Jenssegers\Agent\Facades\Agent' // Browser Detection
 
 
 
