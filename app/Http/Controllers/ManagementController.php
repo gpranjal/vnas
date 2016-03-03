@@ -17,7 +17,7 @@ class ManagementController extends Controller {
 	public function index()
 	{
 		$users = User::all();
-		return view('admin\management' , compact('users'));
+		return view('admin.management' , compact('users'));
 	}
 
 	public function index_test()
