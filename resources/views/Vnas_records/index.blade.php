@@ -9,7 +9,7 @@
 
            <div class="panel panel-default">
                 <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
-                    <h4>My Schedule</h4>
+                    <a href="{{ url('home') }}"><img src="{{ asset('img/home.png') }}" align="left"></a><h4>My Schedule</h4>
                 </div>
                 <br />
 
@@ -47,7 +47,15 @@
                         </tbody>
                     </table>
                 @endif
+
+               <br />
+
+               <div align="left">
+                   <a class="btn btn-default" role="button" href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}"></a>
+               </div>
+
             </div>
+
         </div>
     </div>
 
