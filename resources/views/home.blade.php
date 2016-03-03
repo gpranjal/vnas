@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
 <!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
     <div class="col-md-8 col-md-offset-2" >
         <div class="panel panel-default">
@@ -9,7 +9,7 @@
             <h4>Home</h4>
             </div>
             <div class="panel-body">
-              <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}">
               <br />
             <div class="row">
             </div>

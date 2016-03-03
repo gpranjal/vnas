@@ -2,8 +2,8 @@
 
 @section('content')
 
-	<div class="container-fluid">
-	    <div class="col-md-8 col-md-offset-1">
+	<div class="container">
+	    <div class="col-md-8 col-md-offset-2">
 
 	       <div class="panel panel-default">
 
@@ -11,7 +11,7 @@
 	            <h4>My Account</h4>
 	            </div>
 	            <br />
-	             <img src="{{ asset('img/brandmark_main.png') }}" height="1000" width="400">
+	             <img src="{{ asset('img/brandmark_main.png') }}">
 	             <br />
 	             <br />
 	            
@@ -49,6 +49,15 @@
 		        	</table>
 		        @endif
 
+			   <br />
+			   <div class="row">
+				   <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
+			   </div>
+			   <br />
+			   <div class="row">
+				   <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
+			   </div>
+			   <br />
 
 	        </div>
 	    </div>

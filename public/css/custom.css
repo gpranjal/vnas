@@ -6,6 +6,8 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 article,
 aside,
@@ -43,7 +45,6 @@ a {
 a:active,
 a:hover {
   outline: 0;
-  color: #ff6600;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -111,9 +112,8 @@ optgroup,
 select,
 textarea {
   color: inherit;
-  font: inherit;
+  font: inherit;	
   margin: 0;
-
 }
 button {
   overflow: visible;
@@ -176,6 +176,7 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border-color: #808080;
 }
 td,
 th {
@@ -212,6 +213,7 @@ th {
   }
   thead {
     display: table-header-group;
+
   }
   tr,
   img {
@@ -905,7 +907,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #ff6600;
   text-decoration: underline;
 }
 a:focus {
@@ -1370,10 +1372,13 @@ pre code {
   overflow-y: scroll;
 }
 .container {
+  align-content: center;
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  width: 95%;
+  height: auto;
 }
 @media (min-width: 768px) {
   .container {
@@ -2120,7 +2125,7 @@ table col[class*="col-"] {
 }
 table td[class*="col-"],
 table th[class*="col-"] {
-  position: relative;
+  position: static;
   float: none;
   display: table-cell;
 }
@@ -2300,6 +2305,7 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
+  cursor: pointer;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -2777,11 +2783,13 @@ fieldset[disabled] .btn {
   opacity: 0.65;
   filter: alpha(opacity=65);
   box-shadow: none;
+  width: auto;
 }
 .btn-default {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
+  width: auto;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3069,7 +3077,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #ff6600;;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3617,7 +3625,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #00b9d7;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3807,7 +3815,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-header {
-    background-image: url("../img/wingbg.jpg");
     float: left;
   }
 }
@@ -4481,9 +4488,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 a.label:hover,
 a.label:focus {
-  color: #ffffff;
+  color: #FFAA00;
   text-decoration: none;
   cursor: pointer;
+}
+a.label:visited
+{
+    color:#027ABB;
 }
 .label:empty {
   display: none;
@@ -5222,8 +5233,10 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #dddddd;
+  border-color: #dddddd; 
   display: table;
+  width: 100%;
+  height: auto;
     
 }
 .panel-default > .panel-heading {
@@ -6254,3 +6267,55 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.fa-btn {
+         margin-right: 10px;
+       }
+  #tfheader{
+        background-color: #d3d3d3;
+  }
+  #tfnewsearch{
+    float:right;
+    padding:20px;
+  }
+  .tftextinput2{
+    margin: 0;
+    padding: 5px 15px;
+    font-family: normal 1em/1.4em "Tahoma", arial, sans-serif;
+    font-size:14px;
+    
+    border:1px solid #0076a3; border-right:0px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    
+  }
+  .tfbutton2 {
+    margin: 0;
+    padding: 5px 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight:bold;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px #0076a3; border-right:0px;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+  }
+  .tfbutton2:hover {
+    text-decoration: none;
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+  }
+  /* Fixes submit button height problem in Firefox */
+  .tfbutton2::-moz-focus-inner {
+    border: 0;
+  }
+  .tfclear{
+    clear:both;
+  }

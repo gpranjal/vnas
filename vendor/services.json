@@ -31,7 +31,8 @@
         "Collective\\Html\\HtmlServiceProvider",
         "Sukohi\\Cahen\\CahenServiceProvider",
         "Sukohi\\Maven\\MavenServiceProvider",
-        "Todstoychev\\TableSorter\\ServiceProvider"
+        "Todstoychev\\TableSorter\\ServiceProvider",
+        "Jenssegers\\Agent\\AgentServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -50,7 +51,8 @@
         "App\\Providers\\ConfigServiceProvider",
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
-        "Todstoychev\\TableSorter\\ServiceProvider"
+        "Todstoychev\\TableSorter\\ServiceProvider",
+        "Jenssegers\\Agent\\AgentServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
