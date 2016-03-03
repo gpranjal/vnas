@@ -65,6 +65,7 @@ Route::get('appointments/{id}', 'AppointmentsController@show');
 
 
 Route::get('/manage' , 'ManagementController@index');
+Route::get('/manage_test' , 'ManagementController@index_test');
 Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
 Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');

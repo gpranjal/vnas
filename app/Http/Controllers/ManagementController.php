@@ -20,6 +20,12 @@ class ManagementController extends Controller {
 		return view('admin\management' , compact('users'));
 	}
 
+	public function index_test()
+	{
+		$users = User::all();
+		return "hello" . $users;
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
