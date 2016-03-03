@@ -102,8 +102,13 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	 <!-- Define a few view dependent global scope variables here -->
+	 <?php
+		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current view
+	?>
+
 </head>
-<body>
+<body onload='@if( $view_name == "map" )initialize();@endif'>
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<div class="container-fluid">
 			 <div class="navbar-header">
@@ -132,8 +137,8 @@
 								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
 								<li><a href="{{ url( '/edit/'.Auth::user()->id ) }}"><font color="black">Edit Your Information</font></a></li>
 								@if(Auth::user()->role == 'admin')
-								<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
-									@endif
+									<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
+								@endif
 							</ul>
 						</li>
 					@endif
