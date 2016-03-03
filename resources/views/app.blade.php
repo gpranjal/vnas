@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>VNA-Visiting Nurse Association</title>
+	<title>VNA-Visting Nurse Association</title>
 
 	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -24,7 +24,7 @@
 
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
 
     	window.onload = function(){ 
 						//Get submit button
@@ -42,58 +42,6 @@
     </script>
 
     <style>
-        .fa-btn {
-            margin-right: 10px;
-        }
-        	#tfheader{
-		background-color:#c3dfef;
-	}
-	#tfnewsearch{
-		float:right;
-		padding:20px;
-	}
-	.tftextinput2{
-		margin: 0;
-		padding: 5px 15px;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size:14px;
-		color:#666;
-		border:1px solid #0076a3; border-right:0px;
-		border-top-left-radius: 5px 5px;
-		border-bottom-left-radius: 5px 5px;
-	}
-	.tfbutton2 {
-		margin: 0;
-		padding: 5px 7px;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size:14px;
-		font-weight:bold;
-		outline: none;
-		cursor: pointer;
-		text-align: center;
-		text-decoration: none;
-		color: #ffffff;
-		border: solid 1px #0076a3; border-right:0px;
-		background: #0095cd;
-		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
-		border-top-right-radius: 5px 5px;
-		border-bottom-right-radius: 5px 5px;
-	}
-	.tfbutton2:hover {
-		text-decoration: none;
-		background: #007ead;
-		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
-	}
-	/* Fixes submit button height problem in Firefox */
-	.tfbutton2::-moz-focus-inner {
-	  border: 0;
-	}
-	.tfclear{
-		clear:both;
-	}
-
     </style>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -102,8 +50,27 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	 <!-- Define a few view dependent global scope variables here -->
+	 <?php
+	 	use Jenssegers\Agent\Agent;
+		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current view
+
+		/* Agent can be used to tell you anything you need to know about the current browser.
+		*	$agent->is('Windows');
+		*	$agent->is('Firefox');
+		*	$agent->is('iPhone');
+		*	$agent->is('OS X');
+		*	$agent->isAndroidOS();
+		*	$agent->isNexus();
+		*	$agent->isSafari();
+		*	$agent->isMobile();
+		*	$agent->isTablet();
+		*/
+		$agent = new Agent(); 
+	?>
+
 </head>
-<body>
+<body onload='@if( $view_name == "map" )initialize();@endif'>
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<div class="container-fluid">
 			 <div class="navbar-header">
@@ -132,8 +99,8 @@
 								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
 								<li><a href="{{ url( '/edit/'.Auth::user()->id ) }}"><font color="black">Edit Your Information</font></a></li>
 								@if(Auth::user()->role == 'admin')
-								<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
-									@endif
+									<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
+								@endif
 							</ul>
 						</li>
 					@endif

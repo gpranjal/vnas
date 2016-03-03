@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c8a6d0f423d08d46ff2ba80384e37b8",
-    "content-hash": "de7b8a86f4845a22b4822cc051688384",
+    "hash": "d798adcd87be6f584342fd5e19c92ef1",
+    "content-hash": "22a56fcfdd0dcc38ab642b2569f79548",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -558,6 +558,63 @@
             "time": "2015-04-20 18:58:01"
         },
         {
+            "name": "jenssegers/agent",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jenssegers/agent.git",
+                "reference": "5713303d76c4707333ace41bb343261693de1cb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jenssegers/agent/zipball/5713303d76c4707333ace41bb343261693de1cb9",
+                "reference": "5713303d76c4707333ace41bb343261693de1cb9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^4.0|^5.0",
+                "mobiledetect/mobiledetectlib": "^2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0",
+                "satooshi/php-coveralls": "^0.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jenssegers\\Agent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "https://jenssegers.com"
+                }
+            ],
+            "description": "A PHP desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
+            "homepage": "https://github.com/jenssegers/agent",
+            "keywords": [
+                "Agent",
+                "browser",
+                "laravel",
+                "mobile",
+                "platform",
+                "user agent",
+                "useragent"
+            ],
+            "time": "2016-03-02 14:40:19"
+        },
+        {
             "name": "jeremeamia/SuperClosure",
             "version": "2.2.0",
             "source": {
@@ -875,17 +932,71 @@
             "time": "2016-02-19 15:35:38"
         },
         {
-            "name": "monolog/monolog",
-            "version": "1.17.2",
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "2.8.19",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24"
+                "url": "https://github.com/serbanghita/Mobile-Detect.git",
+                "reference": "99e1c21c32104af2d035ff5d2fd8aff8cb29e27c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
-                "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/99e1c21c32104af2d035ff5d2fd8aff8cb29e27c",
+                "reference": "99e1c21c32104af2d035ff5d2fd8aff8cb29e27c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "johnkary/phpunit-speedtrap": "~1.0@dev",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Mobile_Detect.php"
+                ],
+                "psr-0": {
+                    "Detection": "namespaced/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Serban Ghita",
+                    "email": "serbanghita@gmail.com",
+                    "homepage": "http://mobiledetect.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+            "homepage": "https://github.com/serbanghita/Mobile-Detect",
+            "keywords": [
+                "detect mobile devices",
+                "mobile",
+                "mobile detect",
+                "mobile detector",
+                "php mobile detect"
+            ],
+            "time": "2015-12-24 16:37:50"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
+                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
                 "shasum": ""
             },
             "require": {
@@ -914,6 +1025,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "raven/raven": "Allow sending log messages to a Sentry server",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
@@ -923,7 +1035,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -949,7 +1061,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2015-10-14 12:51:02"
+            "time": "2016-03-01 18:00:40"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -2286,6 +2398,53 @@
             "time": "2015-07-01 10:03:42"
         },
         {
+            "name": "symfony/yaml",
+            "version": "v2.4.10",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "297fd84aa9377e54268e9ff74cb81377350e230f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/297fd84aa9377e54268e9ff74cb81377350e230f",
+                "reference": "297fd84aa9377e54268e9ff74cb81377350e230f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-09-22 08:51:05"
+        },
+        {
             "name": "todstoychev/table-sorter",
             "version": "v0.1.0",
             "source": {
@@ -3391,55 +3550,6 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2015-06-21 13:59:46"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-02-23 15:16:06"
         }
     ],
     "aliases": [],
