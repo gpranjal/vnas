@@ -22,8 +22,8 @@ class ManagementController extends Controller {
 
 	public function index_test()
 	{
-		$users = User::all();
-		return "hello" . $users;
+//		$users = User::all();
+		return "hello";
 	}
 
 	/**
