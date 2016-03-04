@@ -53,8 +53,7 @@
 	 <!-- Define a few view dependent global scope variables here -->
 	 <?php
 	 	
-		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current view
-		var_dump($view_name);
+		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current views
 	?>
 
 </head>
