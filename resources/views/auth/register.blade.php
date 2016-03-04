@@ -41,7 +41,7 @@
 							<label class="col-md-4 control-label">Role</label>
 							<div class="col-md-6">
 								<select name="role" class="form-control" value="{{old('role')}}">
-									<option value="admin">Admin</option>
+									{{--<option value="admin">Admin</option>--}}
 									<option value="regular">Regular</option>
 								</select>
 							</div>
