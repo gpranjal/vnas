@@ -145,7 +145,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'Collective\Html\HtmlServiceProvider',
+		'Collective\Html\HtmlServiceProvider', // LaravelCollective
     	'Sukohi\Cahen\CahenServiceProvider', // FAQ
     	'Sukohi\Maven\MavenServiceProvider', // FAQ
     	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
@@ -200,10 +200,12 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
   	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
+  	    'Form' 		=> 'Collective\Html\FormFacade', // LarvelCollective
+        'Html' 		=> 'Collective\Html\HtmlFacade', // LarvelCollective
     	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen', //FAQ
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
-    	'Agent' => 'Jenssegers\Agent\Facades\Agent' // Browser Detection
+    	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent' // Browser Detection
 
 
 
