@@ -17,5 +17,5 @@ class BaseScreen {
 			//NOTE: Never put a trailing / on this URL.
 			return "https://app-vnasdev.rhcloud.com";
 		}
-	}	
+	}
 }

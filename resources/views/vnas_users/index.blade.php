@@ -22,27 +22,27 @@
 		            @foreach ($vnas_users as $vnas_user)
 		            	<tr>
 		            		<td align="right"><strong>My ID:</strong></td>
-		            		<td align="left">&nbsp;&nbsp;{{ $vnas_user->patient_id  }}</td>
+		            		<td align="left" name="id">&nbsp;&nbsp;{{ $vnas_user->patient_id  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Name:</strong></td>
-		            		<td align="left">&nbsp;&nbsp;{{ $vnas_user->patient_fname  }} {{ $vnas_user->patient_lname  }}</td>
+		            		<td align="left" name="name">&nbsp;&nbsp;{{ $vnas_user->patient_fname  }} {{ $vnas_user->patient_lname  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Address:</strong></td>
-		            		<td align="left">&nbsp;&nbsp;{{ $vnas_user->patient_address  }}</td>
+		            		<td align="left" name="address">&nbsp;&nbsp;{{ $vnas_user->patient_address  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Phone:</strong></td>
-		            		<td align="left">&nbsp;&nbsp;{{ $vnas_user->patient_phone  }}</td>
+		            		<td align="left" name="phone">&nbsp;&nbsp;{{ $vnas_user->patient_phone  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Email:</strong></td>
-		            		<td align="left">&nbsp;&nbsp;{{ $vnas_user->patient_email  }}</td>
+		            		<td align="left" name="email">&nbsp;&nbsp;{{ $vnas_user->patient_email  }}</td>
 		            	</td>
 
 		        	@endforeach
@@ -51,8 +51,8 @@
 
 			   <br />
 			   <div class="row">
-				   <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
-				   <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
+				   <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com" name="mailtoButton"><img src="{{ asset('img/mail.png') }}"></a>
+				   <a class="btn btn-default" href="tel:917-435-3648" role="button" name="phoneButton"><img src="{{ asset('img/call.png') }}"></a>
 			   </div>
 			   <br />
 
