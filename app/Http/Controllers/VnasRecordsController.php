@@ -18,6 +18,8 @@ class VnasRecordsController extends Controller {
     public function __construct()
     {
         $this->vnas_records = Vnas_record::all();
+        $this->middleware('auth');
+        View::composer('*', 'App\Composers\HomeComposer');
     }
 
     public function index()

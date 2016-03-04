@@ -18,7 +18,7 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
-                <a href="{{ url('home') }}"><img src="{{ asset('img/home.png') }}" align="left"></a><h4>FAQ</h4>
+                <h4>FAQ</h4>
             </div>
             <br />
             <div class="row">
@@ -54,9 +54,6 @@
                 </table>
                 </div>
             </div>
-            <div align="left">
-                    <a class="btn btn-default" role="button" href="{{ URL::previous() }}"><img src="{{asset('img/back.png') }}"></a>
-                </div>
         </div>
     </div>
 </div>

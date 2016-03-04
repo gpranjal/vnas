@@ -1,16 +1,16 @@
 @extends('app')
 
 @section('content')
-
+	
 	<div class="container">
 	    <div class="col-md-8 col-md-offset-2">
-
 	       <div class="panel panel-default">
-
-	            <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
-					<a href="{{ url('home') }}"><img src="{{ asset('img/home.png') }}" align="left"></a><h4>My Account</h4>
-	            </div>
-	            <br />
+				
+                    <div class="panel-heading"> 
+                       <h4>My Schedule</h4>
+                    </div>
+                    <br />
+               
 	             <img src="{{ asset('img/brandmark_main.png') }}">
 	             <br />
 	             <br />
@@ -55,10 +55,6 @@
 				   <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
 			   </div>
 			   <br />
-
-			   <div align="left">
-				   <a class="btn btn-default" role="button" href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}"></a>
-			   </div>
 
 		   </div>
 	    </div>
