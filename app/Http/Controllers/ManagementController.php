@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ManagementController extends Controller {
 
+	public function __construct()
+	{
+		View::composer('*', 'App\Composers\HomeComposer');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
