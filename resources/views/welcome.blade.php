@@ -18,7 +18,14 @@
 	            <h3>The Face of Care</h3>
 	            	<button class="btn btn-default btn-primary" align="center" type="button" value="Contact Us">Contact Us</button>
 
- 	         		<button class="btn btn-default btn-success" align="center" type="button" value="Donate To VNA">Donate to VNA</button>
+					<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="YWC46TWG6WYNU">
+						<input class="btn btn-default btn-success" type="image" value="Donate to VNA"  border="0" name="submit" alt="Donate to VNA">
+						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+
+ 	         		{{--<button class="btn btn-default btn-success" align="center" type="button" value="Donate To VNA">Donate to VNA</button>--}}
 	         	</div>
         	</div>
         </div>
