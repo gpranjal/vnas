@@ -30,7 +30,9 @@
 
                        <tr>
                            <td align="right"><strong>Address:</strong></td>
-                           <td align="left">&nbsp;&nbsp;{{ $Vnas_record->patient_address  }}</td>
+                           <td align="left">
+                              &nbsp;&nbsp;<a href="{{ action('MapController@show', [$Vnas_record->patient_address]) }}">{{ $Vnas_record->patient_address  }}</a>
+                          </td>
                        </tr>
 
                        <tr>

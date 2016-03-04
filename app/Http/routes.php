@@ -53,6 +53,9 @@ Route::get('vnas_users/create', 'VnasUsersController@create');
 Route::post('vnas_users', 'VnasUsersController@store');
 Route::get('vnas_users/{id}', 'VnasUsersController@show');
 
+Route::get('/map' , 'MapController@index');
+Route::get('/map/{addr}' , 'MapController@show');
+
 Route::get('/manage' , 'ManagementController@index');
 
 Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');

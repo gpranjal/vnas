@@ -12,7 +12,7 @@
       </label>
             <label>
         To: <br />
-        <input type="text" id="routeEnd" value="1400 Douglas St, 68179">
+        <input type="text" id="routeEnd" value="{{ $addr  }}">
       </label>
       <label><input type="radio" name="travelMode" value="DRIVING" checked /> Driving</label>
       <label><input type="radio" name="travelMode" value="BICYCLING" /> Bicylcing</label>
