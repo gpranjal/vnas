@@ -37,15 +37,15 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Role</label>
-							<div class="col-md-6">
-								<select name="role" class="form-control" value="{{old('role')}}">
+						{{--<div class="form-group">--}}
+							{{--<label class="col-md-4 control-label">Role</label>--}}
+							{{--<div class="col-md-6">--}}
+								{{--<select name="role" class="form-control" value="{{old('role')}}">--}}
 									{{--<option value="admin">Admin</option>--}}
-									<option value="regular">Regular</option>
-								</select>
-							</div>
-						</div>
+									{{--<option value="regular">Regular</option>--}}
+								{{--</select>--}}
+							{{--</div>--}}
+						{{--</div>--}}
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
