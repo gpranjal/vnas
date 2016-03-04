@@ -48,21 +48,10 @@ Route::post('vnas_records', 'VnasRecordsController@store');
 Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
 Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 
-
-
-//Route::get('vnas_records/{id}', 'VnasRecordsController@caregiversch');
-
 Route::get('vnas_users', 'VnasUsersController@index');
 Route::get('vnas_users/create', 'VnasUsersController@create');
 Route::post('vnas_users', 'VnasUsersController@store');
 Route::get('vnas_users/{id}', 'VnasUsersController@show');
-
-Route::get('appointments', 'AppointmentsController@index');
-Route::get('appointments/create', 'AppointmentsController@create');
-Route::post('appointments', 'AppointmentsController@store');
-Route::get('appointments/{id}', 'AppointmentsController@show');
-
-
 
 Route::get('/manage' , 'ManagementController@index');
 
@@ -70,6 +59,5 @@ Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user
 Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
 Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
 Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
-
 
 Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');

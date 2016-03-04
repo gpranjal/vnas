@@ -7,11 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Commands\\Command' => $baseDir . '/app/Commands/Command.php',
+    'App\\Composers\\HomeComposer' => $baseDir . '/app/Composers/HomeComposer.php',
     'App\\Console\\Commands\\Inspire' => $baseDir . '/app/Console/Commands/Inspire.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Http\\Controllers\\AppointmentsController' => $baseDir . '/app/Http/Controllers/AppointmentsController.php',
     'App\\Http\\Controllers\\Auth\\AuthController' => $baseDir . '/app/Http/Controllers/Auth/AuthController.php',
     'App\\Http\\Controllers\\Auth\\PasswordController' => $baseDir . '/app/Http/Controllers/Auth/PasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
@@ -34,7 +34,6 @@ return array(
     'App\\Services\\Registrar' => $baseDir . '/app/Services/Registrar.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Vnas_record' => $baseDir . '/app/Vnas_record.php',
-    'App\\appointment' => $baseDir . '/app/appointment.php',
     'App\\vnas_user' => $baseDir . '/app/vnas_user.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
@@ -54,7 +53,6 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
-    'CreateAppointmentsTable' => $baseDir . '/database/migrations/2016_02_15_151811_create_appointments_table.php',
     'CreateFaqsTable' => $baseDir . '/database/migrations/2015_11_11_192153_create_faqs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
