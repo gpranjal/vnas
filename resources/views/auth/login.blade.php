@@ -7,8 +7,6 @@
 
 				<div class="panel-heading">
 				
-				<!-- Adding a back button -->
-				<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>
 				<h3>Login</h3></div>
 
 				<div class="panel-body">

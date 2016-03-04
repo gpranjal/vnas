@@ -60,6 +60,7 @@
 </head>
 <body onload='@if( $view_name == "map" )initialize();@endif'>
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
+		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
 		@if( $agent->isMobile() && $view_name != "home")<a href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}" align="left"></a>@endif
 		<div class="container-fluid">
 			 <div class="navbar-header">
