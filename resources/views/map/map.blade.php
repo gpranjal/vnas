@@ -66,6 +66,8 @@
     <script type="text/javascript">
       // This page was create based on the tutorial found at:
       // http://www.dreamdealer.nl/tutorials/using_geolocation_to_automatically_generate_a_route_and_directions_in_google_maps.html
+      
+
 
       var directionDisplay, map;
       var directionsService = new google.maps.DirectionsService();
@@ -171,7 +173,7 @@
         });
       }
 
-      document.addEventListener("deviceready", initialize, false);
+      document.addEventListener("deviceready", initialize(), false);
   </script>
 
 

@@ -57,7 +57,7 @@
 	?>
 
 </head>
-<body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
+<body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )@endif'>
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
 		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )<a href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}" align="left"></a>@endif
