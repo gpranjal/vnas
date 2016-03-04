@@ -75,7 +75,7 @@
 
       function initialize() {
         // set the default center of the map
-        var latlng = new google.maps.LatLng(51.764696,5.526042);
+        var latlng = new google.maps.LatLng(41.2500,96.0000);
         // set route options (draggable means you can alter/drag the route in the map)
         var rendererOptions = { draggable: true };
         directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
@@ -174,6 +174,14 @@
       }
 
       document.addEventListener("deviceready", initialize(), false);
+      
+      /*
+
+        $("body").on("click",".routemap",function(){
+        navAddress = $(this).attr("address");
+        navigator.geolocation.getCurrentPosition(getPosition);//get the current position for google maps linking purposes.
+        });
+      */
   </script>
 
 
