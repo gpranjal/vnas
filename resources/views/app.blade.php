@@ -54,13 +54,14 @@
 	 <?php
 	 	
 		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current view
+		var_dump($view_name);
 	?>
 
 </head>
 <body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
-		@if( $agent->isMobile() && $view_name != "home")<a href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}" align="left"></a>@endif
+		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )<a href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}" align="left"></a>@endif
 		<div class="container-fluid">
 			 <div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
