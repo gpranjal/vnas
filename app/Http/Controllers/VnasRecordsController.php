@@ -13,7 +13,7 @@ use Auth;
 class VnasRecordsController extends Controller {
 
 	//
-    var $vnas_records;
+    //var $vnas_records;
 
     public function __construct()
     {
