@@ -55,6 +55,8 @@ class ManagementController extends Controller {
 	{
 		$update_edit = User::find($id);
 		$update_edit->name = $_POST['name'];
+		$update_edit->role = $_POST['role'];
+		$update_edit->email = $_POST['email'];
 		$update_edit->save();
   		return Redirect('manage');
 
