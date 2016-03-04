@@ -1,19 +1,24 @@
 @extends('app')
 @section('content')
-<div class="container"> 
-	<div class="col-md-10 col-md-offset-1">   
+<div class="container-fluid"> 
+	<div class="col-md-8 col-md-offset-2">   
 	    <div class="panel panel-default">
 	    	<div class="panel-heading">
-            	<h2>Care in Your Home</h2></div>
+	    	<!-- Adding a back button
+	    	<div class="span3 text-left"><button class="btn btn-primary">Back</button></div> -->
+            	<h3>
+            		Care in Your Home
+				</h3>
+            </div>
 	            <div class="panel-body">
-	                <img src="{{ asset('img/brandmark_main.png') }}">
+	                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive img-thumbnail" alt="Responsive image">
 	             </div>
 
-	            <div class="panel-body">
-	            <h2>The Face of Care</h2>
-	           		<a class="btn btn-default" href="" role="button">Contact Us</a>
-	           		&nbsp;&nbsp;
- 	         		<a class="btn btn-default" href="" role="button">Donate To VNA</a>
+	            <div class="panel-body" align="center">
+	            <h3>The Face of Care</h3>
+	            	<button class="btn btn-default btn-primary" align="center" type="button" value="Contact Us">Contact Us</button>
+
+ 	         		<button class="btn btn-default btn-success" align="center" type="button" value="Donate To VNA">Donate to VNA</button>
 	         	</div>
         	</div>
         </div>

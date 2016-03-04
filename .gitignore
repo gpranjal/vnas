@@ -3,3 +3,4 @@
 .idea
 .metadata
 /.metadata
+/vendor/services.json

@@ -75,16 +75,13 @@ sup {
   vertical-align: baseline;
 }
 sup {
-  top: -0.5em;
+  top: -0.5em;  
 }
 sub {
   bottom: -0.25em;
 }
 img {
-  display: inline-block;
   border: 0;
-  max-width: 90%;
-  height: auto;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -2790,7 +2787,12 @@ fieldset[disabled] .btn {
   background-color: #ffffff;
   border-color: #cccccc;
   width: auto;
+  margin-right: 5px;
+  margin-bottom: 5px,
+  margin-left: 5px;
+  margin-top: 5px;
 }
+
 .btn-default:hover,
 .btn-default:focus,
 .btn-default.focus,
@@ -5010,13 +5012,13 @@ a.list-group-item-danger.active:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 10px;
  }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 6px 10px;
   border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
   background-color: #F58E31;
   h1,h2,h3,h4,h5,h6{
     color: #ffffff;

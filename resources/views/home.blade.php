@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 <div class="container">
 <!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
     <div class="col-md-8 col-md-offset-2" >

@@ -9,7 +9,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
-                    <a href="{{ url('home') }}"><img src="{{ asset('img/home.png') }}" align="left"></a><h4>Patient Calendar Details</h4>
+                    <h4>Patient Calendar Details</h4>
                 </div>
                 <br />
 
@@ -54,12 +54,6 @@
                     <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
                     <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
                 </div>
-                <br />
-                <div align="left">
-                    <a class="btn btn-default" role="button" href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}"></a>
-                </div>
-
-
             </div>
         </div>
     </div>

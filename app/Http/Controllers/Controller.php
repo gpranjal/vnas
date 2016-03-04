@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Jenssegers\Agent\Agent;
+use View;
+
 
 abstract class Controller extends BaseController {
 
