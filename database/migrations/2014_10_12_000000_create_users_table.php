@@ -22,6 +22,15 @@ class CreateUsersTable extends Migration {
 			$table->rememberToken();
 			$table->timestamps();
 		});
+		// Insert some stuff
+		DB::table('users')->insert(
+			array(
+				'name' => 'vnas-admin',
+				'role' => 'admin',
+				'email'=> 'vnas-admin@vnas.com',
+				'password'=>'$2y$10$XXPu13TtkIf6SK.QQSEcmuW00j3tssAIYJ1Gc831XvLoNZu92pQlG'
+			)
+		);
 	}
 
 	/**

@@ -37,6 +37,7 @@
 							</div>
 						</div>
 
+						<input type="hidden" name="role" value="regular">
 						{{--<div class="form-group">--}}
 							{{--<label class="col-md-4 control-label">Role</label>--}}
 							{{--<div class="col-md-6">--}}
