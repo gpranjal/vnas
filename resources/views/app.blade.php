@@ -109,7 +109,7 @@
 		</div>
 	</nav>
 
-	<div class="row">
+	<div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border-radius: 25px; height: 150px; " align="center">
                 @yield('content')
