@@ -10,7 +10,7 @@ return [
 	| When your application is in debug mode, detailed error messages with
 	| stack traces will be shown on every error that occurs within your
 	| application. If disabled, a simple generic error page is shown.
-	|
+	| 
 	*/
 
 	'debug' => env('APP_DEBUG'),
@@ -145,7 +145,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'Collective\Html\HtmlServiceProvider',
+		//'Collective\Html\HtmlServiceProvider', // LaravelCollective
     	'Sukohi\Cahen\CahenServiceProvider', // FAQ
     	'Sukohi\Maven\MavenServiceProvider', // FAQ
     	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
@@ -199,13 +199,13 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
-		'FORM'		=> 'Illuminate\Html\FormFacade',
-  	    'HTML' 		=> 'Illuminate\Html\HtmlFacade',
   	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
+  	    //'Form' 		=> 'Collective\Html\FormFacade', // LarvelCollective
+        //'Html' 		=> 'Collective\Html\HtmlFacade', // LarvelCollective
     	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen', //FAQ
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
-    	'Agent' => 'Jenssegers\Agent\Facades\Agent' // Browser Detection
+    	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent' // Browser Detection
 
 
 

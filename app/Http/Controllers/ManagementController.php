@@ -6,8 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use View;
 
 class ManagementController extends Controller {
+
+	public function __construct()
+	{
+		View::composer('*', 'App\Composers\HomeComposer');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -16,6 +23,7 @@ class ManagementController extends Controller {
 	 */
 	public function index()
 	{
+		if(Auth::User()->role != 'admin') return view('home');
 		$users = User::all();
 		return view('admin.management' , compact('users'));
 	}
@@ -27,13 +35,18 @@ class ManagementController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function management_edit_user($id)
+	{
+		if(Auth::User()->role != 'admin') return view('home');
+		$edit = User::find($id);
+		return view('admin.edit',compact('edit'));
+	}
 
 
-
-	public function edit_user($id)
+	public function personal_edit_user($id)
 	{
 
-
+		if(Auth::User()->id != $id) return view('home');
 		$edit = User::find($id);
 		return view('admin.edit',compact('edit'));
 	}
@@ -42,11 +55,27 @@ class ManagementController extends Controller {
 	{
 		$update_edit = User::find($id);
 		$update_edit->name = $_POST['name'];
+		$update_edit->role = $_POST['role'];
+		$update_edit->email = $_POST['email'];
 		$update_edit->save();
   		return Redirect('manage');
 
 	}
 
+	public function remove_user($id)
+	{
+		$remove = User::find($id);
+		return view('admin.remove',compact('remove'));
+	}
+
+	public function post_remove_user($id)
+	{
+		$update_remove = User::find($id);
+		$update_remove->delete();
+
+		return Redirect('manage');
+
+	}
 	public function create()
 	{
 		//

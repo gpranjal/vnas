@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 <div class="container">
 <!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
     <div class="col-md-8 col-md-offset-2" >
@@ -27,7 +28,12 @@
             </div>
             <br />
             <div class="row">
-            <a class="btn btn-default" href="" role="button">Donate</a>
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="YWC46TWG6WYNU">
+                    <input class="btn btn-default" type="image" value="Donate to VNA"  border="0" name="submit" alt="Donate to VNA">
+                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
             </div>
             <br />
         </div>
@@ -36,3 +42,5 @@
 </div>
 
 @endsection
+
+

@@ -4,8 +4,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use View;
 
 class MapController extends Controller {
+
+	public function __construct()
+    {
+        //$this->vnas_records = Vnas_record::all();
+//        $this->middleware('auth');
+        View::composer('*', 'App\Composers\HomeComposer');
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -40,12 +48,14 @@ class MapController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  string  $addr
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($addr)
 	{
-		//
+		//$myaddr = $addr;
+		//return view('map.map' , ['addr' => $addr]);
+		 return view('map.map', ['addr' => $addr]);
 	}
 
 	/**

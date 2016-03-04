@@ -2,15 +2,16 @@
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#q1").click(function(){
-        $("#a1").fadeIn("slow");
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#display_answer').hide();
     });
-    $("#a1").click(function(){
-        $("#a1").fadeOut("slow");
-    });
-});
+
+    function expandDiv()
+    {
+        $('#display_answer').slideToggle("slow");
+    }
 </script>
 
 <div class="container col-md-12">
@@ -26,6 +27,7 @@ $(document).ready(function(){
 
            <div class="panel panel-body">
             <div id="FAQ">
+
                 <table class="table table-hover table-responsive" style="cursor: default;">
                     <thead>
                         <tr>
@@ -34,16 +36,20 @@ $(document).ready(function(){
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach($faqs as $index => $faq)
                         <tr>
                             <td>{!! $faq->sort_number !!}</td>
-                            <td><div id="q1" class="text-bold" style="cursor: pointer; display: block;">{!! $faq->question !!}</div>
+                                                 
+                            <td>
+                            <div id="display_question" class="text-bold" style="cursor: pointer; display: block;" onclick="expandDiv()">{!! $faq->question !!}</div>
                             
-                            <div id="a1" class="text-bold" style="cursor: pointer; display: none;">
+                            <div id="display_answer" class="text-bold" style="cursor: pointer; display: none;">
                             {!! $faq->answer !!}</div>
                             </td>
                         </tr>
                         @endforeach
+
                     </tbody>
                 </table>
                 </div>

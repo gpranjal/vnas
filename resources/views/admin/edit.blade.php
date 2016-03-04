@@ -27,7 +27,19 @@
                                 </div>
                             </div>
 
-                            
+                            @if(Auth::User()->role == 'admin')
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Role</label>
+                                <div class="col-md-6">
+                                    <select name="role" class="form-control" >
+                                        <option value="admin" @if($edit->role=='admin') selected ; @endif>Admin</option>
+                                        <option value="regular" @if($edit->role=='regular') selected ; @endif>Regular</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            @endif
 
 
 

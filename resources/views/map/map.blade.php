@@ -2,28 +2,64 @@
 
 @section('content')
 
-   <body onLoad="initialize()">
-    <div id="map_canvas" style="width:100%; height:300px"></div>
-    <form action="#" onSubmit="calcRoute();return false;" id="routeForm">
-      <label>
-        From: <br />
-        <input type="text" id="routeStart" value="My Location">
-        <a href="#" class="autoLink" style="display: none;">Use current location: <span>not found</span></a>
-      </label>
-            <label>
-        To: <br />
-        <input type="text" id="routeEnd" value="1400 Douglas St, 68179">
-      </label>
-      <label><input type="radio" name="travelMode" value="DRIVING" checked /> Driving</label>
-      <label><input type="radio" name="travelMode" value="BICYCLING" /> Bicylcing</label>
-      <label><input type="radio" name="travelMode" value="TRANSIT" /> Public transport</label>
-      <label><input type="radio" name="travelMode" value="WALKING" /> Walking</label>
-      <input type="submit" value="Calculate route">
-    </form>
+    <style>
+      #floating-panel {
+        
+        top: 50px;
+        background-color: #fff
+      }
+    </style>
 
-    <div id="directionsPanel">
-      Enter a starting point and click "Calculate route".
+  <div class="container-fluid">
+      <div class="col-md-8 col-md-offset-2">
+
+         <div class="panel panel-default">
+              <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
+                <h4>Map Directions to "{{ $addr  }}"</h4>
+              </div>
+
+              <div id="map_canvas" style="width:100%; height:300px"></div>
+              <div id="floating-panel">
+                <form action="#" onSubmit="calcRoute();return false;" id="routeForm">
+                  <div class="form-group">
+                    <table>
+                      <tr>
+                          <td><label class="col-sm-1 control-label">From:</label> </td>
+                          <td><input type="text" id="routeStart" value="My Location"></td>
+                     
+                          <td><label class="col-sm-1 control-label">To:</label></td>
+                          <td><input type="text" id="routeEnd" value="{{ $addr  }}"></td>
+                    
+                          <td><label class="col-sm-1 control-label">Mode:</label></td>
+                          <td>
+                            <select name="travelMode">
+                              <option value="DRIVING" selected="selected">Driving</option>
+                              <option value="BICYCLING">Bicylcing</option>
+                              <option value="TRANSIT">Public transport</option>
+                              <option value="WALKING">Walking</option>
+                            </select>
+                          </td>
+
+                          <td>
+                            <label class="col-sm-2 control-label">
+                              <input type="submit" class="btn btn-default btn-primary" value="Recalculate">
+                            </label>
+                          </td>
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </form>
+              </div>
+
+              <div id="directionsPanel">
+                Enter a starting point and click "Calculate route".
+              </div>
+        </div>
+      </div>
     </div>
+
+
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDmiNBfyHfzHnDS5u_I7Luhr0M_BkwxVDc"></script>
 
@@ -43,10 +79,10 @@
         directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
         // set the display options for the map
         var myOptions = {
-          zoom: 14,
+          zoom: 9,
           center: latlng,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
-          mapTypeControl: false
+          mapTypeControl: true
         };
         // add the map to the map placeholder
         map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
@@ -97,7 +133,7 @@
 
       function calcRoute() {
         // get the travelmode, startpoint and via point from the form   
-        var travelMode = $('input[name="travelMode"]:checked').val();
+        var travelMode = $('select[name="travelMode"]').val();
         var start = $("#routeStart").val();
         var end = $("#routeEnd").val();
         // compose a array with options for the directions/route request
@@ -134,6 +170,8 @@
           }
         });
       }
+
+      document.addEventListener("deviceready", initialize, false);
   </script>
 
 

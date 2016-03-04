@@ -1,6 +1,11 @@
 <?php namespace Sukohi\Maven;
-
+use View;
 class Maven {
+
+	public function __construct()
+    {
+        View::composer('*', 'App\Composers\HomeComposer');
+    }
 
 	private $_tags = [];
 
