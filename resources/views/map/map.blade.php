@@ -170,6 +170,8 @@
           }
         });
       }
+
+      document.addEventListener("deviceready", initialize, false);
   </script>
 
 
