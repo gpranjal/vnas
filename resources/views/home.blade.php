@@ -16,15 +16,15 @@
             </div>
             <br />
             <div class="row">
-                <a class="btn btn-default" href="{{ url('vnas_users') }}" role="button">My Account</a>
+                <a name="myAccountButton" class="btn btn-default" href="{{ url('vnas_users') }}" role="button">My Account</a>
             </div>
             <br />
             <div class="row">
-                <a class="btn btn-default" href="{{ url('vnas_records') }}" role="button">My Schedule</a>
+                <a name="myScheduleButton" class="btn btn-default" href="{{ url('vnas_records') }}" role="button">My Schedule</a>
             </div>
             <br />
             <div class="row">
-            <a class="btn btn-default" role="button" href="{{ url('faq') }}">FAQ</a>
+            <a name="faqButton" class="btn btn-default" role="button" href="{{ url('faq') }}">FAQ</a>
             </div>
             <br />
             <div class="row">
