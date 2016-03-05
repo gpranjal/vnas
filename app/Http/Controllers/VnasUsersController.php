@@ -23,7 +23,20 @@ class VnasUsersController extends Controller {
         // Check to see if the user is logged in
         if( Auth::check() )
         {
-            $myCurrUserEmail = Auth::user()->email; 
+            $isCareGiver    = Auth::user()->caregiver_role;
+            $isPatient      = Auth::user()->patient_role;
+            $vnas_users   = null;
+
+            if( $isCareGiver != "" )
+            {
+                $vnas_users = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                return view('vnas_users.care', compact('vnas_users'));
+            }
+            else if ( $isPatient != "" ) 
+            {
+                $vnas_users = Vnas_record::where( 'patient_id' , '=' , $isPatient )->distinct()->get( array('patient_id','patient_fname','patient_lname','patient_address','patient_phone','patient_email'));
+                return view('vnas_users.index', compact('vnas_users'));
+            }
             //If admin here, go ahead and show the list of patients
             /*
                 Code to look up admin and build $vnas_users with list of users
@@ -31,10 +44,10 @@ class VnasUsersController extends Controller {
             */
 
             //if not show only the currently logged in patient
-            $vnas_users = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->distinct()->get( array('patient_id','patient_fname','patient_lname','patient_address','patient_phone','patient_email'));
+            
             
 
-            return view('vnas_users.index', compact('vnas_users'));
+            
         }
         else
         {
