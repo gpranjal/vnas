@@ -34,12 +34,12 @@ class VnasRecordsController extends Controller {
 
             if( $isCareGiver != "" )
             {
-                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));   
+                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));   
                 $nextCntl = "VnasRecordsController@sch";
             }
             else if ( $isPatient != "" ) 
             {
-                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));       
+                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));       
                 $nextCntl = "VnasRecordsController@patientsch";
             }
 
@@ -67,7 +67,7 @@ class VnasRecordsController extends Controller {
 
         $Vnas_records = vnas_record::where( 'id' , '=' , $id )
                                         ->where( 'caregiver_id' , '=' , $isCareGiver )
-                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
         return view('vnas_records.sch', compact('Vnas_records'));
 
     }
@@ -79,7 +79,7 @@ class VnasRecordsController extends Controller {
 
         $Vnas_records = vnas_record::where( 'id' , '=' , $id )
                                         ->where( 'patient_id' , '=' , $isPatient )
-                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
         return view('vnas_records.patientsch', compact('Vnas_records'));
     }
 
