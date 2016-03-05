@@ -35,9 +35,8 @@
                             <?php $count = 1 ?>
                             @foreach ($Vnas_records as $Vnas_record)
                                 <tr>
-                                    <td><a name="{{'idLink' . $count}}" href="{{ action('VnasRecordsController@sch', [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
-                                    <td><a name="{{'titleLink' . $count}}" href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->ap_title }}</a></td>
-                                    {{--<td><a href="{{ url('/Vnas_records', $Vnas_record->id) }}">{{ $Vnas_record->ap_title  }}</a></td>--}}
+                                    <td><a name="{{'idLink' . $count}}" href="{{ action( $nextCntl , [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
+                                    <td>{{ $Vnas_record->ap_title }}</td>
                                     <td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date }}</td>
                                     <td name="{{'timeText' . $count}}">{{ $Vnas_record->ap_time }}</td>
                                     <td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>

@@ -14,7 +14,7 @@
     <?php $count = 1 ?>
     @foreach($users as $meh)
         <tr>
-            <td><div name="{{'nameText' . $count}}" {{$meh ->name}}</div></td>
+            <td><div name="{{'nameText' . $count}}" >{{$meh ->name}}</div></td>
             <td><a name="{{'editButton' . $count}}" class="btn btn-primary" role="button" href="{{url('management_edit/')}}/{{$meh->id}}">Edit</a> </td>
             <td><a name="{{'resetButton' . $count}}" class="btn btn-primary" role="button" href="{{url('reset/')}}/{{$meh->id}}">Reset</a> </td>
             <td><a name="{{'unlockButton' . $count}}" class="btn btn-primary" role="button" >Unlock</a></td>

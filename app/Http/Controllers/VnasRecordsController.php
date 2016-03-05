@@ -18,7 +18,7 @@ class VnasRecordsController extends Controller {
     public function __construct()
     {
         //$this->vnas_records = Vnas_record::all();
-//        $this->middleware('auth');
+        $this->middleware('auth');
         View::composer('*', 'App\Composers\HomeComposer');
     }
 
@@ -27,18 +27,20 @@ class VnasRecordsController extends Controller {
         // Check to see if the user is logged in
         if( Auth::check() )
         {
-            //$myCurrUserEmail = Auth::user()->email;
             $isCareGiver    = Auth::user()->caregiver_role;
             $isPatient      = Auth::user()->patient_role;
+            $nextCntl       = "";
             $Vnas_records   = null;
 
             if( $isCareGiver != "" )
             {
-                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));   
+                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));   
+                $nextCntl = "VnasRecordsController@sch";
             }
             else if ( $isPatient != "" ) 
             {
-                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));       
+                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));       
+                $nextCntl = "VnasRecordsController@patientsch";
             }
 
 
@@ -47,7 +49,7 @@ class VnasRecordsController extends Controller {
             //if not show only the currently logged in patient
             //$Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
 
-            return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient'));
+            return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
         }
         else
         {
@@ -60,38 +62,25 @@ class VnasRecordsController extends Controller {
     public function sch($id)
 
     {
-//        $Vnas_record = Vnas_record::findOrFail($id);
-//        return view('Vnas_records.sch', compact('Vnas_records'));
+        $isCareGiver    = Auth::user()->caregiver_role;
+        $Vnas_records   = null;
 
-
-        //return Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','ap_title','ap_date','ap_time','ap_lov','caregiver_fname'));
-        $Vnas_records = vnas_record::where( 'id' , '=' , $id )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+        $Vnas_records = vnas_record::where( 'id' , '=' , $id )
+                                        ->where( 'caregiver_id' , '=' , $isCareGiver )
+                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
         return view('vnas_records.sch', compact('Vnas_records'));
 
     }
 
-    /*
-    public function caregiversch($caregiver_id)
+    public function patientsch($id)
     {
-        $Vnas_records = Vnas_record::findOrFail($caregiver_id);
+        $isPatient      = Auth::user()->patient_role;
+        $Vnas_records   = null;
 
-        return view('Vnas_records.patientsch', compact('Vnas_records'));
-
-    }
-    */
-
-
-    public function patientsch($patient_id)
-
-    {
-//        $Vnas_record = Vnas_record::findOrFail($id);
-//        return view('Vnas_records.sch', compact('Vnas_records'));
-
-
-        //return Vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','ap_title','ap_date','ap_time','ap_lov','caregiver_fname'));
-        $Vnas_records = vnas_record::where( 'patient_id' , '=' , $patient_id )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
+        $Vnas_records = vnas_record::where( 'id' , '=' , $id )
+                                        ->where( 'patient_id' , '=' , $isPatient )
+                                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
         return view('vnas_records.patientsch', compact('Vnas_records'));
-
     }
 
 

@@ -23,27 +23,22 @@
 		            @foreach ($vnas_users as $vnas_user)
 		            	<tr>
 		            		<td align="right"><strong>My ID:</strong></td>
-		            		<td align="left" name="{{'idText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_id  }}</td>
+		            		<td align="left" name="{{'idText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->caregiver_id  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Name:</strong></td>
-		            		<td align="left" name="{{'nameText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_fname  }} {{ $vnas_user->patient_lname  }}</td>
-		            	</tr>
-
-		            	<tr>
-		            		<td align="right"><strong>Address:</strong></td>
-		            		<td align="left" name="{{'addressText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_address  }}</td>
+		            		<td align="left" name="{{'nameText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->caregiver_fname  }} {{ $vnas_user->caregiver_lname  }}</td>
 		            	</tr>
 
 		            	<tr>
 		            		<td align="right"><strong>Phone:</strong></td>
-		            		<td align="left" name="{{'phoneText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_phone  }}</td>
+		            		<td align="left" name="{{'phoneText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->caregiver_phone  }}</td>
 		            	</tr>
 
 		            	<tr>
-		            		<td align="right"><strong>Email:</strong></td>
-		            		<td align="left" name="{{'emailText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_email  }}</td>
+		            		<td align="right"><strong>Mobile:</strong></td>
+		            		<td align="left" name="{{'emailText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->caregiver_mob  }}</td>
 		            	</td>
 
                         <?php $count=$count+1 ?>
