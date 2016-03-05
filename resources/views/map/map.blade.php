@@ -59,8 +59,6 @@
       </div>
     </div>
 
-
-
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDmiNBfyHfzHnDS5u_I7Luhr0M_BkwxVDc"></script>
 
     <script type="text/javascript">
@@ -73,9 +71,9 @@
 
       function initialize() {
         // set the default center of the map
-        var latlng = new google.maps.LatLng(51.764696,5.526042);
+        var latlng = new google.maps.LatLng(41.2500,96.0000);
         // set route options (draggable means you can alter/drag the route in the map)
-        var rendererOptions = { draggable: true };
+        var rendererOptions = { draggable: false };
         directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
         // set the display options for the map
         var myOptions = {
@@ -171,7 +169,17 @@
         });
       }
 
-      document.addEventListener("deviceready", initialize, false);
+      //document.addEventListener("deviceready", initialize(), false);
+
+      //document.addEventListener("deviceready", initialize(), false);
+
+      /*
+
+        $("body").on("click",".routemap",function(){
+        navAddress = $(this).attr("address");
+        navigator.geolocation.getCurrentPosition(getPosition);//get the current position for google maps linking purposes.
+        });
+      */
   </script>
 
 
