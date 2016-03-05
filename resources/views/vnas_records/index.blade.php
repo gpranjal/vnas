@@ -35,8 +35,7 @@
                             @foreach ($Vnas_records as $Vnas_record)
                                 <tr>
                                     <td><a href="{{ action('VnasRecordsController@sch', [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
-                                    <td><a href="{{ action('VnasRecordsController@patientsch', [$Vnas_record->patient_id]) }}">{{ $Vnas_record->ap_title }}</a></td>
-                                    {{--<td><a href="{{ url('/Vnas_records', $Vnas_record->id) }}">{{ $Vnas_record->ap_title  }}</a></td>--}}
+                                    <td>{{ $Vnas_record->ap_title }}</td>
                                     <td>{{ $Vnas_record->ap_date }}</td>
                                     <td>{{ $Vnas_record->ap_time }}</td>
                                     <td>{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
