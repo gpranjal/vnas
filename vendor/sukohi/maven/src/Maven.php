@@ -135,7 +135,7 @@ class Maven {
         {
 			 $my_role = "caregiver";       	
         }
-        else
+        else if( $isPatient != "" )
         {
         	 $my_role = "patient"; 
         }
