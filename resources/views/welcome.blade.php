@@ -16,7 +16,7 @@
 
 	            <div class="panel-body" align="center">
 	            <h4>Serving Omaha, Council Bluffs, and Surrounding Communities</h4>
-	            	<a class="btn btn-default btn-primary"  href="tel:402-930-4240" role="button" align="center">Contact Us</a>
+	            	<a name="callButton" class="btn btn-default btn-primary"  href="tel:402-930-4240" role="button" align="center">Contact Us</a>
 
 					{{--<a class="btn btn-default" href="tel:402-930-4240" role="button"><img src="{{ asset('img/call.png') }}"></a>--}}
 
