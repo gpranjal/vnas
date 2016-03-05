@@ -58,6 +58,7 @@
 
 </head>
 <body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
+
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
 		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>@endif
@@ -99,11 +100,11 @@
 	</nav>
 
 	<div class="row">
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border-radius: 25px; height: 150px; " align="center">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="border: 1px solid green"><!--Buffer --></div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border-radius: 0px; padding: 0px; height: 150px; border: 1px solid red" align="center">
                 @yield('content')
             </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="border: 1px solid yellow"><!--Buffer --></div>
     </div>
 
 
