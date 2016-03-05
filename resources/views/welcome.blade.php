@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid" style="border: 1px solid orange">
 	<div class="col-md-12">
-	    <div class="panel panel-default" style="padding: 0px">
+	    <div class="panel panel-default">
 	    	<div class="panel-heading">
 	    	<!-- Adding a back button
 	    	<div class="span3 text-left"><button class="btn btn-primary">Back</button></div> -->
