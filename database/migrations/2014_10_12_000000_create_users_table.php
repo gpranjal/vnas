@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('role');
+			$table->string('caregiver_role');
+			$table->string('patient_role');
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->rememberToken();
