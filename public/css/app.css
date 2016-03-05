@@ -2761,7 +2761,7 @@ fieldset[disabled] .btn {
   pointer-events: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
-  box-shadow: none;
+  box-shadow:snone;
 }
 .btn-default {
   color: #333333;
