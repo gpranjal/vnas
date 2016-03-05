@@ -7,7 +7,7 @@
 	       <div class="panel panel-default">
 				
                     <div class="panel-heading"> 
-                       <h4>My Schedule</h4>
+                       <h4>My Account</h4>
                     </div>
                     <br />
                

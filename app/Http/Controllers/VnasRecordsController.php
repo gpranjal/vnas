@@ -30,15 +30,18 @@ class VnasRecordsController extends Controller {
             //$myCurrUserEmail = Auth::user()->email;
             $isCareGiver    = Auth::user()->caregiver_role;
             $isPatient      = Auth::user()->patient_role;
+            $nextCntl       = "";
             $Vnas_records   = null;
 
             if( $isCareGiver != "" )
             {
                 $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));   
+                $nextCntl = "VnasRecordsController@sch";
             }
             else if ( $isPatient != "" ) 
             {
                 $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));       
+                $nextCntl = "VnasRecordsController@patientsch";
             }
 
 
@@ -47,7 +50,7 @@ class VnasRecordsController extends Controller {
             //if not show only the currently logged in patient
             //$Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
 
-            return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient'));
+            return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
         }
         else
         {
