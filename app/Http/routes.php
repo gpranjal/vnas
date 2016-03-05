@@ -25,6 +25,8 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get( 'map' , 'MapController@index' );
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -42,10 +44,22 @@ Route::match(['get', 'post'], 'faq', function () {
 
 });
 
+Route::match(['get', 'post'], 'faq/search', function () {
+	$keyword = Input::get('keyword', '');
+   return \Maven::search($keyword);
+
+});
+
+
+
 Route::get('vnas_records', 'VnasRecordsController@index');
 Route::get('vnas_records/create', 'VnasRecordsController@create');
 Route::post('vnas_records', 'VnasRecordsController@store');
-Route::get('vnas_records/{id}', 'VnasRecordsController@patientsch')->where('id','[0-9]');
+Route::get('vnas_records/{id}', 'VnasRecordsController@sch');
+Route::get('vnas_records/{patient_id}', 'VnasRecordsController@patientsch');
+
+
+
 //Route::get('vnas_records/{id}', 'VnasRecordsController@caregiversch');
 
 Route::get('vnas_users', 'VnasUsersController@index');
@@ -57,4 +71,11 @@ Route::get('appointments', 'AppointmentsController@index');
 Route::get('appointments/create', 'AppointmentsController@create');
 Route::post('appointments', 'AppointmentsController@store');
 Route::get('appointments/{id}', 'AppointmentsController@show');
+
+
+
+Route::get('/manage' , 'ManagementController@index');
+Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
+
+Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
 

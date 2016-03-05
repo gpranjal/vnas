@@ -6,6 +6,8 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 article,
 aside,
@@ -43,7 +45,6 @@ a {
 a:active,
 a:hover {
   outline: 0;
-  color: #ff6600;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -74,16 +75,13 @@ sup {
   vertical-align: baseline;
 }
 sup {
-  top: -0.5em;
+  top: -0.5em;  
 }
 sub {
   bottom: -0.25em;
 }
 img {
-  display: inline-block;
   border: 0;
-  max-width: 90%;
-  height: auto;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -111,9 +109,8 @@ optgroup,
 select,
 textarea {
   color: inherit;
-  font: inherit;
+  font: inherit;	
   margin: 0;
-
 }
 button {
   overflow: visible;
@@ -176,6 +173,7 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border-color: #808080;
 }
 td,
 th {
@@ -212,6 +210,7 @@ th {
   }
   thead {
     display: table-header-group;
+
   }
   tr,
   img {
@@ -905,7 +904,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #ff6600;
   text-decoration: underline;
 }
 a:focus {
@@ -1370,10 +1369,13 @@ pre code {
   overflow-y: scroll;
 }
 .container {
+  align-content: center;
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  width: 95%;
+  height: auto;
 }
 @media (min-width: 768px) {
   .container {
@@ -1393,8 +1395,8 @@ pre code {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .row {
@@ -1404,8 +1406,8 @@ pre code {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -2120,7 +2122,7 @@ table col[class*="col-"] {
 }
 table td[class*="col-"],
 table th[class*="col-"] {
-  position: relative;
+  position: static;
   float: none;
   display: table-cell;
 }
@@ -2300,6 +2302,7 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
+  cursor: pointer;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -2777,12 +2780,19 @@ fieldset[disabled] .btn {
   opacity: 0.65;
   filter: alpha(opacity=65);
   box-shadow: none;
+  width: auto;
 }
 .btn-default {
   color: #333333;
   background-color: #ffffff;
   border-color: #cccccc;
+  width: auto;
+  margin-right: 5px;
+  margin-bottom: 5px,
+  margin-left: 5px;
+  margin-top: 5px;
 }
+
 .btn-default:hover,
 .btn-default:focus,
 .btn-default.focus,
@@ -3069,7 +3079,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #ff6600;;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3617,7 +3627,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #00b9d7;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3807,7 +3817,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-header {
-    background-image: url("../img/wingbg.jpg");
     float: left;
   }
 }
@@ -4481,9 +4490,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 a.label:hover,
 a.label:focus {
-  color: #ffffff;
+  color: #FFAA00;
   text-decoration: none;
   cursor: pointer;
+}
+a.label:visited
+{
+    color:#027ABB;
 }
 .label:empty {
   display: none;
@@ -4999,13 +5012,13 @@ a.list-group-item-danger.active:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 50px;
  }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 6px 10px;
   border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
   background-color: #F58E31;
   h1,h2,h3,h4,h5,h6{
     color: #ffffff;
@@ -5222,8 +5235,10 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #dddddd;
+  border-color: #dddddd; 
   display: table;
+  width: 100%;
+  height: auto;
     
 }
 .panel-default > .panel-heading {
@@ -6254,3 +6269,55 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.fa-btn {
+         margin-right: 10px;
+       }
+  #tfheader{
+        background-color: #d3d3d3;
+  }
+  #tfnewsearch{
+    float:right;
+    padding:20px;
+  }
+  .tftextinput2{
+    margin: 0;
+    padding: 5px 15px;
+    font-family: normal 1em/1.4em "Tahoma", arial, sans-serif;
+    font-size:14px;
+    
+    border:1px solid #0076a3; border-right:0px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    
+  }
+  .tfbutton2 {
+    margin: 0;
+    padding: 5px 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight:bold;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px #0076a3; border-right:0px;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+  }
+  .tfbutton2:hover {
+    text-decoration: none;
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+  }
+  /* Fixes submit button height problem in Firefox */
+  .tfbutton2::-moz-focus-inner {
+    border: 0;
+  }
+  .tfclear{
+    clear:both;
+  }

@@ -7,11 +7,16 @@ use App\vnas_user;
 use Request;
 use Auth;
 use App\Vnas_record;
+use View;
 
 
 class VnasUsersController extends Controller {
 
-	//
+    public function __construct()
+    {
+        $this->middleware('auth');
+        View::composer('*', 'App\Composers\HomeComposer');
+    }
 
     public function index()
     {
@@ -37,13 +42,13 @@ class VnasUsersController extends Controller {
         }
     }
 
-    public function show($id)
-    {
-        $vnas_user = vnas_user::findOrFail($id);
-
-        return view('vnas_users.show', compact('vnas_user'));
-
-    }
+//    public function show($id)
+//    {
+//        $vnas_user = vnas_user::find($id);
+//
+//        return view('vnas_users.show', compact('vnas_user'));
+//
+//    }
 
     public function create()
     {

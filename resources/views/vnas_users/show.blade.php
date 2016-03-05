@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>{{ $vnas_user->name }}</h1>
+    <h1>{{ $vnas_user->patient_fname }}</h1>
 
 
 
@@ -10,7 +10,7 @@
 
                 <div class="'body">
 
-                    <b>Email:</b> {{ $vnas_user->email  }} </br>
+                    <b>Email:</b> {{ $vnas_user->patient_email  }} </br>
 
                     <b>Patient-ID:</b> {{ $vnas_user->patient_id  }} </br>
 

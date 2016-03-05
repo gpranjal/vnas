@@ -2,14 +2,18 @@
 @section('content')
 
 <div class="container-fluid">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-12" >
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4>Login</h4></div>
+
+				<div class="panel-heading">
+				
+				<h3>Login</h3></div>
+
 				<div class="panel-body">
-				<img src="{{ asset('img/brandmark_main.png') }}">
+				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive img-thumbnail" alt="Responsive image">
 					@if (count($errors) > 0)
 
-						<div class="alert alert-danger">
+						<div class="alert alert-danger" name="loginErrorMessage">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
@@ -18,7 +22,6 @@
 							</ul>
 						</div>
 					@endif
-
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<br/>
@@ -48,7 +51,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-default">Login</button>
+								<button type="submit" class="btn btn-success" name="loginButton">Login</button>
 
 								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
 							</div>
