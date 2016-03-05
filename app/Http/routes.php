@@ -53,12 +53,11 @@ Route::match(['get', 'post'], 'faq/search', function () {
 });
 
 
-
 Route::get('vnas_records', 'VnasRecordsController@index');
 Route::get('vnas_records/create', 'VnasRecordsController@create');
 Route::post('vnas_records', 'VnasRecordsController@store');
 Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
-Route::get('vnas_records/patient/{patient_id}', 'VnasRecordsController@patientsch');
+Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 
 Route::get('vnas_users', 'VnasUsersController@index');
 Route::get('vnas_users/create', 'VnasUsersController@create');
@@ -69,8 +68,6 @@ Route::get('appointments', 'AppointmentsController@index');
 Route::get('appointments/create', 'AppointmentsController@create');
 Route::post('appointments', 'AppointmentsController@store');
 Route::get('appointments/{id}', 'AppointmentsController@show');
-
-
 
 Route::get('/manage' , 'ManagementController@index');
 Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
