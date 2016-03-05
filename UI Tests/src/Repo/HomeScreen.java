@@ -12,4 +12,20 @@ public class HomeScreen extends BaseScreen{
 	public static String getPath() {
 		return "/home";
 	}
+	
+	public static WebElement getMyAccountButton(WebDriver driver) {
+		return driver.findElement(By.name("myAccountButton"));
+	}
+	
+	public static WebElement getMyScheduleButton(WebDriver driver) {
+		return driver.findElement(By.name("myScheduleButton"));
+	}
+	
+	public static WebElement getFAQButton(WebDriver driver) {
+		return driver.findElement(By.name("FAQButton"));
+	}
+	
+	public static WebElement getDonateButton(WebDriver driver) {
+		return driver.findElement(By.name("donateButton"));
+	}
 }
