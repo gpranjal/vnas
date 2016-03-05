@@ -19,7 +19,7 @@
                    @foreach ($Vnas_records as $Vnas_record)
                        <tr>
                            <td align="right"><strong>Patient ID:</strong></td>
-                           <td name="{{'patientIdText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->patient_id  }}</td>
+                           <td name="{{'idText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->patient_id  }}</td>
                        </tr>
 
                        <tr>

@@ -22,10 +22,10 @@ public class HomeScreen extends BaseScreen{
 	}
 	
 	public static WebElement getFAQButton(WebDriver driver) {
-		return driver.findElement(By.name("FAQButton"));
+		return driver.findElement(By.name("faqButton"));
 	}
 	
 	public static WebElement getDonateButton(WebDriver driver) {
-		return driver.findElement(By.name("donateButton"));
+		return driver.findElement(By.name("submit"));
 	}
 }
