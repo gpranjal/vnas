@@ -1,21 +1,9 @@
 @extends('app')
+
 @section('content')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        $('#display_answer').hide();
-    });
-
-    function expandDiv()
-    {
-        $('#display_answer').slideToggle("slow");
-    }
-</script>
-
-<div class="container col-md-12">
-    <div class="col-md-8 col-md-offset-2">
+<div class="container">
+    <div class="col-md-8 col-md-offset-1">
         <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
                 <h4>FAQ</h4>
@@ -24,35 +12,44 @@
             <div class="row">
               <img src="{{ asset('img/brandmark_main.png') }}">
             </div>
-
-           <div class="panel panel-body">
+            <br />
             <div id="FAQ">
 
-                <table class="table table-hover table-responsive" style="cursor: default;">
-                    <thead>
-                        <tr>
-                        <th>Order</th>
-                         <th><nobr>{{ trans('Questions') }}</nobr></th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        @foreach($faqs as $index => $faq)
+<!-- HTML for SEARCH BAR  -->
+    <div id="tfheader">
+        <form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/faq/search') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
+                <input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input type="submit" value=">>" class="tfbutton2">
+        </form>
+        <div class="tfclear"></div>
+    </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>Order</th>
+                     <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($faqs as $index => $faq)
                         <tr>
                             <td>{!! $faq->sort_number !!}</td>
-                                                 
                             <td>
-                            <div id="display_question" class="text-bold" style="cursor: pointer; display: block;" onclick="expandDiv()">{!! $faq->question !!}</div>
-                            
-                            <div id="display_answer" class="text-bold" style="cursor: pointer; display: none;">
-                            {!! $faq->answer !!}</div>
+                                <div class="text-bold">{!! $faq->question !!}</div>
+                                <br>
+                                {!! $faq->answer !!}
                             </td>
+                            <td class="text-center">{!! $faq->draft_flag_icon !!}</td>
                         </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-                </div>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+            
+            <div class="text-center">
+                {!! $faqs->render() !!}
             </div>
         </div>
     </div>

@@ -51,10 +51,15 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	 <!-- Define a few view dependent global scope variables here -->
-	 <?php
+	<?php
 	 	
 		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current views
+		$is_mobile = false;
 	?>
+	@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )
+		<?php $is_mobile = true; ?>
+	@endif
+
 
 </head>
 <body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
@@ -75,13 +80,13 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}"><font color="#fffff">Home</font></a></li>
+					<li><a name="homeToolbarLink" href="{{ url('/') }}"><font color="#fffff">Home</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}"><font color="#fffff">Login</font></a></li>
-						<li><a href="{{ url('/auth/register') }}"><font color="#fffff">Register</font></a></li>
+						<li><a name="loginToolbarLink" href="{{ url('/auth/login') }}"><font color="#fffff">Login</font></a></li>
+						<li><a name="registerToolbarLink" href="{{ url('/auth/register') }}"><font color="#fffff">Register</font></a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#fffff">{{ Auth::user()->name }}</font><span class="caret"></span></a>

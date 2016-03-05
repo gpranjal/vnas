@@ -1,12 +1,18 @@
 <?php namespace Sukohi\Maven;
 use View;
+use Auth;
+
+
+
 class Maven {
 
-	public function __construct()
+    public function __construct()
     {
+        //$this->vnas_records = Vnas_record::all();
+//        $this->middleware('auth');
         View::composer('*', 'App\Composers\HomeComposer');
     }
-
+    
 	private $_tags = [];
 
 	public function tag($tag) {
@@ -49,6 +55,7 @@ class Maven {
 	public function manage_view($limit = 30) {
 
 		$message = '';
+		$keyword = '';
 
 		if(\Request::has('remove_id')) {
 
@@ -110,24 +117,85 @@ class Maven {
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
-				'message' => $message
+				'message' => $message,
+				'keyword' => $keyword
 		])->render();
 
 	}
 
 	public function view($limit = 30) {
+		$keyword = '';
 		$message = '';
+
+		$isCareGiver    = Auth::user()->caregiver_role;
+        $isPatient      = Auth::user()->patient_role;
+        $my_role   = "";
+
+        if( $isCareGiver != "" )
+        {
+			 $my_role = "caregiver";       	
+        }
+        else if( $isPatient != "" )
+        {
+        	 $my_role = "patient"; 
+        }
+
 		$faqs = Faq::orderBy('sort', 'ASC')
+					->where(function($q)  use ($my_role){
+						$q->where( 'faq_role' , '' )
+						->orWhere( 'faq_role' , "$my_role" );
+					})
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+
+
 
 		return view('maven::untag', [
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
-				'message' => $message
+				'message' => $message,
+				'keyword' => $keyword
 		])->render();
+	}
+
+	public function search($keyword,$limit = 30) {
+	
+		$message = '';
+
+		$isCareGiver    = Auth::user()->caregiver_role;
+        $isPatient      = Auth::user()->patient_role;
+        $my_role   = "";
+
+        if( $isCareGiver != "" )
+        {
+			 $my_role = "caregiver";       	
+        }
+        else
+        {
+        	 $my_role = "patient"; 
+        }
+
+		$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
+			->where(function($q) use ($my_role){
+				$q->where( 'faq_role' , '' )
+					->orWhere( 'faq_role' , $my_role );
+			})
+			->orderBy('sort', 'ASC')
+			->paginate($limit);
+		
+		$sort_values = Faq::sortSelectValues();
+		
+		$tag_values = Faq::tagValues();
+
+		return view('maven::untag', [
+		   		'faqs' => $faqs, //keyword goes here?
+		  		'sort_values' => $sort_values,
+		  		'tag_values' => $tag_values,
+		  		'message' => $message,
+		  		'keyword' => $keyword
+		 ])->render();
 	}
 
 }

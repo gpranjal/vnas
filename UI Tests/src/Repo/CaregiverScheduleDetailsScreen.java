@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MyAccountScreen  extends BaseScreen{
+public class CaregiverScheduleDetailsScreen {
 	public static String getURL() {
 		return BaseScreen.getURL() + getPath();
 	}
 	
 	public static String getPath() {
-		return "/vnas_users";
+		return "/vnas_records/caregiver";
 	}
 	
 	public static WebElement getEmailButton(WebDriver driver) {
@@ -37,7 +37,7 @@ public class MyAccountScreen  extends BaseScreen{
 		return driver.findElement(By.name("phoneText1"));
 	}
 	
-	public static WebElement getEmailLabel(WebDriver driver) {
-		return driver.findElement(By.name("emailText1"));
+	public static WebElement getCommentsLabel(WebDriver driver) {
+		return driver.findElement(By.name("commentsText1"));
 	}
 }
