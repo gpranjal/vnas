@@ -18,7 +18,7 @@ return [
 	|
 	*/
 
-	'driver' => env('MAIL_DRIVER', 'mailgun'),
+	'driver' => env('MAIL_DRIVER', 'SMTP'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
 	|
 	*/
 
-	'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+	'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'vnas-test@vnas.com', 'name' => 'vnas-test'],
+	'from' => ['address' => 'vnasdev@gmail.com', 'name' => 'vnas'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
 	|
 	*/
 
-	'username' => env('MAIL_USERNAME'),
+	'username' => env('vnasdev@gmail.com'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return [
 	|
 	*/
 
-	'password' => env('MAIL_PASSWORD'),
+	'password' => env('vnasdev!'),
 
 	/*
 	|--------------------------------------------------------------------------
