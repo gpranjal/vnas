@@ -30,7 +30,7 @@ class VnasRecordsController extends Controller {
             //$myCurrUserEmail = Auth::user()->email;
             $isCareGiver    = Auth::user()->caregiver_role;
             $isPatient      = Auth::user()->patient_role;
-            $Vnas_records   = "";
+            $Vnas_records   = null;
 
             if( $isCareGiver != "" )
             {
