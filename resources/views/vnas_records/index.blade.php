@@ -16,7 +16,6 @@
                 <img src="{{ asset('img/brandmark_main.png') }}">
                 <br />
 
-
                 @if( count($Vnas_records) == 0 )
                     You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
                 @else

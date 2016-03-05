@@ -30,7 +30,7 @@ class VnasRecordsController extends Controller {
             //$myCurrUserEmail = Auth::user()->email;
             $isCareGiver    = Auth::user()->caregiver_role;
             $isPatient      = Auth::user()->patient_role;
-            $Vnas_records   = "";
+            $Vnas_records   = null;
 
             if( $isCareGiver != "" )
             {
@@ -47,7 +47,7 @@ class VnasRecordsController extends Controller {
             //if not show only the currently logged in patient
             //$Vnas_records = Vnas_record::where( 'patient_email' , '=' , $myCurrUserEmail )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname'));
 
-            return view('vnas_records.index', compact('Vnas_records'));
+            return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient'));
         }
         else
         {

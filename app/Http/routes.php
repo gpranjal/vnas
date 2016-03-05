@@ -26,6 +26,8 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get( 'map' , 'MapController@index' );
+Route::get('/map' , 'MapController@index');
+Route::get('/map/{addr}' , 'MapController@show');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -55,12 +57,8 @@ Route::match(['get', 'post'], 'faq/search', function () {
 Route::get('vnas_records', 'VnasRecordsController@index');
 Route::get('vnas_records/create', 'VnasRecordsController@create');
 Route::post('vnas_records', 'VnasRecordsController@store');
-Route::get('vnas_records/{id}', 'VnasRecordsController@sch');
-Route::get('vnas_records/{patient_id}', 'VnasRecordsController@patientsch');
-
-
-
-//Route::get('vnas_records/{id}', 'VnasRecordsController@caregiversch');
+Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
+Route::get('vnas_records/patient/{patient_id}', 'VnasRecordsController@patientsch');
 
 Route::get('vnas_users', 'VnasUsersController@index');
 Route::get('vnas_users/create', 'VnasUsersController@create');
@@ -77,5 +75,9 @@ Route::get('appointments/{id}', 'AppointmentsController@show');
 Route::get('/manage' , 'ManagementController@index');
 Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
+Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
 Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
+Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
+Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
+Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
 
