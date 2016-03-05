@@ -59,15 +59,11 @@
       </div>
     </div>
 
-
-
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDmiNBfyHfzHnDS5u_I7Luhr0M_BkwxVDc"></script>
 
     <script type="text/javascript">
       // This page was create based on the tutorial found at:
       // http://www.dreamdealer.nl/tutorials/using_geolocation_to_automatically_generate_a_route_and_directions_in_google_maps.html
-      
-
 
       var directionDisplay, map;
       var directionsService = new google.maps.DirectionsService();
@@ -77,7 +73,7 @@
         // set the default center of the map
         var latlng = new google.maps.LatLng(41.2500,96.0000);
         // set route options (draggable means you can alter/drag the route in the map)
-        var rendererOptions = { draggable: true };
+        var rendererOptions = { draggable: false };
         directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
         // set the display options for the map
         var myOptions = {
@@ -173,8 +169,10 @@
         });
       }
 
-      document.addEventListener("deviceready", initialize(), false);
-      
+      //document.addEventListener("deviceready", initialize(), false);
+
+      //document.addEventListener("deviceready", initialize(), false);
+
       /*
 
         $("body").on("click",".routemap",function(){
