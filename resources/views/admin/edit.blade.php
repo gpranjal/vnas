@@ -41,6 +41,10 @@
 
                             @endif
 
+                            @if(Auth::User()->role == 'regular')
+                                <input type="hidden" name="role" value="{{$edit->role}}">
+                            @endif
+
 
 
                             <div class="form-group">
