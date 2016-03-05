@@ -23,7 +23,7 @@
 		            @foreach ($vnas_users as $vnas_user)
 		            	<tr>
 		            		<td align="right"><strong>My ID:</strong></td>
-		            		<td align="left" name="id">&nbsp;&nbsp;{{ $vnas_user->patient_id  }}</td>
+		            		<td align="left" name="{{'idText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->patient_id  }}</td>
 		            	</tr>
 
 		            	<tr>
