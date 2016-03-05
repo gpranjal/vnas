@@ -49,10 +49,10 @@
 
                        <br />
                        <div class="row">
-                           <a class="btn btn-default" role="button" href="mailto::gpranjal@gmail.com"><img src="{{ asset('img/mail.png') }}"></a>
-                           <a class="btn btn-default" href="tel:917-435-3648" role="button"><img src="{{ asset('img/call.png') }}"></a>
+                           <a class="btn btn-default" role="button" href="mailto::eschlake@vnacares.org"><img src="{{ asset('img/mail.png') }}"></a>
+                           <a class="btn btn-default" href="tel:402-930-4240" role="button"><img src="{{ asset('img/call.png') }}"></a>
                        </div>
-                  
+
             </div>
         </div>
     </div>

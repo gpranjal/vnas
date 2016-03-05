@@ -7,7 +7,7 @@
 	    	<!-- Adding a back button
 	    	<div class="span3 text-left"><button class="btn btn-primary">Back</button></div> -->
             	<h3>
-            		Care in Your Home
+					The Face of Care
 				</h3>
             </div>
 	            <div class="panel-body">
@@ -15,8 +15,10 @@
 	             </div>
 
 	            <div class="panel-body" align="center">
-	            <h3>The Face of Care</h3>
-	            	<button class="btn btn-default btn-primary" align="center" type="button" value="Contact Us">Contact Us</button>
+	            <h4>Serving Omaha, Council Bluffs, and Surrounding Communities</h4>
+	            	<a class="btn btn-default btn-primary"  href="tel:402-930-4240" role="button" align="center">Contact Us</a>
+
+					{{--<a class="btn btn-default" href="tel:402-930-4240" role="button"><img src="{{ asset('img/call.png') }}"></a>--}}
 
 					<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_s-xclick">
