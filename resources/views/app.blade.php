@@ -61,7 +61,7 @@
 
 	<nav class="navbar navbar-default" style="background-color: #236fa0">
 		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
-		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )<a href="{{ URL::previous() }}"><img src="{{ asset('img/back.png') }}" align="left"></a>@endif
+		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>@endif
 		<div class="container-fluid">
 			 <div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
