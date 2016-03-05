@@ -1,5 +1,6 @@
 <?php namespace Sukohi\Maven;
 use View;
+use Auth;
 
 
 
@@ -125,10 +126,30 @@ class Maven {
 	public function view($limit = 30) {
 		$keyword = '';
 		$message = '';
+
+		$isCareGiver    = Auth::user()->caregiver_role;
+        $isPatient      = Auth::user()->patient_role;
+        $my_role   = "";
+
+        if( $isCareGiver != "" )
+        {
+			 $my_role = "caregiver";       	
+        }
+        else
+        {
+        	 $my_role = "patient"; 
+        }
+
 		$faqs = Faq::orderBy('sort', 'ASC')
+					->where(function($q)  use ($my_role){
+						$q->where( 'faq_role' , '' )
+						->orWhere( 'faq_role' , "$my_role" );
+					})
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+
+
 
 		return view('maven::untag', [
 				'faqs' => $faqs,
@@ -142,9 +163,27 @@ class Maven {
 	public function search($keyword,$limit = 30) {
 	
 		$message = '';
+
+		$isCareGiver    = Auth::user()->caregiver_role;
+        $isPatient      = Auth::user()->patient_role;
+        $my_role   = "";
+
+        if( $isCareGiver != "" )
+        {
+			 $my_role = "caregiver";       	
+        }
+        else
+        {
+        	 $my_role = "patient"; 
+        }
+
 		$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
-					->orderBy('sort', 'ASC')
-					->paginate($limit);
+			->where(function($q) use ($my_role){
+				$q->where( 'faq_role' , '' )
+					->orWhere( 'faq_role' , $my_role );
+			})
+			->orderBy('sort', 'ASC')
+			->paginate($limit);
 		
 		$sort_values = Faq::sortSelectValues();
 		
