@@ -45,9 +45,9 @@
 		<?php $is_mobile = true; ?>
 	@endif
 </head>
-<body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
+<body style="border: solid 1px green" onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" style="border: solid 1px red">
 		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
 			<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>
 		@endif

@@ -9,7 +9,7 @@
                 <h4>FAQ</h4>
             </div>
             <br />
-            <div class="row">
+            <div class="panel-body">
                 <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
             </div>
             <br />
