@@ -2,13 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-12 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color:#F58E31"><font color="White" size="3"><b>Register</b></font></div>
+				<div class="panel-heading"><h4>Register</h4></div>
 				<div class="panel-body">
-				 <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA" style="width:470px;height:80px;">
-
+					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -24,6 +22,8 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
+							<br>
+							<br>
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -73,6 +73,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 @endsection

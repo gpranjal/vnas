@@ -5,7 +5,7 @@
 
 
     <div class="container-fluid">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
@@ -13,7 +13,7 @@
                 </div>
                 <br />
 
-                <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
                 <br />
 
                 <table class="table table-hover">

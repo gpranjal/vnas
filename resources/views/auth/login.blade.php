@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-		<div class="col-md-12" >
+		<div class="col-md-12 col-md-offset-1" >
 			<div class="panel panel-default">
 
 				<div class="panel-heading">
@@ -10,7 +10,7 @@
 				<h3>Login</h3></div>
 
 				<div class="panel-body">
-				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive img-thumbnail" alt="Responsive image">
+				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
 					@if (count($errors) > 0)
 
 						<div class="alert alert-danger" name="loginErrorMessage">

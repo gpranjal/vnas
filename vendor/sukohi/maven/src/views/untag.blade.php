@@ -10,7 +10,7 @@
             </div>
             <br />
             <div class="row">
-              <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
             </div>
             <br />
             <div id="FAQ">

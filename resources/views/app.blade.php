@@ -6,27 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>VNA-Visting Nurse Association</title>
 
-	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-	<!-- Added the styles from Laravel v_5.2 #Farhan -->
-
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <!-- <link rel="stylesheet" type="text/css" href="css/custom.css"> -->
     <link rel="stylesheet" href="<?php echo asset('css/custom.css')?>" type="text/css">
-    {{-- <link href="{{ elixir('css/custom.css') }}" rel="stylesheet"> --}}
 
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
-
-    	window.onload = function(){ 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    	window.onload = function(){
 						//Get submit button
 						var submitbutton = document.getElementById("tfq");
 						//Add listener to submit button
@@ -38,11 +27,7 @@
 							});
 						}
 					}
-	
     </script>
-
-    <style>
-    </style>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,14 +44,13 @@
 	@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )
 		<?php $is_mobile = true; ?>
 	@endif
-
-
 </head>
 <body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
 
-	<nav class="navbar navbar-default" style="background-color: #236fa0">
-		<!--<div class="span3 text-left"><button class="btn btn-primary">Back</button></div>-->
-		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>@endif
+	<nav class="navbar navbar-default">
+		@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
+			<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>
+		@endif
 		<div class="container-fluid">
 			 <div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -75,27 +59,28 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<!-- <a class="navbar-brand" href="#">Laravel</a> -->
-			</div> 
+			 </div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a name="homeToolbarLink" href="{{ url('/') }}"><font color="#fffff">Home</font></a></li>
+					<li><a name="homeToolbarLink" href="{{ url('/') }}">Home</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a name="loginToolbarLink" href="{{ url('/auth/login') }}"><font color="#fffff">Login</font></a></li>
-						<li><a name="registerToolbarLink" href="{{ url('/auth/register') }}"><font color="#fffff">Register</font></a></li>
+						<li><a name="loginToolbarLink" href="{{ url('/auth/login') }}">Login</a></li>
+						<li><a name="registerToolbarLink" href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><font color="#fffff">{{ Auth::user()->name }}</font><span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }}
+								<span class="caret"></span>
+							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}"><font color="black">Logout</font></a></li>
-								<li><a href="{{ url( '/personal_edit/'.Auth::user()->id ) }}"><font color="black">Edit Your Information</font></a></li>
+								<li><a href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
 								@if(Auth::user()->role == 'admin')
-									<li><a href="{{ url('/manage') }}"><font color="black">Manage</font></a></li>
+									<li><a href="{{ url('/manage') }}">Manage</a></li>
 								@endif
+								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
 					@endif
@@ -105,12 +90,12 @@
 	</nav>
 
 	<div class="row">
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-12 col-sm-12 col-md-12" style="border: 1px solid green"><!--Buffer --></div>
-            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-10 col-xs-12 col-sm-12 col-md-12 col-lg-10" style="border-radius: 0px; padding: 0px; height: 150px; border: 1px solid red" align="center">
-                @yield('content')
-            </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="border: 1px solid yellow"><!--Buffer --></div>
-    </div>
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+		<div class="col-xs-10 col-xs-12 col-sm-10 col-sm-12 col-md-10 col-md-12 col-lg-8" style="border-radius: 25px; height: 150px; " align="center">
+			@yield('content')
+		</div>
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+	</div>
 
 
 	<!-- Scripts -->

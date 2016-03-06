@@ -3,12 +3,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:#F58E31"><font color="White" size="3"><b>Edit</b></font></div>
                     <div class="panel-body">
-                        <img src="http://www.thevnacares.org/themes/VNA%20theme%20v2.0/img/brandmark_main.png" alt="VNA" style="width:470px;height:80px;">
-
+                        <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
 
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/edit') }}/{{$edit->id}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

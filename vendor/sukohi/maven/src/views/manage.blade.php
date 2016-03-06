@@ -26,6 +26,9 @@
             <h3 class="panel-title text-bold">{{ trans('New FAQ form') }}</h3>
         </div>
         <div class="panel-body">
+            <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+            <br>
+            <br>
             <div class="form-group">
                 {!! Form::label(trans('Question')) !!}<br>
                 {!! Form::text('question', Request::get('question'), ['class' => 'form-control']) !!}
