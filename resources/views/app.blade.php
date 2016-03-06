@@ -45,16 +45,16 @@
 		<?php $is_mobile = true; ?>
 	@endif
 </head>
-<body style="border: solid 1px green" onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
+<body onload='@if( $view_name == "map" || substr($view_name,0,strrpos($view_name,'/')) == "map" )initialize();@endif'>
 
-	<div class="container-fluid">
-		<div class="row" style="border: solid 1px orange; margin: 0px; padding: 0px;">
-			<nav class="navbar navbar-default" style="border: solid 1px red">
+	<div class="container-fluid" style="margin: 0px; padding: 0px;">
+		<div class="row" style="margin: 0px; padding: 0px;">
+			<nav class="navbar navbar-default">
 				@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
 					<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>
 				@endif
 				<div class="container-fluid">
-					 <div class="navbar-header">
+					 <div class="navbar-header" style="margin: 0px; padding: 0px;">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span>
@@ -93,7 +93,7 @@
 		</div>
 
 	
-		<div class="row" style="border: solid 1px yellow; margin: 0px; padding: 0px;">
+		<div class="row" style="margin: 0px; padding: 0px;">
 			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
 			<div class="col-xs-10 col-xs-12 col-sm-10 col-sm-12 col-md-10 col-md-12 col-lg-8" style="border-radius: 25px; height: 150px; " align="center">
 				@yield('content')
