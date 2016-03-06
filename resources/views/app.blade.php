@@ -98,11 +98,11 @@
 
 	
 		<div class="row" style="margin: 0px; padding: 0px;">
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
-			<div class="col-xs-10 col-xs-12 col-sm-10 col-sm-12 col-md-10 col-md-12 col-lg-8" style="border-radius: 25px; height: 150px; " align="center">
+			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"><!--Buffer --></div>
+			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8" style="border-radius: 25px; height: 150px; " align="center">
 				@yield('content')
 			</div>
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><!--Buffer --></div>
+			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"><!--Buffer --></div>
 		</div>
 	</div>
 
