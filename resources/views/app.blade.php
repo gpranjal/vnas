@@ -50,9 +50,11 @@
 	<div class="container-fluid" style="margin: 0px; padding: 0px;">
 		<div class="row" style="margin: 0px; padding: 0px;">
 			<nav class="navbar navbar-default">
-				@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
-					<button type="button" class="btn btn-default" aria-label="Left Align" style="vertical-align: middle;">
-  						<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+				@if($agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
+					<button type="button" class="navbar-btn btn pull-left" aria-label="Left Align" style="margin-left: 15px">
+  						<a href="{{ URL::previous() }}">
+  							<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+  						</a>
 					</button>
 				@endif
 				<div class="container-fluid">
