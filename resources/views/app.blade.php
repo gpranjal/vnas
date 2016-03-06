@@ -51,7 +51,9 @@
 		<div class="row" style="margin: 0px; padding: 0px;">
 			<nav class="navbar navbar-default">
 				@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
-					<a class="button back" href="{{ URL::previous() }}"><img src="{{ asset('img/back2.png') }}" align="left"></a>
+					<button type="button" class="btn btn-default" aria-label="Left Align" style="vertical-align: middle;">
+  						<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+					</button>
 				@endif
 				<div class="container-fluid">
 					 <div class="navbar-header" style="margin: 0px; padding: 0px;">
