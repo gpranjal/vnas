@@ -4,13 +4,13 @@
 
 <div class="container">
 <!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
-    <div class="col-md-12" >
+    <div class="col-md-10 col-md-offset-1" >
         <div class="panel panel-default">
             <div class="panel-heading"> <!-- This div has the orange color for the VNA-->
             <h4>Home</h4>
             </div>
             <div class="panel-body">
-                <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
               <br />
             <div class="row">
             </div>

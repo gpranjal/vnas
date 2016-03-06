@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
-<div class="container-fluid" style="border: 1px solid orange">
-	<div class="col-md-12">
+<div class="container-fluid">
+	<div class="col-md-12 col-md-offset-1">
 	    <div class="panel panel-default">
 	    	<div class="panel-heading">
 	    	<!-- Adding a back button
@@ -11,15 +11,17 @@
 				</h3>
             </div>
 	            <div class="panel-body" align="center">
-	                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive	" alt="Responsive image">
+	                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+					<br>
 					<br>
 	            	<h4>Serving Omaha, Council Bluffs, and Surrounding Communities</h4>
+					<br>
 					<br>
 
 
 	            	<a name="callButton" class="btn btn-default btn-primary"  href="tel:402-930-4240" role="button" align="center">Contact Us</a>
 					<br>
-
+					<br>
 
 					{{--<a class="btn btn-default" href="tel:402-930-4240" role="button"><img src="{{ asset('img/call.png') }}"></a>--}}
 

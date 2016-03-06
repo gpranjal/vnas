@@ -3,10 +3,13 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-12 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">
+					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+					<br>
+
 					@if (session('status'))
 						<div class="alert alert-success">
 							{{ session('status') }}

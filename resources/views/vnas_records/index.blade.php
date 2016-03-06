@@ -1,11 +1,8 @@
 @extends('app')
 
 @section('content')
-            
-<Vnas_record>
-
     <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
 
            <div class="panel panel-default">
                 <div class="panel-heading"> 
@@ -13,7 +10,7 @@
                 </div>
                 <br />
 
-                <img src="{{ asset('img/brandmark_main.png') }}">
+                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
                 <br />
 
                 @if( count($Vnas_records) == 0 )
@@ -22,8 +19,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Schedule ID</th>
-                                <th>Schedule Title</th>
+                                <th>ID</th>
+                                <th>Title</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Caregiver</th>
@@ -51,10 +48,6 @@
 
         </div>
     </div>
-
-</Vnas_record>
-             
-
-        
+       
 
 @stop

@@ -9,8 +9,8 @@
                 <h4>FAQ</h4>
             </div>
             <br />
-            <div class="row">
-              <img src="{{ asset('img/brandmark_main.png') }}">
+            <div class="panel-body">
+                <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
             </div>
             <br />
             <div id="FAQ">
