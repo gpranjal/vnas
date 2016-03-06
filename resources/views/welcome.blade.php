@@ -1,8 +1,9 @@
 @extends('app')
 @section('content')
-<div class="container-fluid">
-	<div class="col-md-12">
-	    <div class="panel panel-default">
+<div class="container">
+	<div class="col-lg-8">
+		<div class="row">
+		<div class="panel panel-default">
 	    	<div class="panel-heading">
 	    	<!-- Adding a back button
 	    	<div class="span3 text-left"><button class="btn btn-primary">Back</button></div> -->
@@ -37,6 +38,7 @@
  	         		{{--<button class="btn btn-default btn-success" align="center" type="button" value="Donate To VNA">Donate to VNA</button>--}}
 	         	</div>
         	</div>
+		</div>
         </div>
 	</div>
 @endsection

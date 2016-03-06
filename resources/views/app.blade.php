@@ -59,7 +59,8 @@
 				@endif
 				<div class="container-fluid">
 					 <div class="navbar-header" style="margin: 0px; padding: 0px;">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						>
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>

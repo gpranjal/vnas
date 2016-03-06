@@ -1371,8 +1371,8 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (min-width: 768px) {
   .container {
@@ -1392,8 +1392,8 @@ pre code {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 1px;
+  padding-right: 1px;
 }
 .row {
   margin-left: -25px;
