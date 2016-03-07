@@ -10,10 +10,9 @@
       }
     </style>
 
-  <div class="container-fluid">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-10 col-md-offset-1">
 
-         <div class="panel panel-default">
+        <div class="panel panel-default">
               <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
                 <h4>Map Directions to "{{ $addr  }}"</h4>
               </div>
