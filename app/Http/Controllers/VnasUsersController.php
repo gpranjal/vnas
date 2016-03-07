@@ -41,6 +41,10 @@ class VnasUsersController extends Controller {
                     ->get( array('patient_id','patient_fname','patient_lname','patient_address','patient_phone','patient_email'));
                 return view('vnas_users.index', compact('vnas_users'));
             }
+            else
+            {
+                return view('vnas_users.index', compact('vnas_users'));
+            } 
             //If admin here, go ahead and show the list of patients
             /*
                 Code to look up admin and build $vnas_users with list of users
