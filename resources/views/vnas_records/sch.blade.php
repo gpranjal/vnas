@@ -50,7 +50,7 @@
 
 				<br />
 				<div class="row">
-					<a class="btn btn-default" role="button" href="mailto::eschlake@vnacares.org" name="mailtoButton"><img src="{{ asset('img/mail.png') }}"></a>
+					<a class="btn btn-default" role="button" href="mailto:eschlake@vnacares.org" name="mailtoButton"><img src="{{ asset('img/mail.png') }}"></a>
 					<a class="btn btn-default" href="tel:402-930-4240" role="button" name="callButton"><img src="{{ asset('img/call.png') }}"></a>
 				</div>
 
