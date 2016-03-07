@@ -44,7 +44,7 @@ class VnasUsersController extends Controller {
             else
             {
                 return view('vnas_users.index', compact('vnas_users'));
-            }
+            } 
             //If admin here, go ahead and show the list of patients
             /*
                 Code to look up admin and build $vnas_users with list of users
