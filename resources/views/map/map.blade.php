@@ -9,7 +9,7 @@
 		background-color: #fff
 	}
 </style>
-<div class="container text-center">
+<div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -20,19 +20,19 @@
 
 				<div id="map_canvas" style="width:100%; height:300px"></div>
 				<div id="floating-panel" style="display: block; width: 100%;">
-					<div class="row">
-						<form action="#" onSubmit="calcRoute();return false;" id="routeForm">
-							<fieldset class="form-group">
+					<div class="row text-center">
+						<form action="#" onSubmit="calcRoute();return false;" id="routeForm" class="text-center">
+							<fieldset class="form-group text-center" style="width: 70%; float:none; margin: 0 auto;">
 								<label for="routeStart">From:</label>
-								<input class="form-control" style="width: 70%" type="text" id="routeStart" value="My Location" />
+								<input class="form-control" type="text" id="routeStart" value="My Location" />
 							</fieldset>
-							<fieldset class="form-group">
+							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
 								<label for="routeEnd">To:</label>
-								<input class="form-control" style="width: 70%" type="text" id="routeEnd" value="{{ $addr  }}" />
+								<input class="form-control" type="text" id="routeEnd" value="{{ $addr  }}" />
 							</fieldset>
-							<fieldset class="form-group">
+							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
 								<label for="travelMode">Mode:</label>
-								<select class="form-control" style="width: 70%" name="travelMode" id="travelMode">
+								<select class="form-control" name="travelMode" id="travelMode">
 									<option value="DRIVING" selected="selected">Driving</option>
 									<option value="BICYCLING">Bicylcing</option>
 									<option value="TRANSIT">Public transport</option>
