@@ -17,7 +17,7 @@
 				@if( count($Vnas_records) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
-				<table class="table table-hover">
+				<table class="table table-hover text-left">
 					<thead>
 						<tr>
 							<th>ID</th>

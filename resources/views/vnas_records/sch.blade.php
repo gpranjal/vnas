@@ -15,7 +15,7 @@
 				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 				<br />
 
-				<table class="table table-hover">
+				<table class="table table-hover text-left">
 					<?php $count = 1 ?>
 					@foreach ($Vnas_records as $Vnas_record)
 					<tr>
