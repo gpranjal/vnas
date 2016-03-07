@@ -26,16 +26,27 @@ public class LoginTests extends BaseTestCase {
     	}
     }
     
-    public void testLoginAutoUserShouldWork() throws Exception {    	
+    public void testLoginCaregiverUserShouldWork() throws Exception {    	
     	for (WebDriver driver : super.getDrivers()) {    	
 	    	driver.get(LoginScreen.getURL());
 
-	    	LoginScreen.getEmailTextbox(driver).sendKeys("automation.user@gmail.com");
-	    	LoginScreen.getPasswordTextbox(driver).sendKeys("automationpassword");
+	    	LoginScreen.getEmailTextbox(driver).sendKeys("vnascaregiver@gmail.com");
+	    	LoginScreen.getPasswordTextbox(driver).sendKeys("caregiver1234");
 	    	LoginScreen.getLoginButton(driver).click();
 	    	assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());	    	
     	}
     }
+    
+    public void testLoginPatientUserShouldWork() throws Exception {    	
+    	for (WebDriver driver : super.getDrivers()) {    	
+	    	driver.get(LoginScreen.getURL());
+
+	    	LoginScreen.getEmailTextbox(driver).sendKeys("vnaspatient@gmail.com");
+	    	LoginScreen.getPasswordTextbox(driver).sendKeys("patient1234");
+	    	LoginScreen.getLoginButton(driver).click();
+	    	assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());	    	
+    	}
+    }    
     
     public void testLoginAutoUserIncorrectUsernameShouldFail() throws Exception {    	
     	for (WebDriver driver : super.getDrivers()) {    	

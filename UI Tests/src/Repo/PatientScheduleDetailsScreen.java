@@ -10,7 +10,7 @@ public class PatientScheduleDetailsScreen {
 	}
 	
 	public static String getPath() {
-		return "/vnas_records/caregiver";
+		return "/vnas_records/patient";
 	}
 	
 	public static WebElement getEmailButton(WebDriver driver) {
@@ -21,23 +21,23 @@ public class PatientScheduleDetailsScreen {
 		return driver.findElement(By.name("callButton"));
 	}
 	
-	public static WebElement getIdLabel(WebDriver driver) {
-		return driver.findElement(By.name("idText1"));
+	public static WebElement getIdLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("titleText" + row));
 	}
 	
-	public static WebElement getNameLabel(WebDriver driver) {
-		return driver.findElement(By.name("nameText1"));
+	public static WebElement getNameLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("caregiverId" + row));
 	}
 	
-	public static WebElement getAddressLabel(WebDriver driver) {
-		return driver.findElement(By.name("addressText1"));
+	public static WebElement getAddressLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("caregiverName" + row));
 	}
 	
-	public static WebElement getPhoneLabel(WebDriver driver) {
-		return driver.findElement(By.name("phoneText1"));
+	public static WebElement getPhoneLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("caregiverPhone" + row));
 	}
 	
-	public static WebElement getCommentsLabel(WebDriver driver) {
-		return driver.findElement(By.name("commentsText1"));
+	public static WebElement getCommentsLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("caregiverModbile" + row));
 	}
 }
