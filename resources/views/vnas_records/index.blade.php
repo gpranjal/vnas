@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container">
+<div class="container text-center">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 
@@ -11,7 +11,7 @@
 				</div>
 				<br />
 
-				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 				<br />
 
 				@if( count($Vnas_records) == 0 )

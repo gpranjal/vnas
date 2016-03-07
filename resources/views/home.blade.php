@@ -2,16 +2,16 @@
 
 @section('content')
 
-<div class="container">
+<div class="container text-center">
 	<!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 			<div class="panel panel-default">
-				<div class="panel-heading"> <!-- This div has the orange color for the VNA-->
+				<div class="panel-heading text-center"> <!-- This div has the orange color for the VNA-->
 					<h4>Home</h4>
 				</div>
-				<div class="panel-body">
-					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo" />
+				<div class="panel-body text-center">
+					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo" />
 
 					<p style="margin-top: 50px;">
 						<a type="button" name="myAccountButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;" href="{{ url('vnas_users') }}">

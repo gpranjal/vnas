@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="panel panel-default">
@@ -11,7 +11,7 @@
 				</div>
 				<br />
 				<div class="panel-body">
-					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 				</div>
 				<br />
 				<div id="FAQ">
@@ -48,7 +48,7 @@
 						</tbody>
 					</table>
 				</div>
-				
+
 				<div class="text-center">
 					{!! $faqs->render() !!}
 				</div>

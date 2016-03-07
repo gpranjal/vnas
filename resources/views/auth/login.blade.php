@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 			<div class="panel panel-default">
@@ -11,7 +11,7 @@
 					<h3>Login</h3></div>
 
 					<div class="panel-body">
-						<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive" alt="VNA logo">
+						<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 						@if (count($errors) > 0)
 
 						<div class="alert alert-danger" name="loginErrorMessage">
