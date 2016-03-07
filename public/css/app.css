@@ -2732,6 +2732,9 @@ select[multiple].form-group-lg .form-control {
   -ms-user-select: none;
   user-select: none;
 }
+.btn-width-lg {
+  width: 450px !important;
+}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
