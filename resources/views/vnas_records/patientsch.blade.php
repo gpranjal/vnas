@@ -4,8 +4,9 @@
 
 
 
-    <div class="container-fluid">
-        <div class="col-md-10 col-md-offset-1">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
@@ -20,32 +21,32 @@
                     <?php $count = 1 ?>
                     @foreach ($Vnas_records as $Vnas_record)
 
-                        <tr>
-                            <td align="right"><strong>Schedule Title</strong></td>
-                            <td name="{{'titleText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->ap_title }}</td>
-                        </tr>
+                    <tr>
+                        <td align="right"><strong>Schedule Title</strong></td>
+                        <td name="{{'titleText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->ap_title }}</td>
+                    </tr>
 
-                        <tr>
-                            <td align="right"><strong>Caregiver ID:</strong></td>
-                            <td name="{{'caregiverId' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_id  }}</td>
-                        </tr>
+                    <tr>
+                        <td align="right"><strong>Caregiver ID:</strong></td>
+                        <td name="{{'caregiverId' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_id  }}</td>
+                    </tr>
 
-                        <tr>
-                            <td align="right"><strong>Caregiver Name:</strong></td>
-                            <td name="{{'caregiverName' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
-                        </tr>
+                    <tr>
+                        <td align="right"><strong>Caregiver Name:</strong></td>
+                        <td name="{{'caregiverName' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
+                    </tr>
 
 
-                        <tr>
-                            <td align="right"><strong>Caregiver Phone:</strong></td>
-                            <td name="{{'caregiverPhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_phone  }}</td>
-                        </tr>
+                    <tr>
+                        <td align="right"><strong>Caregiver Phone:</strong></td>
+                        <td name="{{'caregiverPhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_phone  }}</td>
+                    </tr>
 
-                        <tr>
-                            <td align="right"><strong>Caregiver Mobile:</strong></td>
-                            <td name="{{'caregiveMobilePhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_mob  }}</td>
-                        </tr>
-                        <?php $count=$count+1 ?>
+                    <tr>
+                        <td align="right"><strong>Caregiver Mobile:</strong></td>
+                        <td name="{{'caregiveMobilePhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_mob  }}</td>
+                    </tr>
+                    <?php $count=$count+1 ?>
                     @endforeach
 
                 </table>
@@ -58,6 +59,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 @stop
