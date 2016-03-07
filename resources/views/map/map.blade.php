@@ -51,7 +51,7 @@
                 </form>
               </div>
 
-              <div id="directionsPanel">
+              <div id="directionsPanel" class="panel panel-default">
                 Enter a starting point and click "Calculate route".
               </div>
         </div>
