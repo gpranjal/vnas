@@ -19,37 +19,31 @@
 				</div>
 
 				<div id="map_canvas" style="width:100%; height:300px"></div>
-				<div id="floating-panel">
-					<form action="#" onSubmit="calcRoute();return false;" id="routeForm">
-						<div class="form-group">
-							<table>
-								<tr>
-									<td><label class="col-sm-1 control-label">From:</label> </td>
-									<td><input type="text" id="routeStart" value="My Location"></td>
-									
-									<td><label class="col-sm-1 control-label">To:</label></td>
-									<td><input type="text" id="routeEnd" value="{{ $addr  }}"></td>
-									
-									<td><label class="col-sm-1 control-label">Mode:</label></td>
-									<td>
-										<select name="travelMode">
-											<option value="DRIVING" selected="selected">Driving</option>
-											<option value="BICYCLING">Bicylcing</option>
-											<option value="TRANSIT">Public transport</option>
-											<option value="WALKING">Walking</option>
-										</select>
-									</td>
-
-									<td>
-										<label class="col-sm-2 control-label">
-											<input type="submit" class="btn btn-default btn-primary" value="Recalculate">
-										</label>
-									</td>
-								</tr>
-							</table>
-						</div>
-						
-					</form>
+				<div id="floating-panel" style="display: block; width: 100%;">
+					<div class="row">
+						<form action="#" onSubmit="calcRoute();return false;" id="routeForm">
+							<fieldset class="form-group">
+								<label for="routeStart">From:</label>
+								<input class="form-control" style="width: 70%" type="text" id="routeStart" value="My Location" />
+							</fieldset>
+							<fieldset class="form-group">
+								<label for="routeEnd">To:</label>
+								<input class="form-control" style="width: 70%" type="text" id="routeEnd" value="{{ $addr  }}" />
+							</fieldset>
+							<fieldset class="form-group">
+								<label for="travelMode">Mode:</label>
+								<select class="form-control" style="width: 70%" name="travelMode" id="travelMode">
+									<option value="DRIVING" selected="selected">Driving</option>
+									<option value="BICYCLING">Bicylcing</option>
+									<option value="TRANSIT">Public transport</option>
+									<option value="WALKING">Walking</option>
+								</select>
+							</fieldset>
+							<fieldset class="form-group">
+								<input type="submit" class="btn btn-default btn-primary" value="Recalculate" />
+							</fieldset>
+						</form>
+					</div>
 				</div>
 
 				<div id="directionsPanel" class="panel panel-default">
