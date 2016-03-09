@@ -25,7 +25,7 @@
 							<th>Title</th>
 							<th>Date</th>
 							<th>Time</th>
-							<th>Caregiver</th>
+							<th>Patient</th>
 							<th>LOV</th>
 						</tr>
 					</thead>
@@ -38,7 +38,7 @@
 							<td>{{ $Vnas_record->ap_title }}</td>
 							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date }}</td>
 							<td name="{{'timeText' . $count}}">{{ $Vnas_record->ap_time }}</td>
-							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
+							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
 							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
 						</tr>
 						<?php $count=$count+1 ?>
