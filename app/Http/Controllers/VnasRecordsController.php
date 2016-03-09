@@ -9,6 +9,7 @@ use Request;
 use DB;
 use View;
 use Auth;
+use Carbon\Carbon;
 
 class VnasRecordsController extends Controller {
 
@@ -24,6 +25,9 @@ class VnasRecordsController extends Controller {
 
     public function index()
     {
+
+
+
         // Check to see if the user is logged in
         if( Auth::check() )
         {
@@ -34,13 +38,16 @@ class VnasRecordsController extends Controller {
 
             if( $isCareGiver != "" )
             {
-                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));   
+                $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                // sort according to date instead of default schedule ID
+                $Vnas_records = Vnas_record::orderBy('ap_date', 'asc')->get();
                 $nextCntl = "VnasRecordsController@sch";
                 return view('vnas_records.care', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
             }
             else if ( $isPatient != "" ) 
             {
-                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));       
+                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                $Vnas_records = Vnas_record::orderBy('ap_date', 'asc')->get();
                 $nextCntl = "VnasRecordsController@patientsch";
             }
 
