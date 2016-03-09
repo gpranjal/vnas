@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container text-center">
+<div class="container-fluid text-center">
 	<!-- <img src="{{ asset('img/back_arrow.png') }}" align="left" height="40" width="40"> -->
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
