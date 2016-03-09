@@ -6249,3 +6249,5 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+tr.click_row { cursor: pointer; }
+.floating-panel { top: 50px; background-color: #fff }

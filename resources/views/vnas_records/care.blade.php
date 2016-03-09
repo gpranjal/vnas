@@ -33,10 +33,10 @@
 					<tbody>
 						<?php $count = 1 ?>
 						@foreach ($Vnas_records as $Vnas_record)
-						<tr>
-							<td><a name="{{'idLink' . $count}}" href="{{ action( $nextCntl , [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
+						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
+							<td>{{ $Vnas_record->id }}</td>
 							<td>{{ $Vnas_record->ap_title }}</td>
-						<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date }}</td>
+							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date }}</td>
 							<td name="{{'timeText' . $count}}">{{ $Vnas_record->ap_time }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
 							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
@@ -51,5 +51,12 @@
 	</div>
 </div>
 
+<script language="javascript">
+	jQuery(document).ready(function($) {
+	    $(".whole-row-click").click(function() {
+	        window.document.location = $(this).data("href");
+	    });
+	});
+</script>
 
 @stop

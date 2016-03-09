@@ -1,14 +1,6 @@
-@extends('app')
+extends('app')
 
 @section('content')
-
-    <style>
-      #floating-panel {
-        
-        top: 50px;
-        background-color: #fff
-      }
-    </style>
 
       <div class="col-md-10 col-md-offset-1">
 
