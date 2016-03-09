@@ -29,14 +29,12 @@
 					<table class="table table-hover text-left">
 						<thead>
 							<tr>
-								<th>Order</th>
 								<th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($faqs as $index => $faq)
 							<tr>
-								<td>{!! $faq->sort_number !!}</td>
 								<td>
 									<div class="text-bold">{!! $faq->question !!}</div>
 									<br>
