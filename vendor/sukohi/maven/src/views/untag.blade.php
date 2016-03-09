@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container text-center">
+<div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="panel panel-default">
@@ -29,14 +29,12 @@
 					<table class="table table-hover text-left">
 						<thead>
 							<tr>
-								<th>Order</th>
 								<th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($faqs as $index => $faq)
 							<tr>
-								<td>{!! $faq->sort_number !!}</td>
 								<td>
 									<div class="text-bold">{!! $faq->question !!}</div>
 									<br>

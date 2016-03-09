@@ -127,9 +127,15 @@ class Maven {
 		$keyword = '';
 		$message = '';
 
-		$isCareGiver    = Auth::user()->caregiver_role;
-        $isPatient      = Auth::user()->patient_role;
-        $my_role   = "";
+		$isCareGiver    = "";
+		$isPatient    	= ""; 
+		$my_role   		= "";
+
+		if( Auth::check() )
+		{
+			$isCareGiver    = Auth::user()->caregiver_role;
+        	$isPatient      = Auth::user()->patient_role;
+		}
 
         if( $isCareGiver != "" )
         {
