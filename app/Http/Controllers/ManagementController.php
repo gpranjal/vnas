@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\vnas_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -134,6 +135,17 @@ class ManagementController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function role(){
+		return view('admin.role');
+	}
+
+	public function search_patient(){
+		$names = DB::table('vnas_users')->lists('name','patient_id');
+		return $names;
+
+
 	}
 
 

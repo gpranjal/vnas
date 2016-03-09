@@ -78,3 +78,6 @@ Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
 Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
 Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
 
+Route::get('/role' , 'ManagementController@role');
+Route::get('/search_patient' , 'ManagementController@search_patient');
+Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
