@@ -53,8 +53,12 @@
 
                 <br />
                 <div class="row">
-                    <a class="btn btn-default" role="button" href="mailto:eschlake@vnacares.org" name="mailtoButton"><img src="{{ asset('img/mail.png') }}"></a>
-                    <a class="btn btn-default" href="tel:402-930-4240" role="button" name="callButton"><img src="{{ asset('img/call.png') }}"></a>
+                    <a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@vnacares.org" name="mailtoButton">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
+                        <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
         </div>
