@@ -26,14 +26,13 @@ class VnasRecordsController extends Controller {
     public function index()
     {
 
-
-
         // Check to see if the user is logged in
         if( Auth::check() )
         {
             $isCareGiver    = Auth::user()->caregiver_role;
             $isPatient      = Auth::user()->patient_role;
             $nextCntl       = "";
+            $myView         = "";
             $Vnas_records   = null;
 
             if( $isCareGiver != "" )
@@ -41,15 +40,23 @@ class VnasRecordsController extends Controller {
                 $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->orderBy('ap_date', 'asc')->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
                 // sort according to date instead of default schedule ID
                 $nextCntl = "VnasRecordsController@sch";
-                return view('vnas_records.care', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
+                $myView = "vnas_records.care";
+                
             }
             else if ( $isPatient != "" ) 
             {
                 $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )->orderBy('ap_date', 'asc')->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
 
                 $nextCntl = "VnasRecordsController@patientsch";
-                return view('vnas_records.index', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
+                $myView = "vnas_records.index";
             }
+            else if( $isCareGiver != "" && $isPatient != ""  )
+            {}
+            else{
+                $myView = "vnas_records.index";
+            }
+
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
 
 
             //If admin here, go ahead and show the list of patients
