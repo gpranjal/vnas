@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div class="container text-center">
+<div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 
@@ -17,7 +17,6 @@
 				@if( count($Vnas_records) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
-
 				<table class="table table-hover text-left">
 					<thead>
 						<tr>

@@ -51,7 +51,7 @@
 		<div class="row" style="margin: 0px; padding: 0px;">
 			<nav class="navbar navbar-default" style="border: 0px solid transparent">
 				@if($agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
-					<button type="button" class="navbar-btn btn-secondary-outline pull-left" aria-label="Left Align" style="margin-left: 15px">
+					<button type="button" class="navbar-btn btn pull-left" aria-label="Left Align" style="margin-left: 15px">
   						<a href="{{ URL::previous() }}">
   							<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
   						</a>

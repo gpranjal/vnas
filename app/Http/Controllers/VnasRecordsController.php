@@ -36,7 +36,6 @@ class VnasRecordsController extends Controller {
             {
                 $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));   
                 $nextCntl = "VnasRecordsController@sch";
-                return view('vnas_records.care', compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
             }
             else if ( $isPatient != "" ) 
             {
