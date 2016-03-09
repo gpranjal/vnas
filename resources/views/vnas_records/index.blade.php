@@ -33,7 +33,7 @@
 						<?php $count = 1 ?>
 						@foreach ($Vnas_records as $Vnas_record)
 						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
-							<td><a name="{{'idLink' . $count}}" href="{{ action( $nextCntl , [$Vnas_record->id]) }}">{{ $Vnas_record->id }}</a></td>
+							<td>{{ $Vnas_record->id }}</td>
 							<td>{{ $Vnas_record->ap_title }}</td>
 							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date }}</td>
 							<td name="{{'timeText' . $count}}">{{ $Vnas_record->ap_time }}</td>
