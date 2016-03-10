@@ -5,6 +5,9 @@ import Repo.CaregiverScheduleDetailsScreen;
 import Repo.HomeScreen;
 import Repo.LoginScreen;
 import Repo.MyScheduleScreen;
+import Repo.ToolbarScreen;
+import Repo.WelcomeScreen;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,10 +33,10 @@ public class ScheduleTests extends BaseTestCase {
 			assertEquals(CaregiverScheduleDetailsScreen.getNameLabel(driver, 1).getText() ,"Joseph Forsythe");
 			
 			//Address
-			assertEquals(CaregiverScheduleDetailsScreen.getAddressLabel(driver, 1).getText() ,"1400 Douglas St. 68179");
+			assertEquals(CaregiverScheduleDetailsScreen.getAddressLabel(driver, 1).getText() ,"1400 Douglas St, 68179");
 			
 			//Patient Phone
-			assertEquals(CaregiverScheduleDetailsScreen.getPhoneLabel(driver, 1).getText() ,"402-555-55555");
+			assertEquals(CaregiverScheduleDetailsScreen.getPhoneLabel(driver, 1).getText() ,"402-555-5555");
 			
 			//Comments
 			assertEquals(CaregiverScheduleDetailsScreen.getCommentsLabel(driver, 1).getText() ,"");
@@ -41,14 +44,22 @@ public class ScheduleTests extends BaseTestCase {
 			//Action - Email
 			String emailHrefValue = CaregiverScheduleDetailsScreen.getEmailButton(driver).getAttribute("href");
 			Pattern emailPattern = Pattern.compile("^.+@.+\\..+$");
-			Matcher emailMatcher = emailPattern.matcher(emailHrefValue.substring(emailHrefValue.indexOf(':') + 1));			
+			//The substring is to remove "mailto:" from the emailHrefValue
+			Matcher emailMatcher = emailPattern.matcher(emailHrefValue.substring(emailHrefValue.indexOf(':') + 1).trim());			
 			assertTrue(emailMatcher.matches());
 						
 			//Action - Call
 			String phoneHrefValue = CaregiverScheduleDetailsScreen.getPhoneButton(driver).getAttribute("href");
 			Pattern phonePattern = Pattern.compile("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
-			Matcher phoneMaterch = phonePattern.matcher(phoneHrefValue.substring(phoneHrefValue.indexOf(':')));
+			//The substring is to remove "tel:" from the emailHrefValue
+			Matcher phoneMaterch = phonePattern.matcher(phoneHrefValue.substring(phoneHrefValue.indexOf(':') + 1).trim());
 			assertTrue(phoneMaterch.matches());
+			
+			driver.navigate().back();
+			assertEquals(MyScheduleScreen.getURL(), driver.getCurrentUrl());
+			
+			ToolbarScreen.getLogoutLink(driver).click();
+			assertEquals(WelcomeScreen.getURL(), driver.getCurrentUrl());
 		}
 	}
 }

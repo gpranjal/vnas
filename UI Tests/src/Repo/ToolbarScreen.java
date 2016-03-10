@@ -17,4 +17,16 @@ public class ToolbarScreen extends BaseScreen {
 	public static WebElement getRegisterLink(WebDriver driver) {
 		return driver.findElement(By.name("registerToolbarLink"));
 	}
+	
+	public static WebElement getLogoutLink(WebDriver driver) {
+		return driver.findElement(By.name("logoutToolbarLink"));
+	}
+	
+	public static WebElement getManageLink(WebDriver driver) {
+		return driver.findElement(By.name("manageToolbarLink"));
+	}
+	
+	public static WebElement getEditInformationLink(WebDriver driver) {
+		return driver.findElement(By.name("EditInformationToolbarLink"));
+	}
 }

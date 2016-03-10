@@ -34,7 +34,7 @@ public class CaregiverScheduleDetailsScreen {
 	}
 	
 	public static WebElement getPhoneLabel(WebDriver driver, int row) {
-		return driver.findElement(By.name("phoneText" + row));
+		return driver.findElement(By.name("PhoneText" + row));
 	}
 	
 	public static WebElement getCommentsLabel(WebDriver driver, int row) {
