@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use View;
 
 class ManagementController extends Controller {
@@ -146,6 +147,19 @@ class ManagementController extends Controller {
 		return $names;
 
 
+	}
+
+	public function role_id($id){
+		if(Auth::User()->role != 'admin') return view('home');
+		$role_id = User::find($id);
+		return view('admin.role',compact('role_id'));
+}
+	public function role_update($id){
+
+		$role_id = User::find($id);
+		$role_id->patient_role = $_POST['patient_search'];
+		$role_id->save();
+		return Redirect('manage');
 	}
 
 

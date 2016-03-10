@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('content')
-
+<div class="row">
+    <button class="btn btn-primary" role="button" >Patient</button>
+</div>
 <table class="table">
     <tr>
         <th>Name</th>
@@ -9,6 +11,7 @@
         <th>Reset</th>
         <th>Unlock</th>
         <th>Remove</th>
+        <th>Role</th>
     </tr>
 
     <?php $count = 1 ?>
