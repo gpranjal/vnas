@@ -20,10 +20,30 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsCaregiverUser(driver);
 			assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
 			
+			//Schedule Screen
 			HomeScreen.getMyScheduleButton(driver).click();
 			assertEquals(MyScheduleScreen.getURL(), driver.getCurrentUrl());
 			
-			MyScheduleScreen.getIdLink(driver, 1).click();
+			//ID
+			assertEquals(MyScheduleScreen.getIdText(driver, row), "1");
+			
+			//Title
+			assertEquals(MyScheduleScreen.getTitleText(driver, row), "Routine Visit");
+			
+			//Date
+			assertEquals(MyScheduleScreen.getDateText(driver, row), "04/01/2016");
+			
+			//Time
+			assertEquals(MyScheduleScreen.getTimeText(driver, row), "17:00");
+			
+			//Patient
+			assertEquals(MyScheduleScreen.getNameText(driver, row), "Joseph Forsythe");
+			
+			//LOV
+			assertEquals(MyScheduleScreen.getLOVText(driver, row), "2");
+			
+			//Schedule Details Screen
+			MyScheduleScreen.getRowLink(driver, 1).click();
 			assertEquals(CaregiverScheduleDetailsScreen.getURL() + "/1", driver.getCurrentUrl());
 
 			//Patient Id
@@ -60,7 +80,7 @@ public class ScheduleTests extends BaseTestCase {
 			
 			ToolbarScreen.getUserMenuLink(driver).click();
 			ToolbarScreen.getLogoutLink(driver).click();
-			assertEquals(WelcomeScreen.getURL(), driver.getCurrentUrl());
+			assertEquals(WelcomeScreen.getURL() + "/", driver.getCurrentUrl());
 		}
 	}
 }

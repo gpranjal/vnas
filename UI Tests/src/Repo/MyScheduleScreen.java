@@ -13,12 +13,16 @@ public class MyScheduleScreen extends BaseScreen{
 		return "/vnas_records";
 	}
 	
-	public static WebElement getIdLink(WebDriver driver, int row) {
-		return driver.findElement(By.name("idLink" + row));
+	public static WebElement getRowLink(WebDriver driver, int row) {
+		return driver.findElement(By.name("rowLink" + row));
 	}
 	
-	public static WebElement getTitleLink(WebDriver driver, int row) {
-		return driver.findElement(By.name("titleLink" + row));
+	public static WebElement getIdText(WebDriver driver, int row) {
+		return driver.findElement(By.name("idText" + row));
+	}
+	
+	public static WebElement getTitleText(WebDriver driver, int row) {
+		return driver.findElement(By.name("titleText" + row));
 	}
 	
 	public static WebElement getDateText(WebDriver driver, int row) {
@@ -29,7 +33,7 @@ public class MyScheduleScreen extends BaseScreen{
 		return driver.findElement(By.name("timeText" + row));
 	}
 	
-	public static WebElement getCaregiverText(WebDriver driver, int row) {
+	public static WebElement getNameText(WebDriver driver, int row) {
 		return driver.findElement(By.name("nameText" + row));
 	}
 	
