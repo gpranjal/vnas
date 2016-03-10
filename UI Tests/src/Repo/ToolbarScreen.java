@@ -29,4 +29,8 @@ public class ToolbarScreen extends BaseScreen {
 	public static WebElement getEditInformationLink(WebDriver driver) {
 		return driver.findElement(By.name("EditInformationToolbarLink"));
 	}
+	
+	public static WebElement getUserMenuLink(WebDriver driver) {
+		return driver.findElement(By.name("userMenuToolbarLink"));
+	}
 }

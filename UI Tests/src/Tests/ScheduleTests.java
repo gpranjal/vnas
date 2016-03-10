@@ -58,6 +58,7 @@ public class ScheduleTests extends BaseTestCase {
 			driver.navigate().back();
 			assertEquals(MyScheduleScreen.getURL(), driver.getCurrentUrl());
 			
+			ToolbarScreen.getUserMenuLink(driver).click();
 			ToolbarScreen.getLogoutLink(driver).click();
 			assertEquals(WelcomeScreen.getURL(), driver.getCurrentUrl());
 		}
