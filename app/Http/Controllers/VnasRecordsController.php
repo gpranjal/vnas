@@ -86,10 +86,15 @@ class VnasRecordsController extends Controller {
         $isCareGiver    = Auth::user()->caregiver_role;
         $Vnas_records   = null;
 
-        $Vnas_records = vnas_record::where( 'id' , '=' , $id )
-                                        ->where( 'patient_id' , '=' , $isPatient )
+        $myPatietCrit = ['id' => $id, 'patient_id' => $isPatient];
+        $myCaregiverCrit = ['id' => $id, 'caregiver_id' => $isCareGiver];
+
+        $Vnas_records = vnas_record::where( $myPatietCrit )
+                                        ->orwhere( $myCaregiverCrit )
                                         ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
-        return view('vnas_records.multirolesch', compact('Vnas_records'));
+        
+        // Need to check the roles from the ORM query and return the appropriate view.
+        return view('vnas_records.sch', compact('Vnas_records'));
     }
 
 
