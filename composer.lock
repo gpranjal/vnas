@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ef11e525fb27a3d5d5cce8b991046f5",
+    "hash": "7ff8d01b7db4f1de70cfa319d555e88a",
     "content-hash": "1708383976a0132d79eb73b78adfc1d6",
     "packages": [
         {
@@ -559,21 +559,21 @@
         },
         {
             "name": "jenssegers/agent",
-            "version": "v2.3.2",
+            "version": "v2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/agent.git",
-                "reference": "5713303d76c4707333ace41bb343261693de1cb9"
+                "reference": "3068d6372a4677af84014a53d5a212cfa74492c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/agent/zipball/5713303d76c4707333ace41bb343261693de1cb9",
-                "reference": "5713303d76c4707333ace41bb343261693de1cb9",
+                "url": "https://api.github.com/repos/jenssegers/agent/zipball/3068d6372a4677af84014a53d5a212cfa74492c1",
+                "reference": "3068d6372a4677af84014a53d5a212cfa74492c1",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^4.0|^5.0",
-                "mobiledetect/mobiledetectlib": "^2.0",
+                "mobiledetect/mobiledetectlib": "^2.7.6",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -612,7 +612,7 @@
                 "user agent",
                 "useragent"
             ],
-            "time": "2016-03-02 14:40:19"
+            "time": "2016-03-08 13:47:22"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -1988,7 +1988,7 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
@@ -2044,7 +2044,7 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",

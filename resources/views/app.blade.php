@@ -79,15 +79,15 @@
 								<li><a name="registerToolbarLink" href="{{ url('/auth/register') }}">Register</a></li>
 							@else
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }}
+									<a name="userMenuToolbarLink" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }}
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
+										<li><a name="EditInformationToolbarLink" href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
 										@if(Auth::user()->role == 'admin')
-											<li><a href="{{ url('/manage') }}">Manage</a></li>
+											<li><a name="manageToolbarLink" href="{{ url('/manage') }}">Manage</a></li>
 										@endif
-										<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+										<li><a name="logoutToolbarLink" href="{{ url('/auth/logout') }}">Logout</a></li>
 									</ul>
 								</li>
 							@endif
