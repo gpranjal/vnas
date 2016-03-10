@@ -22,22 +22,22 @@ public class PatientScheduleDetailsScreen {
 	}
 	
 	public static WebElement getIdLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("idText" + row));
+	}
+	
+	public static WebElement getTitleLabel(WebDriver driver, int row) {
 		return driver.findElement(By.name("titleText" + row));
 	}
 	
 	public static WebElement getNameLabel(WebDriver driver, int row) {
-		return driver.findElement(By.name("caregiverId" + row));
-	}
-	
-	public static WebElement getAddressLabel(WebDriver driver, int row) {
-		return driver.findElement(By.name("caregiverName" + row));
+		return driver.findElement(By.name("nameText" + row));
 	}
 	
 	public static WebElement getPhoneLabel(WebDriver driver, int row) {
-		return driver.findElement(By.name("caregiverPhone" + row));
+		return driver.findElement(By.name("phoneText" + row));
 	}
 	
-	public static WebElement getCommentsLabel(WebDriver driver, int row) {
-		return driver.findElement(By.name("caregiverModbile" + row));
+	public static WebElement getMobileLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("mobilePhoneText" + row));
 	}
 }

@@ -7,7 +7,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading"> 
-					<h4>My Schedule</h4>
+					<h4>My Multi-role Schedule</h4>
 				</div>
 				<br />
 
@@ -25,6 +25,7 @@
 							<th>Title</th>
 							<th>Date</th>
 							<th>Time</th>
+							<th>Caregiver</th>
 							<th>Patient</th>
 							<th>LOV</th>
 						</tr>
@@ -33,11 +34,14 @@
 					<tbody>
 						<?php $count = 1 ?>
 						@foreach ($Vnas_records as $Vnas_record)
-						<tr name="{{'rowLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
-							<td name="{{'idText' . $count}}">{{ $Vnas_record->id }}</td>
-							<td name="{{'titleText' . $count}}">{{ $Vnas_record->ap_title }}</td>
+
+						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
+							<td>{{ $Vnas_record->id }}</td>
+							<td>{{ $Vnas_record->ap_title }}</td>
 							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/Y") }}</td>
-							<td name="{{'timeText' . $count}}">{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+							<td name="{{'timeText' . $count}}">
+								{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
 							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
 						</tr>
