@@ -72,6 +72,9 @@ Route::post('appointments', 'AppointmentsController@store');
 Route::get('appointments/{id}', 'AppointmentsController@show');
 
 Route::get('/manage' , 'ManagementController@index');
+Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
+Route::get('/manage/caregiver' , 'ManagementController@manage_caregiver_view');
+Route::get('/manage/unassigned' , 'ManagementController@manage_unassigned_view');
 Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
 Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');

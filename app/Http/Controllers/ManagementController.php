@@ -162,5 +162,24 @@ class ManagementController extends Controller {
 		return Redirect('manage');
 	}
 
+	public function manage_patient_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where patient_role !=""');
 
+		return view('admin.management' , compact('users'));
+	}
+
+	public function manage_caregiver_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where caregiver_role !=""');
+
+		return view('admin.management' , compact('users'));
+	}
+
+	public function manage_unassigned_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where caregiver_role ="" AND patient_role = ""');
+
+		return view('admin.management' , compact('users'));
+	}
 }

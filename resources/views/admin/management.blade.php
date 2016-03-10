@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="row">
-    <button class="btn btn-primary" role="button" >Patient</button>
+    <a class="btn btn-primary" role="button" href="{{url('manage/patient')}}" >Patient</a>
+    <a class="btn btn-primary" role="button" href="{{url('manage/caregiver')}}" >Caregiver</a>
+    <a class="btn btn-primary" role="button" href="{{url('manage/unassigned')}}" >Unassigned</a>
 </div>
 <table class="table">
     <tr>
