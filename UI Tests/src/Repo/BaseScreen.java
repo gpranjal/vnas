@@ -1,9 +1,5 @@
 package Repo;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 class BaseScreen {
 	//Possible Values: { Test | Dev }
 	public static String Env = "Dev";

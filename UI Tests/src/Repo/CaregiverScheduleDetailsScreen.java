@@ -21,23 +21,23 @@ public class CaregiverScheduleDetailsScreen {
 		return driver.findElement(By.name("callButton"));
 	}
 	
-	public static WebElement getIdLabel(WebDriver driver) {
-		return driver.findElement(By.name("idText1"));
+	public static WebElement getIdLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("idText" + row));
 	}
 	
-	public static WebElement getNameLabel(WebDriver driver) {
-		return driver.findElement(By.name("nameText1"));
+	public static WebElement getNameLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("nameText" + row));
 	}
 	
-	public static WebElement getAddressLabel(WebDriver driver) {
-		return driver.findElement(By.name("addressText1"));
+	public static WebElement getAddressLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("addressText" + row));
 	}
 	
-	public static WebElement getPhoneLabel(WebDriver driver) {
-		return driver.findElement(By.name("phoneText1"));
+	public static WebElement getPhoneLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("PhoneText" + row));
 	}
 	
-	public static WebElement getCommentsLabel(WebDriver driver) {
-		return driver.findElement(By.name("commentsText1"));
+	public static WebElement getCommentsLabel(WebDriver driver, int row) {
+		return driver.findElement(By.name("commentsText" + row));
 	}
 }
