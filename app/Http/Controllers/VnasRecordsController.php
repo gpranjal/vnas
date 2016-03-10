@@ -94,7 +94,16 @@ class VnasRecordsController extends Controller {
                                         ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
         
         // Need to check the roles from the ORM query and return the appropriate view.
-        return view('vnas_records.sch', compact('Vnas_records'));
+        if( $isPatient == $Vnas_records[0]->patient_id )
+        {
+            $myView         = "vnas_records.patientsch";
+        }
+        else if( $isCareGiver == $Vnas_records[0]->caregiver_id )
+        {
+            $myView         = "vnas_records.sch";
+        }
+
+        return view( $myView , compact('Vnas_records'));
     }
 
 

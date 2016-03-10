@@ -36,7 +36,7 @@
 							<td>{{ $Vnas_record->id }}</td>
 							<td>{{ $Vnas_record->ap_title }}</td>
 							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
-							<td name="{{'timeText' . $count}}">{{ date( 'H:m' , strtotime( $Vnas_record->ap_date->format("m/d/Y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+							<td name="{{'timeText' . $count}}">{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/Y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
 							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
 						</tr>
