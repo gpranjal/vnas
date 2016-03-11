@@ -33,15 +33,13 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
-							<tr>
-								<td>
-									<div class="text-bold">{!! $faq->question !!}</div>
-									<br>
-									{!! $faq->answer !!}
-								</td>
-								<td class="text-center">{!! $faq->draft_flag_icon !!}</td>
+							<tr name="{{'row' . $count}}" class="whole-row-click click_row">
+								<td name="{{'ques' . $count}}">{!! $faq->question !!}</td>
+								<td name="{{'ans' . $count}}">{!! $faq->answer !!}</td>
 							</tr>
+							<?php $count=$count+1 ?>
 							@endforeach
 						</tbody>
 					</table>
