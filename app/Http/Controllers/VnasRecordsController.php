@@ -10,6 +10,7 @@ use DB;
 use View;
 use Auth;
 use Carbon\Carbon;
+use Mail;
 
 class VnasRecordsController extends Controller {
 
@@ -147,5 +148,16 @@ class VnasRecordsController extends Controller {
 
         return redirect('vnas_records');
 
+    }
+
+    public function testmail(Request $request)
+    {
+        $user = Auth::user()->id;
+        $data = "This is mydata";
+
+        Mail::send('welcome', ['user' => $user], function($message)
+        {
+            $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
+        });
     }
 }

@@ -59,17 +59,13 @@ Route::post('vnas_records', 'VnasRecordsController@store');
 Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
 Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
+Route::get('/testmail' , 'VnasRecordsController@testmail');
 
 
 Route::get('vnas_users', 'VnasUsersController@index');
 Route::get('vnas_users/create', 'VnasUsersController@create');
 Route::post('vnas_users', 'VnasUsersController@store');
 Route::get('vnas_users/{id}', 'VnasUsersController@show');
-
-Route::get('appointments', 'AppointmentsController@index');
-Route::get('appointments/create', 'AppointmentsController@create');
-Route::post('appointments', 'AppointmentsController@store');
-Route::get('appointments/{id}', 'AppointmentsController@show');
 
 Route::get('/manage' , 'ManagementController@index');
 Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
@@ -88,3 +84,5 @@ Route::get('/role/{id}' , 'ManagementController@role_id');
 Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
 Route::get('/search_patient' , 'ManagementController@search_patient');
 Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
+
+
