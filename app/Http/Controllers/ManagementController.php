@@ -143,7 +143,7 @@ class ManagementController extends Controller {
 	}
 
 	public function search_patient(){
-		$names = DB::table('vnas_users')->lists('name','patient_id');
+		$names = DB::table('vnas_records')->lists('patient_fname','patient_id');
 		return $names;
 
 
