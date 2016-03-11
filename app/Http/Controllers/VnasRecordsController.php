@@ -157,7 +157,7 @@ class VnasRecordsController extends Controller {
 
         Mail::send('welcome', ['user' => $user], function($message)
         {
-            $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
+            $message->to('zheath@unomaha.edu', 'John Smith')->subject('Testing!');
         });
     }
 }
