@@ -15,10 +15,26 @@
     <link rel="stylesheet" href="<?php echo asset('css/custom.css')?>" type="text/css">
 
 	<!-- Scripts -->
-	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+-    	window.onload = function(){
+-						//Get submit button
+-						var submitbutton = document.getElementById("tfq");
+-						//Add listener to submit button
+-						if(submitbutton.addEventListener){
+-							submitbutton.addEventListener("click", function() {
+-								if (submitbutton.value == 'Search our website'){//Customize this text string to whatever you want
+-									submitbutton.value = '';
+Add a comment to this line
+-								}
+-							});
+-						}
+-					}
+-    </script>-->
 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
