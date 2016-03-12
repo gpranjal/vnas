@@ -5,6 +5,10 @@
     .search{
         background-position: -160px -112px;
     }
+    .ui-helper-hidden-accessible{
+        visibility: hidden;
+        display: none;
+    }
 </style>
 
 <label>{{$role_id->name}}</label>
@@ -17,7 +21,7 @@
 
         </tr>
         <tr>
-            <td>Caregiver ID</td>
+            <td>Caregiver ID: {{$role_id->caregiver_role}}</td>
             <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_search" name="caregiver_search"></td>
 
         </tr>
@@ -57,6 +61,28 @@
 
 //
                   }})
+
+          $( "#caregiver_search" ).autocomplete({
+              source: function (request, response) {
+                  $.getJSON("/search_caregiver", function (data) {
+                      response($.map(data, function (value, key) {
+                          return {
+                              label: value +", id: "+ key,
+                              value: key
+                          };
+                      }));
+                  });
+              },
+              minLength: 2,
+              delay: 500,
+              select: function(event, ui) {
+
+
+
+
+
+//
+              }})
       });
   </script>
 

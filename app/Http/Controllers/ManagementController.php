@@ -148,6 +148,12 @@ class ManagementController extends Controller {
 
 
 	}
+	public function search_caregiver(){
+		$names = DB::table('vnas_records')->lists('patient_fname','caregiver_id');
+		return $names;
+
+
+	}
 
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
@@ -158,6 +164,7 @@ class ManagementController extends Controller {
 
 		$role_id = User::find($id);
 		$role_id->patient_role = $_POST['patient_search'];
+		$role_id->caregiver_role = $_POST['caregiver_search'];
 		$role_id->save();
 		return Redirect('manage');
 	}
