@@ -21,7 +21,7 @@
 					<div id="tfheader">
 						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/faq/search') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input type="submit" value=">>" class="tfbutton2">
+							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input name="SearchSubmit" type="submit" value=">>" class="tfbutton2">
 						</form>
 						<div class="tfclear"></div>
 					</div>
