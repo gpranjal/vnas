@@ -35,15 +35,16 @@
 						<tbody>
 						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
-							<tr id="{{'ques' . $count}}" class="click_row">
-								<td name="question">{!! $faq->question !!}</td>
-							</tr>
-							<tr style="display: none">
-								<td name="answer" id="{{'ans' . $count}}">
-									{!! $faq->answer !!}
-								</td>
-							</tr>
-
+								<tr name="{{'row' . $count}}" myCnt="{{$count}}" class="whole-row-click click_row">
+									<td>
+										<div id="{{'ques' . $count}}">
+											{!! $faq->question !!}
+										</div>
+										<div id="{{'ans' . $count}}" style="display: none;">
+											{!! $faq->answer !!}
+										</div>
+									</td>
+								</tr>
 							<?php $count=$count+1 ?>
 							@endforeach
 						</tbody>
@@ -58,10 +59,16 @@
 	</div>
 </div>
 
-<script>
-	$( "tr" ).click(function() {
-		$(this).closest('tr').next('tr').slideToggle("slow");
+<script language="javascript">
+	jQuery(document).ready(function($) {
+		$(".whole-row-click").click(function() {
+			//console.log( $( this).attr( "myCnt") );
+			$( "#ans"+  $( this).attr( "myCnt") ).slideToggle( "slow", function() {
+			// Animation complete.
+			});
+		});
 	});
 </script>
+
 
 @endsection
