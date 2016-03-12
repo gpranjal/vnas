@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <script>
 
@@ -69,12 +69,12 @@
     <table class="table" style="width:100%">
         <tr>
             <td>Patient ID: {{$role_id->patient_role}}</td>
-            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_search" name="patient_search"></td>
+            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_search" name="patient_search" value="{{$role_id->patient_role}}"></td>
 
         </tr>
         <tr>
             <td>Caregiver ID: {{$role_id->caregiver_role}}</td>
-            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_search" name="caregiver_search"></td>
+            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_search" name="caregiver_search" value="{{$role_id->caregiver_role}}"></td>
 
         </tr>
     </table>
