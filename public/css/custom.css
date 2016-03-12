@@ -267,6 +267,7 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -4078,8 +4079,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom-left-radius: 0;
 }
 .navbar-btn {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .navbar-btn.btn-sm {
   margin-top: 10px;
