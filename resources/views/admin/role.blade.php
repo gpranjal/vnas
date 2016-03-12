@@ -1,6 +1,58 @@
+@extends('app')
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+@section('content')
+
+
+    <script>
+
+
+        $(function() {
+            $( "#patient_search" ).autocomplete({
+                source: function (request, response) {
+                    $.getJSON("/search_patient", function (data) {
+                        response($.map(data, function (value, key) {
+                            return {
+                                label: value +", id: "+ key,
+                                value: key
+                            };
+                        }));
+                    });
+                },
+                minLength: 2,
+                delay: 500,
+                select: function(event, ui) {
+
+
+
+
+
+//
+                }})
+
+            $( "#caregiver_search" ).autocomplete({
+                source: function (request, response) {
+                    $.getJSON("/search_caregiver", function (data) {
+                        response($.map(data, function (value, key) {
+                            return {
+                                label: value +", id: "+ key,
+                                value: key
+                            };
+                        }));
+                    });
+                },
+                minLength: 2,
+                delay: 500,
+                select: function(event, ui) {
+
+
+
+
+
+//
+                }})
+        });
+    </script>
+
 <style>
     .search{
         background-position: -160px -112px;
@@ -36,53 +88,5 @@
 
     {{--</div>--}}
 
-  <script>
 
-
-      $(function() {
-          $( "#patient_search" ).autocomplete({
-                      source: function (request, response) {
-                          $.getJSON("/search_patient", function (data) {
-                              response($.map(data, function (value, key) {
-                                  return {
-                                      label: value +", id: "+ key,
-                                      value: key
-                                  };
-                              }));
-                          });
-                      },
-              minLength: 2,
-              delay: 500,
-                  select: function(event, ui) {
-
-
-
-
-
-//
-                  }})
-
-          $( "#caregiver_search" ).autocomplete({
-              source: function (request, response) {
-                  $.getJSON("/search_caregiver", function (data) {
-                      response($.map(data, function (value, key) {
-                          return {
-                              label: value +", id: "+ key,
-                              value: key
-                          };
-                      }));
-                  });
-              },
-              minLength: 2,
-              delay: 500,
-              select: function(event, ui) {
-
-
-
-
-
-//
-              }})
-      });
-  </script>
-
+@endsection

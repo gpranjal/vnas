@@ -163,8 +163,8 @@ class ManagementController extends Controller {
 	public function role_update($id){
 
 		$role_id = User::find($id);
-		$role_id->patient_role = $_POST['patient_search'];
-		$role_id->caregiver_role = $_POST['caregiver_search'];
+		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
+		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
 		$role_id->save();
 		return Redirect('manage');
 	}
