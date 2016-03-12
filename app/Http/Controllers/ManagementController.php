@@ -143,7 +143,15 @@ class ManagementController extends Controller {
 	}
 
 	public function search_patient(){
+		if(Auth::User()->role != 'admin') return view('home');
 		$names = DB::table('vnas_records')->lists('patient_fname','patient_id');
+		return $names;
+
+
+	}
+	public function search_caregiver(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$names = DB::table('vnas_records')->lists('patient_fname','caregiver_id');
 		return $names;
 
 
@@ -155,9 +163,10 @@ class ManagementController extends Controller {
 		return view('admin.role',compact('role_id'));
 }
 	public function role_update($id){
-
+		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-		$role_id->patient_role = $_POST['patient_search'];
+		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
+		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
 		$role_id->save();
 		return Redirect('manage');
 	}
