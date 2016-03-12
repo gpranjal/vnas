@@ -36,10 +36,10 @@
 						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
 							<tr id="{{'ques' . $count}}" class="click_row">
-								<td>{!! $faq->question !!}</td>
+								<td name=question1>{!! $faq->question !!}</td>
 							</tr>
 							<tr style="display: none">
-								<td id="{{'ans' . $count}}">
+								<td name=answer1 id="{{'ans' . $count}}">
 									{!! $faq->answer !!}
 								</td>
 							</tr>
