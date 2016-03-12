@@ -33,15 +33,18 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
-							<tr>
-								<td>
-									<div class="text-bold">{!! $faq->question !!}</div>
-									<br>
+							<tr id="{{'ques' . $count}}" class="click_row">
+								<td>{!! $faq->question !!}</td>
+							</tr>
+							<tr style="display: none">
+								<td id="{{'ans' . $count}}">
 									{!! $faq->answer !!}
 								</td>
-								<td class="text-center">{!! $faq->draft_flag_icon !!}</td>
 							</tr>
+
+							<?php $count=$count+1 ?>
 							@endforeach
 						</tbody>
 					</table>
@@ -54,4 +57,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$( "tr" ).click(function() {
+		$(this).closest('tr').next('tr').slideToggle("slow");
+	});
+</script>
+
 @endsection

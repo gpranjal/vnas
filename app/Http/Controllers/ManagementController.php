@@ -3,10 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\vnas_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use View;
 
 class ManagementController extends Controller {
@@ -136,5 +138,55 @@ class ManagementController extends Controller {
 		//
 	}
 
+	public function role(){
+		return view('admin.role');
+	}
 
+	public function search_patient(){
+		$names = DB::table('vnas_records')->lists('patient_fname','patient_id');
+		return $names;
+
+
+	}
+	public function search_caregiver(){
+		$names = DB::table('vnas_records')->lists('patient_fname','caregiver_id');
+		return $names;
+
+
+	}
+
+	public function role_id($id){
+		if(Auth::User()->role != 'admin') return view('home');
+		$role_id = User::find($id);
+		return view('admin.role',compact('role_id'));
+}
+	public function role_update($id){
+
+		$role_id = User::find($id);
+		$role_id->patient_role = $_POST['patient_search'];
+		$role_id->caregiver_role = $_POST['caregiver_search'];
+		$role_id->save();
+		return Redirect('manage');
+	}
+
+	public function manage_patient_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where patient_role !=""');
+
+		return view('admin.management' , compact('users'));
+	}
+
+	public function manage_caregiver_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where caregiver_role !=""');
+
+		return view('admin.management' , compact('users'));
+	}
+
+	public function manage_unassigned_view(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where caregiver_role ="" AND patient_role = ""');
+
+		return view('admin.management' , compact('users'));
+	}
 }
