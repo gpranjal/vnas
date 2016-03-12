@@ -51,13 +51,16 @@
 		<div class="row" style="margin: 0px; padding: 0px;">
 			<nav class="navbar navbar-default" style="border: 0px solid transparent">
 				@if($agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ))
-					<button type="button" class="navbar-btn btn-secondary-outline pull-left" aria-label="Left Align" style="margin-left: 15px">
-  						<a href="{{ URL::previous() }}">
-  							<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-  						</a>
-					</button>
+					<a class="navbar-btn btn-secondary-outline pull-left" href="{{ URL::previous() }}" role="button" aria-label="Left Align" style="margin-left: 15px">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					</a>
+
+					<a class="navbar-btn btn-secondary-outline pull-left" href="{{ url('home') }}" role="button" aria-label="Left Align" style="margin-left: 15px">
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					</a>
 				@endif
-				<div class="container-fluid">
+
+					<div class="container-fluid">
 					 <div class="navbar-header" style="margin: 0px; padding: 0px;">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 						>

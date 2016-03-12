@@ -60,7 +60,7 @@
 
 <script>
 	$( "tr" ).click(function() {
-		$(this).closest('tr').next('tr').slideToggle( "slow" );
+		$(this).closest('tr').next('tr').slideToggle("slow");
 	});
 </script>
 
