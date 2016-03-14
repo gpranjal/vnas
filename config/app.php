@@ -149,7 +149,8 @@ return [
     	'Sukohi\Cahen\CahenServiceProvider', // FAQ
     	'Sukohi\Maven\MavenServiceProvider', // FAQ
     	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
-    	'Jenssegers\Agent\AgentServiceProvider' // Browser Detection
+    	'Jenssegers\Agent\AgentServiceProvider', // Browser Detection
+    	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider'//User tracking
 
 	],
 
@@ -205,7 +206,8 @@ return [
     	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen', //FAQ
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
-    	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent' // Browser Detection
+    	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent', // Browser Detection
+    	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade' // User tracking
 
 
 
