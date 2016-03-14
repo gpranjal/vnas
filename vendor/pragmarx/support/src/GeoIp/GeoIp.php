@@ -35,7 +35,7 @@ class GeoIp
     }
 
     private function getGeoIpInstance() {
-        if (class_exists(GeoIpReader::class))
+        if (class_exists('GeoIpReader'))
         {
             return new GeoIp2();
         }
