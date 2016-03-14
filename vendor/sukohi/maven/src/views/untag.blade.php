@@ -21,7 +21,7 @@
 					<div id="tfheader">
 						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/faq/search') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input type="submit" value=">>" class="tfbutton2">
+							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input name="SearchSubmit" type="submit" value=">>" class="tfbutton2">
 						</form>
 						<div class="tfclear"></div>
 					</div>
@@ -35,15 +35,16 @@
 						<tbody>
 						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
-							<tr id="{{'ques' . $count}}" class="click_row">
-								<td>{!! $faq->question !!}</td>
-							</tr>
-							<tr style="display: none">
-								<td id="{{'ans' . $count}}">
-									{!! $faq->answer !!}
-								</td>
-							</tr>
-
+								<tr name="{{'row' . $count}}" myCnt="{{$count}}" class="whole-row-click click_row">
+									<td>
+										<div name="{{'ques' . $count}}" id="{{'ques' . $count}}">
+											{!! $faq->question !!}
+										</div>
+										<div name="{{'ans' . $count}}" id="{{'ans' . $count}}" style="display: none;">
+											{!! $faq->answer !!}
+										</div>
+									</td>
+								</tr>
 							<?php $count=$count+1 ?>
 							@endforeach
 						</tbody>
@@ -58,10 +59,16 @@
 	</div>
 </div>
 
-<script>
-	$( "tr" ).click(function() {
-		$(this).closest('tr').next('tr').slideToggle("slow");
+<script language="javascript">
+	jQuery(document).ready(function($) {
+		$(".whole-row-click").click(function() {
+			//console.log( $( this).attr( "myCnt") );
+			$( "#ans"+  $( this).attr( "myCnt") ).slideToggle( "slow", function() {
+			// Animation complete.
+			});
+		});
 	});
 </script>
+
 
 @endsection

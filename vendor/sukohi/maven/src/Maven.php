@@ -135,16 +135,17 @@ class Maven {
 		{
 			$isCareGiver    = Auth::user()->caregiver_role;
         	$isPatient      = Auth::user()->patient_role;
+
+			if( $isCareGiver != "" )
+			{
+				 $my_role = "caregiver";       	
+			}
+			else if( $isPatient != "" )
+			{
+				 $my_role = "patient"; 
+			}
 		}
 
-        if( $isCareGiver != "" )
-        {
-			 $my_role = "caregiver";       	
-        }
-        else if( $isPatient != "" )
-        {
-        	 $my_role = "patient"; 
-        }
 
 		$faqs = Faq::orderBy('sort', 'ASC')
 					->where(function($q)  use ($my_role){
@@ -169,19 +170,24 @@ class Maven {
 	public function search($keyword,$limit = 30) {
 	
 		$message = '';
+		$isCareGiver    = "";
+		$isPatient    	= ""; 
+		$my_role   		= "";
 
-		$isCareGiver    = Auth::user()->caregiver_role;
-        $isPatient      = Auth::user()->patient_role;
-        $my_role   = "";
+		if( Auth::check() )
+		{
+			$isCareGiver    = Auth::user()->caregiver_role;
+	        $isPatient      = Auth::user()->patient_role;
 
-        if( $isCareGiver != "" )
-        {
-			 $my_role = "caregiver";       	
-        }
-        else
-        {
-        	 $my_role = "patient"; 
-        }
+	        if( $isCareGiver != "" )
+	        {
+				 $my_role = "caregiver";       	
+	        }
+	        else
+	        {
+	        	 $my_role = "patient"; 
+	        }
+	    }
 
 		$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
 			->where(function($q) use ($my_role){
