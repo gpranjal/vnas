@@ -21,7 +21,6 @@
 				<table class="table table-hover text-left">
 					<thead>
 						<tr>
-							<th>ID</th>
 							<th>Title</th>
 							<th>Date</th>
 							<th>Time</th>
@@ -36,14 +35,12 @@
 						@foreach ($Vnas_records as $Vnas_record)
 
 						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
-							<td>{{ $Vnas_record->id }}</td>
 							<td>{{ $Vnas_record->ap_title }}</td>
-							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/Y") }}</td>
+							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
 							<td name="{{'timeText' . $count}}">
 								{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
-							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
 						</tr>
 						<?php $count=$count+1 ?>
 						@endforeach

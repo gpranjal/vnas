@@ -85,4 +85,5 @@ Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
 Route::get('/search_patient' , 'ManagementController@search_patient');
 Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
 
+Route::get('/admin' , 'ManagementController@dashboard');
 

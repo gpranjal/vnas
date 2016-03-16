@@ -191,4 +191,11 @@ class ManagementController extends Controller {
 
 		return view('admin.management' , compact('users'));
 	}
+
+	public function dashboard(){
+		if(Auth::User()->role != 'admin') return view('home');
+		$users =  DB::select('select * from users where caregiver_role ="" AND patient_role = ""');
+
+		return view('admin.dashboard' , compact('users'));
+	}
 }
