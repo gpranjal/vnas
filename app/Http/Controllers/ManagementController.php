@@ -197,9 +197,9 @@ class ManagementController extends Controller {
 	public function dashboard(){
 		if(Auth::User()->role != 'admin') return view('home');
 
-		$pageViews = Tracker::pageViews(24);
-		$users = Tracker::users(60 * 24);
-		$errors = Tracker::errors(60 * 24);
+		$pageViews = Tracker::pageViews( 60 * 168 );
+		$users = Tracker::users(60 * 168);
+		$errors = Tracker::errors(60 * 168);
 		//var_dump($pageViews);
 
 		return view('admin.dashboard' , compact('pageViews','users','errors'));

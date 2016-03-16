@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{ count($users) }}</div>
-                        <div>Registered Users!</div>
+                        <div>Users logged in the last week!</div>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{ count($errors) }}</div>
-                        <div>Errors Logged!</div>
+                        <div>Errors logged in the last week!</div>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-line-chart-o fa-fw"></i> Count of User Visits
+                <i class="fa fa-line-chart-o fa-fw"></i> Page Views for the Last Week
                 <!--<div class="pull-right">
                     <div class="btn-group">
 
@@ -98,7 +98,8 @@
                             ],
                             xkey: 'y',
                             ykeys: ['a'],
-                            labels: ['Series a']
+                            labels: ['Page views'],
+                            xLabels: ['day']
                         });
 
                         console.log( "After graph!" );
