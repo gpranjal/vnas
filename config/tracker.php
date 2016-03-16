@@ -183,7 +183,7 @@ return [
 	/**
 	 * Log errors and exceptions?
 	 */
-	'log_exceptions' => false,
+	'log_exceptions' => true,
 
 	/**
 	 * A cookie may be created on your visitor device, so you can have information

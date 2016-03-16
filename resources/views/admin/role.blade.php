@@ -1,7 +1,8 @@
-@extends('app')
+@extends('admin')
 
 @section('content')
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
 
     <script>
 

@@ -68,7 +68,7 @@ Add a comment to this line
 					</a>
 				@endif
 
-					<div class="container-fluid">
+				<div class="container-fluid">
 					 <div class="navbar-header" style="margin: 0px; padding: 0px;">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 						>
@@ -96,7 +96,7 @@ Add a comment to this line
 									<ul class="dropdown-menu" role="menu">
 										<li><a name="EditInformationToolbarLink" href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
 										@if(Auth::user()->role == 'admin')
-											<li><a name="manageToolbarLink" href="{{ url('/manage') }}">Manage</a></li>
+											<li><a name="manageToolbarLink" href="{{ url('/admin') }}">Admin Panel</a></li>
 										@endif
 										<li><a name="logoutToolbarLink" href="{{ url('/auth/logout') }}">Logout</a></li>
 									</ul>
