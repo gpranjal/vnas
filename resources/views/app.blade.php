@@ -95,7 +95,7 @@ Add a comment to this line
 									</a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a name="EditInformationToolbarLink" href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
-										@if(Auth::user()->role == 'admin')
+										@if(Auth::user()->role == 'admin' && !$agent->isMobile())
 											<li><a name="manageToolbarLink" href="{{ url('/admin') }}">Admin Panel</a></li>
 										@endif
 										<li><a name="logoutToolbarLink" href="{{ url('/auth/logout') }}">Logout</a></li>
