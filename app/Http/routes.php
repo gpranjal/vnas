@@ -31,63 +31,63 @@ Route::controllers([
 Route::group(['middleware' => ['auth' , 'timeout']], function()
 {
 
-		Route::get('home', 'HomeController@index');
+	Route::get('home', 'HomeController@index');
 
-		Route::get( 'map' , 'MapController@index' );
-		Route::get('/map' , 'MapController@index');
-		Route::get('/map/{addr}' , 'MapController@show');
+	Route::get( 'map' , 'MapController@index' );
+	Route::get('/map' , 'MapController@index');
+	Route::get('/map/{addr}' , 'MapController@show');
 
-		Route::match(['get', 'post'], 'manage_faq', function () {
+	Route::match(['get', 'post'], 'manage_faq', function () {
 
-		    return \Maven::manage_view();
+	    return \Maven::manage_view();
 
-		});
+	});
 
-		Route::match(['get', 'post'], 'faq', function () {
+	Route::match(['get', 'post'], 'faq', function () {
 
-		   return \Maven::view();
+	   return \Maven::view();
 
-		});
+	});
 
-		Route::match(['get', 'post'], 'faq/search', function () {
-			$keyword = Input::get('keyword', '');
-		   return \Maven::search($keyword);
+	Route::match(['get', 'post'], 'faq/search', function () {
+		$keyword = Input::get('keyword', '');
+	   return \Maven::search($keyword);
 
-		});
-
-
-		Route::get('vnas_records', 'VnasRecordsController@index');
-		Route::get('vnas_records/create', 'VnasRecordsController@create');
-		Route::post('vnas_records', 'VnasRecordsController@store');
-		Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
-		Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
-		Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
-		Route::get('/testmail' , 'VnasRecordsController@testmail');
+	});
 
 
-		Route::get('vnas_users', 'VnasUsersController@index');
-		Route::get('vnas_users/create', 'VnasUsersController@create');
-		Route::post('vnas_users', 'VnasUsersController@store');
-		Route::get('vnas_users/{id}', 'VnasUsersController@show');
+	Route::get('vnas_records', 'VnasRecordsController@index');
+	Route::get('vnas_records/create', 'VnasRecordsController@create');
+	Route::post('vnas_records', 'VnasRecordsController@index');
+	Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
+	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
+	Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
+	Route::get('/testmail' , 'VnasRecordsController@testmail');
 
-		Route::get('/manage' , 'ManagementController@index');
-		Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
-		Route::get('/manage/caregiver' , 'ManagementController@manage_caregiver_view');
-		Route::get('/manage/unassigned' , 'ManagementController@manage_unassigned_view');
-		Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
-		Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
-		Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
-		Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
-		Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
-		Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
+	Route::get('vnas_users', 'VnasUsersController@index');
+	Route::get('vnas_users/create', 'VnasUsersController@create');
+	Route::post('vnas_users', 'VnasUsersController@store');
+	Route::get('vnas_users/{id}', 'VnasUsersController@show');
 
-		Route::get('/role' , 'ManagementController@role');
-		Route::get('/role/{id}' , 'ManagementController@role_id');
-		Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
-		Route::get('/search_patient' , 'ManagementController@search_patient');
-		Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
+	Route::get('/manage' , 'ManagementController@index');
+	Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
+	Route::get('/manage/caregiver' , 'ManagementController@manage_caregiver_view');
+	Route::get('/manage/unassigned' , 'ManagementController@manage_unassigned_view');
+	Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
-		Route::get('/admin' , 'ManagementController@dashboard');
+	Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
+	Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
+	Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
+	Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
+	Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
+
+	Route::get('/role' , 'ManagementController@role');
+	Route::get('/role/{id}' , 'ManagementController@role_id');
+	Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
+	Route::get('/search_patient' , 'ManagementController@search_patient');
+	Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
+
+	Route::get('/admin' , 'ManagementController@dashboard');
 
 });

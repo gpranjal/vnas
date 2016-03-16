@@ -25,7 +25,6 @@
 							<th>Date</th>
 							<th>Time</th>
 							<th>Caregiver</th>
-							<th>LOV</th>
 						</tr>
 					</thead>
 
@@ -38,7 +37,6 @@
 							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
 							<td name="{{'timeText' . $count}}">{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
 							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
-							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
 						</tr>
 						<?php $count=$count+1 ?>
 						@endforeach

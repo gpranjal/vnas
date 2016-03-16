@@ -24,7 +24,7 @@ class VnasRecordsController extends Controller {
         View::composer('*', 'App\Composers\HomeComposer');
     }
 
-    public function index()
+    public function index($myRole=null)
     {
 
         // Check to see if the user is logged in
@@ -34,6 +34,8 @@ class VnasRecordsController extends Controller {
             $isPatient      = Auth::user()->patient_role;
             $nextCntl       = "";
             $myView         = "";
+            $myCurrRole     = "all";
+            $myRoleList     = ['All','Caregiver','Patient'];
             $Vnas_records   = null;
 
             if( $isCareGiver != "" && $isPatient == "" ) // Is a caregiver only
@@ -66,7 +68,7 @@ class VnasRecordsController extends Controller {
                 $myView = "vnas_records.index";
             }
 
-            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl'));
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList'));
 
 
             //If admin here, go ahead and show the list of patients

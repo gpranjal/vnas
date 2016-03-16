@@ -17,35 +17,48 @@
 				@if( count($Vnas_records) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
+					<div id="tfheader">
+						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/vnas_records') }}">
+							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
+								<label>Select Role:</label>
+								<select name="multiroleFilter" id="multiroleFilter" onChange="" class="form-control"  onchange="filter(this.value)">
+									@foreach ($myRoleList as $myRole)
+									   <option value="{{ $myRole }}">{{ $myRole }}</option>
+									@endforeach
+								</select>
+							</fieldset>
+						</form>
+					</div>
+					
+					
 
-				<table class="table table-hover text-left">
-					<thead>
-						<tr>
-							<th>Title</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Caregiver</th>
-							<th>Patient</th>
-							<th>LOV</th>
-						</tr>
-					</thead>
+					<table class="table table-hover text-left">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Caregiver</th>
+								<th>Patient</th>
+							</tr>
+						</thead>
 
-					<tbody>
-						<?php $count = 1 ?>
-						@foreach ($Vnas_records as $Vnas_record)
+						<tbody>
+							<?php $count = 1 ?>
+							@foreach ($Vnas_records as $Vnas_record)
 
-						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
-							<td>{{ $Vnas_record->ap_title }}</td>
-							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
-							<td name="{{'timeText' . $count}}">
-								{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
-							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
-							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
-						</tr>
-						<?php $count=$count+1 ?>
-						@endforeach
-					</tbody>
-				</table>
+							<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
+								<td>{{ $Vnas_record->ap_title }}</td>
+								<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
+								<td name="{{'timeText' . $count}}">
+									{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname[0] }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname[0] }}</td>
+							</tr>
+							<?php $count=$count+1 ?>
+							@endforeach
+						</tbody>
+					</table>
 				@endif
 			</div>
 		</div>
