@@ -144,19 +144,22 @@ class ManagementController extends Controller {
 		return view('admin.role');
 	}
 
-	public function search_patient(){
+	public function search_patient(Request $request){
 		if(Auth::User()->role != 'admin') return view('home');
-		$names = DB::table('vnas_records')->lists('patient_fname','patient_id');
+
+		$searchTerm = $request->input('searchTerm');
+
+		$names = DB::table('vnas_records')->where('patient_fname', 'LIKE', '%' . $searchTerm . '%')->lists('patient_fname','patient_id');
 		return $names;
-
-
 	}
-	public function search_caregiver(){
+	
+	public function search_caregiver(Request $request){
 		if(Auth::User()->role != 'admin') return view('home');
-		$names = DB::table('vnas_records')->lists('patient_fname','caregiver_id');
+
+		$searchTerm = $request->input('searchTerm');
+
+		$names = DB::table('vnas_records')->where('caregiver_fname', 'LIKE', '%' . $searchTerm . '%')->lists('caregiver_fname','caregiver_id');
 		return $names;
-
-
 	}
 
 	public function role_id($id){
