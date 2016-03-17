@@ -10,6 +10,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use View;
+use Tracker;
+use Carbon;
 
 class ManagementController extends Controller {
 
@@ -190,5 +192,16 @@ class ManagementController extends Controller {
 		$users =  DB::select('select * from users where caregiver_role ="" AND patient_role = ""');
 
 		return view('admin.management' , compact('users'));
+	}
+
+	public function dashboard(){
+		if(Auth::User()->role != 'admin') return view('home');
+
+		$pageViews = Tracker::pageViews( 60 * 168 );
+		$users = Tracker::users(60 * 168);
+		$errors = Tracker::errors(60 * 168);
+		//var_dump($pageViews);
+
+		return view('admin.dashboard' , compact('pageViews','users','errors'));
 	}
 }
