@@ -38,7 +38,7 @@
 								<tr name="{{'row' . $count}}" myCnt="{{$count}}" class="whole-row-click click_row">
 									<td>
 										<div name="{{'ques' . $count}}" id="{{'ques' . $count}}">
-											{!! $faq->question !!}
+											<strong>{!! $faq->question !!}</strong>
 										</div>
 										<div name="{{'ans' . $count}}" id="{{'ans' . $count}}" style="display: none;">
 											{!! $faq->answer !!}
