@@ -834,7 +834,7 @@ class Request
     		,'::1'
     	);
         
-    	if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+    	if(!in_array($this->server->get('REMOTE_ADDR'), $whitelist)){
     		$ip = $this->server->get('HTTP_X_CLIENT_IP');
     	}
     	else 
