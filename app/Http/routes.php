@@ -29,6 +29,19 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::match(['get', 'post'], 'faq', function () {
+
+   return \Maven::view();
+
+});
+
+Route::match(['get', 'post'], 'faq/search', function () {
+	$keyword = Input::get('keyword', '');
+   return \Maven::search($keyword);
+
+});
+
+
 Route::group(['middleware' => ['auth' , 'timeout']], function()
 {
 
@@ -43,19 +56,6 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	    return \Maven::manage_view();
 
 	});
-
-	Route::match(['get', 'post'], 'faq', function () {
-
-	   return \Maven::view();
-
-	});
-
-	Route::match(['get', 'post'], 'faq/search', function () {
-		$keyword = Input::get('keyword', '');
-	   return \Maven::search($keyword);
-
-	});
-
 
 	Route::get('vnas_records', 'VnasRecordsController@index');
 	Route::get('vnas_records/create', 'VnasRecordsController@create');
