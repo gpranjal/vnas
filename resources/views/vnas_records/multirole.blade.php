@@ -17,38 +17,47 @@
 				@if( count($Vnas_records) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
+					<div id="tfheader">
+						<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
+								<label>Select Role:</label>
+								<select name="multiroleFilter" id="multiroleFilter" class="form-control">
+									@foreach ($myRoleList as $myRoleVal)
+									   <option value="{{ $myRoleVal }}" @if( $myRoleVal == $myRole ) selected="selected" @endif>{{ $myRoleVal }}</option>
+									@endforeach
+								</select>
+							</fieldset>
+						</form>
+					</div>
+					
+					<table class="table table-hover text-left">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Caregiver</th>
+								<th>Patient</th>
+							</tr>
+						</thead>
 
-				<table class="table table-hover text-left">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Title</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Caregiver</th>
-							<th>Patient</th>
-							<th>LOV</th>
-						</tr>
-					</thead>
+						<tbody>
+							<?php $count = 1 ?>
+							@foreach ($Vnas_records as $Vnas_record)
 
-					<tbody>
-						<?php $count = 1 ?>
-						@foreach ($Vnas_records as $Vnas_record)
-
-						<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
-							<td>{{ $Vnas_record->id }}</td>
-							<td>{{ $Vnas_record->ap_title }}</td>
-							<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/Y") }}</td>
-							<td name="{{'timeText' . $count}}">
-								{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
-							<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname }}</td>
-							<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname }}</td>
-							<td name="{{'lovText' . $count}}">{{ $Vnas_record->ap_lov }} </td>
-						</tr>
-						<?php $count=$count+1 ?>
-						@endforeach
-					</tbody>
-				</table>
+							<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->id]) }}'>
+								<td>{{ $Vnas_record->ap_title }}</td>
+								<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
+								<td name="{{'timeText' . $count}}">
+									{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname[0] }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname[0] }}</td>
+							</tr>
+							<?php $count=$count+1 ?>
+							@endforeach
+						</tbody>
+					</table>
 				@endif
 			</div>
 		</div>
@@ -60,6 +69,20 @@
 	    $(".whole-row-click").click(function() {
 	        window.document.location = $(this).data("href");
 	    });
+
+	   $('#multiroleFilter').on('change', function(e){
+		    var select = $(this), form = $("#tfnewsearch"), currPath = form.attr('action'), newPath = "";
+		    if( $( select ).val() != "All" )
+		    {
+		   		newPath = "/role/"  + $( select ).val();
+		   		form.attr('action', form.attr('action') + newPath );
+		   		form.submit();
+		   	}
+		   	else
+		   	{
+		   		window.location.href="{{ url('vnas_records/') }}";
+		   	}
+		});
 	});
 </script>
 

@@ -1,6 +1,8 @@
-@extends('app')
+@extends('admin')
 
 @section('content')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">

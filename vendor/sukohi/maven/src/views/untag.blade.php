@@ -37,10 +37,10 @@
 							@foreach($faqs as $index => $faq)
 								<tr name="{{'row' . $count}}" myCnt="{{$count}}" class="whole-row-click click_row">
 									<td>
-										<div id="{{'ques' . $count}}">
-											{!! $faq->question !!}
+										<div name="{{'ques' . $count}}" id="{{'ques' . $count}}">
+											<strong>{!! $faq->question !!}</strong>
 										</div>
-										<div id="{{'ans' . $count}}" style="display: none;">
+										<div name="{{'ans' . $count}}" id="{{'ans' . $count}}" style="display: none;">
 											{!! $faq->answer !!}
 										</div>
 									</td>
