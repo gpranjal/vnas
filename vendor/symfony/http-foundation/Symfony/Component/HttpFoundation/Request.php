@@ -829,8 +829,20 @@ class Request
      */
     public function getClientIps()
     {
-        $ip = $this->server->get('REMOTE_ADDR');
-
+    	$whitelist = array(
+    		'127.0.0.1'
+    		,'::1'
+    	);
+        
+    	if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+    		$ip = $this->server->get('HTTP_X_CLIENT_IP');
+    	}
+    	else 
+    	{
+    		$ip = $this->server->get('REMOTE_ADDR'); // this is the default
+    	}
+    	
+    		
         if (!$this->isFromTrustedProxy()) {
             return array($ip);
         }

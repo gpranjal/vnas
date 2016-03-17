@@ -42,6 +42,8 @@ Route::match(['get', 'post'], 'faq/search', function () {
 });
 
 
+Route::get('testgeoip', 'TrackerController@index');
+
 Route::group(['middleware' => ['auth' , 'timeout']], function()
 {
 
