@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bff2323d2749a2dd353e5942f2b68d38",
+    "hash": "c646ed453948cbfd41b2a416fdf7bc5b",
     "content-hash": "c5e849c77975883300611bb7fdb359db",
     "packages": [
         {
@@ -609,16 +609,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "c6890965d87cc1880a35d4fd4819006b03e8aadf"
+                "reference": "fbf301ffa98285c5c4caef479a06e06d41b4656e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/c6890965d87cc1880a35d4fd4819006b03e8aadf",
-                "reference": "c6890965d87cc1880a35d4fd4819006b03e8aadf",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/fbf301ffa98285c5c4caef479a06e06d41b4656e",
+                "reference": "fbf301ffa98285c5c4caef479a06e06d41b4656e",
                 "shasum": ""
             },
             "require": {
@@ -652,7 +652,7 @@
                 "crawler detector",
                 "php crawler detect"
             ],
-            "time": "2016-03-08 20:23:23"
+            "time": "2016-03-16 21:16:44"
         },
         {
             "name": "jenssegers/agent",
@@ -947,16 +947,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.19",
+            "version": "1.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "635ee279a522233a567984756bf9da1db243d9bf"
+                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/635ee279a522233a567984756bf9da1db243d9bf",
-                "reference": "635ee279a522233a567984756bf9da1db243d9bf",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
+                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
                 "shasum": ""
             },
             "require": {
@@ -1026,7 +1026,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-03-12 19:04:33"
+            "time": "2016-03-14 21:54:11"
         },
         {
             "name": "maxmind-db/reader",
