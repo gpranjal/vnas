@@ -44,6 +44,7 @@ return array(
     'CreateVnasUser' => $baseDir . '/database/migrations/2016_03_17_095048_create_vnas_user.php',
     'CreateVnasUserLog' => $baseDir . '/database/migrations/2016_03_17_101443_create_vnas_user_log.php',
     'CreateVnasUsersTable' => $baseDir . '/database/migrations/2016_02_15_094856_create_vnas_users_table.php',
+    'CreateVnasVnaUserRel' => $baseDir . '/database/migrations/2016_03_17_103829_create_vnas_vna_user_rel.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
