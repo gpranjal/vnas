@@ -10,7 +10,8 @@
         $(function() {
             $( "#patient_autocomplete" ).autocomplete({
                 source: function (request, response) {
-                    $.getJSON("/search_patient", function (data) {
+                    var searchTerm = $("#patient_autocomplete").val();
+                    $.getJSON("/search_patient", { searchTerm: searchTerm }, function (data) {
                         response($.map(data, function (value, key) {
                             return {
                                 label: value +", id: "+ key,
@@ -32,7 +33,8 @@
 
             $( "#caregiver_autocomplete" ).autocomplete({
                 source: function (request, response) {
-                    $.getJSON("/search_caregiver", function (data) {
+                    var searchTerm = $("#caregiver_autocomplete").val();
+                    $.getJSON("/search_caregiver", { searchTerm: searchTerm }, function (data) {
                         response($.map(data, function (value, key) {
                             return {
                                 label: value +", id: "+ key,

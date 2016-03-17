@@ -101,11 +101,15 @@
                 <div class="sidebar-nav">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="{{ url('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ url('/admin') }}"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
 
                         <li>
-                            <a href="{{ url('/manage') }}"><i class="fa fa-wrench fa-fw"></i> User Management</a>
+                            <a href="{{ url('/manage_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('/manage') }}"><i class="fa fa-wrench fa-fw"></i>User Management</a>
                         </li>
                     </ul>
                 </div>
