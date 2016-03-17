@@ -18,10 +18,11 @@
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
 					<div id="tfheader">
-						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/vnas_records') }}">
+						<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records') }}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
 								<label>Select Role:</label>
-								<select name="multiroleFilter" id="multiroleFilter" onChange="" class="form-control"  onchange="filter(this.value)">
+								<select name="multiroleFilter" id="multiroleFilter" class="form-control">
 									@foreach ($myRoleList as $myRole)
 									   <option value="{{ $myRole }}">{{ $myRole }}</option>
 									@endforeach
@@ -70,6 +71,18 @@
 	    $(".whole-row-click").click(function() {
 	        window.document.location = $(this).data("href");
 	    });
+
+
+	   $('#multiroleFilter').on('change', function(e){
+		    var select = $(this), form = $("#tfnewsearch"), currPath = form.attr('action'), newPath = "";
+		    if( $( select ).val() != "All" )
+		    {
+		   		newPath = "/role/"  + $( select ).val();
+		   	}
+
+		   	form.attr('action', form.attr('action') + newPath );
+		    form.submit();
+		});
 	});
 </script>
 

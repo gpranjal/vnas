@@ -26,7 +26,6 @@ class VnasRecordsController extends Controller {
 
     public function index($myRole=null)
     {
-
         // Check to see if the user is logged in
         if( Auth::check() )
         {
@@ -38,7 +37,7 @@ class VnasRecordsController extends Controller {
             $myRoleList     = ['All','Caregiver','Patient'];
             $Vnas_records   = null;
 
-            if( $isCareGiver != "" && $isPatient == "" ) // Is a caregiver only
+            if( $isCareGiver != "" && $isPatient == ""  ) // Is a caregiver only
             {
                 $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )->orderBy('ap_date', 'asc')->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
                 // sort according to date instead of default schedule ID
@@ -55,11 +54,26 @@ class VnasRecordsController extends Controller {
             }
             else if( $isCareGiver != "" && $isPatient != ""  ) // Is both roles
             {
-                $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )
-                    ->orwhere( 'caregiver_id' , '=' , $isCareGiver )
-                    ->orderBy('ap_date', 'asc')
-                    ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
-
+                if( $myRole == "" )
+                {
+                    $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )
+                        ->orwhere( 'caregiver_id' , '=' , $isCareGiver )
+                        ->orderBy('ap_date', 'asc')
+                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                }
+                else if( $myRole == "Patient" )
+                {
+                     $Vnas_records = Vnas_record::where( 'patient_id' , '=' , $isPatient )
+                        ->orderBy('ap_date', 'asc')
+                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                }
+                else if( $myRole == "Caregiver" )
+                {
+                     $Vnas_records = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )
+                        ->orderBy('ap_date', 'asc')
+                        ->get( array('id','patient_id','patient_fname','patient_lname','patient_address','patient_email','patient_phone','ap_title','ap_date','ap_time','ap_lov','ap_comments','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                }
+                
                 $nextCntl = "VnasRecordsController@multirolesch";
                 $myView = "vnas_records.multirole";//{{ action( $nextCntl , [$Vnas_record->id]) }}
             }

@@ -4,6 +4,7 @@ use Illuminate\Routing\Route as IlluminateRoute;
 use Illuminate\Routing\Matching\CaseInsensitiveUriValidator;
 use Illuminate\Routing\Matching\UriValidator;
 
+
 $validators = IlluminateRoute::getValidators();
 $validators[] = new CaseInsensitiveUriValidator;
 IlluminateRoute::$validators = array_filter($validators, function($validator) { 
@@ -58,7 +59,18 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 
 	Route::get('vnas_records', 'VnasRecordsController@index');
 	Route::get('vnas_records/create', 'VnasRecordsController@create');
-	Route::post('vnas_records', 'VnasRecordsController@index');
+	// Route::match(['get', 'post'], 'vnas_records/role', function () {
+	// 	$myRole = Input::get('myRole', '');
+	// 	return 'VnasRecordsController@index';
+	//Route::post('vnas_records/role/{multiroleFilter}', 'VnasRecordsController@index');
+	// });
+	// Route::match(['get', 'post'], '/vnas_records/role', function()
+	// {
+	//      	$myRole = Input::get('multiroleFilter', '');
+	// 	 	return VnasRecordsController::index($myRole);
+	// });
+	Route::post('vnas_records/role/{myRole}', 'VnasRecordsController@index');
+
 	Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
 	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 	Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
