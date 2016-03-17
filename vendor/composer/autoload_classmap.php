@@ -40,6 +40,7 @@ return array(
     'CreateVnasGenRef' => $baseDir . '/database/migrations/2016_03_17_032423_create_vnas_gen_ref.php',
     'CreateVnasRecordsTable' => $baseDir . '/database/migrations/2016_02_16_234332_create_vnas_records_table.php',
     'CreateVnasSchedule' => $baseDir . '/database/migrations/2016_03_17_041302_create_vnas_schedule.php',
+    'CreateVnasScheduleLanding' => $baseDir . '/database/migrations/2016_03_17_045001_create_vnas_schedule_landing.php',
     'CreateVnasUsersTable' => $baseDir . '/database/migrations/2016_02_15_094856_create_vnas_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
