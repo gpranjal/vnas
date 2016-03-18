@@ -27,9 +27,6 @@ class TrackerController extends Controller {
 
 		return view( 'tracker.test' , compact('visitor'));
 		
-		
-
-	
 	}
 
 	/**

@@ -35,9 +35,10 @@ class GeoIp2 extends GeoIpAbstract implements GeoIpContract
     }
 
     private function renderData() {
+    	
         return [
             'latitude' => $this->geoIpData->location->latitude,
-            'longitude' => $this->geoIpData->location->longitude,
+        	'longitude' => $this->geoIpData->location->longitude,
             'country_code' => $this->geoIpData->country->isoCode,
             'country_code3' => null,
             'country_name' => $this->geoIpData->country->name,

@@ -10,6 +10,8 @@
 	
 	var_dump( $visitor );
 	
-	var_dump(GeoIP::getLocation($visitor->client_ip));
+// 	var_dump( $visitor->geoIp->city );
+	
+	var_dump(AppGeoIP::getLocation($visitor->client_ip));
 	
 ?>

@@ -208,7 +208,7 @@ return [
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
     	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent', // Browser Detection
     	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade', // User tracking
-		'GeoIP' => 'Torann\GeoIP\GeoIPFacade'
+		'AppGeoIP' => 'Torann\GeoIP\GeoIPFacade'
 		
 	],
 
