@@ -1,10 +1,16 @@
 <?php namespace App\Http\Controllers;
 
+// require_once base_path('vendor/PragmaRX\Tracker\src\Tracker.php');
+// use PragmaRX\Tracker\src\Tracker as Tracker;
+
+use Tracker;
+use GeoIp2;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 
 use Illuminate\Http\Request;
+use GeoIp2\Database\Reader;
 
 class TrackerController extends Controller {
 
@@ -19,13 +25,9 @@ class TrackerController extends Controller {
 
 		$visitor = Tracker::currentSession();
 
-		var_dump( $visitor->client_ip );
-
-		var_dump( $visitor->device->is_mobile );
-
-		var_dump( $visitor->device->platform );
-
-		var_dump( $visitor->geoIp->city );
+		return view( 'tracker.test' , compact('visitor'));
+		
+		
 
 	
 	}

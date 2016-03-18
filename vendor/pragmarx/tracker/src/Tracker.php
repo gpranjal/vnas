@@ -1,6 +1,4 @@
-<?php
-
-namespace PragmaRX\Tracker;
+<?php namespace PragmaRX\Tracker;
 
 use PragmaRX\Support\Config;
 use Illuminate\Http\Request;

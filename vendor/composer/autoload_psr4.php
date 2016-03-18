@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'UAParser\\' => array($vendorDir . '/ua-parser/uap-php/src'),
+    'Torann\\GeoIP\\' => array($vendorDir . '/torann/geoip/src/Torann/GeoIP'),
     'Todstoychev\\TableSorter\\' => array($vendorDir . '/todstoychev/table-sorter/src'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
     'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
