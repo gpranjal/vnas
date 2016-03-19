@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="C:/wamp64/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-java-2.52.0.jar"/>
-	<classpathentry kind="lib" path="C:/wamp64/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-java-2.52.0-srcs.jar"/>
-	<classpathentry kind="lib" path="C:/wamp64/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-server-standalone-2.52.0.jar"/>
-=======
+	<classpathentry kind="src" path=""/>
 	<classpathentry kind="lib" path="C:/wamp/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-java-2.52.0.jar"/>
 	<classpathentry kind="lib" path="C:/wamp/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-java-2.52.0-srcs.jar"/>
 	<classpathentry kind="lib" path="C:/wamp/www/laravel/vnas/UI Tests/selenium-2.52.0/selenium-server-standalone-2.52.0.jar"/>
->>>>>>> f3b47a39c4e8cb33fdb5f1587128a6407401f6e8
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
