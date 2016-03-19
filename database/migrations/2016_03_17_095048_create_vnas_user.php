@@ -15,13 +15,13 @@ class CreateVnasUser extends Migration {
 		Schema::create('vnas_user', function(Blueprint $table)
 		{
 			$table->increments('user_sk');
-			$table->string('email',80)->nullable();
-			$table->string('first_name',40)->nullable();
-			$table->string('last_name',40)->nullable();
-			$table->string('password',60)->nullable();
-			$table->string('token',60)->nullable();
-			$table->integer('failed_attempt_cnt')->nullable();
-			$table->date('last_login_tsp')->nullable();
+			$table->string('email',80);
+			$table->string('first_name',40);
+			$table->string('last_name',40);
+			$table->string('password',60);
+			$table->string('token',60);
+			$table->integer('failed_attempt_cnt');
+			$table->date('last_login_tsp');
 			$table->string('user_id',20);
 			$table->string('created_by',100);
 			$table->timestamp('created_date');

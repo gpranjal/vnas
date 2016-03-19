@@ -34,7 +34,6 @@ class CreateVnasScheduleLanding extends Migration {
 			$table->string('client_zip',20);
 			$table->string('client_phone',20);
 			$table->string('comments',4000);
-			$table->string('create_tsp',40);
 			$table->string('cdc_num',32);
 		});
 	}
