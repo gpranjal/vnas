@@ -50,7 +50,10 @@
 								<td>{{ $Vnas_record->ap_title }}</td>
 								<td name="{{'dateText' . $count}}">{{ $Vnas_record->ap_date->format("m/d/y") }}</td>
 								<td name="{{'timeText' . $count}}">
-									{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}</td>
+									{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) ) }}
+									-
+									{{ date( 'H:i' , strtotime( $Vnas_record->ap_date->format("m/d/y") . ' ' . $Vnas_record->ap_time ) + (60 * (60*$Vnas_record->ap_lov)) ) }}
+								</td>
 								<td name="{{'nameText' . $count}}">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname[0] }}</td>
 								<td name="{{'nameText' . $count}}">{{ $Vnas_record->patient_fname  }} {{ $Vnas_record->patient_lname[0] }}</td>
 							</tr>
@@ -58,6 +61,17 @@
 							@endforeach
 						</tbody>
 					</table>
+					
+					<br />
+					<div class="row">
+						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</a>
+						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+						</a>
+					</div>
+					<br />
 				@endif
 			</div>
 		</div>
