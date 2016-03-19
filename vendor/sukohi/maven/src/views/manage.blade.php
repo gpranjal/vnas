@@ -38,6 +38,22 @@
                 {!! Form::label(trans('Answer')) !!}<br>
                 {!! Form::textarea('answer', Request::get('answer'), ['rows' => 7, 'class' => 'form-control']) !!}
             </div>
+           <div class="row">
+                <div class="form-group col-md-6">
+                    {!! Form::label(trans('FAQ Role')) !!}<br>
+                    {!! Form::text('faq_role', Request::get('faq_role'), ['id' => 'role', 'class' => 'form-control']) !!}                 
+                </div>
+                <div class="form-group col-md-6">
+                    <br>
+                    <div>
+                    @if(count($role_values) > 0)
+                        @foreach($role_values as $role_value)
+                            <a href="#" class="label label-info role">{{ $role_value }}</a>
+                        @endforeach
+                    @endif
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 {!! Form::label(trans('Sort')) !!}<br>
                 {!! Form::select('sort', $sort_values, Request::get('sort')) !!}
@@ -82,6 +98,7 @@
                     <th>Order</th>
                     <th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
                     <th><nobr>{{ trans('FAQ Tags') }}</nobr></th>
+                    <th><nobr>{{ trans('Role') }}</nobr></th>
                     <th class="text-center"><nobr>{{ trans('Drafts') }}</nobr></th>
                     <th class="text-right">User Action</th>
                 </tr>
@@ -99,6 +116,11 @@
                         @foreach($faq->tags as $tag)
                             <span class="label label-default">{{ $tag }}</span>
                         @endforeach
+                    </td>
+                    <td class="line-height-2">
+                    		
+                    	{!! $faq->faq_role !!}
+						
                     </td>
                     <td class="text-center">{!! $faq->draft_flag_icon !!}</td>
                     <td class="text-right">
@@ -163,6 +185,31 @@
 
                 newTagString += tag;
                 $('#tags').val(newTagString)
+
+            }
+
+            return false;
+
+        });
+
+        $('.role').on('click', function(){
+
+            var role = $(this).html();
+            var currentRoleString = $('#role').val();
+            var currentRole = currentRoleString.split(',');
+
+            if($.inArray(role, currentRole) == -1) {
+
+                var newRoleString = currentRoleString;
+
+                if(currentRoleString != '') {
+
+                	newRoleString += ',';
+
+                }
+
+                newRoleString += role;
+                $('#role').val(newRoleString)
 
             }
 

@@ -150,8 +150,8 @@ return [
     	'Sukohi\Maven\MavenServiceProvider', // FAQ
     	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
     	'Jenssegers\Agent\AgentServiceProvider', // Browser Detection
-    	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider'//User tracking
-
+    	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',//User tracking
+		'Torann\GeoIP\GeoIPServiceProvider'
 	],
 
 	/*
@@ -207,10 +207,9 @@ return [
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
     	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent', // Browser Detection
-    	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade' // User tracking
-
-
-
+    	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade', // User tracking
+		'AppGeoIP' => 'Torann\GeoIP\GeoIPFacade'
+		
 	],
 
 ];

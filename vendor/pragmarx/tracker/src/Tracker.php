@@ -1,6 +1,4 @@
-<?php
-
-namespace PragmaRX\Tracker;
+<?php namespace PragmaRX\Tracker;
 
 use PragmaRX\Support\Config;
 use Illuminate\Http\Request;
@@ -113,9 +111,10 @@ class Tracker
     }
 
     protected function getGeoIpId() {
-        return $this->config->get('log_geoip')
-            ? $this->dataRepositoryManager->getGeoIpId($this->request->getClientIp())
-            : null;
+//         return $this->config->get('log_geoip')
+//             ? $this->dataRepositoryManager->getGeoIpId($this->request->getClientIp())
+//             : null;
+    	return $this->dataRepositoryManager->getGeoIpId($this->request->getClientIp());
     }
 
     /**

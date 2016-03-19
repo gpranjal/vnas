@@ -73,15 +73,18 @@ class Maven {
 				$faq = Faq::firstOrNew(['id' => \Request::get('id')]);
 				$faq->question = \Request::get('question');
 				$faq->answer = \Request::get('answer');
+				$faq->faq_role = \Request::get('faq_role');
 				$faq->tags = explode(',', \Request::get('tags'));
 				$faq->draft_flag = \Request::has('draft_flag');
 				$faq->save();
 				\Cahen::move($faq)->to('sort', \Request::get('sort'));
-
+				
+// 				You could leave the values in the boxes if you remove this section --Zach H
 				$message = 'Complete!';
 				\Request::merge([
 					'question' => '',
 					'answer' => '',
+					'faq_role' => '',
 					'tags' => '',
 					'sort' => '',
 					'draft_flag' => '',
@@ -101,6 +104,7 @@ class Maven {
 			\Request::merge([
 				'question' => $faq->question,
 				'answer' => $faq->raw_answer,
+				'faq_role' => $faq->faq_role,
 				'tags' => implode(',', $faq->tags),
 				'sort' => $faq->sort_number,
 				'draft_flag' => $faq->draft_flag
@@ -112,11 +116,13 @@ class Maven {
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+		$role_values = Faq::roleValues();
 
 		return view('maven::manage', [
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
+				'role_values' => $role_values,
 				'message' => $message,
 				'keyword' => $keyword
 		])->render();
@@ -155,6 +161,7 @@ class Maven {
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+		$role_values = Faq::roleValues();
 
 
 
@@ -162,6 +169,7 @@ class Maven {
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
+				'role_values' => $role_values,
 				'message' => $message,
 				'keyword' => $keyword
 		])->render();
@@ -198,13 +206,14 @@ class Maven {
 			->paginate($limit);
 		
 		$sort_values = Faq::sortSelectValues();
-		
 		$tag_values = Faq::tagValues();
-
+		$role_values = Faq::roleValues();
+		
 		return view('maven::untag', [
 		   		'faqs' => $faqs, //keyword goes here?
 		  		'sort_values' => $sort_values,
 		  		'tag_values' => $tag_values,
+				'role_values' => $role_values,
 		  		'message' => $message,
 		  		'keyword' => $keyword
 		 ])->render();

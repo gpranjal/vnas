@@ -3,6 +3,8 @@
 namespace PragmaRX\Support\GeoIp;
 
 use GeoIp2\Database\Reader as GeoIpReader;
+use AppGeoIP;
+use Tracker;
 
 class GeoIp
 {
@@ -13,7 +15,44 @@ class GeoIp
     }
 
     public function searchAddr($addr) {
-        return $this->geoIp->searchAddr($addr);
+     	$myGeoIpData = AppGeoIP::getLocation($addr); /* Changed by Zach: Added this to actually get geo info */
+
+    	
+        //return $this->geoIp->searchAddr($addr); /* Changed by Zach: This was providing any data. */
+     	
+     	 
+     	//return $this->geoIp->searchAddr($addr);
+     	
+     	//      	'latitude' => $this->geoIpData->location->latitude,
+     	//      	'longitude' => $this->geoIpData->location->longitude,
+     	//      	'country_code' => $this->geoIpData->country->isoCode,
+     	//      	'country_code3' => null,
+     	//      	'country_name' => $this->geoIpData->country->name,
+     	//      	'region' => $this->geoIpData->continent->code,
+     	//      	'city' => $this->geoIpData->city->name,
+     	//      	'postal_code' => $this->geoIpData->postal->code,
+     	//      	'area_code' => null,
+     	//      	'dma_code' => null,
+     	//      	'metro_code' => $this->geoIpData->location->metroCode,
+     	//      	'continent_code' => $this->geoIpData->continent->code,
+     	
+     	/* The info above is what the package is expecting, I "translated" it below */
+     	
+     	return [
+     	'latitude' => $myGeoIpData['lat'],
+     	'longitude' => $myGeoIpData['lon'],
+     	'country_code' => $myGeoIpData['isoCode'],
+     	'country_code3' => null,
+     	'country_name' => $myGeoIpData['country'],
+     	'region' => $myGeoIpData['state'],
+     	'city' => $myGeoIpData['city'],
+     	'state' => $myGeoIpData['state'],
+     	'postal_code' => $myGeoIpData['postal_code'],
+     	'area_code' => null,
+     	'dma_code' => null,
+     	'metro_code' => null,
+     	'continent_code' => $myGeoIpData['continent'],
+     	];
     }
 
     /**

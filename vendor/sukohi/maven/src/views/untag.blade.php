@@ -18,20 +18,16 @@
 
 
 					<!-- HTML for SEARCH BAR  -->
-					<div id="tfheader">
-						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/faq/search') }}">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input name="SearchSubmit" type="submit" value=">>" class="tfbutton2">
-						</form>
-						<div class="tfclear"></div>
-					</div>
+<!-- 					Hidden, not deleted, by the request of the client. -->
+<!-- 					<div id="tfheader"> -->
+<!-- 						<form name="tstingForm" id="tfnewsearch" method="post" action="{{ url('/faq/search') }}"> -->
+<!-- 							<input type="hidden" name="_token" value="{{ csrf_token() }}">  -->
+<!-- 							<input type="text" id="tfq" class="tftextinput2" name="keyword" value="{{ $keyword }}" autocomplete="off" size="21" maxlength="120" placeholder="Search FAQs"><input name="SearchSubmit" type="submit" value=">>" class="tfbutton2"> -->
+<!-- 						</form> -->
+<!-- 						<div class="tfclear"></div> -->
+<!-- 					</div> -->
 
 					<table class="table table-hover text-left">
-						<thead>
-							<tr>
-								<th><nobr>{{ trans('Questions & Answers') }}</nobr></th>
-							</tr>
-						</thead>
 						<tbody>
 						<?php $count = 1 ?>
 							@foreach($faqs as $index => $faq)
@@ -40,7 +36,7 @@
 										<div name="{{'ques' . $count}}" id="{{'ques' . $count}}">
 											<strong>{!! $faq->question !!}</strong>
 										</div>
-										<div name="{{'ans' . $count}}" id="{{'ans' . $count}}" style="display: none;">
+										<div name="{{'ans' . $count}}" id="{{'ans' . $count}}" style="display: none;" class="sub-row-answer">
 											{!! $faq->answer !!}
 										</div>
 									</td>
@@ -62,10 +58,18 @@
 <script language="javascript">
 	jQuery(document).ready(function($) {
 		$(".whole-row-click").click(function() {
-			//console.log( $( this).attr( "myCnt") );
+// 			console.log( $(".sub-row-answer:visible") );
+			
+			/* Close all open answer divs by class:visible */
+			$(".sub-row-answer:visible").slideToggle( "slow", function() {
+			// Animation complete.
+			});
+
+			/* Open div by clicked and attribute  nbr */
 			$( "#ans"+  $( this).attr( "myCnt") ).slideToggle( "slow", function() {
 			// Animation complete.
 			});
+			
 		});
 	});
 </script>
