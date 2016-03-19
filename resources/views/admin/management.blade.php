@@ -4,9 +4,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <div class="row">
-    <a class="btn btn-primary" role="button" href="{{url('manage/patient')}}" >Patient</a>
-    <a class="btn btn-primary" role="button" href="{{url('manage/caregiver')}}" >Caregiver</a>
-    <a class="btn btn-primary" role="button" href="{{url('manage/unassigned')}}" >Unassigned</a>
+    <a name="btnFilterPatient" class="btn btn-primary" role="button" href="{{url('manage/patient')}}" >Patient</a>
+    <a name="btnFilterCaregiver" class="btn btn-primary" role="button" href="{{url('manage/caregiver')}}" >Caregiver</a>
+    <a name="btnFilterUnassigned" class="btn btn-primary" role="button" href="{{url('manage/unassigned')}}" >Unassigned</a>
 </div>
 <table class="table">
     <tr>

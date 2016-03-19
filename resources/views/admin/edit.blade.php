@@ -50,10 +50,10 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Edit
+                                    <button name="btnSave" type="submit" class="btn btn-primary">
+                                        Save
                                     </button>
-                                    <a class="btn btn-primary" role="button" href="{{url('home')}}">Cancel</a>
+                                    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('home')}}">Cancel</a>
                                 </div>
 
                             </div>

@@ -83,7 +83,7 @@
             <input type="hidden" id="caregiver_search" name="caregiver_search" value="{{$role_id->caregiver_role}}">
         </tr>
     </table>
-    <input type="submit" value="submit">
+    <input name="btnSubmit" type="submit" value="submit">
 </form>
     {{--<div id="search_patient" class="row">--}}
 
