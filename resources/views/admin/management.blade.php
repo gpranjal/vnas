@@ -2,7 +2,7 @@
 
 @section('content')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<div id="admin_msg"></div>
 <div class="row">
     <a name="btnFilterPatient" class="btn btn-primary" role="button" href="{{url('manage/patient')}}" >Patient</a>
     <a name="btnFilterCaregiver" class="btn btn-primary" role="button" href="{{url('manage/caregiver')}}" >Caregiver</a>
@@ -32,5 +32,10 @@
     @endforeach
 
 </table>
-
+@if(isset($_SESSION['admin_msg']))
+    <script>
+        $('#admin_msg').after('<div class="alert alert-success"><?php echo $_SESSION['admin_msg'] ?></div>')
+    </script>
+@endif
+    <?php unset($_SESSION['admin_msg']); ?>
 @endsection

@@ -63,6 +63,7 @@ class ManagementController extends Controller {
 		$update_edit->role = $_POST['role'];
 		$update_edit->email = $_POST['email'];
 		$update_edit->save();
+		$_SESSION['admin_msg'] = "Updated User";
   		return Redirect('manage');
 
 	}
@@ -77,7 +78,7 @@ class ManagementController extends Controller {
 	{
 		$update_remove = User::find($id);
 		$update_remove->delete();
-
+		$_SESSION['admin_msg'] = "Removed User";
 		return Redirect('manage');
 
 	}
@@ -173,6 +174,7 @@ class ManagementController extends Controller {
 		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
 		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
 		$role_id->save();
+		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('manage');
 	}
 
