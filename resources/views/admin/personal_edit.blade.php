@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         <img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/edit') }}/{{$edit->id}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/post_personal_edit') }}/{{$edit->id}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">

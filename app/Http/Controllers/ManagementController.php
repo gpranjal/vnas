@@ -60,12 +60,22 @@ class ManagementController extends Controller {
 	{
 		$update_edit = User::find($id);
 		$update_edit->name = $_POST['name'];
-		$update_edit->role = $_POST['role'];
+		if(isset($_POST['role'])){$update_edit->role = $_POST['role'];};
 		$update_edit->email = $_POST['email'];
 		$update_edit->save();
 		$_SESSION['admin_msg'] = "Updated User";
   		return Redirect('manage');
 
+	}
+
+	public function post_personal_edit_user($id)
+	{
+		$update_edit = User::find($id);
+		$update_edit->name = $_POST['name'];
+		if(isset($_POST['role'])){$update_edit->role = $_POST['role'];};
+		$update_edit->email = $_POST['email'];
+		$update_edit->save();
+		return Redirect('home');
 	}
 
 	public function remove_user($id)
