@@ -15,9 +15,9 @@ public class BaseTestCase extends TestCase{
 	public void setUp() {
 		drivers = new ArrayList<WebDriver>();
 		
-		//Setup the Firefox Web Driver
-		WebDriver firefoxDriver = new FirefoxDriver();
-		drivers.add(firefoxDriver);
+//		//Setup the Firefox Web Driver
+//		WebDriver firefoxDriver = new FirefoxDriver();
+//		drivers.add(firefoxDriver);
 				
 		//Setup the Chrome Web Driver
 		System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver.exe");

@@ -61,4 +61,26 @@ public class LoginScreen extends BaseScreen{
     	//Click Login
     	LoginScreen.getLoginButton(driver).click();
 	}
+	public static void loginAsAdminTest(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("vnas-admintest@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("admintest1234");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
+	public static void loginAsAdminUser(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("vnas-adminuser@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("adminuser1234");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
 }
