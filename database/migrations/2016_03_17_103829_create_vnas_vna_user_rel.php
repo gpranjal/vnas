@@ -14,12 +14,12 @@ class CreateVnasVnaUserRel extends Migration {
 	{
 		Schema::create('vnas_vna_user_rel', function(Blueprint $table)
 		{
-			$table->integer('user_sk')->nullable();
-			$table->string('vna_user_id',20)->nullable();
-			$table->datetime('effective_dt')->nullable();
-			$table->datetime('end_dt')->nullable();
-			$table->integer('vna_user_role_cd')->nullable();
-			$table->integer('vna_user_type_cd')->nullable();
+			$table->integer('user_sk');
+			$table->string('vna_user_id',20);
+			$table->datetime('effective_dt');
+			$table->datetime('end_dt');
+			$table->integer('vna_user_role_cd');
+			$table->integer('vna_user_type_cd');
 			$table->increments('user_rel_sk');
 			$table->string('created_by',100);
 			$table->timestamp('created_date');

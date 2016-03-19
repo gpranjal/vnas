@@ -92,6 +92,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 
 	Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
 	Route::post('/edit/{edit_user}' , 'ManagementController@post_edit_user');
+	Route::post('/post_personal_edit/{edit_user}' , 'ManagementController@post_personal_edit_user');
 	Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
 	Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
 	Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');

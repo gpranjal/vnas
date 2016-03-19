@@ -53,18 +53,29 @@ class ManagementController extends Controller {
 
 		if(Auth::User()->id != $id) return view('home');
 		$edit = User::find($id);
-		return view('admin.edit',compact('edit'));
+		return view('admin.personal_edit',compact('edit'));
 	}
 
 	public function post_edit_user($id)
 	{
 		$update_edit = User::find($id);
 		$update_edit->name = $_POST['name'];
-		$update_edit->role = $_POST['role'];
+		if(isset($_POST['role'])){$update_edit->role = $_POST['role'];};
 		$update_edit->email = $_POST['email'];
 		$update_edit->save();
+		$_SESSION['admin_msg'] = "Updated User";
   		return Redirect('manage');
 
+	}
+
+	public function post_personal_edit_user($id)
+	{
+		$update_edit = User::find($id);
+		$update_edit->name = $_POST['name'];
+		if(isset($_POST['role'])){$update_edit->role = $_POST['role'];};
+		$update_edit->email = $_POST['email'];
+		$update_edit->save();
+		return Redirect('home');
 	}
 
 	public function remove_user($id)
@@ -77,7 +88,7 @@ class ManagementController extends Controller {
 	{
 		$update_remove = User::find($id);
 		$update_remove->delete();
-
+		$_SESSION['admin_msg'] = "Removed User";
 		return Redirect('manage');
 
 	}
@@ -173,6 +184,7 @@ class ManagementController extends Controller {
 		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
 		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
 		$role_id->save();
+		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('manage');
 	}
 
