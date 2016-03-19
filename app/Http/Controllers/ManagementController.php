@@ -53,7 +53,7 @@ class ManagementController extends Controller {
 
 		if(Auth::User()->id != $id) return view('home');
 		$edit = User::find($id);
-		return view('admin.edit',compact('edit'));
+		return view('admin.personal_edit',compact('edit'));
 	}
 
 	public function post_edit_user($id)
