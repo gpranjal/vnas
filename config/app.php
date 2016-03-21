@@ -151,7 +151,8 @@ return [
     	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
     	'Jenssegers\Agent\AgentServiceProvider', // Browser Detection
     	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',//User tracking
-		'Torann\GeoIP\GeoIPServiceProvider'
+		'Torann\GeoIP\GeoIPServiceProvider',
+		'Zofe\Rapyd\RapydServiceProvider' // CRUD
 	],
 
 	/*

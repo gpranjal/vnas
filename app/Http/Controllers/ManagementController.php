@@ -13,6 +13,7 @@ use View;
 use Tracker;
 use Carbon;
 use App\UserSettings;
+use Dataform;
 
 class ManagementController extends Controller {
 
@@ -230,5 +231,33 @@ class ManagementController extends Controller {
 		
 	
 		//return $userSettings;
+	}
+	
+	public function editUserSettings(Request $request)
+	{
+		//dd( Route::input() );
+		
+		if(Auth::User()->role != 'admin') return view('home');
+		
+		//or find a record to update some value
+		$form = \DataForm::source(UserSettings::find(1));
+		
+		//var_dump($form);
+		
+		//add fields to the form
+		$form->add('session_timeout_minutes','Session Timeout (in minutes):', 'text'); //field name, label, type
+		$form->add('google_maps_api_key','Google Maps API Key:', 'text'); //validation
+		
+		//some enhanced field (images, wysiwyg, autocomplete, maps, etc..):
+		$form->add('paypal_api_key','Paypal API Key', 'text');
+				
+		$form->submit('Save');
+		$form->saved(function() use ($form)
+		{
+			$form->message("Settings updated!");
+			$form->link("/user_settings","Return to user settings");
+		});
+		
+		return view('admin.user_settings', compact('form'));
 	}
 }

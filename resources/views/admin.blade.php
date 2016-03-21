@@ -106,6 +106,10 @@
                         <li>
                             <a href="{{ url('/admin') }}"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
+                        
+                        <li>
+                            <a href="{{ url('/system_config') }}"><i class="fa fa-wrench fa-fw"></i>Systerm Configuration Settings</a>
+                        </li>
 
                         <li>
                             <a href="{{ url('/manage_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>

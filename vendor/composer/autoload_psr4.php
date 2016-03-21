@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zofe\\Rapyd\\' => array($vendorDir . '/zofe/rapyd/src'),
+    'Zofe\\Burp\\' => array($vendorDir . '/zofe/burp/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'UAParser\\' => array($vendorDir . '/ua-parser/uap-php/src'),
     'Torann\\GeoIP\\' => array($vendorDir . '/torann/geoip/src/Torann/GeoIP'),
@@ -22,6 +24,7 @@ return array(
     'Shin1x1\\ForceHttpsUrlScheme\\' => array($vendorDir . '/shin1x1/laravel-force-https-url-scheme/src'),
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PragmaRX\\Tracker\\' => array($vendorDir . '/pragmarx/tracker/src'),
     'PragmaRX\\Support\\' => array($vendorDir . '/pragmarx/support/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
@@ -29,10 +32,12 @@ return array(
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Jenssegers\\Agent\\' => array($vendorDir . '/jenssegers/agent/src'),
     'Jaybizzle\\CrawlerDetect\\' => array($vendorDir . '/jaybizzle/crawler-detect/src'),
+    'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'Illuminate\\Html\\' => array($vendorDir . '/illuminate/html'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
     'GuzzleHttp\\Ring\\' => array($vendorDir . '/guzzlehttp/ringphp/src'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'GeoIp2\\' => array($vendorDir . '/geoIp2', $vendorDir . '/geoip2/geoip2/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
