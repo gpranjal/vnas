@@ -89,7 +89,7 @@
                             @foreach ($pageViews as $pageView)
 
                             
-                                {y: '{{ $pageView->date }}', a: '{{ $pageView->total }}'},
+                                {y: '{{ $pageView->date  }}', a: '{{ $pageView->total }}'},
 
                             <?php $count=$count+1 ?>
                             @endforeach                            

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\UserSettings;
 use Illuminate\Http\Request;
 use View;
 
@@ -22,7 +22,7 @@ class MapController extends Controller {
 	 */
 	public function index()
 	{
-		return view('map.map');
+		return view('map.map' , ['mapsAPIKey' => UserSettings::getMapsAPIKey()]);
 	}
 
 	/**
@@ -54,8 +54,8 @@ class MapController extends Controller {
 	public function show($addr)
 	{
 		//$myaddr = $addr;
-		//return view('map.map' , ['addr' => $addr]);
-		 return view('map.map', ['addr' => $addr]);
+		//return view('map.map' , ['addr' => $addr]);//AIzaSyDmiNBfyHfzHnDS5u_I7Luhr0M_BkwxVDc
+		 return view('map.map', ['addr' => $addr , 'mapsAPIKey' => UserSettings::getMapsAPIKey()]);
 	}
 
 	/**

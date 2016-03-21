@@ -12,8 +12,9 @@
 
 					<div class="panel-body">
 						<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
+									
 						@if (count($errors) > 0)
-
+						{{ var_dump( errors ) }}
 						<div class="alert alert-danger" name="loginErrorMessage">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
@@ -22,7 +23,8 @@
 								@endforeach
 							</ul>
 						</div>
-						@endif
+						@endif	
+						
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<br/>

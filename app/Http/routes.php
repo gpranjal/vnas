@@ -104,5 +104,6 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/search_caregiver' , 'ManagementController@search_caregiver');
 
 	Route::get('/admin' , 'ManagementController@dashboard');
+	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
 
 });

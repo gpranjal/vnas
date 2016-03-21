@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use View;
 use Tracker;
 use Carbon;
+use App\UserSettings;
 
 class ManagementController extends Controller {
 
@@ -218,5 +219,16 @@ class ManagementController extends Controller {
 		//var_dump($pageViews);
 
 		return view('admin.dashboard' , compact('pageViews','users','errors'));
+	}
+	
+	public function getUserSettings(){
+		if(Auth::User()->role != 'admin') return view('home');
+	
+		$userSettings = UserSettings::all();
+// 		var_dump(UserSettings::get(array('session_timeout_minutes'))[0]->session_timeout_minutes->value);
+		var_dump(UserSettings::getUserSettingsSessionTimeout());
+		
+	
+		//return $userSettings;
 	}
 }

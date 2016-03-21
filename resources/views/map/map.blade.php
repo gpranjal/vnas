@@ -47,7 +47,7 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDmiNBfyHfzHnDS5u_I7Luhr0M_BkwxVDc"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ $mapsAPIKey }}"></script>
 
 <script type="text/javascript">
 			// This page was create based on the tutorial found at:

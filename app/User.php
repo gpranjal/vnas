@@ -33,7 +33,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function getIsAdminAttribute()
     {
-        // return $this->attributes['admin'] == 'yes';
         return $this->attributes['role'] == 'admin';
     }
 

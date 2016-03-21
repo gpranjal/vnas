@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use View;
+use App\UserSettings;
 
 class WelcomeController extends Controller {
 
@@ -33,7 +34,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		return view('welcome', ['donateAPIKey' => UserSettings::getDonateAPIKey()]);
 	}
 
 }

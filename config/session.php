@@ -1,5 +1,7 @@
 <?php
 
+use App\UserSettings;
+
 return [
 
 	/*
@@ -34,6 +36,7 @@ return [
 	| to immediately expire on the browser closing, set that option.
 	| 
 	| VNAS Team, these values could be added to the administration "control" Table idea.
+	| This timeout doesn't seem to work so we actually added route middleware that can be found in App\Http\Middleware\sessionTimeout.php
 	*/
 
 	'lifetime' => 15,
