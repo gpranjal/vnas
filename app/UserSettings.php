@@ -39,4 +39,18 @@ class UserSettings extends Model {
 		$donateAPIKey = $mySettings[0]->paypal_api_key;
 		return $donateAPIKey;
 	}
+	
+	public static function getEmailLockoutCount() {
+		$mySettings = UserSettings::get(array('email_lockout_count'))
+		->take(1);
+		$emailLockoutCount = $mySettings[0]->email_lockout_count;
+		return $emailLockoutCount;
+	}
+	
+	public static function getEmailLockoutDuration() {
+		$mySettings = UserSettings::get(array('email_lockout_duration_mins'))
+		->take(1);
+		$emailLockoutDuration = $mySettings[0]->email_lockout_duration_mins;
+		return $emailLockoutDuration;
+	}
 }

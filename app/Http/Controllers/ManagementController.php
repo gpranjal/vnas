@@ -244,18 +244,17 @@ class ManagementController extends Controller {
 		
 		//var_dump($form);
 		
-		//add fields to the form
 		$form->add('session_timeout_minutes','Session Timeout (in minutes):', 'text'); //field name, label, type
 		$form->add('google_maps_api_key','Google Maps API Key:', 'text'); //validation
-		
-		//some enhanced field (images, wysiwyg, autocomplete, maps, etc..):
-		$form->add('paypal_api_key','Paypal API Key', 'text');
+		$form->add('paypal_api_key','Paypal API Key:', 'text');
+		$form->add('email_lockout_count','Number of login attempts allowed:', 'text');
+		$form->add('email_lockout_duration_mins','Failed login lockout duration (mins):', 'text');
 				
 		$form->submit('Save');
 		$form->saved(function() use ($form)
 		{
 			$form->message("Settings updated!");
-			$form->link("/user_settings","Return to user settings");
+			$form->link("/system_config","Return to user settings");
 		});
 		
 		return view('admin.user_settings', compact('form'));

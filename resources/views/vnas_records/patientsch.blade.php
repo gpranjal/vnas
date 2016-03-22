@@ -20,7 +20,7 @@
                     @foreach ($Vnas_records as $Vnas_record)
 
                     <tr>
-                        <td align="right"><strong>Schedule Title</strong></td>
+                        <td align="right"><strong>Schedule Title:</strong></td>
                         <td name="{{'titleText' . $count}}" align="left">{{ $Vnas_record->ap_title }}</td>
                     </tr>
 

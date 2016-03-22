@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="container-fluid text-center">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -22,7 +20,7 @@
                     @foreach ($Vnas_records as $Vnas_record)
 
                     <tr>
-                        <td align="right"><strong>Schedule Title</strong></td>
+                        <td align="right"><strong>Schedule Title:</strong></td>
                         <td name="{{'titleText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->ap_title }}</td>
                     </tr>
 
