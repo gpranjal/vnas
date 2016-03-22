@@ -1,5 +1,7 @@
 <?php
 
+use App\UserSettings;
+
 return [
 
 	/*
@@ -32,12 +34,14 @@ return [
 	| Here you may specify the number of minutes that you wish the session
 	| to be allowed to remain idle before it expires. If you want them
 	| to immediately expire on the browser closing, set that option.
-	|
+	| 
+	| VNAS Team, these values could be added to the administration "control" Table idea.
+	| This timeout doesn't seem to work so we actually added route middleware that can be found in App\Http\Middleware\sessionTimeout.php
 	*/
 
-	'lifetime' => 120,
+	'lifetime' => 15,
 
-	'expire_on_close' => false,
+	'expire_on_close' => true,
 
 	/*
 	|--------------------------------------------------------------------------

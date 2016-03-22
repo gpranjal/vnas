@@ -1,7 +1,18 @@
 <?php namespace Sukohi\Maven;
+use View;
+use Auth;
+
+
 
 class Maven {
 
+    public function __construct()
+    {
+        //$this->vnas_records = Vnas_record::all();
+//        $this->middleware('auth');
+        View::composer('*', 'App\Composers\HomeComposer');
+    }
+    
 	private $_tags = [];
 
 	public function tag($tag) {
@@ -44,6 +55,7 @@ class Maven {
 	public function manage_view($limit = 30) {
 
 		$message = '';
+		$keyword = '';
 
 		if(\Request::has('remove_id')) {
 
@@ -61,15 +73,18 @@ class Maven {
 				$faq = Faq::firstOrNew(['id' => \Request::get('id')]);
 				$faq->question = \Request::get('question');
 				$faq->answer = \Request::get('answer');
+				$faq->faq_role = \Request::get('faq_role');
 				$faq->tags = explode(',', \Request::get('tags'));
 				$faq->draft_flag = \Request::has('draft_flag');
 				$faq->save();
 				\Cahen::move($faq)->to('sort', \Request::get('sort'));
-
+				
+// 				You could leave the values in the boxes if you remove this section --Zach H
 				$message = 'Complete!';
 				\Request::merge([
 					'question' => '',
 					'answer' => '',
+					'faq_role' => '',
 					'tags' => '',
 					'sort' => '',
 					'draft_flag' => '',
@@ -89,6 +104,7 @@ class Maven {
 			\Request::merge([
 				'question' => $faq->question,
 				'answer' => $faq->raw_answer,
+				'faq_role' => $faq->faq_role,
 				'tags' => implode(',', $faq->tags),
 				'sort' => $faq->sort_number,
 				'draft_flag' => $faq->draft_flag
@@ -100,29 +116,107 @@ class Maven {
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+		$role_values = Faq::roleValues();
 
 		return view('maven::manage', [
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
-				'message' => $message
+				'role_values' => $role_values,
+				'message' => $message,
+				'keyword' => $keyword
 		])->render();
 
 	}
 
 	public function view($limit = 30) {
+		$keyword = '';
 		$message = '';
+
+		$isCareGiver    = "";
+		$isPatient    	= ""; 
+		$my_role   		= "";
+
+		if( Auth::check() )
+		{
+			$isCareGiver    = Auth::user()->caregiver_role;
+        	$isPatient      = Auth::user()->patient_role;
+
+			if( $isCareGiver != "" )
+			{
+				 $my_role = "caregiver";       	
+			}
+			else if( $isPatient != "" )
+			{
+				 $my_role = "patient"; 
+			}
+		}
+
+
 		$faqs = Faq::orderBy('sort', 'ASC')
+					->where(function($q)  use ($my_role){
+						$q->where( 'faq_role' , '' )
+						->orWhere( 'faq_role' , "$my_role" );
+					})
 					->paginate($limit);
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
+		$role_values = Faq::roleValues();
+
+
 
 		return view('maven::untag', [
 				'faqs' => $faqs,
 				'sort_values' => $sort_values,
 				'tag_values' => $tag_values,
-				'message' => $message
+				'role_values' => $role_values,
+				'message' => $message,
+				'keyword' => $keyword
 		])->render();
+	}
+
+	public function search($keyword,$limit = 30) {
+	
+		$message = '';
+		$isCareGiver    = "";
+		$isPatient    	= ""; 
+		$my_role   		= "";
+
+		if( Auth::check() )
+		{
+			$isCareGiver    = Auth::user()->caregiver_role;
+	        $isPatient      = Auth::user()->patient_role;
+
+	        if( $isCareGiver != "" )
+	        {
+				 $my_role = "caregiver";       	
+	        }
+	        else
+	        {
+	        	 $my_role = "patient"; 
+	        }
+	    }
+
+		$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
+			->where(function($q) use ($my_role){
+				$q->where( 'faq_role' , '' )
+					->orWhere( 'faq_role' , $my_role );
+			})
+			->orderBy('sort', 'ASC')
+			->paginate($limit);
+		
+		$sort_values = Faq::sortSelectValues();
+		$tag_values = Faq::tagValues();
+		$role_values = Faq::roleValues();
+		
+		return view('maven::untag', [
+		   		'faqs' => $faqs, //keyword goes here?
+		  		'sort_values' => $sort_values,
+		  		'tag_values' => $tag_values,
+				'role_values' => $role_values,
+		  		'message' => $message,
+		  		'keyword' => $keyword
+		 ])->render();
 	}
 
 }

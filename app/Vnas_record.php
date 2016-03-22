@@ -28,6 +28,8 @@ class Vnas_record extends Model {
 
     ];
 
+    protected $dates = [ 'ap_date' ];//format("mm/dd/yyyy");
+
     public function Vnas_record()
     {
         return $this->hasMany('App\Vnas_record');

@@ -1,12 +1,15 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid text-center">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">
+					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
+					<br>
+
 					@if (session('status'))
 						<div class="alert alert-success">
 							{{ session('status') }}
@@ -36,7 +39,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4" align="left">
-								<button type="submit" class="btn btn-default">
+								<button name="sendResetButton" type="submit" class="btn btn-default">
 									Send Password Reset Link
 								</button>
 							</div>

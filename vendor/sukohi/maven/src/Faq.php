@@ -92,6 +92,8 @@ class Faq extends Model
 		$values = [];
 		$faqs = Faq::select('tags')->get();
 
+		
+		
 		foreach ($faqs as $index => $faq) {
 
 			$tags = $faq->tags;
@@ -111,5 +113,29 @@ class Faq extends Model
 
 		return $values;
 
+	}
+	
+	public static function roleValues() {
+	
+		$values = [];
+		$faqs = Faq::select('faq_role')->get();
+	
+		foreach ($faqs as $index => $faq) {
+	
+			$roles = $faq->faq_role;
+			
+			if(strlen( $faq->faq_role ) > 0 )
+			{
+// 	 			foreach ($roles as $index => $role) {
+					if(!in_array($roles, $values)) {
+						$values[] = $roles;
+	 				}
+// 	 			}
+			}
+		}
+		sort($values);
+		
+		return $values;
+	
 	}
 }

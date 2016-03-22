@@ -20,6 +20,7 @@ class CreateFaqsTable extends Migration
             $table->integer('sort');
             $table->text('tags');   // for JSON
             $table->boolean('draft_flag');
+            $table->string('faq_role');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use View;
+use App\UserSettings;
+
+
 class HomeController extends Controller {
 
 	/*
@@ -12,7 +16,6 @@ class HomeController extends Controller {
 	| controller as you wish. It is just here to get your app started!
 	|
 	*/
-
 	/**
 	 * Create a new controller instance.
 	 *
@@ -21,6 +24,8 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+		View::composer('*', 'App\Composers\HomeComposer');
+
 	}
 
 	/**
@@ -30,7 +35,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		
+		return view('home' , ['donateAPIKey' => UserSettings::getDonateAPIKey()]);
 	}
 
 }

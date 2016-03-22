@@ -10,7 +10,7 @@ return [
 	| When your application is in debug mode, detailed error messages with
 	| stack traces will be shown on every error that occurs within your
 	| application. If disabled, a simple generic error page is shown.
-	|
+	| 
 	*/
 
 	'debug' => env('APP_DEBUG'),
@@ -145,11 +145,14 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'Collective\Html\HtmlServiceProvider',
-    	'Sukohi\Cahen\CahenServiceProvider',
-    	'Sukohi\Maven\MavenServiceProvider',
-    	'Todstoychev\TableSorter\ServiceProvider'
-
+		//'Collective\Html\HtmlServiceProvider', // LaravelCollective
+    	'Sukohi\Cahen\CahenServiceProvider', // FAQ
+    	'Sukohi\Maven\MavenServiceProvider', // FAQ
+    	'Todstoychev\TableSorter\ServiceProvider', // Sort Table
+    	'Jenssegers\Agent\AgentServiceProvider', // Browser Detection
+    	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',//User tracking
+		'Torann\GeoIP\GeoIPServiceProvider',
+		'Zofe\Rapyd\RapydServiceProvider' // CRUD
 	],
 
 	/*
@@ -199,11 +202,15 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
   	    'Html' 		=> 'Illuminate\Html\HtmlFacade',
-    	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen',
-    	'Maven'   	=> 'Sukohi\Maven\Facades\Maven',
-    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter',
-
-
+  	    //'Form' 		=> 'Collective\Html\FormFacade', // LarvelCollective
+        //'Html' 		=> 'Collective\Html\HtmlFacade', // LarvelCollective
+    	'Cahen'   	=> 'Sukohi\Cahen\Facades\Cahen', //FAQ
+    	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
+    	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
+    	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent', // Browser Detection
+    	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade', // User tracking
+		'AppGeoIP' => 'Torann\GeoIP\GeoIPFacade'
+		
 	],
 
 ];
