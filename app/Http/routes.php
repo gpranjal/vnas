@@ -77,8 +77,6 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 	Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
 	Route::get('/testmail' , 'VnasRecordsController@testmail');
-
-
 	Route::get('vnas_users', 'VnasUsersController@index');
 	Route::get('vnas_users/create', 'VnasUsersController@create');
 	Route::post('vnas_users', 'VnasUsersController@store');

@@ -4,8 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vnas_record extends Model {
 
-	//
+	protected $table = "vnas_multirole_calendar";
 
+	/*
     protected $fillable = [
         'patient_id',
         'patient_fname',
@@ -27,8 +28,9 @@ class Vnas_record extends Model {
         'ap_comments',
 
     ];
-
-    protected $dates = [ 'ap_date' ];//format("mm/dd/yyyy");
+	*/
+	
+    protected $dates = [ 'SCHEDULE_START_DTTM', 'SCHEDULE_END_DTTM' ];
 
     public function Vnas_record()
     {
