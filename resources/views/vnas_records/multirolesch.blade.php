@@ -18,31 +18,31 @@
                 <table class="table table-hover text-left">
                     <?php $count = 1 ?>
                     @foreach ($Vnas_records as $Vnas_record)
-
+                    
                     <tr>
                         <td align="right"><strong>Schedule Title:</strong></td>
-                        <td name="{{'titleText' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->ap_title }}</td>
+                        <td name="{{'titleText' . $count}}" align="left">{{ $Vnas_record->calendar_type }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver ID:</strong></td>
-                        <td name="{{'caregiverId' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_id  }}</td>
+                        <td name="{{'caregiverId' . $count}}" align="left">{{ $Vnas_record->caregiver_id  }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver Name:</strong></td>
-                        <td name="{{'caregiverName' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
+                        <td name="{{'caregiverName' . $count}}" align="left">{{ $Vnas_record->care_giver_first_nme }} {{ $Vnas_record->care_giver_last_nme }}</td>
                     </tr>
 
 
                     <tr>
                         <td align="right"><strong>Caregiver Phone:</strong></td>
-                        <td name="{{'caregiverPhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_phone  }}</td>
+                        <td name="{{'caregiverPhone' . $count}}" align="left">{{ $Vnas_record->caregiver_phone  }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver Mobile:</strong></td>
-                        <td name="{{'caregiveMobilePhone' . $count}}" align="left">&nbsp;&nbsp;{{ $Vnas_record->caregiver_mob  }}</td>
+                        <td name="{{'caregiveMobilePhone' . $count}}" align="left">{{ $Vnas_record->caregiver_mob  }}</td>
                     </tr>
                     <?php $count=$count+1 ?>
                     @endforeach

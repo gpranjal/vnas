@@ -46,16 +46,16 @@
 							<?php $count = 1; ?>
 							@foreach ($Vnas_records as $Vnas_record)
 
-							<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->schedule_sk]) }}'>
-								<td>{{ $Vnas_record->calendar_type }}</td>
+							<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->SCHEDULE_SK]) }}'>
+								<td>{{ $Vnas_record->CALENDAR_TYPE }}</td>
 								<td name="{{'dateText' . $count}}">{{ date_format( date_create( $Vnas_record->SCHEDULE_START_DTTM )  , 'm/d/y' ) }}</td>
 								<td name="{{'timeText' . $count}}">
-									{{ date( 'H:i' , strtotime( $Vnas_record->schedule_start_dttm ) ) }}
+									{{ date( 'H:i' , strtotime( $Vnas_record->SCHEDULE_START_DTTM ) ) }}
 								-
-								{{ date( 'H:i' , strtotime( $Vnas_record->schedule_end_dttm )  ) }}
+								{{ date( 'H:i' , strtotime( $Vnas_record->SCHEDULE_END_DTTM )  ) }}
 								</td>
-								<td name="{{'nameText' . $count}}">{{ $Vnas_record->care_giver_first_nme }} {{ $Vnas_record->care_giver_last_nme }}</td>
-								<td name="{{'nameText' . $count}}">{{ $Vnas_record->client_first_nme }} {{ $Vnas_record->client_last_nme }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->CARE_GIVER_FIRST_NME }} {{ $Vnas_record->CARE_GIVER_LAST_NME }}</td>
+								<td name="{{'nameText' . $count}}">{{ $Vnas_record->CLIENT_FIRST_NME }} {{ $Vnas_record->CLIENT_LAST_NME }}</td>
 							</tr>
 							<?php $count=$count+1 ?>
 							@endforeach

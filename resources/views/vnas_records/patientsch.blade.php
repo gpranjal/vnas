@@ -26,7 +26,7 @@
 
                     <tr>
                         <td align="right"><strong>Caregiver ID:</strong></td>
-                        <td name="{{'idText' . $count}}" align="left">{{ $Vnas_record->caregiver_id  }}</td>
+                        <td name="{{'idText' . $count}}" align="left">{{ $Vnas_record->CARE_GIVER_ID  }}</td>
                     </tr>
 
                     <tr>
