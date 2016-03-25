@@ -4,6 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\vnas_user;
+use App\User_role_rel;
+use App\Caregiver_record;
+use App\Client_record;
 use Request;
 use Auth;
 use App\Vnas_record;
@@ -23,22 +26,51 @@ class VnasUsersController extends Controller {
         // Check to see if the user is logged in
         if( Auth::check() )
         {
-            $isCareGiver    = Auth::user()->caregiver_role;
-            $isPatient      = Auth::user()->patient_role;
-            $vnas_users   = null;
+        	$myCurrUserSk 	= Auth::user()->id;
+        	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
+        	->get( array('vna_user_role_cd','vna_user_id') );
+        	$myCurrRole       = [];
+        	$myClientIds 	  = [];
+        	$myCareGiverIds   = [];
+        	$vnas_users   = null;
+        	 
+        	// Create an array of the roles of the authenticated user
+        	foreach ( $myRoles as $myIntRole )
+        	{
+        		$myCurrRole[count($myCurrRole)] = $myIntRole->vna_user_role_cd;
+        		if( $myIntRole->vna_user_role_cd == 2 || $myIntRole->vna_user_role_cd == 3 )
+        		{
+        			$myClientIds[count($myClientIds)] = $myIntRole->vna_user_id;
+        		}
+        		else
+        		{
+        			$myCareGiverIds[count($myCareGiverIds)] = $myIntRole->vna_user_id;
+        		}
+        	}
+        	////////////////////////////////////////////////////////
+        	
+        	if( count( $myCareGiverIds ) > 0 )
+        	{
+            	$isCareGiver    = 1;
+        	}
+        	
+        	if( count( $myClientIds ) > 0 )
+        	{
+            	$isPatient      = 1;
+        	}
+            
 
             if( $isCareGiver != "" )
             {
-                $vnas_users = Vnas_record::where( 'caregiver_id' , '=' , $isCareGiver )
-                    ->take(1)
-                    ->get( array('id','caregiver_id','caregiver_fname','caregiver_lname','caregiver_phone','caregiver_mob'));
+                $vnas_users = Caregiver_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                	->distinct()
+                    ->get( array('care_giver_id','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
                 return view('vnas_users.care', compact('vnas_users'));
             }
             else if ( $isPatient != "" ) 
             {
-                $vnas_users = Vnas_record::where( 'patient_id' , '=' , $isPatient )->distinct()
-                    ->take(1)
-                    ->get( array('patient_id','patient_fname','patient_lname','patient_address','patient_phone','patient_email'));
+                $vnas_users = Client_record::where( 'patient_id' , '=' , $isPatient )->distinct()
+                    ->get( array('care_giver_id','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
                 return view('vnas_users.index', compact('vnas_users'));
             }
             else
