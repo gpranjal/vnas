@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use App\Vnas_record;
 use App\User_role_rel;
 use App\Client_record;
+use App\User_role_dcod;
 use Request;
 use DB;
 use View;
@@ -42,14 +43,11 @@ class VnasRecordsController extends Controller {
         	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
         	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
         	
+        	
             $nextCntl         = "";
             $myView           = "";
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
             
-            // Get all client roles ** This should probably be a method
-            $myClientRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );
-            // Get all caregiver roles ** This should probably be a method
-            $myCaregiverRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc not in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );
             $Vnas_records   = null;
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only

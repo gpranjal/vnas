@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User_role_dcod;
 
 class User_role_rel extends Model {
 
@@ -14,11 +15,16 @@ class User_role_rel extends Model {
 	public static function getClientIds($myRoles)
 	{
 		$myClientIds = null;
+		$myClientDcodIds = User_role_dcod::getClientRoleDcodIds();
+		
 		foreach ( $myRoles as $myIntRole )
 		{
-			if( $myIntRole->vna_user_role_cd == 2 || $myIntRole->vna_user_role_cd == 3 )
+			foreach( $myClientDcodIds as $myClientDcodId )
 			{
-				$myClientIds[count($myClientIds)] = $myIntRole->vna_user_id;
+				if( $myIntRole->vna_user_role_cd == $myClientDcodId->gen_ref_id  )
+				{
+					$myClientIds[count($myClientIds)] = $myIntRole->vna_user_id;
+				}
 			}
 		}
 		return $myClientIds;
@@ -27,13 +33,19 @@ class User_role_rel extends Model {
 	public static function getCaregiverIds($myRoles)
 	{
 		$myCareGiverIds = null;
+		$myClientDcodIds = User_role_dcod::getCaregiverRoleDcodIds();
+		
 		foreach ( $myRoles as $myIntRole )
 		{
-			if( $myIntRole->vna_user_role_cd != 2 && $myIntRole->vna_user_role_cd != 3 )
+			foreach( $myClientDcodIds as $myClientDcodId )
 			{
-				$myCareGiverIds[count($myCareGiverIds)] = $myIntRole->vna_user_id;
-			}			
+				if( $myIntRole->vna_user_role_cd == $myClientDcodId->gen_ref_id )
+				{
+					$myCareGiverIds[count($myCareGiverIds)] = $myIntRole->vna_user_id;
+				}
+			}
 		}
+		
 		return $myCareGiverIds;
 	}
 	
