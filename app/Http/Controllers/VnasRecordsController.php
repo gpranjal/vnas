@@ -35,43 +35,13 @@ class VnasRecordsController extends Controller {
         	$myCurrUserSk 	= Auth::user()->id;
         	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
         							->get( array('vna_user_role_cd','vna_user_id') );
-        	$myCurrRole       = [];
-        	$myClientIds 	  = [];
-        	$myCareGiverIds   = [];
+        	$myCurrRole       = User_role_rel::getCurrRole($myRoles);
+        	$myClientIds 	  = User_role_rel::getClientIds($myRoles);
+        	$myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
         	
-        	// Create an array of the roles of the authenticated user
-        	foreach ( $myRoles as $myIntRole )
-        	{
-        		$myCurrRole[count($myCurrRole)] = $myIntRole->vna_user_role_cd;
-        		if( $myIntRole->vna_user_role_cd == 2 || $myIntRole->vna_user_role_cd == 3 )
-        		{
-        			$myClientIds[count($myClientIds)] = $myIntRole->vna_user_id;
-        		}
-        		else 
-        		{
-        			$myCareGiverIds[count($myCareGiverIds)] = $myIntRole->vna_user_id;
-        		}
-        	}
+        	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
+        	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
         	
-        	$isPatient = 0;
-        	$isCareGiver = 0;
-        	
-        	if( is_array( $myCurrRole ) )
-        	{
-	        	if( in_array( 2 , $myCurrRole ) || in_array( 3 , $myCurrRole ) )
-	        	{
-	        		$isPatient      = 1;
-	        		
-	        	}
-	        	
-	        	foreach ($myCurrRole as $altRole )
-	        	{
-	        		if( $altRole != 2 && $altRole != 3 ){
-	        			$isCareGiver      = 1;
-	        		}
-	        	}
-        	}
-             	
             $nextCntl         = "";
             $myView           = "";
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
@@ -146,9 +116,14 @@ class VnasRecordsController extends Controller {
         
         $myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
         	->get( array('vna_user_role_cd','vna_user_id') );
-        $myCurrRole       = [];
-        $isClient = 0;
-        $isCaregiver = 0;    
+        
+        $myCurrRole       = User_role_rel::getCurrRole($myRoles);
+        $myClientIds 	  = User_role_rel::getClientIds($myRoles);
+        $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
+        	
+        $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
+        $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
+        
         $myView = "";
 		
         // Get all patient roles ** This should probably be a method
@@ -160,18 +135,6 @@ class VnasRecordsController extends Controller {
 			->where( 'user_sk' , '=' , $myCurrUserSk )
 			->distinct()
 			->get( array('schedule_sk','client_id','care_giver_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
-       	
-		foreach ($myRoles as $myRole )
-		{
-			if( $myRole->vna_user_id == $Vnas_records[0]->CLIENT_ID )
-			{
-				$isClient = 1;
-			}
-			else if( $myRole->vna_user_id == $Vnas_records[0]->CARE_GIVER_ID )
-			{
-				$isCaregiver = 1;
-			}
-		}
         
         // Need to check the roles from the ORM query and return the appropriate view.
         if( $isClient )
