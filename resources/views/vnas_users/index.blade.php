@@ -19,32 +19,32 @@
 				@if( count($vnas_users) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
-				<table class="table table-hover" >
+				<table class="table table-hover">
 					<?php $count = 1 ?>
 					@foreach ($vnas_users as $vnas_user)
 					<tr>
 						<td align="right"><strong>My ID:</strong></td>
-						<td align="left" name="{{'idText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->CLIENT_ID  }}</td>
+						<td align="left" name="{{'idText' . $count}}">{{ $vnas_user->CLIENT_ID  }}</td>
 					</tr>
 
 					<tr>
 						<td align="right"><strong>Name:</strong></td>
-						<td align="left" name="{{'nameText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->CLIENT_FIRST_NME  }} {{ $vnas_user->CLIENT_LAST_NME  }}</td>
+						<td align="left" name="{{'nameText' . $count}}">{{ $vnas_user->CLIENT_FIRST_NME  }} {{ $vnas_user->CLIENT_LAST_NME  }}</td>
 					</tr>
 
 					<tr>
 						<td align="right"><strong>Address:</strong></td>
-						<td align="left" name="{{'addressText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->CLIENT_ADDRESS  }}</td>
+						<td align="left" name="{{'addressText' . $count}}">{{ $vnas_user->CLIENT_ADDRESS  }}</td>
 					</tr>
 
 					<tr>
 						<td align="right"><strong>Mobile Phone:</strong></td>
-						<td align="left" name="{{'phoneText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->CLIENT_PHONE  }}</td>
+						<td align="left" name="{{'phoneText' . $count}}">{{ $vnas_user->CLIENT_PHONE  }}</td>
 					</tr>
 
 					<tr>
 						<td align="right"><strong>Email:</strong></td>
-						<td align="left" name="{{'emailText' . $count}}">&nbsp;&nbsp;{{ $vnas_user->CLIENT_EMAIL  }}</td>
+						<td align="left" name="{{'emailText' . $count}}">{{ $vnas_user->CLIENT_EMAIL  }}</td>
 					</tr>
 
 					<?php $count=$count+1 ?>
