@@ -126,7 +126,7 @@ class VnasRecordsController extends Controller {
         
         $myView = "";
 		
-        // Get all patient roles ** This should probably be a method
+        // Get all patient roles ** This should probably be a method probably it's own model...at least a method in this controller
         $myClientRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );
         // Get all caregiver roles ** This should probably be a method
         $myCaregiverRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc not in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );

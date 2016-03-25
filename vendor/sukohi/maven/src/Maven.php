@@ -1,6 +1,8 @@
 <?php namespace Sukohi\Maven;
 use View;
 use Auth;
+use App\User_role_rel;
+use App\Client_record;
 
 
 
@@ -139,8 +141,15 @@ class Maven {
 
 		if( Auth::check() )
 		{
-			$isCareGiver    = Auth::user()->caregiver_role;
-        	$isPatient      = Auth::user()->patient_role;
+			$myCurrUserSk 	= Auth::user()->id;
+        	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
+        							->get( array('vna_user_role_cd','vna_user_id') );
+        	$myCurrRole       = User_role_rel::getCurrRole($myRoles);
+        	$myClientIds 	  = User_role_rel::getClientIds($myRoles);
+        	$myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
+        	
+        	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
+        	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
 
 			if( $isCareGiver != "" )
 			{
@@ -184,8 +193,15 @@ class Maven {
 
 		if( Auth::check() )
 		{
-			$isCareGiver    = Auth::user()->caregiver_role;
-	        $isPatient      = Auth::user()->patient_role;
+			$myCurrUserSk 	= Auth::user()->id;
+        	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
+        							->get( array('vna_user_role_cd','vna_user_id') );
+        	$myCurrRole       = User_role_rel::getCurrRole($myRoles);
+        	$myClientIds 	  = User_role_rel::getClientIds($myRoles);
+        	$myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
+        	
+        	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
+        	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
 
 	        if( $isCareGiver != "" )
 	        {
