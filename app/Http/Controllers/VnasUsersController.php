@@ -33,6 +33,9 @@ class VnasUsersController extends Controller {
         	$myClientIds 	  = [];
         	$myCareGiverIds   = [];
         	$vnas_users   = null;
+        	$isCareGiver = null;
+        	$isPatient = null;
+        	
         	 
         	// Create an array of the roles of the authenticated user
         	foreach ( $myRoles as $myIntRole )
@@ -69,8 +72,8 @@ class VnasUsersController extends Controller {
             }
             else if ( $isPatient != "" ) 
             {
-                $vnas_users = Client_record::where( 'patient_id' , '=' , $isPatient )->distinct()
-                    ->get( array('care_giver_id','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                $vnas_users = Client_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
+                    ->get( array('client_id','client_first_nme','client_last_nme','client_address','client_phone'));
                 return view('vnas_users.index', compact('vnas_users'));
             }
             else
