@@ -49,6 +49,7 @@
 
 				<br />
 				<div class="row">
+					<h2>Contact VNA</h2>
 					<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 					</a>
