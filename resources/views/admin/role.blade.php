@@ -83,7 +83,8 @@
             <input type="hidden" id="caregiver_search" name="caregiver_search" value="{{$role_id->caregiver_role}}">
         </tr>
     </table>
-    <input name="btnSubmit" type="submit" value="submit">
+    <input class="btn btn-primary" role="button" name="btnSubmit" type="submit" value="submit">
+    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('/manage')}}">Cancel</a>
 </form>
     {{--<div id="search_patient" class="row">--}}
 
