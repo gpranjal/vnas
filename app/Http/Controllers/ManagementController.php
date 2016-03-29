@@ -261,10 +261,10 @@ class ManagementController extends Controller {
 	}
 
 	public function remove_patient_role($id){
-
+return "landed on remove_patient_role function";
 	}
 
 	public function remove_caregiver_role($id){
-
+return "landed on remove_caregiver_role funciton";
 	}
 }
