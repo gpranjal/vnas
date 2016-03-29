@@ -259,4 +259,12 @@ class ManagementController extends Controller {
 		
 		return view('admin.user_settings', compact('form'));
 	}
+
+	public function remove_patient_role($id){
+
+	}
+
+	public function remove_caregiver_role($id){
+
+	}
 }

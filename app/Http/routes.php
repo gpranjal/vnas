@@ -105,4 +105,6 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/admin' , 'ManagementController@dashboard');
 	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
 
+	Route::get('/remove/patient_role/{id}', 'ManagementController@remove_patient_role');
+	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
 });
