@@ -126,15 +126,10 @@ class VnasRecordsController extends Controller {
         
         $myView = "";
 		
-        // Get all patient roles ** This should probably be a method probably it's own model...at least a method in this controller
-        $myClientRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );
-        // Get all caregiver roles ** This should probably be a method
-        $myCaregiverRoleList = DB::select( "SELECT gen_ref_id ,gen_ref_desc FROM `vnas_gen_ref` WHERE gen_ref_desc not in ( 'PATIENT' , 'CLIENT' ) group by gen_ref_id ,gen_ref_desc" );
-        
-        $Vnas_records = vnas_record::where( 'schedule_sk' , '=' , $id )
+        $Vnas_records = Vnas_record::where( 'schedule_sk' , '=' , $id )
 			->where( 'user_sk' , '=' , $myCurrUserSk )
 			->distinct()
-			->get( array('schedule_sk','client_id','care_giver_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+			->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
         
         // Need to check the roles from the ORM query and return the appropriate view.
         if( $isClient )
@@ -156,9 +151,9 @@ class VnasRecordsController extends Controller {
         $myCurrUserSk    = Auth::user()->id;
         $Vnas_records   = null;
 
-        $Vnas_records = vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+        $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                                         ->where( 'schedule_sk' , '=' , $id )
-                                        ->get( array('schedule_sk','client_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                                        ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
         return view('vnas_records.sch', compact('Vnas_records'));
 
     }
@@ -167,9 +162,9 @@ class VnasRecordsController extends Controller {
     {
         $myCurrUserSk      = Auth::user()->id;
         
-        $Vnas_records = Client_record::where( 'user_sk' , '=' , $myCurrUserSk )
+        $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                                         ->where( 'schedule_sk' , '=' , $id )
-                                        ->get( array('schedule_sk','client_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                                        ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
         return view('vnas_records.patientsch', compact('Vnas_records'));
     }
 
