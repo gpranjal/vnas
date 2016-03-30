@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User_role_dcod extends Model {
 
-	protected $table = "vnas_gen_ref";
+	protected $table = "VNAS_GEN_REF";
 	
 	public function Caregiver_record()
 	{

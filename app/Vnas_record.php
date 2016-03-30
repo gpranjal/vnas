@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vnas_record extends Model {
 
-	protected $table = "vnas_calendar";
+	protected $table = "VNAS_CALENDAR";
 
 	/*
     protected $fillable = [

@@ -6,7 +6,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class User_role_rel extends Model {
 
-	protected $table = "vnas_vna_user_rel";
+	protected $table = "VNAS_VNA_USER_REL";
 	
 	public function Caregiver_record()
 	{
