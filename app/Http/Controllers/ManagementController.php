@@ -267,4 +267,13 @@ return "landed on remove_patient_role function";
 	public function remove_caregiver_role($id){
 return "landed on remove_caregiver_role funciton";
 	}
+
+	public function unlock_user($id){
+		if(Auth::User()->role != 'admin') return view('home');
+		$user = User::find($id);
+		$user->lock_user = 'Y';
+		$user->failed_attemps = 0 ;
+		$user->save();
+		return Redirect('manage');
+	}
 }

@@ -24,7 +24,7 @@
             <td><div name="{{'nameText' . $count}}" >{{$meh ->name}}</div></td>
             <td><a name="{{'editButton' . $count}}" class="btn btn-primary" role="button" href="{{url('management_edit/')}}/{{$meh->id}}">Edit</a> </td>
             <td><a name="{{'resetButton' . $count}}" class="btn btn-primary" role="button" href="{{url('reset/')}}/{{$meh->id}}">Reset</a> </td>
-            <td><a name="{{'unlockButton' . $count}}" class="btn btn-primary" role="button" >Unlock</a></td>
+            <td>@if($meh->lock_user == 'X')<a name="{{'unlockButton' . $count}}" class="btn btn-primary" href="{{url('unlock_user/')}}/{{$meh->id}}" role="button" >Unlock</a>@endif</td>
             <td>@if($meh->role != 'admin')<a name="{{'removeButton' . $count}}" class="btn btn-primary" href="{{url('remove/')}}/{{$meh->id}}" role="button">Remove</a>@endif</td>
             <td><a name="{{'rolebutton' . $count}}" class="btn btn-primary" href="{{url('role/')}}/{{$meh->id}}" role="button" >Role</a></td>
         </tr>
