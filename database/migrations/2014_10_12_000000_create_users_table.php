@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration {
 			$table->string('patient_role');
 			$table->string('email')->unique();
 			$table->string('password', 60);
+			$table->string('failed_attemps');
+			$table->dateTime('last_failed_attempt');
+			$table->string('lock_user');
 			$table->rememberToken();
 			$table->timestamps();
 		});

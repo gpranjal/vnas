@@ -53,7 +53,7 @@
                                     <button name="btnSave" type="submit" class="btn btn-primary">
                                         Save
                                     </button>
-                                    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('home')}}">Cancel</a>
+                                    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('/manage')}}">Cancel</a>
                                 </div>
 
                             </div>

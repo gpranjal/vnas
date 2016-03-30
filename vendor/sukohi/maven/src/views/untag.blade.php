@@ -15,8 +15,12 @@
 				</div>
 				<br />
 				<div id="FAQ">
-
-
+					
+					<div class="row" id="tfheader">
+						<button name="faqButton" id="faqButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;">
+							<span name="faqSpan" id="faqSpan" class="glyphicon glyphicon-collapse-up" aria-hidden="true" style="padding-right: 10px;"></span>Expand All
+						</button>
+					</div>
 					<!-- HTML for SEARCH BAR  -->
 <!-- 					Hidden, not deleted, by the request of the client. -->
 <!-- 					<div id="tfheader"> -->
@@ -69,7 +73,35 @@
 			$( "#ans"+  $( this).attr( "myCnt") ).slideToggle( "slow", function() {
 			// Animation complete.
 			});
-			
+
+			$("#faqButton").html( '<span name="faqSpan" id="faqSpan" class="glyphicon glyphicon-collapse-down" aria-hidden="true" style="padding-right: 10px;"></span>Collapse All ');
+		});
+
+		$("#faqButton").click(function() {
+			if( $("#faqSpan").attr( "class" ) == "glyphicon glyphicon-collapse-up" )
+			{
+// 				$("#faqSpan").removeClass( "glyphicon glyphicon-collapse-up" )
+// 					.attr( "class" , "glyphicon glyphicon-collapse-down" )
+// 				$("#faqSpanTxt").html( "Collapse All" );
+				
+				$( this ).html( '<span name="faqSpan" id="faqSpan" class="glyphicon glyphicon-collapse-down" aria-hidden="true" style="padding-right: 10px;"></span>Collapse All ');
+
+				$(".sub-row-answer:hidden").slideToggle( "slow", function() {
+					// Animation complete.
+				});
+			}
+			else
+			{
+// 				$("#faqSpan").removeClass( "glyphicon glyphicon-collapse-down" )
+// 					.attr( "class" , "glyphicon glyphicon-collapse-up" )
+// 				$("#faqSpanTxt").html( "Expand All" );
+
+				$( this ).html( '<span name="faqSpan" id="faqSpan" class="glyphicon glyphicon-collapse-up" aria-hidden="true" style="padding-right: 10px;"></span>Expand All' );
+
+				$(".sub-row-answer:visible").slideToggle( "slow", function() {
+					// Animation complete.
+				});
+			}
 		});
 	});
 </script>

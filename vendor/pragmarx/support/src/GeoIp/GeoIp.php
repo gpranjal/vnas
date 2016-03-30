@@ -15,29 +15,13 @@ class GeoIp
     }
 
     public function searchAddr($addr) {
-     	$myGeoIpData = AppGeoIP::getLocation($addr); /* Changed by Zach: Added this to actually get geo info */
+    	/* Changed by Zach: Added this to actually get geo info */
+     	$myGeoIpData = AppGeoIP::getLocation($addr); 
 
-    	
-        //return $this->geoIp->searchAddr($addr); /* Changed by Zach: This was providing any data. */
+     	/* Changed by Zach: This is the default value and it wasn't providing any data. */
+        //return $this->geoIp->searchAddr($addr); 
      	
-     	 
-     	//return $this->geoIp->searchAddr($addr);
-     	
-     	//      	'latitude' => $this->geoIpData->location->latitude,
-     	//      	'longitude' => $this->geoIpData->location->longitude,
-     	//      	'country_code' => $this->geoIpData->country->isoCode,
-     	//      	'country_code3' => null,
-     	//      	'country_name' => $this->geoIpData->country->name,
-     	//      	'region' => $this->geoIpData->continent->code,
-     	//      	'city' => $this->geoIpData->city->name,
-     	//      	'postal_code' => $this->geoIpData->postal->code,
-     	//      	'area_code' => null,
-     	//      	'dma_code' => null,
-     	//      	'metro_code' => $this->geoIpData->location->metroCode,
-     	//      	'continent_code' => $this->geoIpData->continent->code,
-     	
-     	/* The info above is what the package is expecting, I "translated" it below */
-     	
+     	// Added by Zach: This is the data, the tracker package is expecting all of these values
      	return [
      	'latitude' => $myGeoIpData['lat'],
      	'longitude' => $myGeoIpData['lon'],

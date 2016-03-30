@@ -21,28 +21,28 @@
 
                     <tr>
                         <td align="right"><strong>Schedule Title:</strong></td>
-                        <td name="{{'titleText' . $count}}" align="left">{{ $Vnas_record->ap_title }}</td>
+                        <td name="{{'titleText' . $count}}" align="left">{{ $Vnas_record->CALENDAR_TYPE }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver ID:</strong></td>
-                        <td name="{{'idText' . $count}}" align="left">{{ $Vnas_record->caregiver_id  }}</td>
+                        <td name="{{'idText' . $count}}" align="left">{{ $Vnas_record->CARE_GIVER_ID  }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver Name:</strong></td>
-                        <td name="{{'nameText' . $count}}" align="left">{{ $Vnas_record->caregiver_fname  }} {{ $Vnas_record->caregiver_lname  }}</td>
+                        <td name="{{'nameText' . $count}}" align="left">{{ $Vnas_record->CARE_GIVER_FIRST_NME  }} {{ $Vnas_record->CARE_GIVER_LAST_NME  }}</td>
                     </tr>
 
 
                     <tr>
                         <td align="right"><strong>Caregiver Phone:</strong></td>
-                        <td name="{{'phoneText' . $count}}" align="left">{{ $Vnas_record->caregiver_phone  }}</td>
+                        <td name="{{'phoneText' . $count}}" align="left">{{ $Vnas_record->CARE_GIVER_OFFICE_PH  }}</td>
                     </tr>
 
                     <tr>
                         <td align="right"><strong>Caregiver Mobile:</strong></td>
-                        <td name="{{'mobilePhoneText' . $count}}" align="left">{{ $Vnas_record->caregiver_mob  }}</td>
+                        <td name="{{'mobilePhoneText' . $count}}" align="left">{{ $Vnas_record->CARE_GIVER_MOBILE_PH  }}</td>
                     </tr>
                     <?php $count=$count+1 ?>
                     @endforeach

@@ -77,8 +77,6 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
 	Route::get('vnas_records/multi/{id}', 'VnasRecordsController@multirolesch');
 	Route::get('/testmail' , 'VnasRecordsController@testmail');
-
-
 	Route::get('vnas_users', 'VnasUsersController@index');
 	Route::get('vnas_users/create', 'VnasUsersController@create');
 	Route::post('vnas_users', 'VnasUsersController@store');
@@ -107,4 +105,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/admin' , 'ManagementController@dashboard');
 	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
 
+	Route::get('/remove/patient_role/{id}', 'ManagementController@remove_patient_role');
+	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
+	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
 });
