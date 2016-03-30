@@ -72,6 +72,7 @@ class VnasRecordsController extends Controller {
             else if( $isCareGiver && $isPatient ) // Is both roles
             {
             	$Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+            		->distinct()
             		->orderBy('schedule_start_dttm', 'asc');
             		         	
             	if( $myRole == "Client" )
