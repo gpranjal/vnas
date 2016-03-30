@@ -43,7 +43,6 @@ class VnasRecordsController extends Controller {
         	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
         	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
         	
-        	
             $nextCntl         = "";
             $myView           = "";
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
@@ -52,9 +51,9 @@ class VnasRecordsController extends Controller {
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
-                $Vnas_records = Caregiver_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                 	->orderBy('schedule_start_dttm', 'asc')
-                	->get( array('schedule_sk','client_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 				
                 $nextCntl = "VnasRecordsController@sch";
                 $myView = "vnas_records.care";
@@ -62,9 +61,9 @@ class VnasRecordsController extends Controller {
             }
             else if ( $isPatient && !$isCareGiver  ) // Is a patient only
             {
-                $Vnas_records = Client_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                 	->orderBy('schedule_start_dttm', 'asc')
-                	->get( array('schedule_sk','client_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
                 $nextCntl = "VnasRecordsController@patientsch";
                 $myView = "vnas_records.index";
             }
@@ -89,7 +88,7 @@ class VnasRecordsController extends Controller {
             	}
             	
             	$Vnas_records = $Vnas_records->distinct()
-            		->get( array('schedule_sk','client_id','care_giver_id','client_first_nme','client_last_nme','client_address','client_phone','calendar_type','schedule_start_dttm','schedule_end_dttm','comments','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+            		->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
 				$nextCntl = "VnasRecordsController@multirolesch";
                 $myView = "vnas_records.multirole";//{{ action( $nextCntl , [$Vnas_record->id]) }}

@@ -33,7 +33,7 @@ class VnasUsersController extends Controller {
         	$myCurrRole       = User_role_rel::getCurrRole($myRoles);
 	        $myClientIds 	  = User_role_rel::getClientIds($myRoles);
 	        $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
-	        	
+	        
 	        $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
 	        $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
 	        
@@ -41,15 +41,16 @@ class VnasUsersController extends Controller {
 
             if( $isCareGiver  )
             {
-                $vnas_users = Caregiver_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                $vnas_users = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds )
                 	->distinct()
-                    ->get( array('care_giver_id','care_giver_first_nme','care_giver_last_nme','care_giver_office_ph','care_giver_mobile_ph'));
+                    ->get( array('CARE_GIVER_ID','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
                 return view('vnas_users.care', compact('vnas_users'));
             }
             else if ( $isClient ) 
             {
-                $vnas_users = Client_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
-                    ->get( array('client_id','client_first_nme','client_last_nme','client_address','client_phone'));
+                $vnas_users = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
+                    ->get( array('CLIENT_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE'));
                 return view('vnas_users.index', compact('vnas_users'));
             }
             else

@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vnas_record extends Model {
 
-	protected $table = "vnas_multirole_calendar";
+	protected $table = "vnas_calendar";
 
 	/*
     protected $fillable = [
@@ -34,6 +34,6 @@ class Vnas_record extends Model {
 
     public function Vnas_record()
     {
-        return $this->hasMany('App\Vnas_record');
+        return $this->hasOne('App\Vnas_record');
     }
 }

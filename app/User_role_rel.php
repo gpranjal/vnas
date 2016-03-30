@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use App\User_role_dcod;
+use Symfony\Component\VarDumper\VarDumper;
 
 class User_role_rel extends Model {
 
@@ -21,12 +22,13 @@ class User_role_rel extends Model {
 		{
 			foreach( $myClientDcodIds as $myClientDcodId )
 			{
-				if( $myIntRole->vna_user_role_cd == $myClientDcodId->gen_ref_id  )
+				if( $myIntRole->vna_user_role_cd == $myClientDcodId->GEN_REF_ID  )
 				{
 					$myClientIds[count($myClientIds)] = $myIntRole->vna_user_id;
 				}
 			}
 		}
+		
 		return $myClientIds;
 	}
 	
@@ -39,7 +41,7 @@ class User_role_rel extends Model {
 		{
 			foreach( $myClientDcodIds as $myClientDcodId )
 			{
-				if( $myIntRole->vna_user_role_cd == $myClientDcodId->gen_ref_id )
+				if( $myIntRole->vna_user_role_cd == $myClientDcodId->GEN_REF_ID )
 				{
 					$myCareGiverIds[count($myCareGiverIds)] = $myIntRole->vna_user_id;
 				}

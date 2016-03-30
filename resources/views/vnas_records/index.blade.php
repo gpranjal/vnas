@@ -28,7 +28,7 @@
 					</thead>
 
 					<tbody>
-						<?php $count = 1 ?>
+						<?php $count = 1; ?>
 						@foreach ($Vnas_records as $Vnas_record)
 						<tr name="{{'rowLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->SCHEDULE_SK]) }}'>
 							<td name="{{'titleText' . $count}}">{{ $Vnas_record->CALENDAR_TYPE }}</td>

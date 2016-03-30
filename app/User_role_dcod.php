@@ -13,16 +13,13 @@ class User_role_dcod extends Model {
 	
 	public static function getClientRoleDcodIds()
 	{
-		$result = User_role_dcod::where( "gen_ref_desc" , "=" , 'PATIENT')
-			->orWhere( 'gen_ref_desc' , '=' , 'CLIENT')->get();
+		$result = User_role_dcod::where( "CLIENT_IND" , "=" , 1)->get();
 		return $result;
 	}
 	
 	public static function getCaregiverRoleDcodIds()
 	{
-		$result = User_role_dcod::where( "gen_ref_desc" , "!=" , 'PATIENT')
-			->where( 'gen_ref_desc' , '!=' , 'CLIENT')->get();
-		
+		$result = User_role_dcod::where( "CLIENT_IND" , "!=" , 1)->get();
 		return $result;
 	}
 }
