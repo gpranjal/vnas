@@ -97,6 +97,17 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	protected function getFailedLoginMessage($data)
 	{
+		function oto1($t){
+			if($t == 0){
+				return 1;
+			}else{
+				return $t;
+			}
+		}
+		// get variables
+		$allowed_attempts = DB::table('user_settings')->where('id',1)->pluck('email_lockout_count');
+		$allowed_timeout = DB::table('user_settings')->where('id',1)->pluck('email_lockout_duration_mins');
+		$allowed_timeout = intval($allowed_timeout);
 
 		//calculate diffrence betweet time
 		$timestamp = date('Y-m-d G:i:s');
@@ -104,12 +115,14 @@ trait AuthenticatesAndRegistersUsers {
 		$datetime1 = date_create($last_failed_attempt_time);
 		$datetime2 = date_create($timestamp);
 		$interval = date_diff($datetime1, $datetime2);
+		$interval_minutes = intval($interval->format( '%i' ));
 		$interval_hours = intval($interval->format( '%h' ));
-//		$interval_days = intval($interval->format( '%d' ));
-//		$interval_months = intval($interval->format( '%h' ));
-//		$interval_years = intval($interval->format( '%y' ));
-		$total_interval = $interval_hours ;
-		if($total_interval >= 1){
+		$interval_days = intval($interval->format( '%d' ));
+		$interval_months = intval($interval->format( '%m' ));
+		$interval_years = intval($interval->format( '%y' ));
+
+		$total_interval = oto1($interval_minutes)*oto1($interval_hours)*oto1($interval_days)*oto1($interval_months)*oto1($interval_years) ;
+		if($total_interval >= $allowed_timeout){
 			DB::table('users')->where('email',$data['email'])->update(['failed_attemps'=>1]);
 			DB::table('users')->where('email', $data['email'])->update(['lock_user'=>'Y']);
 			DB::table('users')->where('email', $data['email'])->update(['last_failed_attempt'=>$timestamp]);
@@ -119,11 +132,11 @@ trait AuthenticatesAndRegistersUsers {
 			DB::table('users')->where('email', $data['email'])->update(['last_failed_attempt'=>$timestamp]);
 
 			$number_of_failed_attempts = DB::table('users')->where('email', $data['email'])->pluck('failed_attemps');
-			if($number_of_failed_attempts >=5){
+			if($number_of_failed_attempts >=$allowed_attempts){
 				DB::table('users')->where('email', $data['email'])->update(['lock_user'=>'X']);
 				return 'You have been locked due to many wrong password attempts. Try logging after 1 hour or call VNA helpdesk at 402-444-4444';
 			}
-			return 'You have utilized '.$number_of_failed_attempts. ' out of 5 attempts';
+			return 'You have utilized '.$number_of_failed_attempts. ' out of '.$allowed_attempts.' attempts';
 		}
 
 		return 'These credentials do not match our records.';
