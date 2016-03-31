@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue51;}
+\margl1440\margr1440\vieww13620\viewh15380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs44 \cf0 DROP TABLE IF EXISTS `vnas_care_giver_calendar`;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+CREATE ALGORITHM=UNDEFINED DEFINER=`adminXFWAthm`@`127.9.54.2` SQL SECURITY DEFINER VIEW `vnas_care_giver_calendar` AS select \
+\
+`rel`.`user_sk` AS `user_sk`,\
+`sch`.`client_id` AS `client_id`,\
+`sch`.`schedule_end_dttm` AS `schedule_end_dttm`,\
+`sch`.`calendar_type` AS `calendar_type`,\
+`sch`.`schedule_start_dttm` AS `schedule_start_dttm`,\
+`sch`.`current_calendar_ind` AS `current_calendar_ind`,\
+\cb2 `sch`.`sts` AS `sts`,\cb1 \
+`sch`.`care_giver_type` AS `care_giver_type`,\
+`sch`.`care_giver_first_nme` AS `care_giver_first_nme`,\
+`sch`.`care_giver_last_nme` AS `care_giver_last_nme`,\
+`sch`.`care_giver_office_ph` AS `care_giver_office_ph`,\
+`sch`.`care_giver_mobile_ph` AS `care_giver_mobile_ph`,\
+`sch`.`client_first_nme` AS `client_first_nme`,\
+`sch`.`client_last_nme` AS `client_last_nme`,\
+`sch`.`client_address` AS `client_address`,\
+`sch`.`client_city` AS `client_city`,\
+`sch`.`client_state` AS `client_state`,\
+`sch`.`client_zip` AS `client_zip`,\
+`sch`.`client_phone` AS `client_phone`,\
+`sch`.`comments` AS `comments`,\
+`sch`.`create_tsp` AS `create_tsp`,\
+`sch`.`etl_load_tsp` AS `etl_load_tsp` \
+\
+from (((`vnas_vna_user_rel` `rel` join `vnas_schedule` `sch`) \
+join `vnas_gen_ref` `pty_typ`) \
+join `vnas_gen_ref` `pty_rle`) \
+where ((`rel`.`vna_user_id` = `sch`.`care_giver_id`) \
+and (`rel`.`vna_user_type_cd` = `pty_typ`.`gen_ref_id`) \
+and (`rel`.`vna_user_role_cd` = `pty_rle`.`gen_ref_id`) \
+and (`sch`.`schedule_start_dttm` >= (cast(sysdate() as date) - interval 60 day)) \
+and (`sch`.`current_calendar_ind` = 'y'));\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure for view `vnas_client_calendar`\
+--\
+DROP TABLE IF EXISTS `vnas_client_calendar`;\
+\
+CREATE ALGORITHM=UNDEFINED DEFINER=`adminXFWAthm`@`127.9.54.2` SQL SECURITY DEFINER VIEW `vnas_client_calendar` AS select \
+\
+`rel`.`user_sk` AS `user_sk`,\
+`sch`.`client_id` AS `client_id`,\
+`sch`.`schedule_sk` AS `schedule_sk`,\
+`sch`.`schedule_end_dttm` AS `schedule_end_dttm`,\
+`sch`.`calendar_type` AS `calendar_type`,\
+`sch`.`schedule_start_dttm` AS `schedule_start_dttm`,\
+`sch`.`current_calendar_ind` AS `current_calendar_ind`,\
+`sch`.`care_giver_type` AS `care_giver_type`,\
+`sch`.`care_giver_first_nme` AS `care_giver_first_nme`,\
+`sch`.`care_giver_last_nme` AS `care_giver_last_nme`,\
+`sch`.`care_giver_office_ph` AS `care_giver_office_ph`,\
+`sch`.`care_giver_mobile_ph` AS `care_giver_mobile_ph`,\
+`sch`.`client_first_nme` AS `client_first_nme`,\
+`sch`.`client_last_nme` AS `client_last_nme`,\
+`sch`.`client_address` AS `client_address`,\
+`sch`.`client_city` AS `client_city`,\
+`sch`.`client_state` AS `client_state`,\
+`sch`.`client_zip` AS `client_zip`,\
+`sch`.`client_phone` AS `client_phone`,\
+`sch`.`comments` AS `comments`,\
+`sch`.`create_tsp` AS `create_tsp`,\
+`sch`.`etl_load_tsp` AS `etl_load_tsp` \
+\
+from (((`vnas_vna_user_rel` `rel` join `vnas_schedule` `sch`) join `vnas_gen_ref` `pty_typ`) join `vnas_gen_ref` `pty_rle`) where ((`rel`.`vna_user_id` = `sch`.`client_id`) and (`rel`.`vna_user_type_cd` = `pty_typ`.`gen_ref_id`) and (`rel`.`vna_user_role_cd` = `pty_rle`.`gen_ref_id`) and (`sch`.`schedule_start_dttm` >= (cast(sysdate() as date) - interval 60 day)) and (`sch`.`current_calendar_ind` = 'y'));\
+\
+-- --------------------------------------------------------}
