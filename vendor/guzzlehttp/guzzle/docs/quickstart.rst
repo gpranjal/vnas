@@ -106,7 +106,7 @@ response.
 
     $response = $client->get('http://httpbin.org/get');
     $json = $response->json();
-    var_dump($json[0]['origin']);
+    var dump($json[0]['origin']);
 
 Guzzle internally uses PHP's ``json_decode()`` function to parse responses. If
 Guzzle is unable to parse the JSON response body, then a

@@ -123,20 +123,20 @@ class VnasRecordsController extends Controller {
         	
         $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
         $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
-        
+
         $myView = "";
-		
-        $Vnas_records = Vnas_record::where( 'schedule_sk' , '=' , $id )
+        $Vnas_records = Vnas_record::where( 'SCHEDULE_SK' , '=' , $id )
 			->where( 'user_sk' , '=' , $myCurrUserSk )
 			->distinct()
 			->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-        
+
         // Need to check the roles from the ORM query and return the appropriate view.
-        if( $isClient )
+
+        if (in_array($Vnas_records[0]->CLIENT_ID, $myClientIds))
         {
             $myView         = "vnas_records.patientsch";
         }
-        else if( $isCaregiver ) //if( $myCaregiverRoleList == $Vnas_records[0]->caregiver_id )
+        else if (in_array($Vnas_records[0]->CARE_GIVER_ID, $myCareGiverIds)) //if( $myCaregiverRoleList == $Vnas_records[0]->caregiver_id )
         {
             $myView         = "vnas_records.sch";
         }

@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Redirect;
 use View;
 use Tracker;
 use Carbon;
+use App\Etl_process_log;
 use App\UserSettings;
 use Dataform;
+USE Zofe\Rapyd\Demo\Article;
 
 class ManagementController extends Controller {
 
@@ -215,34 +217,26 @@ class ManagementController extends Controller {
 		if(Auth::User()->role != 'admin') return view('home');
 
 		$pageViews = Tracker::pageViews( 60 * 168 );
+		/* Zach do GMTT offset here */
 		$users = Tracker::users(60 * 168);
 		$errors = Tracker::errors(60 * 168);
-		//var_dump($pageViews);
 
 		return view('admin.dashboard' , compact('pageViews','users','errors'));
 	}
 	
 	public function getUserSettings(){
 		if(Auth::User()->role != 'admin') return view('home');
-	
 		$userSettings = UserSettings::all();
-// 		var_dump(UserSettings::get(array('session_timeout_minutes'))[0]->session_timeout_minutes->value);
-		var_dump(UserSettings::getUserSettingsSessionTimeout());
-		
 	
-		//return $userSettings;
+		return $userSettings;
 	}
 	
 	public function editUserSettings(Request $request)
 	{
-		//dd( Route::input() );
-		
 		if(Auth::User()->role != 'admin') return view('home');
 		
 		//or find a record to update some value
 		$form = \DataForm::source(UserSettings::find(1));
-		
-		//var_dump($form);
 		
 		$form->add('session_timeout_minutes','Session Timeout (in minutes):', 'text'); //field name, label, type
 		$form->add('google_maps_api_key','Google Maps API Key:', 'text'); //validation
@@ -258,6 +252,44 @@ class ManagementController extends Controller {
 		});
 		
 		return view('admin.user_settings', compact('form'));
+	}
+	
+	public function etlStats()
+	{
+		if(Auth::User()->role != 'admin') return view('home');
+		
+		$grid = \DataGrid::source(DB::table("etl_process_log")->get(array('PROCESS_LOG_SKEY','START_DT','END_DT','SOURCE_RECORD_READ_CNT','SOURCE_RECORD_REJECT_CNT','TARGET_RECORD_INSERT_CNT','TARGET_RECORD_UPDATE_CNT','TARGET_RECORD_DELETE_CNT','ERROR_CNT','REC_STATUS','JOB_NM','REJECT_RSN_TXT','CREATED_BY','CREATED_DATE')));  //same source types of DataSet
+		
+		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
+		$grid->add('START_DT','Start Date', true); //field name, label, sortable
+		$grid->add('END_DT','End Date', true); //field name, label, sortable
+		$grid->add('SOURCE_RECORD_READ_CNT','Source Records', false); //field name, label, sortable
+		$grid->add('SOURCE_RECORD_REJECT_CNT','Rejects', false); //field name, label, sortable
+		$grid->add('TARGET_RECORD_INSERT_CNT','Inserts', false); //field name, label, sortable
+		$grid->add('TARGET_RECORD_UPDATE_CNT','Updates', false); //field name, label, sortable
+		$grid->add('TARGET_RECORD_DELETE_CNT','Deletes', false); //field name, label, sortable
+		$grid->add('ERROR_CNT','Errors', true); //field name, label, sortable
+		//$grid->add('REC_STATUS','Record Status', true); //field name, label, sortable
+		//$grid->add('JOB_NM','Job Name', true); //field name, label, sortable
+		//$grid->add('REJECT_RSN_TXT','Reject Reason', true); //field name, label, sortable
+		
+		
+		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
+		$grid->link('/system_etl_stats',"Execute ETL job", "TR");
+		$grid->orderBy('PROCESS_LOG_SKEY','desc');
+		$grid->paginate(10);
+		
+		$grid->row(function ($row) {
+			//dd($row);
+			if ($row->cell('PROCESS_LOG_SKEY')->value == 20) {
+				$row->style("background-color:#CCFF66");
+			} elseif ($row->cell('PROCESS_LOG_SKEY')->value > 15) {
+				$row->cell('title')->style("font-weight:bold");
+				$row->style("color:#f00");
+			}
+		});
+		
+	   return view('admin.etl_process_log', compact('grid'));
 	}
 
 	public function remove_patient_role($id){

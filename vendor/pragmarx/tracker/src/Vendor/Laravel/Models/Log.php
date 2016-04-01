@@ -47,6 +47,7 @@ class Log extends Base {
 
 	public function pageViews($minutes, $results)
 	{
+		/* Zach GMT offset */
 		$query = $this->select(
 				$this->getConnection()->raw('DATE(created_at) as date, count(*) as total')
 			)->groupBy(
@@ -77,6 +78,7 @@ class Log extends Base {
 			->period($minutes, 'tracker_log')
 			->whereNotNull('tracker_sessions.geoip_id')
 			->orderBy('value', 'desc');
+		
 
 		if ($results)
 		{
