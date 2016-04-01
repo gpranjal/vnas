@@ -49,15 +49,12 @@
 
 				<br />
 				<div class="row">
-					<div id="Contact">
-						<h3>Contact VNA</h3>
 						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
 							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 						</a>
 						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
 							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
 						</a>
-					</div>
 				</div>
 
 			</div>
