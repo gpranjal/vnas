@@ -46,7 +46,7 @@ Add a comment to this line
 	 <!-- Define a few view dependent global scope variables here -->
 	<?php
 	 	
-		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var_dump($view_Name) to see the current views
+		$view_name = Route::getCurrentRoute()->getPath(); // You can use a var dump($view_Name) to see the current views
 		$is_mobile = false;
 	?>
 	@if( $agent->isMobile() && ( $view_name != "home" && $view_name != "welcome" && $view_name != "" && $view_name != "/" ) )

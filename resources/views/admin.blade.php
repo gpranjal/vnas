@@ -108,13 +108,17 @@
                         </li>
                         
                         <li>
-                            <a href="{{ url('/system_config') }}"><i class="fa fa-wrench fa-fw"></i>Systerm Configuration Settings</a>
+                            <a href="{{ url('/system_etl_stats') }}"><i class="fa fa-wrench fa-fw"></i>ETL Stats Log</a>
                         </li>
-
+                                           
                         <li>
                             <a href="{{ url('/manage_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
                         </li>
 
+						<li>
+                            <a href="{{ url('/system_config') }}"><i class="fa fa-wrench fa-fw"></i>System Configuration Settings</a>
+                        </li>
+						
                         <li>
                             <a href="{{ url('/manage') }}"><i class="fa fa-wrench fa-fw"></i>User Management</a>
                         </li>
