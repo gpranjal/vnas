@@ -37,7 +37,9 @@ public class LoginScreen extends BaseScreen{
 	public static WebElement getLoginErrorMessageLabel(WebDriver driver) {
 		return driver.findElement(By.name("loginErrorMessage"));
 	}
-	
+	public static WebElement getRegisterToolbarLink(WebDriver driver) {
+		return driver.findElement(By.name("registerToolbarLink"));
+	}
 	public static void loginAsPatientUser(WebDriver driver) {
 		//Go to Screen
     	driver.get(LoginScreen.getURL());
@@ -79,6 +81,28 @@ public class LoginScreen extends BaseScreen{
     	//Add Login Credentials
     	LoginScreen.getEmailTextbox(driver).sendKeys("vnas-adminuser@gmail.com");
     	LoginScreen.getPasswordTextbox(driver).sendKeys("adminuser1234");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
+	public static void loginAsAdminUserIncorrectPass(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("vnas-adminuser@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("1234");
+    	
+    	//Click Login
+    	LoginScreen.getLoginButton(driver).click();
+	}
+	public static void loginAsRegisterUser(WebDriver driver) {
+		//Go to Screen
+    	driver.get(LoginScreen.getURL());
+
+    	//Add Login Credentials
+    	LoginScreen.getEmailTextbox(driver).sendKeys("register_test@gmail.com");
+    	LoginScreen.getPasswordTextbox(driver).sendKeys("register_test1234");
     	
     	//Click Login
     	LoginScreen.getLoginButton(driver).click();
