@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_records')->where('patient_fname', 'LIKE', '%' . $searchTerm . '%')->lists('patient_fname','patient_id');
+		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
 		return $names;
 	}
 	
@@ -173,7 +173,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_records')->where('caregiver_fname', 'LIKE', '%' . $searchTerm . '%')->lists('caregiver_fname','caregiver_id');
+		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
 		return $names;
 	}
 
