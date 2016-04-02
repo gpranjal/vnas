@@ -216,12 +216,7 @@ class ManagementController extends Controller {
 	public function dashboard(){
 		if(Auth::User()->role != 'admin') return view('home');
 
-		$myTmpPageViews = Tracker::pageViews( 60 * 168 );
-		
-		
-		foreach ($myTmpPageViews as $p) {
-			// code
-		}
+		$pageViews = Tracker::pageViews( 60 * 168 );
 		
 		/* Zach do GMTT offset here */
 		$users = Tracker::users(60 * 168);
