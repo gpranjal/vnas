@@ -38,6 +38,7 @@ return array(
     'CreateTrackerTablesRelations' => $baseDir . '/database/migrations/2015_03_07_311093_create_tracker_tables_relations.php',
     'CreateUserSettingsTable' => $baseDir . '/database/migrations/2016_03_20_152353_create_user_settings_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreateVnasCalendar' => $baseDir . '/database/migrations/2016_04_03_120147_create_vnas_calendar.php',
     'CreateVnasGenRef' => $baseDir . '/database/migrations/2016_04_03_101646_create_vnas_gen_ref.php',
     'CreateVnasRecordsTable' => $baseDir . '/database/migrations/2016_02_16_234332_create_vnas_records_table.php',
     'CreateVnasSchedule' => $baseDir . '/database/migrations/2016_04_03_102918_create_vnas_schedule.php',

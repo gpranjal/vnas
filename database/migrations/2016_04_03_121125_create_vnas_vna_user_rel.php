@@ -14,7 +14,7 @@ class CreateVnasVnaUserRel extends Migration {
 	{
 		Schema::create('VNAS_VNA_USER_REL', function(Blueprint $table)
 		{
-			$table->integer('USER_SK');
+			$table->integer('USER_SK')->index();
 			$table->string('VNA_USER_ID',20)->index();
 			$table->datetime('EFFECTIVE_DT');
 			$table->datetime('END_DT');
