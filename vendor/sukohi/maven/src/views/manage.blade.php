@@ -32,16 +32,16 @@
             <br>
             <div class="form-group">
                 {!! Form::label(trans('Question')) !!}<br>
-                {!! Form::text('question', Request::get('question'), ['class' => 'form-control', 'name' => 'txtQuestion']) !!}
+                {!! Form::text('question', Request::get('question'), ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label(trans('Answer')) !!}<br>
-                {!! Form::textarea('answer', Request::get('answer'), ['rows' => 7, 'class' => 'form-control', 'name' => 'txtAnswer']) !!}
+                {!! Form::textarea('answer', Request::get('answer'), ['rows' => 7, 'class' => 'form-control']) !!}
             </div>
            <div class="row">
                 <div class="form-group col-md-6">
                     {!! Form::label(trans('FAQ Role')) !!}<br>
-                    {!! Form::text('faq_role', Request::get('faq_role'), ['id' => 'role', 'class' => 'form-control', 'name' => 'txtFAQRole']) !!}                 
+                    {!! Form::text('faq_role', Request::get('faq_role'), ['id' => 'role', 'class' => 'form-control']) !!}                 
                 </div>
                 <div class="form-group col-md-6">
                     <br>
