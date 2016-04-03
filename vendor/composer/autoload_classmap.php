@@ -42,7 +42,7 @@ return array(
     'CreateVnasRecordsTable' => $baseDir . '/database/migrations/2016_02_16_234332_create_vnas_records_table.php',
     'CreateVnasSchedule' => $baseDir . '/database/migrations/2016_04_03_102918_create_vnas_schedule.php',
     'CreateVnasScheduleLanding' => $baseDir . '/database/migrations/2016_04_03_104427_create_vnas_schedule_landing.php',
-    'CreateVnasUser' => $baseDir . '/database/migrations/2016_03_17_095048_create_vnas_user.php',
+    'CreateVnasUser' => $baseDir . '/database/migrations/2016_04_03_105846_create_vnas_user.php',
     'CreateVnasUserLog' => $baseDir . '/database/migrations/2016_03_17_101443_create_vnas_user_log.php',
     'CreateVnasUsersTable' => $baseDir . '/database/migrations/2016_02_15_094856_create_vnas_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
