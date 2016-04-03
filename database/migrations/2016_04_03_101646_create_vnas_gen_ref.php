@@ -14,7 +14,7 @@ class CreateVnasGenRef extends Migration {
 	{
 		Schema::create('VNAS_GEN_REF', function(Blueprint $table)
 		{
-			$table->increments('GEN_REF_ID');
+			$table->increments('GEN_REF_ID')->unique();
 			$table->string('GEN_REF_NME',40);
 			$table->string('GEN_REF_DESC',100);
 			$table->integer('CLIENT_IND');
