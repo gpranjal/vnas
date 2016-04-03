@@ -299,7 +299,7 @@ class ManagementController extends Controller {
 	}
 
 	public function remove_caregiver_role($id){
-		$_SESSION['role_msg']= "Caregiver role have been removed";
+		$_SESSION['role_msg']= "Caregiver role has been removed";
 		return Redirect('/role/'.$id);
 	}
 
