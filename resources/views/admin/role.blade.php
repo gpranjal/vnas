@@ -66,7 +66,7 @@
     }
 </style>
 
-<label>{{$role_id->name}}</label>
+<label style="font-size: 20px">{{$role_id->name}}</label>
 <form id="assign_roles" class="form-horizontal" role="form" method="POST" action="{{url('/role_update')}}/{{$role_id->id}}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <table class="table" style="width:100%">

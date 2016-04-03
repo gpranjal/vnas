@@ -294,12 +294,12 @@ class ManagementController extends Controller {
 	}
 
 	public function remove_patient_role($id){
-		$_SESSION['role_msg']= "Patient role have been deleted";
+		$_SESSION['role_msg']= "Patient role have been removed";
 		return Redirect('/role/'.$id);
 	}
 
 	public function remove_caregiver_role($id){
-		$_SESSION['role_msg']= "Caregiver role have been deleted";
+		$_SESSION['role_msg']= "Caregiver role have been removed";
 		return Redirect('/role/'.$id);
 	}
 
