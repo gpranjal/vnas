@@ -14,7 +14,7 @@
 @endif
 
 <div class="text-right">
-        <button id="add_button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
+        <button id="add_button" class="btn btn-sm btn-success" name="btnAddNewFAQ"><i class="glyphicon glyphicon-plus"></i> {{ trans('Add new FAQ') }}</button>
     </div>
     @if(Request::has('remove_id') || (!Request::has('_token') && !Request::has('id')))
         {!! Form::open(['id' => 'save_form', 'style' => 'display:none']) !!}
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     {!! Form::label(trans('FAQ Tags')) !!}<br>
-                    {!! Form::text('tags', Request::get('tags'), ['id' => 'tags', 'class' => 'form-control']) !!}
+                    {!! Form::text('tags', Request::get('tags'), ['id' => 'tags', 'class' => 'form-control', 'name' => 'txtTags']) !!}
                     <br><span class="text-muted">{{ trans('Example: Forget Password') }}</span>
                 </div>
                 <div class="form-group col-md-6">
@@ -79,8 +79,8 @@
                 <label>{!! Form::checkbox('draft_flag', '1', Request::get('draft_flag')) !!} {{ trans('Save as draft') }}</label>
             </div>
             <div class="text-center">
-                {!! link_to(URL::current(), trans('Cancel'), ['class' => 'btn btn-md btn-default']) !!}&nbsp;
-                {!! Form::button(trans('Save'), ['type' => 'submit', 'class' => 'btn btn-md btn-primary']) !!}
+                {!! link_to(URL::current(), trans('Cancel'), ['class' => 'btn btn-md btn-default', 'name' => 'btnCancel']) !!}&nbsp;
+                {!! Form::button(trans('Save'), ['type' => 'submit', 'class' => 'btn btn-md btn-primary', 'name' => 'btnSave']) !!}
             </div>
         </div>
     </div>
@@ -104,15 +104,17 @@
                 </tr>
             </thead>
             <tbody>
+            <?php $count = 1; ?>
             @foreach($faqs as $index => $faq)
                 <tr>
-                    <td>{!! $faq->sort_number !!}</td>
                     <td>
-                        <div class="text-bold">{!! $faq->question !!}</div>
+                        <div name="{{'titleText' . $count}}">{!! $faq->sort_number !!}</div></td>
+                    <td>
+                        <div class="text-bold" name="{{'faqQuestion' . $count}}">{!! $faq->question !!}</div>
                         <br>
-                        {!! $faq->answer !!}
+                        <div class="text-bold" name="{{'faqAnswer' . $count}}">{!! $faq->answer !!}
                     </td>
-                    <td class="line-height-2">
+                    <td class="line-height-2" name="{{'faqTags' . $count}}">
                         @foreach($faq->tags as $tag)
                             <span class="label label-default">{{ $tag }}</span>
                         @endforeach
@@ -127,16 +129,17 @@
                         <nobr>
                         &nbsp;
                         &nbsp;
-                        <a href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-warning">
+                        <a href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-warning" name="{{'btnFaqEdit' . $count}}">
                             <i class="glyphicon glyphicon-pencil"></i>
                         </a>
-                        <button href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-danger remove-button" data-id="{{ $faq->id }}">
+                        <button href="?id={{ $faq->id }}" class="btn btn-xs btn-default btn-danger remove-button" data-id="{{ $faq->id }}" name="{{'btnFaqRemove' . $count}}">
                             <i class="glyphicon glyphicon-remove"></i>
                         </button>
                         </nobr>
                     </td>
                 </tr>
-            @endforeach
+                <?php $count=$count+1 ?>
+                @endforeach
             </tbody>
         </table>
         <div class="text-center">

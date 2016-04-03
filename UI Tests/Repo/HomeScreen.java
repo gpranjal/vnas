@@ -28,4 +28,5 @@ public class HomeScreen extends BaseScreen{
 	public static WebElement getDonateButton(WebDriver driver) {
 		return driver.findElement(By.name("submit"));
 	}
+
 }

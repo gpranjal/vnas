@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class RegisterUserScreen extends BaseScreen{
 
-	public static String getURL() {
+	public static String getURL (){
 		return BaseScreen.getURL() + getPath();
 	}
 	

@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">VNAS Admin Panel</a>
+                <a class="navbar-brand">VNAS Admin Panel
             </div>
             
 	    	<div class="container-fluid">
