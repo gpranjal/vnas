@@ -2,7 +2,7 @@
 
 @section('content')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    
+    <div id="role_msg"></div>
 
     <script>
 
@@ -66,26 +66,32 @@
     }
 </style>
 
-<label>{{$role_id->name}}</label>
+<label style="font-size: 20px">{{$role_id->name}}</label>
 <form id="assign_roles" class="form-horizontal" role="form" method="POST" action="{{url('/role_update')}}/{{$role_id->id}}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <table class="table" style="width:100%">
         <tr>
             <td>Patient ID: </td>
             <td><label id="patient_fetch">{{$role_id->patient_role}}</label></td>
-            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_autocomplete" name="patient_autocomplete"><a href="/remove/patient_role/{{$role_id ->id}}"> Remove All Patient Role</a></td>
+            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_autocomplete" name="patient_autocomplete"><a href="/remove/patient_role/{{$role_id ->id}}"> Remove Patient Role</a></td>
             <input type="hidden" id="patient_search" name="patient_search" value="{{$role_id->patient_role}}">
         </tr>
         <tr>
             <td>Caregiver ID: </td>
             <td><label id="caregiver_fetch">{{$role_id->caregiver_role}}</label></td>
-            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_autocomplete" name="caregiver_autocomplete"><a href="/remove/caregiver_role/{{$role_id ->id}}"> Remove All Caregiver Role</a></td>
+            <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_autocomplete" name="caregiver_autocomplete"><a href="/remove/caregiver_role/{{$role_id ->id}}"> Remove Caregiver Role</a></td>
             <input type="hidden" id="caregiver_search" name="caregiver_search" value="{{$role_id->caregiver_role}}">
         </tr>
     </table>
     <input class="btn btn-primary" role="button" name="btnSubmit" type="Submit" value="submit" />
     <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('/manage')}}">Cancel</a>
 </form>
+    @if(isset($_SESSION['role_msg']))
+        <script>
+            $('#role_msg').after('<div class="alert alert-success"><?php echo $_SESSION['role_msg'] ?></div>')
+        </script>
+    @endif
+    <?php unset($_SESSION['role_msg']); ?>
     {{--<div id="search_patient" class="row">--}}
 
 

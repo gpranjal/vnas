@@ -12,13 +12,14 @@ class CreateVnasGenRef extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('vnas_gen_ref', function(Blueprint $table)
+		Schema::create('VNAS_GEN_REF', function(Blueprint $table)
 		{
-			$table->increments('gen_ref_id');
-			$table->string('gen_ref_nme',40);
-			$table->string('gen_ref_desc',100);
-			$table->string('created_by',100);
-			$table->timestamp('created_date');
+			$table->increments('GEN_REF_ID')->unique();
+			$table->string('GEN_REF_NME',40);
+			$table->string('GEN_REF_DESC',100);
+			$table->integer('CLIENT_IND');
+			$table->string('CREATED_BY',100);
+			$table->timestamp('CREATED_DATE');
 		});
 	}
 
@@ -29,7 +30,7 @@ class CreateVnasGenRef extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('vnas_gen_ref');
+		Schema::drop('VNAS_GEN_REF');
 	}
 
 }
