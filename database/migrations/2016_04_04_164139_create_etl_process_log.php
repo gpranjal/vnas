@@ -12,7 +12,7 @@ class CreateEtlProcessLog extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('etl_process_log', function(Blueprint $table)
+		Schema::create('ETL_PROCESS_LOG', function(Blueprint $table)
 		{
 			$table->increments('PROCESS_LOG_SKEY')->unique();
 			$table->timestamp('START_DT');
@@ -38,7 +38,7 @@ class CreateEtlProcessLog extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('etl_process_log');
+		Schema::drop('ETL_PROCESS_LOG');
 	}
 
 }
