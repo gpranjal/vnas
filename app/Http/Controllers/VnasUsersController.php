@@ -26,7 +26,8 @@ class VnasUsersController extends Controller {
         // Check to see if the user is logged in
         if( Auth::check() )
         {
-        	$myCurrUserSk 	= Auth::user()->id;
+        	$myAppUserInfo = Auth::user();
+        	$myCurrUserSk 	= $myAppUserInfo->id;
         	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
         		->get( array('vna_user_role_cd','vna_user_id') );
         	
@@ -45,17 +46,17 @@ class VnasUsersController extends Controller {
                 	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds )
                 	->distinct()
                     ->get( array('CARE_GIVER_ID','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-                return view('vnas_users.care', compact('vnas_users'));
+                return view('vnas_users.care', compact('vnas_users','myAppUserInfo'));
             }
             else if ( $isClient ) 
             {
                 $vnas_users = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
                     ->get( array('CLIENT_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE'));
-                return view('vnas_users.index', compact('vnas_users'));
+                return view('vnas_users.index', compact('vnas_users','myAppUserInfo'));
             }
             else
             {
-                return view('vnas_users.index', compact('vnas_users'));
+                return view('vnas_users.index', compact('vnas_users','myAppUserInfo'));
             } 
 
         }
@@ -64,14 +65,6 @@ class VnasUsersController extends Controller {
             return 'You aren\'t logged in.';
         }
     }
-
-//    public function show($id)
-//    {
-//        $vnas_user = vnas_user::find($id);
-//
-//        return view('vnas_users.show', compact('vnas_user'));
-//
-//    }
 
     public function create()
     {

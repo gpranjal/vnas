@@ -16,6 +16,20 @@
 				<br />
 				<br />
 
+				<div class="panel panel-default"> 
+					 <h4><strong>VNAS Online Account Information</strong></h4>
+					 <table class="table table-hover">
+					 	<tr>
+					 		<td align="right"><strong>Name: </strong></td>
+					 		<td align="left">{{ $myAppUserInfo->name }}</td>
+					 	</tr>
+					 	<tr>
+					 		<td align="right"><strong>Email: </strong></td>
+					 		<td align="left">{{ $myAppUserInfo->email }}</td>
+					 	</tr>
+					 </table>
+				</div>
+
 				@if( count($vnas_users) == 0 )
 				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
 				@else
