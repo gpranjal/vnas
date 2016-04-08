@@ -38,26 +38,26 @@ class VnasUsersController extends Controller {
 	        $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
 	        $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
 	        
-        	$vnas_users   = null;
+        	$vnas_users   			= null;
+        	$vnas_caregivers_info 	= null;
+        	$vnas_clients_info		= null;
+        	$myMessage				= false;
 
-            if( $isCareGiver  )
-            {
-                $vnas_users = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds )
-                	->distinct()
-                    ->get( array('CARE_GIVER_ID','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-                return view('vnas_users.care', compact('vnas_users','myAppUserInfo'));
-            }
-            else if ( $isClient ) 
-            {
-                $vnas_users = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
-                    ->get( array('CLIENT_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE'));
-                return view('vnas_users.index', compact('vnas_users','myAppUserInfo'));
-            }
-            else
-            {
-                return view('vnas_users.index', compact('vnas_users','myAppUserInfo'));
-            } 
+            $vnas_caregivers_info = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+	            ->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds )
+	            ->distinct()
+	            ->get( array('CARE_GIVER_ID','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+         
+            $vnas_clients_info = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
+                ->get( array('CLIENT_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE'));
+
+           	if( count($vnas_caregivers_info) == 0 && count($vnas_clients_info) == 0 )
+           	{
+           		$myMessage = "You currently have no schedule records with VNA." ;
+           		$myMessage = $myMessage . "Contact VNA by clicking the email or phone buttons below to set up your account!";
+           	}
+           
+			return view('vnas_users.index', compact('vnas_users','myAppUserInfo','myMessage','vnas_caregivers_info','vnas_clients_info'));
 
         }
         else

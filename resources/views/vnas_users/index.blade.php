@@ -30,8 +30,10 @@
 					 </table>
 				</div>
 
-				@if( count($vnas_users) == 0 )
-				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
+				@if( $myMessage )
+				<div class="alert alert-info">
+					{{ $myMessage }}
+				</div>
 				@else
 				<table class="table table-hover">
 					<?php $count = 1 ?>
