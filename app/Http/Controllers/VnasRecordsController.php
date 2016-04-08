@@ -48,6 +48,7 @@ class VnasRecordsController extends Controller {
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
             
             $Vnas_records   = null;
+            $myMessage		= false;
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
@@ -98,10 +99,11 @@ class VnasRecordsController extends Controller {
             }
             else // Has no roles
             {
-                $myView = "vnas_records.index";
+                $myView 	= "vnas_records.index";
+                $myMessage  = "You currently have no VNA accounts assigned to you; therefore, you have no schedule records.  Contact VNA by clicking the contact buttons below to get scheduled today!";
             }
 
-            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole'));
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage'));
         }
         else
         {
