@@ -180,7 +180,27 @@ class ManagementController extends Controller {
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-		return view('admin.role',compact('role_id'));
+		$idds= DB::table('vnas_vna_user_rel')->where('user_sk',$role_id->id)->lists('vna_user_id') ;
+//		return $idds;
+		$client ='';
+		$caregiver ='';
+		foreach($idds as $idd){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $idd)->pluck('vna_user_type');
+			if($variable == 'client'){
+				$client = $client .','. $idd;
+			}else{
+				$caregiver = $caregiver .','. $idd;
+			}
+		}
+		$role_array = array(
+			'name'=> $role_id->name,
+			'id'=>$role_id->id,
+			'client'=>$client,
+			'caregiver'=>$caregiver
+		);
+//		return $role_array;
+		return View::make('admin.role')->with('role_array', $role_array);
+		return view('admin.role_2',compact($role_array));
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
