@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_USER_INFO')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','client')->lists('full_nme','VNA_USER_ID');
+		$names = DB::table('VNAS_USER_INFO')->where('FULL_NME', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','client')->lists('FULL_NME','VNA_USER_ID');
 		return $names;
 	}
 	
@@ -173,7 +173,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_USER_INFO')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','caregiver')->lists('full_nme','VNA_USER_ID');
+		$names = DB::table('VNAS_USER_INFO')->where('FULL_NME', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','caregiver')->lists('FULL_NME','VNA_USER_ID');
 		return $names;
 	}
 
