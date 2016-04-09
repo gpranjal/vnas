@@ -5,9 +5,12 @@
 <div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<ol class="breadcrumb">
+				<li><a name="HomeToolbarLink" href="{{ url('/') }}">Home</a></li>
+				<li class="active">My Account</li>
+			</ol>
 			<div class="panel panel-default">
-
-				<div class="panel-heading"> 
+				<div class="panel-heading">
 					<h4>My Account</h4>
 				</div>
 				<br />

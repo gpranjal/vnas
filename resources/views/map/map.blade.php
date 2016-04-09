@@ -5,7 +5,12 @@
 <div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
+			<ol class="breadcrumb">
+				<li><a name="HomeToolbarLink" href="{{ url('/') }}">Home</a></li>
+				<li><a name="ScheduleToolbarLink" href="{{ url('vnas_records') }}">My Schedule</a></li>
+				<li><a name="DetailsToolbarLink" href="{{ URL::previous() }}">Details</a></li>
+				<li class="active">Map</li>
+			</ol>
 			<div class="panel panel-default">
 				<div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
 					<h4>Map Directions to "{{ $addr  }}"</h4>
