@@ -2,7 +2,7 @@
 
 use View;
 use App\UserSettings;
-
+use App\Vnas_record;
 
 class HomeController extends Controller {
 
@@ -25,7 +25,6 @@ class HomeController extends Controller {
 	{
 		$this->middleware('auth');
 		View::composer('*', 'App\Composers\HomeComposer');
-
 	}
 
 	/**
@@ -35,8 +34,16 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$myMessage 	= null;
 		
-		return view('home' , ['donateAPIKey' => UserSettings::getDonateAPIKey()]);
+		$Vnas_records = Vnas_record::getChangedScheduleRecords();
+		
+		if( count( $Vnas_records ) > 0 )
+		{
+			$myMessage = "Your schedule has chnaged since your last login.  Please view your schedule by clicking the \"My Schedule\" button.";
+		}
+		
+		return view('home' , ['donateAPIKey' => UserSettings::getDonateAPIKey()] , compact( 'myMessage' ));
 	}
 
 }

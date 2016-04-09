@@ -1,6 +1,9 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
+use Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Vnas_record extends Model {
 
@@ -35,5 +38,33 @@ class Vnas_record extends Model {
     public function Vnas_record()
     {
         return $this->hasMany('App\Vnas_record');
+    }
+    
+    public static function updateChangedScheduleRecords( $myResults )
+    {
+    	$myTmp = DB::table('vnas_schedule')
+	    	->where( 'STS' , '=' , 'C' );
+    	
+	    foreach( $myResults as $myResult )
+	    {
+	    	$myTmp = $myTmp->where( 'SCHEDULE_SK' , '=' , $myResult->SCHEDULE_SK );
+	    }
+	    
+	    $myTmp = $myTmp->update( ['STS' => 'F' ] );
+    }
+    
+    public static function getChangedScheduleRecords()
+    {
+    	$myResult = Vnas_record::where( 'USER_SK' , '=' , Auth::user()->id )
+				->where( 'SCHEDULE_START_DTTM' , '>=' , Carbon\Carbon::now() )
+				->where( 'STS' , '=' , 'C' )
+				->get( array('SCHEDULE_SK') );
+    	
+		if( count( $myResult ) > 0 )
+		{
+			$myTmp = Vnas_record::updateChangedScheduleRecords( $myResult );
+		}
+		
+    	return $myResult;
     }
 }

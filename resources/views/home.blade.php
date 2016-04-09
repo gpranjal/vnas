@@ -9,8 +9,17 @@
 				<div class="panel-heading text-center"> <!-- This div has the orange color for the VNA-->
 					<h4>Home</h4>
 				</div>
+				
 				<div class="panel-body text-center">
 					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo" />
+
+					<br />
+					
+					@if( $myMessage )
+						<div class="alert alert-warning">
+							{{ $myMessage }}
+						</div>
+					@endif
 
 					<p style="margin-top: 50px;">
 						<a type="button" name="myAccountButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;" href="{{ url('vnas_users') }}">
