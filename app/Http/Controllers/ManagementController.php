@@ -180,7 +180,6 @@ class ManagementController extends Controller {
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-//		return $query = DB::select('select * from vnas_vna_user_rel where user_sk=? ',[$role_id->id] );
 		return view('admin.role',compact('role_id'));
 }
 	public function role_update($id){
