@@ -40,7 +40,7 @@ class HomeController extends Controller {
 		
 		if( count( $Vnas_records ) > 0 )
 		{
-			$myMessage = "Your schedule has chnaged since your last login.  Please view your schedule by clicking the \"My Schedule\" button.";
+			$myMessage = "Your schedule has changed since your last login.  Please view your schedule by clicking the \"My Schedule\" button.";
 		}
 		
 		return view('home' , ['donateAPIKey' => UserSettings::getDonateAPIKey()] , compact( 'myMessage' ));
