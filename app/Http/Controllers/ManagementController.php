@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','client')->lists('full_nme','vna_user_id');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','client')->lists('full_nme','VNA_USER_ID');
 		return $names;
 	}
 	
@@ -173,19 +173,19 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','caregiver')->lists('full_nme','vna_user_id');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','caregiver')->lists('full_nme','VNA_USER_ID');
 		return $names;
 	}
 
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-		$idds= DB::table('vnas_vna_user_rel')->where('user_sk',$role_id->id)->lists('vna_user_id') ;
+		$idds= DB::table('VNAS_VNA_USER_REL')->where('user_sk',$role_id->id)->lists('VNA_USER_ID') ;
 //		return $idds;
 		$client ='';
 		$caregiver ='';
 		foreach($idds as $idd){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $idd)->pluck('vna_user_type');
+			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $idd)->pluck('vna_user_type');
 			if($variable == 'client'){
 				$client = $client .','. $idd;
 			}else{
@@ -204,9 +204,9 @@ class ManagementController extends Controller {
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
-		$role_id = DB::select('select * from vnas_vna_user_rel where vna_user_id =?', [$_POST['patient_search']]);
-		if(isset($_POST['patient_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['patient_search'])->update(['user_sk'=>$id]);}
-		if(isset($_POST['caregiver_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['caregiver_search'])->update(['user_sk'=>$id]);}
+		$role_id = DB::select('select * from VNAS_VNA_USER_REL where VNA_USER_ID =?', [$_POST['patient_search']]);
+		if(isset($_POST['patient_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['patient_search'])->update(['user_sk'=>$id]);}
+		if(isset($_POST['caregiver_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['caregiver_search'])->update(['user_sk'=>$id]);}
 		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('manage');
 	}
@@ -317,12 +317,12 @@ class ManagementController extends Controller {
 
 	public function remove_patient_role($id){
 
-		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+		$querys = DB::table('VNAS_VNA_USER_REL')->where('user_sk',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $query)->pluck('vna_user_type');
 			if($variable == 'client'){
-				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['user_sk'=> '']);
 			}
 		}
 
@@ -332,12 +332,12 @@ class ManagementController extends Controller {
 
 	public function remove_caregiver_role($id){
 
-		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+		$querys = DB::table('VNAS_VNA_USER_REL')->where('user_sk',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $query)->pluck('vna_user_type');
 			if($variable == 'caregiver'){
-				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['user_sk'=> '']);
 			}
 		}
 
