@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','client')->lists('full_nme','VNA_USER_ID');
+		$names = DB::table('VNAS_USER_INFO')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','client')->lists('full_nme','VNA_USER_ID');
 		return $names;
 	}
 	
@@ -173,7 +173,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','caregiver')->lists('full_nme','VNA_USER_ID');
+		$names = DB::table('VNAS_USER_INFO')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','caregiver')->lists('full_nme','VNA_USER_ID');
 		return $names;
 	}
 
@@ -185,7 +185,7 @@ class ManagementController extends Controller {
 		$client ='';
 		$caregiver ='';
 		foreach($idds as $idd){
-			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
 			if($variable == 'client'){
 				$client = $client .','. $idd;
 			}else{
@@ -320,7 +320,7 @@ class ManagementController extends Controller {
 		$querys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
 			if($variable == 'client'){
 				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
 			}
@@ -335,7 +335,7 @@ class ManagementController extends Controller {
 		$querys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
 			if($variable == 'caregiver'){
 				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
 			}
