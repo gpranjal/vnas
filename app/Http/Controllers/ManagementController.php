@@ -263,6 +263,9 @@ class ManagementController extends Controller {
 		$form->add('paypal_api_key','Paypal API Key:', 'text');
 		$form->add('email_lockout_count','Number of login attempts allowed:', 'text');
 		$form->add('email_lockout_duration_mins','Failed login lockout duration (mins):', 'text');
+		$form->add('my_acct_no_rcrd_msg','No Records - My Account Message:', 'text');
+		$form->add('sch_no_rcrd_msg','No Records - My Schedule Message:', 'text');
+		$form->add('sch_chg_msg','Schedule Change - Home Screen Message:', 'text');
 				
 		$form->submit('Save');
 		$form->saved(function() use ($form)

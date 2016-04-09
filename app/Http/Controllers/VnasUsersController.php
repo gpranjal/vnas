@@ -11,6 +11,7 @@ use Request;
 use Auth;
 use App\Vnas_record;
 use View;
+use App\UserSettings;
 
 
 class VnasUsersController extends Controller {
@@ -55,8 +56,9 @@ class VnasUsersController extends Controller {
 
            	if( count($vnas_caregivers_info) == 0 && count($vnas_clients_info) == 0 )
            	{
-           		$myMessage = "You currently have no schedule records with VNA." ;
-           		$myMessage = $myMessage . "Contact VNA by clicking the email or phone buttons below to set up your account!";
+           		$myMessage = UserSettings::getMyAcctNoRcrdMsg();
+//            		$myMessage = "You currently have no schedule records with VNA." ;
+//            		$myMessage = $myMessage . "Contact VNA by clicking the email or phone buttons below to set up your account!";
            	}
            
 			return view('vnas_users.index', compact('vnas_users','myAppUserInfo','myMessage','vnas_caregivers_info','vnas_clients_info'));

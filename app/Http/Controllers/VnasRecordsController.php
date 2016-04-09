@@ -15,6 +15,7 @@ use Auth;
 use Carbon\Carbon;
 use Mail;
 use App\Caregiver_record;
+use App\UserSettings;
 
 class VnasRecordsController extends Controller {
 
@@ -100,7 +101,7 @@ class VnasRecordsController extends Controller {
             else // Has no roles
             {
                 $myView 	= "vnas_records.index";
-                $myMessage  = "You currently have no VNA accounts assigned to you; therefore, you have no schedule records.  Contact VNA by clicking the contact buttons below to get scheduled today!";
+                $myMessage  = UserSettings::getSchNoRcrdMsg();
             }
 
             return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage'));
