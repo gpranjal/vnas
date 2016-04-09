@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','client')->lists('full_nme','vna_user_id');
 		return $names;
 	}
 	
@@ -173,21 +173,21 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','caregiver')->lists('full_nme','vna_user_id');
 		return $names;
 	}
 
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
+//		return $query = DB::select('select * from vnas_vna_user_rel where user_sk=? ',[$role_id->id] );
 		return view('admin.role',compact('role_id'));
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
-		$role_id = User::find($id);
-		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
-		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
-		$role_id->save();
+		$role_id = DB::select('select * from vnas_vna_user_rel where vna_user_id =?', [$_POST['patient_search']]);
+		if(isset($_POST['patient_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['patient_search'])->update(['user_sk'=>$id]);}
+		if(isset($_POST['caregiver_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['caregiver_search'])->update(['user_sk'=>$id]);}
 		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('manage');
 	}
@@ -294,11 +294,31 @@ class ManagementController extends Controller {
 	}
 
 	public function remove_patient_role($id){
+
+		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+
+		foreach($querys as $query){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			if($variable == 'client'){
+				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			}
+		}
+
 		$_SESSION['role_msg']= "Patient role have been removed";
 		return Redirect('/role/'.$id);
 	}
 
 	public function remove_caregiver_role($id){
+
+		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+
+		foreach($querys as $query){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			if($variable == 'caregiver'){
+				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			}
+		}
+
 		$_SESSION['role_msg']= "Caregiver role has been removed";
 		return Redirect('/role/'.$id);
 	}

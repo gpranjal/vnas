@@ -71,14 +71,15 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <table class="table" style="width:100%">
         <tr>
+           <?php $get_user_id= DB::table('vnas_vna_user_rel')->where('user_sk',$role_id->id)->pluck('vna_user_id') ?>
             <td>Patient ID: </td>
-            <td><label id="patient_fetch">{{$role_id->patient_role}}</label></td>
+            <td><label id="patient_fetch">{{DB::table('vnas_user_info')->where('vna_user_id', $get_user_id)->where('vna_user_type','client')->pluck('vna_user_id')}}</label></td>
             <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_autocomplete" name="patient_autocomplete"><a href="/remove/patient_role/{{$role_id ->id}}"> Remove Patient Role</a></td>
             <input type="hidden" id="patient_search" name="patient_search" value="{{$role_id->patient_role}}">
         </tr>
         <tr>
             <td>Caregiver ID: </td>
-            <td><label id="caregiver_fetch">{{$role_id->caregiver_role}}</label></td>
+            <td><label id="caregiver_fetch">{{DB::table('vnas_user_info')->where('vna_user_id', $get_user_id)->where('vna_user_type','caregiver')->pluck('vna_user_id')}}</label></td>
             <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_autocomplete" name="caregiver_autocomplete"><a href="/remove/caregiver_role/{{$role_id ->id}}"> Remove Caregiver Role</a></td>
             <input type="hidden" id="caregiver_search" name="caregiver_search" value="{{$role_id->caregiver_role}}">
         </tr>
