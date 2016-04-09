@@ -15,10 +15,10 @@ class CreateVnasGenRef extends Migration {
 		Schema::create('VNAS_GEN_REF', function(Blueprint $table)
 		{
 			$table->increments('GEN_REF_ID')->unique();
-			$table->string('GEN_REF_NME',40);
-			$table->string('GEN_REF_DESC',100);
+			$table->string('GEN_REF_NME',40)->nullable();
+			$table->string('GEN_REF_DESC',100)->nullable();
 			$table->integer('CLIENT_IND');
-			$table->string('CREATED_BY',100);
+			$table->string('CREATED_BY',100)->default('app_user');
 			$table->timestamp('CREATED_DATE');
 		});
 	}

@@ -54,9 +54,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/map/{addr}' , 'MapController@show');
 
 	Route::match(['get', 'post'], 'manage_faq', function () {
-
 	    return \Maven::manage_view();
-
 	});
 
 	Route::get('vnas_records', 'VnasRecordsController@index');

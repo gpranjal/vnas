@@ -8,7 +8,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <!-- #00447c is the VNA Logo Color-->
-                    <h4>Patient Calendar Details</h4>
+                    <h4>Client Calendar Details</h4>
                 </div>
                 <br />
 

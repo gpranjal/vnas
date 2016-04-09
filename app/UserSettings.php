@@ -53,4 +53,25 @@ class UserSettings extends Model {
 		$emailLockoutDuration = $mySettings[0]->email_lockout_duration_mins;
 		return $emailLockoutDuration;
 	}
+	
+	public static function getMyAcctNoRcrdMsg() {
+		$mySettings = UserSettings::get(array('my_acct_no_rcrd_msg'))
+		->take(1);
+		$result = $mySettings[0]->my_acct_no_rcrd_msg;
+		return $result;
+	}
+	
+	public static function getSchNoRcrdMsg() {
+		$mySettings = UserSettings::get(array('sch_no_rcrd_msg'))
+		->take(1);
+		$result = $mySettings[0]->sch_no_rcrd_msg;
+		return $result;
+	}
+	
+	public static function getSchChgMsg() {
+		$mySettings = UserSettings::get(array('sch_chg_msg'))
+		->take(1);
+		$result = $mySettings[0]->sch_chg_msg;
+		return $result;
+	}
 }

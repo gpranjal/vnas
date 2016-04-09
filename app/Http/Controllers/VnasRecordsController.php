@@ -15,6 +15,7 @@ use Auth;
 use Carbon\Carbon;
 use Mail;
 use App\Caregiver_record;
+use App\UserSettings;
 
 class VnasRecordsController extends Controller {
 
@@ -48,6 +49,7 @@ class VnasRecordsController extends Controller {
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
             
             $Vnas_records   = null;
+            $myMessage		= false;
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
@@ -98,10 +100,11 @@ class VnasRecordsController extends Controller {
             }
             else // Has no roles
             {
-                $myView = "vnas_records.index";
+                $myView 	= "vnas_records.index";
+                $myMessage  = UserSettings::getSchNoRcrdMsg();
             }
 
-            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole'));
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage'));
         }
         else
         {

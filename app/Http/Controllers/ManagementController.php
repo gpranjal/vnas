@@ -164,7 +164,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','client')->lists('full_nme','vna_user_id');
 		return $names;
 	}
 	
@@ -173,21 +173,40 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('VNAS_CALENDAR')->where('CLIENT_FIRST_NME', 'LIKE', '%' . $searchTerm . '%')->lists('CLIENT_FIRST_NME','CLIENT_ID');
+		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','caregiver')->lists('full_nme','vna_user_id');
 		return $names;
 	}
 
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-		return view('admin.role',compact('role_id'));
+		$idds= DB::table('vnas_vna_user_rel')->where('user_sk',$role_id->id)->lists('vna_user_id') ;
+//		return $idds;
+		$client ='';
+		$caregiver ='';
+		foreach($idds as $idd){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $idd)->pluck('vna_user_type');
+			if($variable == 'client'){
+				$client = $client .','. $idd;
+			}else{
+				$caregiver = $caregiver .','. $idd;
+			}
+		}
+		$role_array = array(
+			'name'=> $role_id->name,
+			'id'=>$role_id->id,
+			'client'=>$client,
+			'caregiver'=>$caregiver
+		);
+//		return $role_array;
+		return View::make('admin.role')->with('role_array', $role_array);
+		return view('admin.role_2',compact($role_array));
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
-		$role_id = User::find($id);
-		if(isset($_POST['patient_search']) != '') {$role_id->patient_role = $_POST['patient_search'];}
-		if(isset($_POST['caregiver_search']) != '') {$role_id->caregiver_role = $_POST['caregiver_search'];}
-		$role_id->save();
+		$role_id = DB::select('select * from vnas_vna_user_rel where vna_user_id =?', [$_POST['patient_search']]);
+		if(isset($_POST['patient_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['patient_search'])->update(['user_sk'=>$id]);}
+		if(isset($_POST['caregiver_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['caregiver_search'])->update(['user_sk'=>$id]);}
 		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('manage');
 	}
@@ -244,6 +263,9 @@ class ManagementController extends Controller {
 		$form->add('paypal_api_key','Paypal API Key:', 'text');
 		$form->add('email_lockout_count','Number of login attempts allowed:', 'text');
 		$form->add('email_lockout_duration_mins','Failed login lockout duration (mins):', 'text');
+		$form->add('my_acct_no_rcrd_msg','No Records - My Account Message:', 'text');
+		$form->add('sch_no_rcrd_msg','No Records - My Schedule Message:', 'text');
+		$form->add('sch_chg_msg','Schedule Change - Home Screen Message:', 'text');
 				
 		$form->submit('Save');
 		$form->saved(function() use ($form)
@@ -294,11 +316,31 @@ class ManagementController extends Controller {
 	}
 
 	public function remove_patient_role($id){
+
+		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+
+		foreach($querys as $query){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			if($variable == 'client'){
+				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			}
+		}
+
 		$_SESSION['role_msg']= "Patient role have been removed";
 		return Redirect('/role/'.$id);
 	}
 
 	public function remove_caregiver_role($id){
+
+		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+
+		foreach($querys as $query){
+			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
+			if($variable == 'caregiver'){
+				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			}
+		}
+
 		$_SESSION['role_msg']= "Caregiver role has been removed";
 		return Redirect('/role/'.$id);
 	}
