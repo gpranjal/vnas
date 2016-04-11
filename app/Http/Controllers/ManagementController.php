@@ -186,10 +186,10 @@ class ManagementController extends Controller {
 		$caregiver ='';
 		foreach($idds as $idd){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
-			if($variable == 'client'){
-				$client = $client .','. $idd;
+			if($variable == 'CLIENT'){
+				$client .=  $idd .',';
 			}else{
-				$caregiver = $caregiver .','. $idd;
+				$caregiver .= $idd . ',';
 			}
 		}
 		$role_array = array(
@@ -200,7 +200,7 @@ class ManagementController extends Controller {
 		);
 //		return $role_array;
 		return View::make('admin.role')->with('role_array', $role_array);
-		return view('admin.role_2',compact($role_array));
+
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
@@ -321,7 +321,7 @@ class ManagementController extends Controller {
 
 		foreach($querys as $query){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
-			if($variable == 'client'){
+			if($variable == 'CLIENT'){
 				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
 			}
 		}
@@ -336,7 +336,7 @@ class ManagementController extends Controller {
 
 		foreach($querys as $query){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
-			if($variable == 'caregiver'){
+			if($variable == 'CAREGIVER'){
 				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
 			}
 		}
