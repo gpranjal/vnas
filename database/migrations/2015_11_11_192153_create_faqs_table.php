@@ -103,7 +103,7 @@ class CreateFaqsTable extends Migration
 
                 array(
                     'question' => 'VNA Mission, Vision & Values',
-                    'answer' => 'Mission: Delivering community based care…\r\n\r\nVision:  Improve the life and health….\r\n\r\nValues:\r\n            Compassion: we believe…\r\n            Attitude:…\r\n            Respect:…\r\n            Excellence:…',
+                    'answer' => 'Mission: Delivering community based care… Vision:  Improve the life and health…. Values:            Compassion: we believe…            Attitude:…           Respect:…            Excellence:…',
                     'sort'=> '1',
                     'tags'=>'["Caregiver"]',
                     'draft_flag' => '0',
@@ -127,7 +127,7 @@ class CreateFaqsTable extends Migration
 
                 array(
                     'question' => 'How can I find the pay schedule?',
-                    'answer' => 'To see the payroll schedule, log on to the VNA Intranet and click on the ‘Finance/Payroll’ tab.\r\n',
+                    'answer' => 'To see the payroll schedule, log on to the VNA Intranet and click on the ‘Finance/Payroll’ tab.',
                     'sort'=> '9',
                     'tags'=>'["Caregiver"]',
                     'draft_flag' => '0',
@@ -139,7 +139,7 @@ class CreateFaqsTable extends Migration
 
                 array(
                     'question' => 'How do I to access in-service/relias?',
-                    'answer' => '1. Go to Browser\r\n\r\n2. Open up www.thevnacares.org\r\n\r\n3. Scroll to bottom of page. Go to intranet.\r\n\r\n4. Enter username "hha" with password "P@ssword2"\r\n\r\n5. Scroll to bottom, right had corner and hit Relias learning\r\n\r\n6. Open Relias and enter your username and password',
+                    'answer' => '1. Go to Browser 2. Open up www.thevnacares.org 3. Scroll to bottom of page. Go to intranet. 4. Enter username "hha" with password "P@ssword2" 5. Scroll to bottom, right had corner and hit Relias learning 6. Open Relias and enter your username and password',
                     'sort'=> '10',
                     'tags'=>'["Caregiver"]',
                     'draft_flag' => '0',
