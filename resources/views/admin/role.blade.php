@@ -25,7 +25,7 @@
                 select: function(event, ui) {
                     var my_value = ui.item.value;
                     console.log(my_value);
-                    $('#patient_fetch').text(my_value);
+                    $('#patient_fetch').text($('#patient_fetch').text()+my_value);
                     $('#patient_search').val(my_value);
                     ui.item.value = '';
 //
@@ -48,7 +48,7 @@
                 select: function(event, ui) {
                     var my_caregiver = ui.item.value;
                     console.log(my_caregiver);
-                    $('#caregiver_fetch').text(my_caregiver);
+                    $('#caregiver_fetch').text($('#caregiver_fetch').text()+my_caregiver);
                     $('#caregiver_search').val(my_caregiver);
                     ui.item.value = '';
 //
