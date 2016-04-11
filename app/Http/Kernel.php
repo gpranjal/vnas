@@ -31,5 +31,6 @@ class Kernel extends HttpKernel {
 		'force_https_url_scheme' => 'Shin1x1\ForceHttpsUrlScheme\ForceHttpsUrlScheme',
 		'timeout' => 'App\Http\Middleware\SessionTimeout'
 	];
-
+	
+	
 }
