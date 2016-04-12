@@ -3,6 +3,8 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class VnasETLCommand extends Command {
 
@@ -40,7 +42,8 @@ class VnasETLCommand extends Command {
 	public function fire()
 	{
 		//$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
-		$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
+		$process = new Process('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
+		$process->run();
 	}
 
 	/**
