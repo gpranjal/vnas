@@ -90,7 +90,7 @@
 								<ul class="dropdown-menu" role="menu">
 									<li><a name="EditInformationToolbarLink" href="{{ url( '/personal_edit/'.Auth::user()->id ) }}">Edit Your Information</a></li>
 									@if(Auth::user()->role == 'admin')
-										<li><a name="manageToolbarLink" href="{{ url('/manage') }}">Manage</a></li>
+										<li><a name="manageToolbarLink" href="{{ url('/menu/mnge') }}">Manage</a></li>
 									@endif
 									<li><a name="logoutToolbarLink" href="{{ url('/auth/logout') }}">Logout</a></li>
 								</ul>
@@ -112,15 +112,15 @@
                         </li>
                                            
                         <li>
-                            <a href="{{ url('/manage_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
+                            <a href="{{ url('mnge_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
                         </li>
-
+						
 						<li>
                             <a href="{{ url('/system_config') }}"><i class="fa fa-wrench fa-fw"></i>System Configuration Settings</a>
                         </li>
-						
+                        
                         <li>
-                            <a href="{{ url('/manage') }}"><i class="fa fa-wrench fa-fw"></i>User Management</a>
+                            <a href="{{ url('/mnge') }}"><i class="fa fa-wrench fa-fw"></i>User Management</a>
                         </li>
                     </ul>
                 </div>
@@ -129,18 +129,24 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
-            @yield('content')
-        </div>
+
+
+		<div class="row" style="margin: 0px; padding: 0px;">
+	        <div id="page-wrapper">
+	            @yield('content')
+	        </div>
+	    </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <!-- I'd like to get the includes on this page, but they don't seem to like to load on time 
+ 	<!-- jQuery -->
+    <!-- I'd like to get the includes on this page, but they don't seem to like to load on time 	-->
 	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
-	-->
+	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
+	<script src="<?php echo asset('templates/sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.js')?>"></script>
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -148,8 +154,6 @@
 
     <!-- Bootstrap Core JavaScript -->
 	<script src="<?php echo asset('templates/sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-
-
 
     <!-- Metis Menu Plugin JavaScript -->
 	<script src="<?php echo asset('templates/sb-admin-2/bower_components/metisMenu/dist/metisMenu.min.js')?>"></script>
@@ -161,14 +165,12 @@
 	<script src="<?php echo asset('templates/sb-admin-2/bower_components/raphael/raphael-min.js')?>"></script>
 	<script src="<?php echo asset('templates/sb-admin-2/bower_components/morrisjs/morris.min.js')?>"></script>
 
-
-
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo asset('templates/sb-admin-2/dist/js/sb-admin-2.js')?>"></script>
-
-
+   
 
 </body>
 
 </html>
+
 

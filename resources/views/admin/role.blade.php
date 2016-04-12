@@ -1,7 +1,6 @@
 @extends('admin')
 
 @section('content')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <div id="role_msg"></div>
 
     <script>
@@ -93,7 +92,7 @@
         </tr>
     </table>
     <input class="btn btn-primary" role="button" name="btnSubmit" type="Submit" value="Submit" />
-    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('/manage')}}">Cancel</a>
+    <a name="btnCancel" class="btn btn-primary" role="button" href="{{url('/mnge')}}">Cancel</a>
 </form>
     @if(isset($_SESSION['role_msg']))
         <script>

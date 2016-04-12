@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('content')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <div id="admin_msg"></div>
 
     <div class="row" style="height: 80px; align-content: center; align-self: center; padding: 15px; text-align: center">
@@ -44,9 +44,11 @@
 
     </table>
     @if(isset($_SESSION['admin_msg']))
-        <script>
+        <script type="text/javascript">
             $('#admin_msg').after('<div class="alert alert-success"><?php echo $_SESSION['admin_msg'] ?></div>')
         </script>
     @endif
     <?php unset($_SESSION['admin_msg']); ?>
-@endsection
+
+	@endsection
+    @stop

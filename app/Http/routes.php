@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/map' , 'MapController@index');
 	Route::get('/map/{addr}' , 'MapController@show');
 
-	Route::match(['get', 'post'], 'manage_faq', function () {
+	Route::match(['get', 'post'], 'mnge_faq', function () {
 	    return \Maven::manage_view();
 	});
 
@@ -80,10 +80,14 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::post('vnas_users', 'VnasUsersController@store');
 	Route::get('vnas_users/{id}', 'VnasUsersController@show');
 
-	Route::get('/manage' , 'ManagementController@index');
-	Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
-	Route::get('/manage/caregiver' , 'ManagementController@manage_caregiver_view');
-	Route::get('/manage/unassigned' , 'ManagementController@manage_unassigned_view');
+	Route::get('/mnge' , 'ManagementController@index');
+	// The following route is created to fix a selected branding issue in the admin panel
+	// When selected on the admin panel, the admin panel was changing branding based on the route
+	// This would ultimately change the branding of the dropdown menu.
+	Route::get('/menu/mnge' , 'ManagementController@index');
+	Route::get('/mnge/patient' , 'ManagementController@manage_patient_view');
+	Route::get('/mnge/caregiver' , 'ManagementController@manage_caregiver_view');
+	Route::get('/mnge/unassigned' , 'ManagementController@manage_unassigned_view');
 	Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
 	Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
@@ -91,7 +95,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::post('/post_personal_edit/{edit_user}' , 'ManagementController@post_personal_edit_user');
 	Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
 	Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
-	Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
+	Route::get('/mnge_edit/{edit_id}' , 'ManagementController@management_edit_user');
 	Route::get('/role' , 'ManagementController@role');
 	Route::get('/role/{id}' , 'ManagementController@role_id');
 	Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
