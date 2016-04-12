@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/map' , 'MapController@index');
 	Route::get('/map/{addr}' , 'MapController@show');
 
-	Route::match(['get', 'post'], 'mnge_faq', function () {
+	Route::match(['get', 'post'], 'faq_mnge', function () {
 	    return \Maven::manage_view();
 	});
 

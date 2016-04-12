@@ -112,7 +112,7 @@
                         </li>
                                            
                         <li>
-                            <a href="{{ url('mnge_faq') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
+                            <a href="{{ url('/faq_mnge') }}"><i class="fa fa-wrench fa-fw"></i>FAQ Management</a>
                         </li>
 						
 						<li>
