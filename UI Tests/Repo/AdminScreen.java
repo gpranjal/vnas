@@ -29,7 +29,7 @@ public class AdminScreen extends BaseScreen{
 		return BaseScreen.getURL()+getManagePath();
 	}
 	public static String getManagePath(){
-		return "/manage";
+		return "/mnge";
 	}
 	public static String getRemovePath(){
 		return "/remove/7";
