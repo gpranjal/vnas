@@ -188,14 +188,14 @@ class ManagementController extends Controller {
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
 			if($variable == 'CLIENT'){
 				if($client != ''){
-					$client .=  ','. $idd ;
+					$client .=  ', '. $idd ;
 				}else{
 					$client = $idd;
 				}
 
 			}else{
 				if($caregiver != ''){
-					$caregiver .= ','. $idd;
+					$caregiver .= ', '. $idd;
 				}else{
 					$caregiver = $idd;
 				}
