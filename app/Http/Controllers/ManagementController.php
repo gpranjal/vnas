@@ -68,7 +68,7 @@ class ManagementController extends Controller {
 		$update_edit->email = $_POST['email'];
 		$update_edit->save();
 		$_SESSION['admin_msg'] = "Updated User";
-  		return Redirect('manage');
+  		return Redirect('mnge');
 
 	}
 
@@ -93,7 +93,7 @@ class ManagementController extends Controller {
 		$update_remove = User::find($id);
 		$update_remove->delete();
 		$_SESSION['admin_msg'] = "Removed User";
-		return Redirect('manage');
+		return Redirect('mnge');
 
 	}
 	public function create()
@@ -217,7 +217,7 @@ class ManagementController extends Controller {
 		if(isset($_POST['patient_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['patient_search'])->update(['USER_SK'=>$id]);}
 		if(isset($_POST['caregiver_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['caregiver_search'])->update(['USER_SK'=>$id]);}
 		$_SESSION['admin_msg'] = "Updated Role";
-		return Redirect('manage');
+		return Redirect('mnge');
 	}
 
 	public function manage_patient_view(){
@@ -360,6 +360,6 @@ class ManagementController extends Controller {
 		$user->lock_user = 'Y';
 		$user->failed_attemps = 0 ;
 		$user->save();
-		return Redirect('manage');
+		return Redirect('mnge');
 	}
 }
