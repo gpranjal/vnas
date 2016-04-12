@@ -187,9 +187,18 @@ class ManagementController extends Controller {
 		foreach($idds as $idd){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
 			if($variable == 'CLIENT'){
-				$client .=  $idd .',';
+				if($client != ''){
+					$client .=  ','. $idd ;
+				}else{
+					$client = $idd;
+				}
+
 			}else{
-				$caregiver .= $idd . ',';
+				if($caregiver != ''){
+					$caregiver .= ','. $idd;
+				}else{
+					$caregiver = $idd;
+				}
 			}
 		}
 		$role_array = array(
