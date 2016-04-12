@@ -40,7 +40,7 @@ class VnasETLCommand extends Command {
 	public function fire()
 	{
 		//$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
-		$this->exec('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
+		$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
 	}
 
 	/**
