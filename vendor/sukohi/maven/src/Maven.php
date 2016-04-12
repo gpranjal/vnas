@@ -71,12 +71,13 @@ class Maven {
 		} else if(\Request::has('_token')) {
 
 			if(\Request::has(['question', 'answer'])) {
-
+				
 				$faq = Faq::firstOrNew(['id' => \Request::get('id')]);
 				$faq->question = \Request::get('question');
 				$faq->answer = \Request::get('answer');
 				$faq->faq_role = \Request::get('faq_role');
-				$faq->tags = explode(',', \Request::get('tags'));
+				/* This is the original line */ //$faq->tags = explode(',', \Request::get('tags'));
+				$faq->tags = explode(',', \Request::get('txtTags'));
 				$faq->draft_flag = \Request::has('draft_flag');
 				$faq->save();
 				\Cahen::move($faq)->to('sort', \Request::get('sort'));
