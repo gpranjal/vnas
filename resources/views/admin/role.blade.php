@@ -81,14 +81,14 @@
             <td>Patient ID: </td>
             <td><label id="patient_fetch">{{$role_array['client']}}</label></td>
             <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="patient_autocomplete" name="patient_autocomplete"></td>
-            <td><a href="/remove/patient_role/{{$role_array['id']}}"> Remove Patient Role</a></td>
+            <td><a href="/remove/patient_role/{{$role_array['id']}}" name="link_remove_pateint_role"> Remove Patient Role</a></td>
             <input type="hidden" id="patient_search" name="patient_search" value="">
         </tr>
         <tr>
             <td>Caregiver ID: </td>
             <td><label id="caregiver_fetch">{{$role_array['caregiver']}}</label></td>
             <td><input class="search ui-autocomplete-input" type="text" size="25" maxlength="50" id="caregiver_autocomplete" name="caregiver_autocomplete"></td>
-            <td><a href="/remove/caregiver_role/{{$role_array['id']}}"> Remove Caregiver Role</a></td>
+            <td><a href="/remove/caregiver_role/{{$role_array['id']}}" name="link_remove_caregiver_role"> Remove Caregiver Role</a></td>
             <input type="hidden" id="caregiver_search" name="caregiver_search" value="">
         </tr>
     </table>
