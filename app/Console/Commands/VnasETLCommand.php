@@ -49,7 +49,6 @@ class VnasETLCommand extends Command {
 	/* mysql vnas < ./VNASApplicationDatabaseETLLoadScript.sql */
 	public function fire()
 	{
-		//$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
 		//$process = new Process('cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas/ && mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
 		//$process->run();
 		

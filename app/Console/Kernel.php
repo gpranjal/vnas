@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel {
 	protected function schedule(Schedule $schedule)
 	{
 		$schedule->exec('exec:etl')
-			->everyFiveMinutes()
+			->everyThirtyMinutes()
 			->sendOutputTo('/public/uploads/output.txt')
 			->emailOutputTo('vnastest@gmail.com');
 	}
