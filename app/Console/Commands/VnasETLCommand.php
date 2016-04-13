@@ -43,23 +43,28 @@ class VnasETLCommand extends Command {
 	 */
 	
 	/* cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app */
-	/* mysql app < ./VNSApplicationDatabaseETLLoadScript.sql */
+	/* mysql app < ./VNASApplicationDatabaseETLLoadScript.sql */
 	
 	/* cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas/ */
-	/* mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql */
+	/* mysql vnas < ./VNASApplicationDatabaseETLLoadScript.sql */
 	public function fire()
 	{
 		//$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
 		//$process = new Process('cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas/ && mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
 		//$process->run();
 		
-		/*
-		exec("cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas");
-		exec("mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql");
-		*/
+		/* Local script	*/
+// 		$this->info('Executing, \'chdir c:/wamp/bin/mysql/mysql5.6.17/data/vnas\'');
+// 		exec("chdir c:/wamp/bin/mysql/mysql5.6.17/data/vnas");
+// 		$this->info('Executing, \'mysql vnas < VNASApplicationDatabaseETLLoadScript.sql\'');
+// 		exec("mysql vnas < VNASApplicationDatabaseETLLoadScript.sql");
 		
+		
+		/* Open shift Dev */
+		$this->info('Executing, \'cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app\'');
 		exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app");
-		exec("mysql app < VNSApplicationDatabaseETLLoadScript.sql");
+		$this->info('Executing, \'mysql app < VNASApplicationDatabaseETLLoadScript.sql\'');
+		exec("mysql app < VNASApplicationDatabaseETLLoadScript.sql");
 		
 		$this->info('Supposedly, this process ran.');
 	}
