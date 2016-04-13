@@ -61,10 +61,14 @@ class VnasETLCommand extends Command {
 		
 		
 		/* Open shift Dev */
+		/*
 		$this->info('Executing, \'cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app\'');
 		exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app");
-		$this->info('Executing, \'mysql app < VNASApplicationDatabaseETLLoadScript.sql\'');
-		exec("mysql app < VNASApplicationDatabaseETLLoadScript.sql");
+		$this->info('Executing, \'mysql app < ./VNASApplicationDatabaseETLLoadScript.sql\'');
+		exec("mysql app < ./VNASApplicationDatabaseETLLoadScript.sql");
+		*/
+		$this->info('Executing, \'cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app && mysql app < ./VNASApplicationDatabaseETLLoadScript.sql\'');
+		exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app && mysql app < ./VNASApplicationDatabaseETLLoadScript.sql");
 		
 		$this->info('Supposedly, this process ran.');
 	}
