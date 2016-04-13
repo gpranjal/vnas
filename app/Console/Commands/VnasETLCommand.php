@@ -59,7 +59,7 @@ class VnasETLCommand extends Command {
 		*/
 		
 		exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app");
-		exec("mysql app < ./VNSApplicationDatabaseETLLoadScript.sql");
+		exec("mysql app < VNSApplicationDatabaseETLLoadScript.sql");
 		
 		$this->info('Supposedly, this process ran.');
 	}
