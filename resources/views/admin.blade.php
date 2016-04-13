@@ -128,7 +128,11 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+ 	<!-- jQuery -->
+    <!-- I'd like to get the includes on this page, but they don't seem to like to load on time 	-->
+	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
+	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
+	<script src="<?php echo asset('templates/sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.js')?>"></script>
 
 
 		<div class="row" style="margin: 0px; padding: 0px;">
@@ -141,11 +145,7 @@
     </div>
     <!-- /#wrapper -->
 
- 	<!-- jQuery -->
-    <!-- I'd like to get the includes on this page, but they don't seem to like to load on time 	-->
-	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
-	<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
-	<script src="<?php echo asset('templates/sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.js')?>"></script>
+
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>

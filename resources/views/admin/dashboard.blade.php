@@ -75,7 +75,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
 
-               <script type="text/javascript">
+               <script>
                     $(function() {
                         console.log( "ready!" );
 

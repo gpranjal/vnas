@@ -44,7 +44,7 @@
 
     </table>
     @if(isset($_SESSION['admin_msg']))
-        <script type="text/javascript">
+        <script>
             $('#admin_msg').after('<div class="alert alert-success"><?php echo $_SESSION['admin_msg'] ?></div>')
         </script>
     @endif
