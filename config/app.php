@@ -152,7 +152,8 @@ return [
     	'Jenssegers\Agent\AgentServiceProvider', // Browser Detection
     	'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',//User tracking
 		'Torann\GeoIP\GeoIPServiceProvider',
-		'Zofe\Rapyd\RapydServiceProvider' // CRUD
+		'Zofe\Rapyd\RapydServiceProvider', // CRUD
+		'Collective\Remote\RemoteServiceProvider' //SSH
 	],
 
 	/*
@@ -208,8 +209,9 @@ return [
     	'Maven'   	=> 'Sukohi\Maven\Facades\Maven', // FAQ
     	'TableSorter' => 'Todstoychev\TableSorter\TableSorter', // Table Sorting
     	'Agent' 	=> 'Jenssegers\Agent\Facades\Agent', // Browser Detection
-    	'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade', // User tracking
-		'AppGeoIP' => 'Torann\GeoIP\GeoIPFacade'
+    	'Tracker' 	=> 'PragmaRX\Tracker\Vendor\Laravel\Facade', // User tracking
+		'AppGeoIP' 	=> 'Torann\GeoIP\GeoIPFacade',
+		'SSH' 		=> 'Collective\Remote\RemoteFacade' // SSH
 		
 	],
 

@@ -33,10 +33,10 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('cache:clear')
-		    ->everyFiveMinutes()
-		    ->sendOutputTo('/public/uploads/output.txt')
-		    ->emailOutputTo('zheath@unomaha.edu');
+		$schedule->exec('exec:etl')
+			->everyFiveMinutes()
+			->sendOutputTo('/public/uploads/output.txt')
+			->emailOutputTo('vnastest@gmail.com');
 	}
 
 }

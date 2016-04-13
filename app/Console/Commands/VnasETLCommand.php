@@ -5,6 +5,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use SSH;
 
 class VnasETLCommand extends Command {
 
@@ -13,8 +14,9 @@ class VnasETLCommand extends Command {
 	 *
 	 * @var string
 	 */
-	/* mysql app < ./VNSApplicationDatabaseETLLoadScript.sql */
-	/* mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql */
+	
+
+	
 	protected $name = "exec:etl";
 
 	/**
@@ -39,11 +41,27 @@ class VnasETLCommand extends Command {
 	 *
 	 * @return mixed
 	 */
+	
+	/* cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app */
+	/* mysql app < ./VNSApplicationDatabaseETLLoadScript.sql */
+	
+	/* cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas/ */
+	/* mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql */
 	public function fire()
 	{
 		//$this->call('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
-		$process = new Process('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
-		$process->run();
+		//$process = new Process('cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas/ && mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql');
+		//$process->run();
+		
+		/*
+		exec("cd /c/wamp/bin/mysql/mysql5.6.17/data/vnas");
+		exec("mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql");
+		*/
+		
+		exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app");
+		exec("mysql app < ./VNSApplicationDatabaseETLLoadScript.sql");
+		
+		$this->info('Supposedly, this process ran.');
 	}
 
 	/**
