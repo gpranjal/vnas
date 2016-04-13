@@ -41,34 +41,50 @@
 					<!-- VNAS Client info section -->
 					@if( count( $vnas_clients_info ) > 0 )
 						<div class="panel panel-default"> 
-							<h4><strong>Your VNAS Client Account<?php if( count( $vnas_clients_info ) > 1 ){ echo('s'); } ?></strong></h4>
+							<h3><strong>Your VNAS Client Account<?php if( count( $vnas_clients_info ) > 1 ){ echo('s'); } ?></strong></h3>
+							
 							<table class="table table-hover">
 								<?php $count = 1 ?>
 								@foreach ($vnas_clients_info as $vnas_user)
-									<tr>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Client ID:</strong></td>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'idText' . $count}}">{{ $vnas_user->CLIENT_ID  }}</td>
-									</tr>
-				
-									<tr>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Name:</strong></td>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'nameText' . $count}}">{{ $vnas_user->CLIENT_FIRST_NME  }} {{ $vnas_user->CLIENT_LAST_NME  }}</td>
-									</tr>
-				
-									<tr>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Address:</strong></td>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'addressText' . $count}}">{{ $vnas_user->CLIENT_ADDRESS  }}</td>
-									</tr>
-				
-									<tr>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Mobile Phone:</strong></td>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'phoneText' . $count}}">{{ $vnas_user->CLIENT_PHONE  }}</td>
-									</tr>
-				
-									<tr>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Email:</strong></td>
-										<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'emailText' . $count}}">{{ $vnas_user->CLIENT_EMAIL  }}</td>
-									</tr>
+									
+									@if( count( $vnas_clients_info ) > 1 )
+										<thead>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" colspan="2" align="center"><h4>Client Account {{ $count }}</h4></td>
+										</thead>
+									@endif
+									
+									<tbody>
+										<tr>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Client ID:</strong></td>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'idText' . $count}}">{{ $vnas_user->CLIENT_ID  }}</td>
+										</tr>
+					
+										<tr>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Name:</strong></td>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'nameText' . $count}}">{{ $vnas_user->CLIENT_FIRST_NME  }} {{ $vnas_user->CLIENT_LAST_NME  }}</td>
+										</tr>
+					
+										<tr>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Address:</strong></td>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'addressText' . $count}}">{{ $vnas_user->CLIENT_ADDRESS  }}</td>
+										</tr>
+					
+										<tr>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Mobile Phone:</strong></td>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'phoneText' . $count}}">{{ $vnas_user->CLIENT_PHONE  }}</td>
+										</tr>
+					
+										<tr>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Email:</strong></td>
+											<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left" name="{{'emailText' . $count}}">{{ $vnas_user->CLIENT_EMAIL  }}</td>
+										</tr>
+										
+										@if( count( $vnas_clients_info ) > 1 )
+											<tr>
+												<td colspan="10">&nbsp;</td>
+											</tr>
+										@endif
+									</tbody>
 			
 								<?php $count=$count+1 ?>
 								@endforeach
