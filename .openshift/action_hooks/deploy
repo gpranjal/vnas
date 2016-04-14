@@ -92,3 +92,11 @@ echo 1>&2
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 php artisan migrate --force
 popd > /dev/null
+
+
+echo 1>&2
+echo "Running 'php artisan schedule:run'..." 1>&2
+echo 1>&2
+pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+php artisan schedule:run >> /dev/null 2>&1
+popd > /dev/null
