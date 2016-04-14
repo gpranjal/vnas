@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel {
 	{
 		$schedule->exec('exec:etl')
 			->everyThirtyMinutes()
-			->sendOutputTo('/public/uploads/output.txt')
+			->sendOutputTo('~/app-root/runtime/repo/public/uploads/output.txt')
 			->emailOutputTo('vnastest@gmail.com');
 	}
 
