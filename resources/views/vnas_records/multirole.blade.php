@@ -22,20 +22,45 @@
 						{{ $myMessage }}
 					</div>
 				@else
-					<div id="tfheader">
-						<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<fieldset class="form-group" style="width: 70%; float:none; margin: 0 auto;">
-								<label>Select Role:</label>
-								<select name="multiroleFilter" id="multiroleFilter" class="form-control">
-									@foreach ($myRoleList as $myRoleVal)
-									   <option value="{{ $myRoleVal }}" @if( $myRoleVal == $myRole ) selected="selected" @endif>{{ $myRoleVal }}</option>
-									@endforeach
-								</select>
-							</fieldset>
-						</form>
+					<div id="scheduleForms"  style="width: 100%; display: table;">
+						<div style="display: table-row">
+							<div id="tfheader" style="width: 500px; display: table-cell;">
+								<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
+										<label>Select Role:</label>
+										<select name="multiroleFilter" id="multiroleFilter" class="form-control">
+											@foreach ($myRoleList as $myRoleVal)
+												<option value="{{ $myRoleVal }}" @if( $myRoleVal == $myRole ) selected="selected" @endif>{{ $myRoleVal }}</option>
+											@endforeach
+										</select>
+									</fieldset>
+								</form>
+							</div>
+
+							<div id="dateRangeFilterOuter" style="width: 500px; display: table-cell;">
+								<form name="dateRangeForm" id="dateRangeCheck" action="{{ url('vnas_records/') }}" method="post">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
+										<label>Select Date Range:</label>
+										<!-- <?php echo ($myRole); echo(" -- I am in ".$myRangeValue." view"); ?> -->
+										<select name="dateRangeFilterInner" id="dateRangeFilterInner" class="form-control">
+
+											@foreach ($dateRange as $mydateRangeVal)
+
+												<option value="{{ $mydateRangeVal }}" @if( $mydateRangeVal == $myRangeValue ) selected="selected" @endif>{{ $mydateRangeVal }}</option>
+											@endforeach
+
+										</select>
+									</fieldset>
+								</form>
+							</div>
+						</div>
 					</div>
-					
+
+					<br>
+					<br>
+				
 					<table class="table table-hover text-left">
 						<thead>
 							<tr>
@@ -101,6 +126,21 @@
 		   	{
 		   		window.location.href="{{ url('vnas_records/') }}";
 		   	}
+		});
+
+		$('#dateRangeFilterInner').on('change', function(e){
+			var select = $(this), form = $("#dateRangeCheck"), currPath = form.attr('action'), newPath = "";
+
+			if( $( select ).val() != "Current")
+			{
+				newPath = "/filter/All/"+ $( select ).val();
+				form.attr('action', form.attr('action') + newPath );
+				form.submit();
+			}
+			else
+			{
+				window.location.href="{{ url('vnas_records/') }}";
+			}
 		});
 	});
 </script>
