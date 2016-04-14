@@ -330,7 +330,7 @@ class ManagementController extends Controller {
 		foreach($querys as $query){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
 			if($variable == 'CLIENT'){
-				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> Null]);
 			}
 		}
 
@@ -345,7 +345,7 @@ class ManagementController extends Controller {
 		foreach($querys as $query){
 			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
 			if($variable == 'CAREGIVER'){
-				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> '']);
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> Null]);
 			}
 		}
 

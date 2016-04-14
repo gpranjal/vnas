@@ -5,10 +5,10 @@
     <div id="admin_msg"></div>
 
     <div class="row" style="height: 80px; align-content: center; align-self: center; padding: 15px; text-align: center">
-        <a name="btnFilterPatient" class="btn btn-primary" style="width: 100px" role="button" href="{{url('manage/patient')}}">Patient</a>
+        <a name="btnFilterPatient" class="btn btn-primary" style="width: 100px" role="button" href="{{url('mnge/patient')}}">Patient</a>
         <a name="btnFilterCaregiver" class="btn btn-primary" style="width: 100px" role="button"
-           href="{{url('manage/caregiver')}}">Caregiver</a>
-        <a name="btnFilterUnassigned" class="btn btn-primary" style="width: 100px" role="button" href="{{url('manage/unassigned')}}">Unassigned</a>
+           href="{{url('mnge/caregiver')}}">Caregiver</a>
+        <a name="btnFilterUnassigned" class="btn btn-primary" style="width: 100px" role="button" href="{{url('mnge/unassigned')}}">Unassigned</a>
     </div>
 
     <table class="table">
