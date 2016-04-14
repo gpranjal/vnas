@@ -201,6 +201,8 @@ class ManagementController extends Controller {
 				}
 			}
 		}
+		if($client == '') { $client = 'No Records';}
+		if($caregiver == '') { $caregiver = 'No Records';}
 		$role_array = array(
 			'name'=> $role_id->name,
 			'id'=>$role_id->id,
