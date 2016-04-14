@@ -213,9 +213,8 @@ class ManagementController extends Controller {
 }
 	public function role_update($id){
 		if(Auth::User()->role != 'admin') return view('home');
-		$role_id = DB::select('select * from VNAS_VNA_USER_REL where VNA_USER_ID =?', [$_POST['patient_search']]);
-		if(isset($_POST['patient_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['patient_search'])->update(['USER_SK'=>$id]);}
-		if(isset($_POST['caregiver_search']) != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['caregiver_search'])->update(['USER_SK'=>$id]);}
+		if($_POST['patient_search'] != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['patient_search'])->update(['USER_SK'=>$id]);}
+		if($_POST['caregiver_search'] != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['caregiver_search'])->update(['USER_SK'=>$id]);}
 		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('mnge');
 	}
