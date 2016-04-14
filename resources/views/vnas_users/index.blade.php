@@ -20,7 +20,7 @@
 				<br />
 
 				<div class="panel panel-default"> 
-					 <h4><strong>VNAS Online Account Information</strong></h4>
+					 <h3><strong>VNAS Online Account Information</strong></h3>
 					 <table class="table table-hover">
 					 	<tr>
 					 		<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="right"><strong>Name: </strong></td>
@@ -95,7 +95,7 @@
 					<!-- VNAS Caregiver info section -->
 					@if( count( $vnas_caregivers_info ) > 0 )
 						<div class="panel panel-default"> 
-							<h4><strong>Your VNAS Caregiver Account</strong></h4>
+							<h3><strong>Your VNAS Caregiver Account</strong></h3>
 							<table class="table table-hover">
 								<?php $count = 1 ?>
 								@foreach ($vnas_caregivers_info as $vnas_user)

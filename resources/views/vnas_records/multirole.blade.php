@@ -17,8 +17,10 @@
 				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 				<br />
 
-				@if( count($Vnas_records) == 0 )
-				You don't have any records.  <ol><li>Navigate to vnas_records/create to get started.</li><li>Your registered email account will link to the VNAS Records.</li></ol>
+				@if( $myMessage )
+					<div class="alert alert-info">
+						{{ $myMessage }}
+					</div>
 				@else
 					<div id="tfheader">
 						<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">

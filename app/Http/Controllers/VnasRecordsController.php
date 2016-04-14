@@ -29,7 +29,7 @@ class VnasRecordsController extends Controller {
         View::composer('*', 'App\Composers\HomeComposer');
     }
 
-    public function index($myRole = 'All' )
+    public function index($myRole = 'All', $myRangeValue = 'Current')
     {
         // Check to see if the user is logged in
         if( Auth::check() )
@@ -47,7 +47,7 @@ class VnasRecordsController extends Controller {
             $nextCntl         = "";
             $myView           = "";
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
-            
+            $dateRange    = ['Current','History'];
             $Vnas_records   = null;
             $myMessage		= false;
 
@@ -55,19 +55,18 @@ class VnasRecordsController extends Controller {
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                 	->orderBy('schedule_start_dttm', 'desc')
-                	->distinct()
-                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+                	->distinct();
+                	//->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 				
                 $nextCntl = "VnasRecordsController@sch";
                 $myView = "vnas_records.care";
-                
             }
             else if ( $isPatient && !$isCareGiver  ) // Is a patient only
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
                 	->orderBy('schedule_start_dttm', 'asc')
-                	->distinct()
-                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+                	->distinct();
+                	//->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
                 $nextCntl = "VnasRecordsController@patientsch";
                 $myView = "vnas_records.index";
             }
@@ -92,19 +91,31 @@ class VnasRecordsController extends Controller {
             		}
             	}
             	
-            	$Vnas_records = $Vnas_records->distinct()
-            		->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-
 				$nextCntl = "VnasRecordsController@multirolesch";
                 $myView = "vnas_records.multirole";//{{ action( $nextCntl , [$Vnas_record->id]) }}
             }
             else // Has no roles
             {
-                $myView 	= "vnas_records.index";
-                $myMessage  = UserSettings::getSchNoRcrdMsg();
+            	$myView 	= "vnas_records.index";
+            	$myMessage  = UserSettings::getSchNoRcrdMsg();
             }
+            
+            if($myRangeValue == "Current")
+            {
+            	$Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C']);
+            	$myRangeValue == "Current";
+            }
+            else if($myRangeValue == "History")
+            {
+            	$Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H');
+            	$myRangeValue == "History";
+            }
+            
+            $Vnas_records = $Vnas_records->distinct()
+            	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+            
 
-            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage'));
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage','myRangeValue', 'dateRange'));
         }
         else
         {

@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	// 	 	return VnasRecordsController::index($myRole);
 	// });
 	Route::post('vnas_records/role/{myRole}', 'VnasRecordsController@index');
+	Route::post('vnas_records/filter/{myRole}/{myRangeValue}', 'VnasRecordsController@index');
 
 	Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
 	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
