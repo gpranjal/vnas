@@ -5,6 +5,7 @@ use Illuminate\Routing\Matching\CaseInsensitiveUriValidator;
 use Illuminate\Routing\Matching\UriValidator;
 use Illuminate\Support\Facades\Artisan;
 use App\Console\Commands\VnasETLCommand;
+use Illuminate\Console\Command;
 
 
 $validators = IlluminateRoute::getValidators();
