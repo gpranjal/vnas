@@ -361,12 +361,12 @@ class ManagementController extends Controller {
 		
 		$grid->row(function ($row) {
 			//dd($row);
-			if ($row->cell('PROCESS_LOG_SKEY')->value == 20) {
-				$row->style("background-color:#CCFF66");
-			} elseif ($row->cell('PROCESS_LOG_SKEY')->value > 15) {
-				$row->cell('title')->style("font-weight:bold");
-				$row->style("color:#f00");
-			}
+// 			if ($row->cell('PROCESS_LOG_SKEY')->value == 20) {
+// 				$row->style("background-color:#CCFF66");
+// 			} elseif ($row->cell('PROCESS_LOG_SKEY')->value > 15) {
+// 				$row->cell('title')->style("font-weight:bold");
+// 				$row->style("color:#f00");
+// 			}
 		});
 		
 	   return view('admin.etl_process_log', compact('grid'));
