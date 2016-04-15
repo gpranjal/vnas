@@ -377,7 +377,7 @@ class ManagementController extends Controller {
 		{
 			$myMessage = "ETL successfully started.";
 		}
-		else if( $myBit == 0 )
+		else if( $myBit == -1 )
 		{
 			$myError = "There was issue starting the ETL.";
 		}

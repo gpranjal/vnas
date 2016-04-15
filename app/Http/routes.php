@@ -123,7 +123,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 		}
 		catch (Exception $e)
 		{
-			$myBit = 0;
+			$myBit = -1;
 		}
 		
 		return redirect( '/system_etl_stats/'.$myBit );
