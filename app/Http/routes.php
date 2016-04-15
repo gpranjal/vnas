@@ -3,6 +3,7 @@
 use Illuminate\Routing\Route as IlluminateRoute;
 use Illuminate\Routing\Matching\CaseInsensitiveUriValidator;
 use Illuminate\Routing\Matching\UriValidator;
+use Illuminate\Support\Facades\Artisan;
 
 
 $validators = IlluminateRoute::getValidators();
@@ -112,4 +113,8 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/remove/patient_role/{id}', 'ManagementController@remove_patient_role');
 	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
 	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
+	
+	Route::get('etl/fire' , function() {
+		$exitCode = Artisan::call('exec:etl');
+	});
 });

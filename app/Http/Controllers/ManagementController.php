@@ -355,7 +355,7 @@ class ManagementController extends Controller {
 		
 		
 		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
-		$grid->link('/system_etl_stats',"Execute ETL job", "TR");
+		$grid->link('/etl/fire',"Execute ETL job", "TR");
 		$grid->orderBy('PROCESS_LOG_SKEY','desc');
 		$grid->paginate(10);
 		
