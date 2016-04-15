@@ -69,11 +69,11 @@ class VnasETLCommand extends Command {
 		//$this->info('Executing, \'cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app && mysql app < ./VNASApplicationDatabaseETLLoadScript.sql\'');
 		//exec("cd /var/lib/openshift/56b6e9612d527164d3000155/mysql/data/app && mysql app < ./VNASApplicationDatabaseETLLoadScript.sql");
 
-		
+		$this->info('--- START Running VNAS ETL Fire... ---');
+
 		exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
 
-		
-		$this->info('Supposedly, this process ran.');
+		$this->info('--- STOP Running VNAS ETL Fire... ---');
 	}
 
 	/**
