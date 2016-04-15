@@ -228,7 +228,7 @@ class ManagementController extends Controller {
 		foreach($calculators as $calculator){
 //			return $calculator;
 			if($variable != ''){
-				$variable = ', '.$calculator;
+				$variable = $variable. ', '.$calculator;
 			}else{
 				$variable = $calculator;
 			}
@@ -251,7 +251,7 @@ class ManagementController extends Controller {
 		foreach($calculators as $calculator){
 //			return $calculator;
 			if($variable != ''){
-				$variable = ', '.$calculator;
+				$variable = $variable. ', '.$calculator;
 			}else{
 				$variable = $calculator;
 			}
@@ -267,14 +267,14 @@ class ManagementController extends Controller {
 
 	public function manage_unassigned_view(){
 		if(Auth::User()->role != 'admin') return view('home');
-		$calculators = DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ROLE_CD','!=','2')->where('VNA_USER_ROLE_CD','!=','1')->where('USER_SK','!=','NULL')->lists('USER_SK');
-//		$calculators = DB::select('select USER_SK from VNAS_VNA_USER_REL where VNA_USER_ROLE_CD =\'2\' AND USER_SK IS NOT NULL');
+		$user_table = DB::table('users')->lists('id');
+		$verifys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK','!=','NULL')->distinct()->lists('USER_SK');
 
+		$calculators = array_diff($user_table, $verifys);
 		$variable = '';
 		foreach($calculators as $calculator){
-//			return $calculator;
 			if($variable != ''){
-				$variable = ', '.$calculator;
+				$variable = $variable.', '.$calculator;
 			}else{
 				$variable = $calculator;
 			}
@@ -282,9 +282,9 @@ class ManagementController extends Controller {
 		if($variable == ''){
 			$variable = '0';
 		}
-//		return $variable;
+
 		$users =  DB::select('select * from users where id IN ('.$variable.')');
-//return $users;
+
 
 		return view('admin.management' , compact('users'));
 	}
