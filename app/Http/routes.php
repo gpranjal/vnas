@@ -107,6 +107,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/system_config' , 'ManagementController@editUserSettings');
 	Route::post('/system_config' , 'ManagementController@editUserSettings');
 	Route::get('/system_etl_stats' , 'ManagementController@etlStats' );
+	Route::get('/system_etl_stats/{bit}' , 'ManagementController@etlStats' );
 
 	Route::get('/admin' , 'ManagementController@dashboard');
 	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
@@ -116,10 +117,15 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
 	
 	Route::get('etl/fire' , function() {
-		$exitCode = Artisan::call('exec:etl');
+		$myBit = 1;
+		try {
+			exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+		}
+		catch (Exception $e)
+		{
+			$myBit = 0;
+		}
 		
-		echo( '<div class="alert alert-info">ETL Process Executed.<br/>Click <a href="../system_etl_stats">here</a> to return to the stats page.</div>' );
-			
-		
+		return redirect( '/system_etl_stats/'.$myBit );
 	});
 });

@@ -16,6 +16,7 @@ use App\Etl_process_log;
 use App\UserSettings;
 use Dataform;
 USE Zofe\Rapyd\Demo\Article;
+use Illuminate\Mail\Message;
 
 class ManagementController extends Controller {
 
@@ -334,9 +335,12 @@ class ManagementController extends Controller {
 		return view('admin.user_settings', compact('form'));
 	}
 	
-	public function etlStats()
+	public function etlStats($myBit = null)
 	{
 		if(Auth::User()->role != 'admin') return view('home');
+		
+		$myMessage = null;
+		$myError = null;
 		
 		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','START_DT','END_DT','SOURCE_RECORD_READ_CNT','SOURCE_RECORD_REJECT_CNT','TARGET_RECORD_INSERT_CNT','TARGET_RECORD_UPDATE_CNT','TARGET_RECORD_DELETE_CNT','ERROR_CNT','REC_STATUS','JOB_NM','REJECT_RSN_TXT','CREATED_BY','CREATED_DATE')));  //same source types of DataSet
 		
@@ -369,7 +373,16 @@ class ManagementController extends Controller {
 // 			}
 		});
 		
-	   return view('admin.etl_process_log', compact('grid'));
+		if( $myBit == 1 )
+		{
+			$myMessage = "ETL successfully started.";
+		}
+		else if( $myBit == 0 )
+		{
+			$myError = "There was issue starting the ETL.";
+		}
+	   
+	   return view('admin.etl_process_log', compact('grid','myMessage','myError'));
 	}
 
 	public function remove_patient_role($id){
