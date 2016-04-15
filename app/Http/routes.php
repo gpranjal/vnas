@@ -118,10 +118,14 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	
 	Route::get('etl/fire' , function() {
 		$myBit = 1;
-		$myBit = shell_exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
-
+		try {
+		$myBit = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+		}
+		catch (Exception $e)
+		{
+			$myBit = -1;
+		}
 		
-		echo( $myBit );
-		//return redirect( '/system_etl_stats/'.$myBit );
+		return redirect( '/system_etl_stats/'.$myBit );
 	});
 });
