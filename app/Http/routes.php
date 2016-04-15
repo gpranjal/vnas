@@ -118,7 +118,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('etl/fire' , function() {
 		$exitCode = Artisan::call('exec:etl');
 		
-		echo( '<div class="alert alert-info">ETL Process Executed.<br/>Click <a href="./system_etl_stats">here</a> to return to the stats page.</div>' );
+		echo( '<div class="alert alert-info">ETL Process Executed.<br/>Click <a href="../system_etl_stats">here</a> to return to the stats page.</div>' );
 			
 		
 	});
