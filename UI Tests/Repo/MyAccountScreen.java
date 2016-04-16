@@ -21,11 +21,11 @@ public class MyAccountScreen  extends BaseScreen{
 		return driver.findElement(By.name("callButton"));
 	}
 	
-	public static WebElement getIdLabel(WebDriver driver) {
+	public static WebElement getIdLabel1(WebDriver driver) {
 		return driver.findElement(By.name("idText1"));
 	}
 	
-	public static WebElement getNameLabel(WebDriver driver) {
+	public static WebElement getNameLabel1(WebDriver driver) {
 		return driver.findElement(By.name("nameText1"));
 	}
 	

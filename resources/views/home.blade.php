@@ -44,7 +44,7 @@
 							<input type="hidden" name="cmd" value="_s-xclick">
 							<input type="hidden" name="hosted_button_id" value="{{ $donateAPIKey }}">
 
-							<button class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;">
+							<button name="donateButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;">
 								<span class="glyphicon glyphicon-usd" aria-hidden="true" style="padding-right: 10px;"></span>Donate to VNA
 							</button>                            
 						</form>

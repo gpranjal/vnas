@@ -29,73 +29,69 @@ class VnasRecordsController extends Controller {
         View::composer('*', 'App\Composers\HomeComposer');
     }
 
-    public function index($myRole = 'All' )
+    public function index($myRole = 'All', $myRangeValue = 'Current')
     {
         // Check to see if the user is logged in
         if( Auth::check() )
         {
-        	$myCurrUserSk 	= Auth::user()->id;
-        	$myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
-        							->get( array('vna_user_role_cd','vna_user_id') );
-        	$myCurrRole       = User_role_rel::getCurrRole($myRoles);
-        	$myClientIds 	  = User_role_rel::getClientIds($myRoles);
-        	$myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
-        	
-        	$isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
-        	$isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
-        	
+            $myCurrUserSk 	= Auth::user()->id;
+            $myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
+                ->get( array('vna_user_role_cd','vna_user_id') );
+            $myCurrRole       = User_role_rel::getCurrRole($myRoles);
+            $myClientIds 	  = User_role_rel::getClientIds($myRoles);
+            $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
+
+            $isPatient = ( !empty( $myClientIds ) ) ? 1 : 0;
+            $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
+
             $nextCntl         = "";
             $myView           = "";
             $myRoleList     = ['All','Caregiver','Client']; // Pranjal, this probably needs a better definition
-            
+            $dateRange    = ['Current','History'];
             $Vnas_records   = null;
             $myMessage		= false;
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                	->orderBy('schedule_start_dttm', 'asc')
-                	->distinct()
-                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-				
+                    ->orderBy('schedule_start_dttm', 'desc')
+                    ->distinct();
+                //->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+
                 $nextCntl = "VnasRecordsController@sch";
                 $myView = "vnas_records.care";
-                
             }
             else if ( $isPatient && !$isCareGiver  ) // Is a patient only
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                	->orderBy('schedule_start_dttm', 'asc')
-                	->distinct()
-                	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+                    ->orderBy('schedule_start_dttm', 'asc')
+                    ->distinct();
+                //->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
                 $nextCntl = "VnasRecordsController@patientsch";
                 $myView = "vnas_records.index";
             }
             else if( $isCareGiver && $isPatient ) // Is both roles
             {
-            	$Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-            		->distinct()
-            		->orderBy('schedule_start_dttm', 'asc');
-            		         	
-            	if( $myRole == "Client" )
-            	{
-            		foreach( $myClientIds as $myClientId )
-            		{
-            			$Vnas_records = $Vnas_records->where( 'CLIENT_ID' , '=' , $myClientId );
-            		}
-            	}
-            	else if( $myRole == "Caregiver" )
-            	{
-            		foreach( $myCareGiverIds as $myCareGiverId )
-            		{
-            			$Vnas_records = $Vnas_records->where( 'care_giver_id' , '=' , $myCareGiverId );
-            		}
-            	}
-            	
-            	$Vnas_records = $Vnas_records->distinct()
-            		->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+                    ->distinct()
+                    ->orderBy('schedule_start_dttm', 'asc');
 
-				$nextCntl = "VnasRecordsController@multirolesch";
+                if( $myRole == "Client" )
+                {
+                    foreach( $myClientIds as $myClientId )
+                    {
+                        $Vnas_records = $Vnas_records->where( 'CLIENT_ID' , '=' , $myClientId );
+                    }
+                }
+                else if( $myRole == "Caregiver" )
+                {
+                    foreach( $myCareGiverIds as $myCareGiverId )
+                    {
+                        $Vnas_records = $Vnas_records->where( 'care_giver_id' , '=' , $myCareGiverId );
+                    }
+                }
+
+                $nextCntl = "VnasRecordsController@multirolesch";
                 $myView = "vnas_records.multirole";//{{ action( $nextCntl , [$Vnas_record->id]) }}
             }
             else // Has no roles
@@ -104,7 +100,22 @@ class VnasRecordsController extends Controller {
                 $myMessage  = UserSettings::getSchNoRcrdMsg();
             }
 
-            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage'));
+            if($myRangeValue == "Current")
+            {
+                $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C']);
+                $myRangeValue == "Current";
+            }
+            else if($myRangeValue == "History")
+            {
+                $Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H');
+                $myRangeValue == "History";
+            }
+
+            $Vnas_records = $Vnas_records->distinct()
+                ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+
+
+            return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage','myRangeValue', 'dateRange'));
         }
         else
         {
@@ -112,26 +123,26 @@ class VnasRecordsController extends Controller {
         }
     }
 
-    public function multirolesch($id)
+    public function multirolesch($id, $myRangeValue = 'Current')
     {
-    	$myCurrUserSk      = Auth::user()->id;
+        $myCurrUserSk      = Auth::user()->id;
         $Vnas_records   = null;
-        
+
         $myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
-        	->get( array('vna_user_role_cd','vna_user_id') );
-        
+            ->get( array('vna_user_role_cd','vna_user_id') );
+
         $myCurrRole       = User_role_rel::getCurrRole($myRoles);
         $myClientIds 	  = User_role_rel::getClientIds($myRoles);
         $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
-        	
+
         $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
         $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
 
         $myView = "";
         $Vnas_records = Vnas_record::where( 'SCHEDULE_SK' , '=' , $id )
-			->where( 'user_sk' , '=' , $myCurrUserSk )
-			->distinct()
-			->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+            ->where( 'user_sk' , '=' , $myCurrUserSk )
+            ->distinct()
+            ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
         // Need to check the roles from the ORM query and return the appropriate view.
 
@@ -144,7 +155,18 @@ class VnasRecordsController extends Controller {
             $myView         = "vnas_records.sch";
         }
 
-        return view( $myView , compact('Vnas_records'));
+        if($myRangeValue == "Current")
+        {
+            $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C']);
+            $myRangeValue == "Current";
+        }
+        else if($myRangeValue == "History")
+        {
+            $Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H');
+            $myRangeValue == "History";
+        }
+
+        return view( $myView , compact('Vnas_records','myRangeValue', 'dateRange'));
     }
 
 

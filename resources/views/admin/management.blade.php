@@ -1,14 +1,14 @@
 @extends('admin')
 
 @section('content')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <div id="admin_msg"></div>
 
     <div class="row" style="height: 80px; align-content: center; align-self: center; padding: 15px; text-align: center">
-        <a name="btnFilterPatient" class="btn btn-primary" style="width: 100px" role="button" href="{{url('manage/patient')}}">Patient</a>
+        <a name="btnFilterPatient" class="btn btn-primary" style="width: 100px" role="button" href="{{url('mnge/patient')}}">Patient</a>
         <a name="btnFilterCaregiver" class="btn btn-primary" style="width: 100px" role="button"
-           href="{{url('manage/caregiver')}}">Caregiver</a>
-        <a name="btnFilterUnassigned" class="btn btn-primary" style="width: 100px" role="button" href="{{url('manage/unassigned')}}">Unassigned</a>
+           href="{{url('mnge/caregiver')}}">Caregiver</a>
+        <a name="btnFilterUnassigned" class="btn btn-primary" style="width: 100px" role="button" href="{{url('mnge/unassigned')}}">Unassigned</a>
     </div>
 
     <table class="table">
@@ -28,7 +28,7 @@
                     <div name="{{'nameText' . $count}}">{{$meh ->name}}</div>
                 </td>
                 <td><a name="{{'editButton' . $count}}" class="btn btn-primary" role="button"
-                       href="{{url('management_edit/')}}/{{$meh->id}}">Edit</a></td>
+                       href="{{url('mnge_edit/')}}/{{$meh->id}}">Edit</a></td>
                 {{--<td><a name="{{'resetButton' . $count}}" class="btn btn-primary" role="button" href="{{url('reset/')}}/{{$meh->id}}">Reset</a> </td>--}}
                 <td>@if($meh->lock_user == 'X')<a name="{{'unlockButton' . $count}}" class="btn btn-primary"
                                                   href="{{url('unlock_user/')}}/{{$meh->id}}"
@@ -49,4 +49,6 @@
         </script>
     @endif
     <?php unset($_SESSION['admin_msg']); ?>
-@endsection
+
+	@endsection
+    @stop

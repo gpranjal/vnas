@@ -32,4 +32,5 @@ class Kernel extends HttpKernel {
 		'timeout' => 'App\Http\Middleware\SessionTimeout'
 	];
 
+	
 }

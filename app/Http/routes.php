@@ -3,6 +3,9 @@
 use Illuminate\Routing\Route as IlluminateRoute;
 use Illuminate\Routing\Matching\CaseInsensitiveUriValidator;
 use Illuminate\Routing\Matching\UriValidator;
+use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\VnasETLCommand;
+use Illuminate\Console\Command;
 
 
 $validators = IlluminateRoute::getValidators();
@@ -53,7 +56,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/map' , 'MapController@index');
 	Route::get('/map/{addr}' , 'MapController@show');
 
-	Route::match(['get', 'post'], 'manage_faq', function () {
+	Route::match(['get', 'post'], 'faq_mnge', function () {
 	    return \Maven::manage_view();
 	});
 
@@ -69,7 +72,9 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	//      	$myRole = Input::get('multiroleFilter', '');
 	// 	 	return VnasRecordsController::index($myRole);
 	// });
-	Route::post('vnas_records/role/{myRole}', 'VnasRecordsController@index');
+
+	Route::post('vnas_records/role/{myRole}/{myRangeValue}', 'VnasRecordsController@index');
+	Route::post('vnas_records/filter/{myRole}/{myRangeValue}', 'VnasRecordsController@index');
 
 	Route::get('vnas_records/caregiver/{id}', 'VnasRecordsController@sch');
 	Route::get('vnas_records/patient/{id}', 'VnasRecordsController@patientsch');
@@ -80,10 +85,14 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::post('vnas_users', 'VnasUsersController@store');
 	Route::get('vnas_users/{id}', 'VnasUsersController@show');
 
-	Route::get('/manage' , 'ManagementController@index');
-	Route::get('/manage/patient' , 'ManagementController@manage_patient_view');
-	Route::get('/manage/caregiver' , 'ManagementController@manage_caregiver_view');
-	Route::get('/manage/unassigned' , 'ManagementController@manage_unassigned_view');
+	Route::get('/mnge' , 'ManagementController@index');
+	// The following route is created to fix a selected branding issue in the admin panel
+	// When selected on the admin panel, the admin panel was changing branding based on the route
+	// This would ultimately change the branding of the dropdown menu.
+	Route::get('/menu/mnge' , 'ManagementController@index');
+	Route::get('/mnge/patient' , 'ManagementController@manage_patient_view');
+	Route::get('/mnge/caregiver' , 'ManagementController@manage_caregiver_view');
+	Route::get('/mnge/unassigned' , 'ManagementController@manage_unassigned_view');
 	Route::get('/edit/{edit_id}' , 'ManagementController@edit_user');
 
 	Route::get('/personal_edit/{edit_id}' , 'ManagementController@personal_edit_user');
@@ -91,7 +100,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::post('/post_personal_edit/{edit_user}' , 'ManagementController@post_personal_edit_user');
 	Route::get('/remove/{remove_id}' , 'ManagementController@remove_user');
 	Route::post('/remove/{remove_id}' , 'ManagementController@post_remove_user');
-	Route::get('/management_edit/{edit_id}' , 'ManagementController@management_edit_user');
+	Route::get('/mnge_edit/{edit_id}' , 'ManagementController@management_edit_user');
 	Route::get('/role' , 'ManagementController@role');
 	Route::get('/role/{id}' , 'ManagementController@role_id');
 	Route::post('/role_update/{role_id}' , 'ManagementController@role_update');
@@ -100,6 +109,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/system_config' , 'ManagementController@editUserSettings');
 	Route::post('/system_config' , 'ManagementController@editUserSettings');
 	Route::get('/system_etl_stats' , 'ManagementController@etlStats' );
+	Route::get('/system_etl_stats/{bit}' , 'ManagementController@etlStats' );
 
 	Route::get('/admin' , 'ManagementController@dashboard');
 	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
@@ -107,4 +117,18 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/remove/patient_role/{id}', 'ManagementController@remove_patient_role');
 	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
 	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
+	
+	Route::get('etl/fire' , function() {
+		$myBit = 1;
+		try {
+			//$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+			Artisan::queue("exec:etl");
+		}
+		catch (Exception $e)
+		{
+			$myBit = -1;
+		}
+		
+		return redirect( '/system_etl_stats/'.$myBit );
+	});
 });

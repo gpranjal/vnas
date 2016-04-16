@@ -44,12 +44,12 @@ class VnasUsersController extends Controller {
         	$vnas_clients_info		= null;
         	$myMessage				= false;
 
-            $vnas_caregivers_info = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+            $vnas_caregivers_info = Vnas_record::where( 'USER_SK' , '=' , $myCurrUserSk )
 	            ->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds )
 	            ->distinct()
 	            ->get( array('CARE_GIVER_ID','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
          
-            $vnas_clients_info = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )->distinct()
+            $vnas_clients_info = Vnas_record::where( 'USER_SK' , '=' , $myCurrUserSk )
 	            ->whereIn( 'CLIENT_ID' , $myClientIds )
 	            ->distinct()
                 ->get( array('CLIENT_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE'));
@@ -57,8 +57,6 @@ class VnasUsersController extends Controller {
            	if( count($vnas_caregivers_info) == 0 && count($vnas_clients_info) == 0 )
            	{
            		$myMessage = UserSettings::getMyAcctNoRcrdMsg();
-//            		$myMessage = "You currently have no schedule records with VNA." ;
-//            		$myMessage = $myMessage . "Contact VNA by clicking the email or phone buttons below to set up your account!";
            	}
            
 			return view('vnas_users.index', compact('vnas_users','myAppUserInfo','myMessage','vnas_caregivers_info','vnas_clients_info'));

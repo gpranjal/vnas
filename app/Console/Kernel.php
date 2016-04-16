@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'App\Console\Commands\Inspire',
+		'App\Console\Commands\VnasETLCommand',
 	];
 
 	/**
@@ -19,11 +20,23 @@ class Kernel extends ConsoleKernel {
 	 *
 	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
 	 * @return void
+	 * 
+	 * $schedule->command('cache:clear')
+		    ->everyFiveMinutes()
+		    ->sendOutputTo('/public/uploads/output.txt')
+		    ->emailOutputTo('zheath@unomaha.edu');
+		
+		$schedule->exec('mysql vnas < ./VNSApplicationDatabaseETLLoadScript.sql')
+			->everyFiveMinutes()
+			->sendOutputTo('/public/uploads/output.txt')
+			->emailOutputTo('zheath@unomaha.edu');
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('inspire')
-				 ->hourly();
+		$schedule->command('exec:etl')
+			->everyThirtyMinutes()
+			->sendOutputTo('~/app-root/runtime/repo/public/uploads/output.txt')
+			->emailOutputTo('vnastest@gmail.com');
 	}
 
 }

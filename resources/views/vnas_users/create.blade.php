@@ -29,12 +29,11 @@
             {!! Form::label('patient_address', 'Address:') !!}
             {!! Form::text('patient_address', null, ['class' => 'form-control']) !!}
         </div>
-
-
         <div class="form-group">
             {!! Form::submit('Add User', ['class' => 'btn btn-primary form-control']) !!}
         </div>
 
     {!! Form::close() !!}
+
 
 @stop

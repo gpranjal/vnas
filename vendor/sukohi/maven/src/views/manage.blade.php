@@ -1,7 +1,6 @@
 @extends('admin')
 
 @section('content')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 @if(!empty($message))
     <br>
@@ -150,7 +149,7 @@
         {!! Form::hidden('remove_id', '', ['id' => 'remove_id']) !!}
     {!! Form::close() !!}
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
 
         $('#add_button').on('click', function(){
@@ -223,4 +222,5 @@
     });
 </script>
 
-@endsection
+
+@stop

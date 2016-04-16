@@ -16,6 +16,7 @@ use App\Etl_process_log;
 use App\UserSettings;
 use Dataform;
 USE Zofe\Rapyd\Demo\Article;
+use Illuminate\Mail\Message;
 
 class ManagementController extends Controller {
 
@@ -68,7 +69,7 @@ class ManagementController extends Controller {
 		$update_edit->email = $_POST['email'];
 		$update_edit->save();
 		$_SESSION['admin_msg'] = "Updated User";
-  		return Redirect('manage');
+  		return Redirect('mnge');
 
 	}
 
@@ -93,7 +94,7 @@ class ManagementController extends Controller {
 		$update_remove = User::find($id);
 		$update_remove->delete();
 		$_SESSION['admin_msg'] = "Removed User";
-		return Redirect('manage');
+		return Redirect('mnge');
 
 	}
 	public function create()
@@ -164,7 +165,7 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','client')->lists('full_nme','vna_user_id');
+		$names = DB::table('VNAS_USER_INFO')->where('FULL_NME', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','client')->lists('FULL_NME','VNA_USER_ID');
 		return $names;
 	}
 	
@@ -173,23 +174,32 @@ class ManagementController extends Controller {
 
 		$searchTerm = $request->input('searchTerm');
 
-		$names = DB::table('vnas_user_info')->where('full_nme', 'LIKE', '%' . $searchTerm . '%')->where('vna_user_type','=','caregiver')->lists('full_nme','vna_user_id');
+		$names = DB::table('VNAS_USER_INFO')->where('FULL_NME', 'LIKE', '%' . $searchTerm . '%')->where('VNA_USER_TYPE','=','caregiver')->lists('FULL_NME','VNA_USER_ID');
 		return $names;
 	}
 
 	public function role_id($id){
 		if(Auth::User()->role != 'admin') return view('home');
 		$role_id = User::find($id);
-		$idds= DB::table('vnas_vna_user_rel')->where('user_sk',$role_id->id)->lists('vna_user_id') ;
+		$idds= DB::table('VNAS_VNA_USER_REL')->where('USER_SK',$role_id->id)->lists('VNA_USER_ID') ;
 //		return $idds;
 		$client ='';
 		$caregiver ='';
 		foreach($idds as $idd){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $idd)->pluck('vna_user_type');
-			if($variable == 'client'){
-				$client = $client .','. $idd;
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $idd)->pluck('VNA_USER_TYPE');
+			if($variable == 'CLIENT'){
+				if($client != ''){
+					$client .=  ', '. $idd ;
+				}else{
+					$client = $idd;
+				}
+
 			}else{
-				$caregiver = $caregiver .','. $idd;
+				if($caregiver != ''){
+					$caregiver .= ', '. $idd;
+				}else{
+					$caregiver = $idd;
+				}
 			}
 		}
 		$role_array = array(
@@ -200,34 +210,95 @@ class ManagementController extends Controller {
 		);
 //		return $role_array;
 		return View::make('admin.role')->with('role_array', $role_array);
-		return view('admin.role_2',compact($role_array));
+
 }
-	public function role_update($id){
-		if(Auth::User()->role != 'admin') return view('home');
-		$role_id = DB::select('select * from vnas_vna_user_rel where vna_user_id =?', [$_POST['patient_search']]);
-		if(isset($_POST['patient_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['patient_search'])->update(['user_sk'=>$id]);}
-		if(isset($_POST['caregiver_search']) != '') {DB::table('vnas_vna_user_rel')->where('vna_user_id',$_POST['caregiver_search'])->update(['user_sk'=>$id]);}
+	public function role_update($id)
+	{
+		if (Auth::User()->role != 'admin') return view('home');
+		if ($_POST['patient_search'] != '') {
+			$outputs_patients = explode(',', $_POST['patient_search']);
+
+			foreach ($outputs_patients as $output_patient) {
+//                DB::table('VNAS_VNA_USER_REL')->whereIn('VNA_USER_ID', $outputs_patients)->update(['USER_SK' => $id]);
+				DB::select('update VNAS_VNA_USER_REL set USER_SK=' . $id . ' where VNA_USER_ID=' . $output_patient);
+			}
+		}
+		if ($_POST['caregiver_search'] != '') {
+			$outputs_caregivers = explode(',', $_POST['caregiver_search']);
+			foreach ($outputs_caregivers as $output_caregiver) {
+				DB::select('update VNAS_VNA_USER_REL set USER_SK=' . $id . ' where VNA_USER_ID=' . $output_caregiver);
+			}
+		}
 		$_SESSION['admin_msg'] = "Updated Role";
-		return Redirect('manage');
+		return Redirect('mnge');
 	}
 
 	public function manage_patient_view(){
 		if(Auth::User()->role != 'admin') return view('home');
-		$users =  DB::select('select * from users where patient_role !=""');
+		$calculators = DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ROLE_CD','2')->where('USER_SK','!=','NULL')->lists('USER_SK');
+//		$calculators = DB::select('select USER_SK from VNAS_VNA_USER_REL where VNA_USER_ROLE_CD =\'2\' AND USER_SK IS NOT NULL');
 
+		$variable = '';
+		foreach($calculators as $calculator){
+//			return $calculator;
+			if($variable != ''){
+				$variable = $variable. ', '.$calculator;
+			}else{
+				$variable = $calculator;
+			}
+		}
+		if($variable == ''){
+			$variable = '0';
+		}
+//		return $variable;
+		$users =  DB::select('select * from users where id IN ('.$variable.')');
+//return $users;
 		return view('admin.management' , compact('users'));
 	}
 
 	public function manage_caregiver_view(){
 		if(Auth::User()->role != 'admin') return view('home');
-		$users =  DB::select('select * from users where caregiver_role !=""');
+		$calculators = DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ROLE_CD','1')->where('USER_SK','!=','NULL')->lists('USER_SK');
+//		$calculators = DB::select('select USER_SK from VNAS_VNA_USER_REL where VNA_USER_ROLE_CD =\'2\' AND USER_SK IS NOT NULL');
 
+		$variable = '';
+		foreach($calculators as $calculator){
+//			return $calculator;
+			if($variable != ''){
+				$variable = $variable. ', '.$calculator;
+			}else{
+				$variable = $calculator;
+			}
+		}
+		if($variable == ''){
+			$variable = '0';
+		}
+//		return $variable;
+		$users =  DB::select('select * from users where id IN ('.$variable.')');
+//return $users;
 		return view('admin.management' , compact('users'));
 	}
 
 	public function manage_unassigned_view(){
 		if(Auth::User()->role != 'admin') return view('home');
-		$users =  DB::select('select * from users where caregiver_role ="" AND patient_role = ""');
+		$user_table = DB::table('users')->lists('id');
+		$verifys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK','!=','NULL')->distinct()->lists('USER_SK');
+
+		$calculators = array_diff($user_table, $verifys);
+		$variable = '';
+		foreach($calculators as $calculator){
+			if($variable != ''){
+				$variable = $variable.', '.$calculator;
+			}else{
+				$variable = $calculator;
+			}
+		}
+		if($variable == ''){
+			$variable = '0';
+		}
+
+		$users =  DB::select('select * from users where id IN ('.$variable.')');
+
 
 		return view('admin.management' , compact('users'));
 	}
@@ -277,52 +348,60 @@ class ManagementController extends Controller {
 		return view('admin.user_settings', compact('form'));
 	}
 	
-	public function etlStats()
+	public function etlStats($myBit = null)
 	{
 		if(Auth::User()->role != 'admin') return view('home');
 		
-		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','START_DT','END_DT','SOURCE_RECORD_READ_CNT','SOURCE_RECORD_REJECT_CNT','TARGET_RECORD_INSERT_CNT','TARGET_RECORD_UPDATE_CNT','TARGET_RECORD_DELETE_CNT','ERROR_CNT','REC_STATUS','JOB_NM','REJECT_RSN_TXT','CREATED_BY','CREATED_DATE')));  //same source types of DataSet
+		$myMessage = null;
+		$myError = null;
+		
+		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')));  //same source types of DataSet
 		
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
-		$grid->add('START_DT','Start Date', true); //field name, label, sortable
-		$grid->add('END_DT','End Date', true); //field name, label, sortable
-		$grid->add('SOURCE_RECORD_READ_CNT','Source Records', false); //field name, label, sortable
-		$grid->add('SOURCE_RECORD_REJECT_CNT','Rejects', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_INSERT_CNT','Inserts', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_UPDATE_CNT','Updates', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_DELETE_CNT','Deletes', false); //field name, label, sortable
-		$grid->add('ERROR_CNT','Errors', true); //field name, label, sortable
-		//$grid->add('REC_STATUS','Record Status', true); //field name, label, sortable
-		//$grid->add('JOB_NM','Job Name', true); //field name, label, sortable
-		//$grid->add('REJECT_RSN_TXT','Reject Reason', true); //field name, label, sortable
+		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
+		$grid->add('LANDING_TBL_DATE_RANGE','Date Range', false); //field name, label, sortable
+		$grid->add('cHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
+		$grid->add('ETL_PROCESS_STATUS','ETL Process Status', false); //field name, label, sortable
+		$grid->add('ERROR_CNT','Number of Errors', false); //field name, label, sortable
+		$grid->add('ERROR_DESC','Error(s) Description', false); //field name, label, sortable
+		
 		
 		
 		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
-		$grid->link('/system_etl_stats',"Execute ETL job", "TR");
+		$grid->link('/etl/fire',"Execute ETL job", "TR");
 		$grid->orderBy('PROCESS_LOG_SKEY','desc');
 		$grid->paginate(10);
 		
 		$grid->row(function ($row) {
 			//dd($row);
-			if ($row->cell('PROCESS_LOG_SKEY')->value == 20) {
-				$row->style("background-color:#CCFF66");
-			} elseif ($row->cell('PROCESS_LOG_SKEY')->value > 15) {
-				$row->cell('title')->style("font-weight:bold");
-				$row->style("color:#f00");
-			}
+// 			if ($row->cell('PROCESS_LOG_SKEY')->value == 20) {
+// 				$row->style("background-color:#CCFF66");
+// 			} elseif ($row->cell('PROCESS_LOG_SKEY')->value > 15) {
+// 				$row->cell('title')->style("font-weight:bold");
+// 				$row->style("color:#f00");
+// 			}
 		});
 		
-	   return view('admin.etl_process_log', compact('grid'));
+		if( $myBit == 1 )
+		{
+			$myMessage = "ETL successfully started.";
+		}
+		else if( $myBit == -1 )
+		{
+			$myError = "There was issue starting the ETL.";
+		}
+	   
+	   return view('admin.etl_process_log', compact('grid','myMessage','myError'));
 	}
 
 	public function remove_patient_role($id){
 
-		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+		$querys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
-			if($variable == 'client'){
-				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
+			if($variable == 'CLIENT'){
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> Null]);
 			}
 		}
 
@@ -332,12 +411,12 @@ class ManagementController extends Controller {
 
 	public function remove_caregiver_role($id){
 
-		$querys = DB::table('vnas_vna_user_rel')->where('user_sk',$id)->lists('vna_user_id');
+		$querys = DB::table('VNAS_VNA_USER_REL')->where('USER_SK',$id)->lists('VNA_USER_ID');
 
 		foreach($querys as $query){
-			$variable = DB::table('vnas_user_info')->where('vna_user_id', $query)->pluck('vna_user_type');
-			if($variable == 'caregiver'){
-				DB::table('vnas_vna_user_rel')->where('vna_user_id', $query)->update(['user_sk'=> '']);
+			$variable = DB::table('VNAS_USER_INFO')->where('VNA_USER_ID', $query)->pluck('VNA_USER_TYPE');
+			if($variable == 'CAREGIVER'){
+				DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID', $query)->update(['USER_SK'=> Null]);
 			}
 		}
 
@@ -351,6 +430,6 @@ class ManagementController extends Controller {
 		$user->lock_user = 'Y';
 		$user->failed_attemps = 0 ;
 		$user->save();
-		return Redirect('manage');
+		return Redirect('mnge');
 	}
 }

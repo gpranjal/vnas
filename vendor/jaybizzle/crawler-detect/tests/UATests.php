@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Crawler Detect - the web crawler detection library.
+ *
+ * (c) Mark Beech <m@rkbee.ch>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 class UserAgentTest extends PHPUnit_Framework_TestCase
 {
     protected $CrawlerDetect;
@@ -36,5 +45,21 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
         $matches = $this->CrawlerDetect->getMatches();
 
         $this->assertEquals($this->CrawlerDetect->getMatches(), 'Yahoo Ad monitoring', $matches);
+    }
+
+    public function testForRegexCollision()
+    {
+        $crawlers = $this->CrawlerDetect->getCrawlers();
+
+        foreach ($crawlers as $regex) {
+            foreach ($crawlers as $compare) {
+                // Dont check this regex against itself
+                if ($regex != $compare) {
+                    preg_match('/'.$regex.'/i', stripslashes($compare), $matches);
+
+                    $this->assertEmpty($matches, $regex.' collided with '.$compare);
+                }
+            }
+        }
     }
 }

@@ -2,8 +2,6 @@
 
 @section('content')
 
-<script src="<?php echo asset('templates/sb-admin-2/bower_components/jquery/dist/jquery.min.js')?>"></script>
-<script src="<?php echo asset('templates/sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.js')?>"></script>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Dashboard</h1>
@@ -77,7 +75,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
 
-               <script type="text/javascript">
+               <script>
                     $(function() {
                         console.log( "ready!" );
 

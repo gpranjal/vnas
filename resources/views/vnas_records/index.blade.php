@@ -4,7 +4,10 @@
 <div class="container-fluid text-center">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
+			<ol class="breadcrumb">
+				<li><a name="HomeToolbarLink" href="{{ url('/') }}">Home</a></li>
+				<li class="active">My Schedule</li>
+			</ol>
 			<div class="panel panel-default">
 				<div class="panel-heading"> 
 					<h4>My Schedule</h4>
@@ -19,6 +22,25 @@
 						{{ $myMessage }}
 					</div>
 				@else
+
+				<div id="dateRangeFilterOuter">
+					<form name="dateRangeForm" id="dateRangeCheck" action="{{ url('vnas_records/') }}" method="post">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
+							<label>Select Date Range:</label>
+							<!-- <?php echo ($myRole); echo(" -- I am in ".$myRangeValue." view"); ?> -->
+							<select name="dateRangeFilterInner" id="dateRangeFilterInner" class="form-control">
+
+								@foreach ($dateRange as $mydateRangeVal)
+
+									<option value="{{ $mydateRangeVal }}" @if( $mydateRangeVal == $myRangeValue ) selected="selected" @endif>{{ $mydateRangeVal }}</option>
+								@endforeach
+
+							</select>
+						</fieldset>
+					</form>
+				</div>
+
 				<table class="table table-hover text-left">
 					<thead>
 						<tr>
@@ -64,9 +86,24 @@
 
 <script language="javascript">
 	jQuery(document).ready(function($) {
-	    $(".whole-row-click").click(function() {
-	        window.document.location = $(this).data("href");
-	    });
+		$(".whole-row-click").click(function() {
+			window.document.location = $(this).data("href");
+		});
+
+		$('#dateRangeFilterInner').on('change', function(e){
+			var select = $(this), form = $("#dateRangeCheck"), currPath = form.attr('action'), newPath = "";
+
+			if( $( select ).val() != "Current")
+			{
+				newPath = "/filter/All/"+ $( select ).val();
+				form.attr('action', form.attr('action') + newPath );
+				form.submit();
+			}
+			else
+			{
+				window.location.href="{{ url('vnas_records/') }}";
+			}
+		});
 	});
 </script>
 

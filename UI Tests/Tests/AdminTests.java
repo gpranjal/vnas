@@ -2,8 +2,10 @@ package Tests;
 
 import Framework.BaseTestCase;
 import Repo.AdminScreen;
+import Repo.FAQScreen;
 import Repo.HomeScreen;
 import Repo.LoginScreen;
+import Repo.MyAccountScreen;
 import Repo.ToolbarScreen;
 import org.junit.runners.MethodSorters;
 import org.junit.FixMethodOrder;
@@ -52,6 +54,7 @@ public class AdminTests extends BaseTestCase{
 	        assertEquals(AdminScreen.getManageURL(), driver.getCurrentUrl());
 		}
 	}
+		
 		public void test_DCheckAdminUserIfStillAdminUserAdminConfig() throws Exception{
 			for (WebDriver driver : super.getDrivers()) {
 				
@@ -78,26 +81,7 @@ public class AdminTests extends BaseTestCase{
 		        assertEquals(AdminScreen.getManageURL(), driver.getCurrentUrl());
 			}
 		}
-// Now leaving Register User in system
-//		public void test_FRegisterTestUser() throws Exception{
-//			for (WebDriver driver : super.getDrivers()){
-//				//register the register_test user
-//				driver.get(RegisterUserScreen.getURL());
-//				Thread.sleep(5000);
-//				RegisterUserScreen.getNameTextbox(driver).sendKeys("Register_Test");
-//				RegisterUserScreen.getEmailTextbox(driver).sendKeys("register_test@gmail.com");
-//				RegisterUserScreen.getPasswordTextbox(driver).sendKeys("register_test1234");
-//				RegisterUserScreen.getConfirmPasswordTextbox(driver).sendKeys("register_test1234");
-//				RegisterUserScreen.getRegisterButton(driver).click();
-//			}
-//		}
-		public void test_GRegisterTestUserIsSetupUserAdminTest() throws Exception{
-			for (WebDriver driver : super.getDrivers()){
-				//Login with Register User
-				LoginScreen.loginAsRegisterUser(driver);
-				assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
-			}
-		}
+
 		public void test_HRemoveTestUserFromSystemTestUserAdminTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 				//Remove Register Test User
@@ -108,75 +92,58 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getRemoveButton(driver, 7).click();
+		        AdminScreen.getRemoveButton(driver, 6).click();
 		        assertEquals(AdminScreen.getRemoveURL(), driver.getCurrentUrl());
 		        AdminScreen.getRemoveButtonVer(driver).sendKeys(Keys.BACK_SPACE);
 			}
 		}
-// Register user can be removed if uncommented
-//		public void test_IEnsureRegisterUserIsNotRegistered() throws Exception{
-//			for (WebDriver driver : super.getDrivers()){
-//				//register the register_test user
-//				driver.get(RegisterUserScreen.getURL());
-//				Thread.sleep(5000);
-//				RegisterUserScreen.getNameTextbox(driver).sendKeys("Register_Test");
-//				RegisterUserScreen.getEmailTextbox(driver).sendKeys("register_test@gmail.com");
-//				RegisterUserScreen.getPasswordTextbox(driver).sendKeys("register_test1234");
-//				RegisterUserScreen.getConfirmPasswordTextbox(driver).sendKeys("register_test1234");
-//				RegisterUserScreen.getRegisterButton(driver).click();
-//    			String actualText = LoginScreen.getLoginErrorMessageLabel(driver).getText();
-//    			String testText = "Whoops! There were some problems with your input.\n\nThese credentials do not match our records.";
-//    			assertEquals(testText, actualText);	
-//			}
-//		}
-//		public void test_JTestUserAddRoles() throws Exception{
-//			for (WebDriver driver : super.getDrivers()){
-//				//Test User logs in
-//				LoginScreen.loginAsAdminTest(driver);
-//				assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
-//				//Dropdown menu select
-//				ToolbarScreen.getUserMenuLink(driver).click();
-//				ToolbarScreen.getManageLink(driver).click();
-//				//Admin Screen select
-//		        AdminScreen.getUserManagement(driver).click();
-//		        Thread.sleep(5000);
-//		        AdminScreen.getRoleButton(driver, 9);
-//		        //Role Assignment screen
-//		        AdminScreen.getChangeRoleToPatientID100(driver).sendKeys("100");
-//		        AdminScreen.getChangeRoleToPatientID100SbmtBtn(driver).click();
-//			}
-//		}
-	//This function uses JavaScript to set the value of the hidden inputbox. The value of this inputbox will be sent
+    public void setAttributeValue(WebDriver driver, WebElement elem, String attribute, String value){
 
-    //to the server and then used to update the role of the given user.
+    	JavascriptExecutor js = (JavascriptExecutor) driver; 
+        String scriptSetAttrValue = "arguments[0].setAttribute('" + attribute + "', '" + value + "')";
+        js.executeScript(scriptSetAttrValue, elem);
 
-//    public void setAttributeValue(WebDriver driver, WebElement elem, String attribute, String value){
-//
-//    	JavascriptExecutor js = (JavascriptExecutor) driver; 
-//        String scriptSetAttrValue = "arguments[0].setAttribute('" + attribute + "', '" + value + "')";
-//        js.executeScript(scriptSetAttrValue, elem);
-//
-//    }
-//
-//    public void test_test() throws Exception {
-//    	for (WebDriver driver : super.getDrivers()) {
-//	    	driver.get(LoginScreen.getURL());
-//	    	LoginScreen.loginAsAdminTest(driver);
-//	    	driver.get("https://app-vnasdev.rhcloud.com/role/8");
-//    		//This is the piece of the test that matters
-//	    	//Get the WebElement
-//    		WebElement we = driver.findElement(By.name("patient_autocomplete"));
-//    		//Use the other function to set the value
-//	        Thread.sleep(5000);
-//    		setAttributeValue(driver, we, "value", "jo");
-//	        Thread.sleep(5000);
-//	        AdminScreen.getChangeRoleToPatientID100SbmtBtn(driver).click();
-//	        Thread.sleep(5000);
-//    	}
-//
-//    }
-//}
-		public void test_JLockUnLockVNASAdminUserUserAdminTest() throws Exception{
+    }
+
+    public void test_L1TestUserAddRoles() throws Exception {
+    	for (WebDriver driver : super.getDrivers()) {
+	    	driver.get(LoginScreen.getURL());
+	    	LoginScreen.loginAsAdminTest(driver);
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+    		//This is the piece of the test that matters
+	    	//Get the WebElement
+    		WebElement we = driver.findElement(By.id("patient_search"));
+    		//Use the other function to set the value
+    		setAttributeValue(driver, we, "value", "133668");
+	        AdminScreen.getChangeRoleToPatientSbmtBtn(driver).click();
+    	}
+    }
+    public void test_L2TestUserVerifyRolesTest() throws Exception {
+    	for (WebDriver driver : super.getDrivers()) {
+	    	driver.get(LoginScreen.getURL());
+	    	LoginScreen.loginAsAdminUser(driver);
+	    	HomeScreen.getMyAccountButton(driver).click();
+	    	assertEquals(MyAccountScreen.getNameLabel1(driver).getText(), "Alyce B");
+    	}
+    }
+    public void test_L3TestUserRemoveRoles() throws Exception {
+    	for (WebDriver driver : super.getDrivers()) {
+	    	driver.get(LoginScreen.getURL());
+	    	LoginScreen.loginAsAdminTest(driver);
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+    		AdminScreen.getRemovePatientID(driver).click();
+	        AdminScreen.getChangeRoleToPatientSbmtBtn(driver).click();
+    	}
+    }
+    public void test_L4TestUserVerifyRolesTest() throws Exception {
+    	for (WebDriver driver : super.getDrivers()) {
+	    	driver.get(LoginScreen.getURL());
+	    	LoginScreen.loginAsAdminTest(driver);
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+	    	assertEquals(AdminScreen.getUserManagementPatientRole(driver).getText(),"");
+    	}
+    }
+		public void test_M1LockUnLockVNASAdminUserUserAdminTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 				LoginScreen.loginAsAdminUserIncorrectPass(driver);
 				LoginScreen.loginAsAdminUserIncorrectPass(driver);
@@ -189,16 +156,16 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getUnlockButton(driver, 6);
+		        AdminScreen.getUnlockButton(driver, 6).click();	
 			}
-			}
-		public void test_KLoginAsAdminUserTestUserAdminTest() throws Exception{
+		}
+		public void test_M2LoginAsAdminUserTestUserAdminTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 				LoginScreen.loginAsAdminUser(driver);
 				assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
 			}
 		}
-		public void test_LLoginAsAdminTestAndClickUnAssignedAdminTestShouldBeThereUserAdminTest() throws Exception{
+		public void test_NLoginAsAdminTestAndClickRemoveButtonAdminTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 				LoginScreen.loginAsAdminTest(driver);
 				//Dropdown menu select
@@ -206,12 +173,11 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getUnassignedButton(driver).click();
-		        AdminScreen.getRemoveButton(driver, 7).click();
+		        AdminScreen.getRemoveButton(driver, 6).click();
 		        assertEquals(AdminScreen.getRemoveURL(), driver.getCurrentUrl());
 			}
 		}
-		public void test_MLoginAsAdminTestAndReviewSystemConfigurationSettingsTest() throws Exception{
+		public void test_OLoginAsAdminTestAndReviewSystemConfigurationSettingsTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 			LoginScreen.loginAsAdminTest(driver);
 			//Dropdown menu select
@@ -224,6 +190,45 @@ public class AdminTests extends BaseTestCase{
 			assertEquals(AdminScreen.getPayPalAPIKey(driver).getAttribute("value"), "GHN68S7FB25TG");
 			assertEquals(AdminScreen.getEmailLockoutCount(driver).getAttribute("value"), "5");
 			assertEquals(AdminScreen.getEmailLockoutDurationMins(driver).getAttribute("value"), "60");
+			}
+		}
+		public void test_P1CreatePatientTestFAQTest() throws Exception{
+			for (WebDriver driver : super.getDrivers()){
+			LoginScreen.loginAsAdminTest(driver);
+			//Dropdown menu select
+			ToolbarScreen.getUserMenuLink(driver).click();
+			ToolbarScreen.getManageLink(driver).click();
+			//System Configuration Settings Screen select
+			AdminScreen.getFAQManagement(driver).click();
+			AdminScreen.getFAQAddNewFAQ(driver).click();
+			AdminScreen.getFAQQuestionField(driver).sendKeys("Automation Test Patient Question");
+			AdminScreen.getFAQAnswerField(driver).sendKeys("Automation Test Patient Answer");
+			AdminScreen.getFAQRoleField(driver).sendKeys("Patient");
+			AdminScreen.getFAQTagsField(driver).sendKeys("Patient");
+			AdminScreen.getFAQSaveBtn(driver).click();
+			}
+		}
+		public void test_P2ValidatePatientTestFAQTest() throws Exception{
+			for (WebDriver driver : super.getDrivers()){
+			LoginScreen.loginAsPatientUser(driver);
+			//Click FAQ
+			HomeScreen.getFAQButton(driver).click();
+			assertEquals(FAQScreen.getQuestion(driver,1).getText(), "Automation Test Patient Question");
+			}
+		}
+		public void test_P3RemovePatientTestFAQTest() throws Exception{
+			for (WebDriver driver : super.getDrivers()){
+				LoginScreen.loginAsAdminTest(driver);
+				//Dropdown menu select
+				ToolbarScreen.getUserMenuLink(driver).click();
+				ToolbarScreen.getManageLink(driver).click();
+				//System Configuration Settings Screen select
+				AdminScreen.getFAQManagement(driver).click();
+				AdminScreen.getFAQRemoveFAQ(driver, 1).click();
+				Thread.sleep(5000);
+				driver.switchTo().alert().accept();
+				Thread.sleep(5000);
+				//AdminScreen.getFAQRemoveFAQ(driver, 1).sendKeys(Keys.ENTER);
 			}
 		}
 }
