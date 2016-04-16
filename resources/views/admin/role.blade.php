@@ -59,8 +59,20 @@
                 select: function(event, ui) {
                     var my_caregiver = ui.item.value;
                     console.log(my_caregiver);
-                    $('#caregiver_fetch').text($('#caregiver_fetch').text()+', '+my_caregiver);
-                    $('#caregiver_search').val(my_caregiver);
+                    if($('#caregiver_fetch').text() == '' ){
+                        $('#caregiver_fetch').text(my_caregiver);
+                    }else{
+
+                        $('#caregiver_fetch').text($('#caregiver_fetch').text()+ ', '+my_caregiver);
+                    }
+
+                    if($('#caregiver_search').val() == ''){
+                        $('#caregiver_search').val(my_caregiver);
+                    }else{
+
+                        $('#caregiver_search').val($('#caregiver_search').val()+ ', '+my_caregiver);
+                    }
+
                     ui.item.value = '';
 //
                 }})
