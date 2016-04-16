@@ -120,7 +120,8 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('etl/fire' , function() {
 		$myBit = 1;
 		try {
-			$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+			//$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+			Artisan::queue("exec:etl");
 		}
 		catch (Exception $e)
 		{
