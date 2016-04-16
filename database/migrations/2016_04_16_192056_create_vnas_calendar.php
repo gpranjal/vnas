@@ -12,7 +12,7 @@
  	 */
  	public function up()
  	{
- 		DB::statement('DROP VIEW VNAS_CALENDAR');
+ 		//DB::statement('DROP VIEW VNAS_CALENDAR');
  		
  		DB::statement( 'CREATE VIEW VNAS_CALENDAR
  						AS
