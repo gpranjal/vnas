@@ -42,7 +42,7 @@ class Vnas_record extends Model {
     
     public static function updateChangedScheduleRecords( $myResults )
     {
-    	$myTmp = DB::table('vnas_schedule')
+    	$myTmp = DB::table('VNAS_SCHEDULE')
 	    	->where( 'STS' , '=' , 'C' );
     	
 	    foreach( $myResults as $myResult )
