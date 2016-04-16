@@ -212,10 +212,23 @@ class ManagementController extends Controller {
 		return View::make('admin.role')->with('role_array', $role_array);
 
 }
-	public function role_update($id){
-		if(Auth::User()->role != 'admin') return view('home');
-		if($_POST['patient_search'] != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['patient_search'])->update(['USER_SK'=>$id]);}
-		if($_POST['caregiver_search'] != '') {DB::table('VNAS_VNA_USER_REL')->where('VNA_USER_ID',$_POST['caregiver_search'])->update(['USER_SK'=>$id]);}
+	public function role_update($id)
+	{
+		if (Auth::User()->role != 'admin') return view('home');
+		if ($_POST['patient_search'] != '') {
+			$outputs_patients = explode(',', $_POST['patient_search']);
+
+			foreach ($outputs_patients as $output_patient) {
+//                DB::table('VNAS_VNA_USER_REL')->whereIn('VNA_USER_ID', $outputs_patients)->update(['USER_SK' => $id]);
+				DB::select('update VNAS_VNA_USER_REL set USER_SK=' . $id . ' where VNA_USER_ID=' . $output_patient);
+			}
+		}
+		if ($_POST['caregiver_search'] != '') {
+			$outputs_caregivers = explode(',', $_POST['caregiver_search']);
+			foreach ($outputs_caregivers as $output_caregiver) {
+				DB::select('update VNAS_VNA_USER_REL set USER_SK=' . $id . ' where VNA_USER_ID=' . $output_caregiver);
+			}
+		}
 		$_SESSION['admin_msg'] = "Updated Role";
 		return Redirect('mnge');
 	}
