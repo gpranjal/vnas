@@ -12,6 +12,8 @@
  	 */
  	public function up()
  	{
+ 		DB::statement('DROP VIEW VNAS_CALENDAR');
+ 		
  		DB::statement( 'CREATE VIEW VNAS_CALENDAR
  						AS
  							SELECT  REL.USER_SK, SCH.SCHEDULE_SK, SCH.CARE_GIVER_ID, SCH.CLIENT_ID,
