@@ -24,8 +24,20 @@
                 select: function(event, ui) {
                     var my_value = ui.item.value;
                     console.log(my_value);
-                    $('#patient_fetch').text($('#patient_fetch').text()+ ', '+my_value);
-                    $('#patient_search').val(my_value);
+                    if($('#patient_fetch').text() == '' ){
+                        $('#patient_fetch').text(my_value);
+                    }else{
+
+                        $('#patient_fetch').text($('#patient_fetch').text()+ ', '+my_value);
+                    }
+
+                    if($('#patient_search').val() == ''){
+                        $('#patient_search').val(my_value);
+                    }else{
+
+                        $('#patient_search').val($('#patient_search').val()+ ', '+my_value);
+                    }
+
                     ui.item.value = '';
 //
                 }})
