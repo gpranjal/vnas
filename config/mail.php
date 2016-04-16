@@ -31,7 +31,7 @@ return [
 	|
 	*/
 
-	'host' => getenv('SENDGRID_HOSTNAME'),
+	'host' => 'smtp.sendgrid.net',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
 	|
 	*/
 
-	'username' => getenv('SENDGRID_USERNAME'),
+	'username' => 'vnastest',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return [
 	|
 	*/
 
-	'password' => getenv('SENDGRID_PASSWORD'),
+	'password' => 'vnastest1',
 
 	/*
 	|--------------------------------------------------------------------------

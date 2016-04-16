@@ -3,6 +3,9 @@
 use Illuminate\Routing\Route as IlluminateRoute;
 use Illuminate\Routing\Matching\CaseInsensitiveUriValidator;
 use Illuminate\Routing\Matching\UriValidator;
+use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\VnasETLCommand;
+use Illuminate\Console\Command;
 
 
 $validators = IlluminateRoute::getValidators();
@@ -105,6 +108,7 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/system_config' , 'ManagementController@editUserSettings');
 	Route::post('/system_config' , 'ManagementController@editUserSettings');
 	Route::get('/system_etl_stats' , 'ManagementController@etlStats' );
+	Route::get('/system_etl_stats/{bit}' , 'ManagementController@etlStats' );
 
 	Route::get('/admin' , 'ManagementController@dashboard');
 	Route::get('/admin/settings' , 'ManagementController@getUserSettings');
@@ -112,4 +116,18 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/remove/patient_role/{id}', 'ManagementController@remove_patient_role');
 	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
 	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
+	
+	Route::get('etl/fire' , function() {
+		$myBit = 1;
+		try {
+			//$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
+			Artisan::queue("exec:etl");
+		}
+		catch (Exception $e)
+		{
+			$myBit = -1;
+		}
+		
+		return redirect( '/system_etl_stats/'.$myBit );
+	});
 });

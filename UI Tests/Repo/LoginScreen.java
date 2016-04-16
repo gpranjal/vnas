@@ -63,6 +63,7 @@ public class LoginScreen extends BaseScreen{
     	//Click Login
     	LoginScreen.getLoginButton(driver).click();
 	}
+	
 	public static void loginAsAdminTest(WebDriver driver) {
 		//Go to Screen
     	driver.get(LoginScreen.getURL());

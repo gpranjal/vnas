@@ -20,7 +20,7 @@ public class BaseTestCase extends TestCase{
 //		drivers.add(firefoxDriver);
 				
 		//Setup the Chrome Web Driver
-		System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "WebDrivers/chromedriver.exe");
 		WebDriver chromeDriver = new ChromeDriver();
 		drivers.add(chromeDriver);
 		
