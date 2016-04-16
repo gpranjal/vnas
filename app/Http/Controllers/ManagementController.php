@@ -342,12 +342,12 @@ class ManagementController extends Controller {
 		$myMessage = null;
 		$myError = null;
 		
-		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGE_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')));  //same source types of DataSet
+		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')));  //same source types of DataSet
 		
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
 		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
 		$grid->add('LANDING_TBL_DATE_RANGE','Date Range', false); //field name, label, sortable
-		$grid->add('cHANGE_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
+		$grid->add('cHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
 		$grid->add('ETL_PROCESS_STATUS','ETL Process Status', false); //field name, label, sortable
 		$grid->add('ERROR_CNT','Number of Errors', false); //field name, label, sortable
 		$grid->add('ERROR_DESC','Error(s) Description', false); //field name, label, sortable
