@@ -12,7 +12,7 @@ class CreateEtlProcessLog extends Migration {
 	 */
 	public function up()
 	{
-		Schema::drop('ETL_PROCESS_LOG');
+		//Schema::drop('ETL_PROCESS_LOG');
 
 		Schema::create('ETL_PROCESS_LOG', function(Blueprint $table)
 		{
