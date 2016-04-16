@@ -342,20 +342,16 @@ class ManagementController extends Controller {
 		$myMessage = null;
 		$myError = null;
 		
-		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','START_DT','END_DT','SOURCE_RECORD_READ_CNT','SOURCE_RECORD_REJECT_CNT','TARGET_RECORD_INSERT_CNT','TARGET_RECORD_UPDATE_CNT','TARGET_RECORD_DELETE_CNT','ERROR_CNT','REC_STATUS','JOB_NM','REJECT_RSN_TXT','CREATED_BY','CREATED_DATE')));  //same source types of DataSet
+		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGE_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')));  //same source types of DataSet
 		
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
-		$grid->add('START_DT','Start Date', true); //field name, label, sortable
-		$grid->add('END_DT','End Date', true); //field name, label, sortable
-		$grid->add('SOURCE_RECORD_READ_CNT','Source Records', false); //field name, label, sortable
-		$grid->add('SOURCE_RECORD_REJECT_CNT','Rejects', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_INSERT_CNT','Inserts', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_UPDATE_CNT','Updates', false); //field name, label, sortable
-		$grid->add('TARGET_RECORD_DELETE_CNT','Deletes', false); //field name, label, sortable
-		$grid->add('ERROR_CNT','Errors', true); //field name, label, sortable
-		//$grid->add('REC_STATUS','Record Status', true); //field name, label, sortable
-		//$grid->add('JOB_NM','Job Name', true); //field name, label, sortable
-		//$grid->add('REJECT_RSN_TXT','Reject Reason', true); //field name, label, sortable
+		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
+		$grid->add('LANDING_TBL_DATE_RANGE','Date Range', false); //field name, label, sortable
+		$grid->add('cHANGE_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
+		$grid->add('ETL_PROCESS_STATUS','ETL Process Status', false); //field name, label, sortable
+		$grid->add('ERROR_CNT','Number of Errors', false); //field name, label, sortable
+		$grid->add('ERROR_DESC','Error(s) Description', false); //field name, label, sortable
+		
 		
 		
 		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
