@@ -22,7 +22,9 @@ public class FAQScreen {
 		// TODO Auto-generated method stub
 		return driver.findElement(By.name("SearchSubmit"));
 	}
-
+	public static WebElement getQuestion(WebDriver driver, int row) {
+		return driver.findElement(By.name("ques"+row));
+	}
 
 
 

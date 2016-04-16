@@ -49,7 +49,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsCaregiverUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Date
-			assertEquals(MyScheduleScreen.getDateText(driver, 1).getText(), "03/11/16");
+			assertEquals(MyScheduleScreen.getDateText(driver, 1).getText(), "04/08/16");
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenTimeText1() throws Exception {
@@ -57,7 +57,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsCaregiverUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Time
-			assertEquals(MyScheduleScreen.getTimeText(driver, 1).getText(), "09:00 - 12:00");
+			assertEquals(MyScheduleScreen.getTimeText(driver, 1).getText(), "13:00 - 16:00");
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenNameText1() throws Exception {
@@ -65,7 +65,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsCaregiverUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Patient
-			assertEquals(MyScheduleScreen.getNameText(driver, 1).getText(), "Joann O");
+			assertEquals(MyScheduleScreen.getNameText(driver, 1).getText(), "Alyce B");
 		}
 	}
 //No LOV field anymore
@@ -83,7 +83,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Schedule Details Screen
 			MyScheduleScreen.getRowLink(driver, 1).click();
-			assertEquals(CaregiverScheduleDetailsScreen.getURL() + "/574", driver.getCurrentUrl());
+			assertEquals(CaregiverScheduleDetailsScreen.getURL() + "/3814", driver.getCurrentUrl());
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenPatientID1() throws Exception {
@@ -92,7 +92,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
     		MyScheduleScreen.getTitleText(driver, 1).click();
 			//Patient Id
-			assertEquals(CaregiverScheduleDetailsScreen.getIdLabel(driver, 1).getText(),"7159001");
+			assertEquals(CaregiverScheduleDetailsScreen.getIdLabel(driver, 1).getText(),"133668");
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenPatientName1() throws Exception {
@@ -101,7 +101,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
     		MyScheduleScreen.getTitleText(driver, 1).click();
 			//Patient Name
-			assertEquals(CaregiverScheduleDetailsScreen.getNameLabel(driver, 1).getText(),"Joann O");
+			assertEquals(CaregiverScheduleDetailsScreen.getNameLabel(driver, 1).getText(),"Alyce B");
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenPatientAddress1() throws Exception {
@@ -110,7 +110,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
     		MyScheduleScreen.getTitleText(driver, 1).click();
 			//Address
-			assertEquals(CaregiverScheduleDetailsScreen.getAddressLabel(driver, 1).getText(),"9850 Nicholas Street Suite 250");
+			assertEquals(CaregiverScheduleDetailsScreen.getAddressLabel(driver, 1).getText(),"3319 South 45th Street");
 			
 		}
 	}
@@ -120,7 +120,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
     		MyScheduleScreen.getTitleText(driver, 1).click();
 			//Patient Phone
-			assertEquals(CaregiverScheduleDetailsScreen.getPhoneLabel(driver, 1).getText(),"(402) 399-9990");
+			assertEquals(CaregiverScheduleDetailsScreen.getPhoneLabel(driver, 1).getText(),"(402) 556-4367");
 		}
 	}
 	public void test_Caregiver_ClickScheduleDetailScreenComments() throws Exception {
@@ -202,7 +202,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsPatientUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Date
-			assertEquals(MyScheduleScreen.getDateText(driver, 1).getText(), "02/03/16");
+			assertEquals(MyScheduleScreen.getDateText(driver, 1).getText(), "03/12/16");
 		}
 	}
 	public void test_Patient_ClickScheduleCheckTime() throws Exception {
@@ -210,7 +210,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsPatientUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Time
-			assertEquals(MyScheduleScreen.getTimeText(driver, 1).getText(), "06:45 - 11:02");
+			assertEquals(MyScheduleScreen.getTimeText(driver, 1).getText(), "09:00 - 16:00");
 		}
 	}
 	public void test_Patient_ClickScheduleCheckPatient() throws Exception {
@@ -218,7 +218,7 @@ public class ScheduleTests extends BaseTestCase {
 			LoginScreen.loginAsPatientUser(driver);
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Patient
-			assertEquals(MyScheduleScreen.getNameText(driver, 1).getText(), "Julie U");
+			assertEquals(MyScheduleScreen.getNameText(driver, 1).getText(), "Diana M");
 		}
 	}
 // No LOV Field	
@@ -236,7 +236,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
 			//Schedule Details Screen
 			MyScheduleScreen.getRowLink(driver, 1).click();
-			assertEquals(PatientScheduleDetailsScreen.getURL() + "/1450", driver.getCurrentUrl());
+			assertEquals(PatientScheduleDetailsScreen.getURL() + "/4396", driver.getCurrentUrl());
 		}
 	}
 	public void test_Patient_ClickScheduleCheckDetailsPatientTitle() throws Exception {
@@ -263,7 +263,7 @@ public class ScheduleTests extends BaseTestCase {
     		HomeScreen.getMyScheduleButton(driver).click();
     		MyScheduleScreen.getTitleText(driver, 1).click();
 			//Address
-			assertEquals(PatientScheduleDetailsScreen.getNameLabel(driver, 1).getText(),"Julie U");
+			assertEquals(PatientScheduleDetailsScreen.getNameLabel(driver, 1).getText(),"Diana M");
 		}
 	}
 	public void test_Patient_ClickScheduleCheckDetailsPatientPhone() throws Exception {

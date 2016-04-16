@@ -19,6 +19,9 @@ public class AdminScreen extends BaseScreen{
 	public static WebElement getUserManagement(WebDriver driver) {
 		return driver.findElement(By.linkText("User Management"));
 	}
+	public static WebElement getUserManagementPatientRole(WebDriver driver) {
+		return driver.findElement(By.id("patient_fetch"));
+	}
 	public static WebElement getSystemConfigurationSettings(WebDriver driver) {
 		return driver.findElement(By.linkText("System Configuration Settings"));
 	}
@@ -32,7 +35,7 @@ public class AdminScreen extends BaseScreen{
 		return "/mnge";
 	}
 	public static String getRemovePath(){
-		return "/remove/7";
+		return "/remove/6";
 	}
 	public static String getRemoveURL(){
 		return BaseScreen.getURL()+getRemovePath();
@@ -44,9 +47,9 @@ public class AdminScreen extends BaseScreen{
 		return driver.findElement(By.name("role"));
 	}
 	public static WebElement getChangeRoleToPatientID100(WebDriver driver){
-		return driver.findElement(By.id("patient_autocomplete"));
+		return driver.findElement(By.name("patient_autocomplete"));
 	}
-	public static WebElement getChangeRoleToPatientID100SbmtBtn(WebDriver driver){
+	public static WebElement getChangeRoleToPatientSbmtBtn(WebDriver driver){
 		return driver.findElement(By.name("btnSubmit"));
 	}
 	public static WebElement getSelectRoleAdmin(WebDriver driver){
@@ -70,10 +73,16 @@ public class AdminScreen extends BaseScreen{
 	public static WebElement getUnassignedButton(WebDriver driver){
 		return driver.findElement(By.name("btnFilterUnassigned"));
 	}
+	public static WebElement getRemovePatientID(WebDriver driver){
+		return driver.findElement(By.name("link_remove_pateint_role"));
+	}
+	public static WebElement getRemoveCaregiverID(WebDriver driver){
+		return driver.findElement(By.name("link_remove_caregiver_role"));
+	}
+	//System Config Elements
 	public static WebElement getSessionTimeout(WebDriver driver){
 		return driver.findElement(By.id("session_timeout_minutes"));
 	}
-	//System Config Settings Elements
 	public static WebElement getGoogleMapsAPIKey(WebDriver driver){
 		return driver.findElement(By.id("google_maps_api_key"));
 	}
@@ -97,6 +106,15 @@ public class AdminScreen extends BaseScreen{
 		return driver.findElement(By.name("faq_role"));
 	}
 	public static WebElement getFAQTagsField(WebDriver driver){
-		return driver.findElement(By.name("tags"));
+		return driver.findElement(By.name("txtTags"));
+	}
+	public static WebElement getFAQSaveBtn(WebDriver driver){
+		return driver.findElement(By.name("btnSave"));
+	}
+	public static WebElement getFAQAddNewFAQ(WebDriver driver){
+		return driver.findElement(By.name("btnAddNewFAQ"));
+	}
+	public static WebElement getFAQRemoveFAQ(WebDriver driver, int row){
+		return driver.findElement(By.name("btnFaqRemove"+row));
 	}
 }
