@@ -171,7 +171,7 @@ class Maven {
 		//			->paginate($limit);
 
 		$faqs = Faq::orderBy('sort', 'ASC')
-				->whereIn('faq_role', array('',$my_role))
+				->whereIn('faq_role', array('',"$my_role"))
 				->paginate($limit);
 
 
