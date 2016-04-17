@@ -212,22 +212,27 @@ class Maven {
 
 	        if( $isCareGiver != "" )
 	        {
-				 $my_role = "caregiver";       	
+				 $my_role = "Caregiver";
 	        }
 	        else
 	        {
-	        	 $my_role = "patient"; 
+	        	 $my_role = "Patient";
 	        }
 	    }
 
-		$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
-			->where(function($q) use ($my_role){
-				$q->where( 'faq_role' , '' )
-					->orWhere( 'faq_role' , $my_role );
-			})
-			->orderBy('sort', 'ASC')
+		//$faqs = Faq::where( 'question' , 'LIKE' , "%{$keyword}%" )
+		//	->where(function($q) use ($my_role){
+		//		$q->where( 'faq_role' , '' )
+		//			->orWhere( 'faq_role' , $my_role );
+		//	})
+		//	->orderBy('sort', 'ASC')
+		//	->paginate($limit);
+
+		$faqs = Faq::orderBy('sort', 'ASC')
+			->whereIn('faq_role', array('',"$my_role"))
+			->Where( 'question' , 'LIKE' , "%{$keyword}%" )
 			->paginate($limit);
-		
+
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
 		$role_values = Faq::roleValues();
