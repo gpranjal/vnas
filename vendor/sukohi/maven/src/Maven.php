@@ -154,21 +154,27 @@ class Maven {
 
 			if( $isCareGiver != "" )
 			{
-				 $my_role = "caregiver";       	
+				 $my_role = "Caregiver";
 			}
 			else if( $isPatient != "" )
 			{
-				 $my_role = "patient"; 
+				 $my_role = "Patient";
 			}
 		}
 
 
+		//$faqs = Faq::orderBy('sort', 'ASC')
+		//			->where(function($q)  use ($my_role){
+		//				$q->where( 'faq_role' , '' )
+		//				->orWhere( 'faq_role' , "$my_role" );
+		//			})
+		//			->paginate($limit);
+
 		$faqs = Faq::orderBy('sort', 'ASC')
-					->where(function($q)  use ($my_role){
-						$q->where( 'faq_role' , '' )
-						->orWhere( 'faq_role' , "$my_role" );
-					})
-					->paginate($limit);
+				->whereIn('faq_role', array('',"$my_role"))
+				->paginate($limit);
+
+
 		$sort_values = Faq::sortSelectValues();
 		$tag_values = Faq::tagValues();
 		$role_values = Faq::roleValues();
