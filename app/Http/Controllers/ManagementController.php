@@ -355,7 +355,14 @@ class ManagementController extends Controller {
 		$myMessage = null;
 		$myError = null;
 		
-		$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')));  //same source types of DataSet
+		//$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')))->take(500);  //same source types of DataSet
+		$grid = \DataGrid::source
+		(
+			DB::table("ETL_PROCESS_LOG")
+				->select('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')
+				->orderBy('CREATED_DATE','desc')
+				->take(200)
+		);
 		
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
 		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
