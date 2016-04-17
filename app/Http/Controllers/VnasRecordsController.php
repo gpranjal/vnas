@@ -102,12 +102,12 @@ class VnasRecordsController extends Controller {
 
             if($myRangeValue == "Current")
             {
-                $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C']);
+                $Vnas_records = Vnas_record::whereIn( 'STS' , ['F','C']);
                 $myRangeValue == "Current";
             }
             else if($myRangeValue == "History")
             {
-                $Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H');
+                $Vnas_records = Vnas_record::whereIn( 'STS' , ['H']);
                 $myRangeValue == "History";
             }
 
