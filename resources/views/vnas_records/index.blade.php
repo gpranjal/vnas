@@ -68,6 +68,7 @@
 						@endforeach
 					</tbody>
 				</table>
+				@endif
 				
 				<br />
 				<div class="row">
@@ -78,7 +79,6 @@
 						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
 					</a>
 				</div>
-				@endif
 			</div>
 		</div>
 	</div>

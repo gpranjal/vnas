@@ -111,7 +111,9 @@ class VnasRecordsController extends Controller {
                 $myRangeValue == "History";
             }
 
-            $Vnas_records = $Vnas_records->distinct()
+            $Vnas_records = $Vnas_records
+            	->distinct()
+            	->orderBy('SCHEDULE_START_DTTM', 'asc')
                 ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
 
@@ -141,29 +143,32 @@ class VnasRecordsController extends Controller {
         $myView = "";
         $Vnas_records = Vnas_record::where( 'SCHEDULE_SK' , '=' , $id )
             ->where( 'user_sk' , '=' , $myCurrUserSk )
-            ->distinct()
-            ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-
-        // Need to check the roles from the ORM query and return the appropriate view.
-
-        if (in_array($Vnas_records[0]->CLIENT_ID, $myClientIds))
-        {
-            $myView         = "vnas_records.patientsch";
-        }
-        else if (in_array($Vnas_records[0]->CARE_GIVER_ID, $myCareGiverIds)) //if( $myCaregiverRoleList == $Vnas_records[0]->caregiver_id )
-        {
-            $myView         = "vnas_records.sch";
-        }
-
+            ->orderBy('SCHEDULE_START_DTTM', 'asc')
+            ->distinct();
+            
         if($myRangeValue == "Current")
         {
-            $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C']);
+            $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C'])
+            	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+	            
             $myRangeValue == "Current";
         }
         else if($myRangeValue == "History")
         {
-            $Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H');
+            $Vnas_records = $Vnas_records->where( 'STS' , '=' , 'H')
+            	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
             $myRangeValue == "History";
+        }
+        
+        // Need to check the roles from the ORM query and return the appropriate view.
+        
+        if (in_array($Vnas_records[0]->CLIENT_ID, $myClientIds))
+        {
+        	$myView         = "vnas_records.patientsch";
+        }
+        else if (in_array($Vnas_records[0]->CARE_GIVER_ID, $myCareGiverIds)) //if( $myCaregiverRoleList == $Vnas_records[0]->caregiver_id )
+        {
+        	$myView         = "vnas_records.sch";
         }
 
         return view( $myView , compact('Vnas_records','myRangeValue', 'dateRange'));
