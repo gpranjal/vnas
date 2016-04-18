@@ -58,6 +58,7 @@ class User_role_rel extends Model {
 		{
 			$myCurrRole[count($myCurrRole)] = $myIntRole->vna_user_role_cd;
 		}
+		
 		return $myCurrRole;
 	}
 	
