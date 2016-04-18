@@ -54,7 +54,6 @@ class VnasRecordsController extends Controller {
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->orderBy('schedule_start_dttm', 'desc')
                     ->distinct();
                 //->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
@@ -64,30 +63,30 @@ class VnasRecordsController extends Controller {
             else if ( $isPatient && !$isCareGiver  ) // Is a patient only
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->orderBy('schedule_start_dttm', 'asc')
                     ->distinct();
-                //->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+                
                 $nextCntl = "VnasRecordsController@patientsch";
                 $myView = "vnas_records.index";
             }
             else if( $isCareGiver && $isPatient ) // Is both roles
             {
                 $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->distinct()
-                    ->orderBy('schedule_start_dttm', 'asc');
+                    ->distinct();
 
                 if( $myRole == "Client" )
                 {
                     foreach( $myClientIds as $myClientId )
                     {
-                        $Vnas_records = $Vnas_records->where( 'CLIENT_ID' , '=' , $myClientId );
+                        $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+                        	->where( 'CLIENT_ID' , '=' , $myClientId );
                     }
                 }
                 else if( $myRole == "Caregiver" )
                 {
                     foreach( $myCareGiverIds as $myCareGiverId )
                     {
-                        $Vnas_records = $Vnas_records->where( 'care_giver_id' , '=' , $myCareGiverId );
+                        $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+                        	->where( 'care_giver_id' , '=' , $myCareGiverId );
                     }
                 }
 
@@ -102,12 +101,13 @@ class VnasRecordsController extends Controller {
 
             if($myRangeValue == "Current")
             {
-                $Vnas_records = Vnas_record::whereIn( 'STS' , ['F','C']);
+                $Vnas_records = $Vnas_records->where( 'STS', '=', 'F')
+                	->orWhere( 'STS', '=', 'C');
                 $myRangeValue == "Current";
             }
             else if($myRangeValue == "History")
             {
-                $Vnas_records = Vnas_record::whereIn( 'STS' , ['H']);
+                $Vnas_records = $Vnas_records->where( 'STS' , ['H']);
                 $myRangeValue == "History";
             }
 
@@ -132,7 +132,7 @@ class VnasRecordsController extends Controller {
 
         $myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
             ->get( array('vna_user_role_cd','vna_user_id') );
-
+        
         $myCurrRole       = User_role_rel::getCurrRole($myRoles);
         $myClientIds 	  = User_role_rel::getClientIds($myRoles);
         $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
@@ -145,7 +145,8 @@ class VnasRecordsController extends Controller {
             ->where( 'user_sk' , '=' , $myCurrUserSk )
             ->orderBy('SCHEDULE_START_DTTM', 'asc')
             ->distinct();
-            
+        
+        
         if($myRangeValue == "Current")
         {
             $Vnas_records = $Vnas_records->whereIn( 'STS' , ['F','C'])
@@ -161,6 +162,7 @@ class VnasRecordsController extends Controller {
         }
         
         // Need to check the roles from the ORM query and return the appropriate view.
+        
         
         if (in_array($Vnas_records[0]->CLIENT_ID, $myClientIds))
         {
