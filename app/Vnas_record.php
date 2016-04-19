@@ -56,7 +56,7 @@ class Vnas_record extends Model {
     public static function getChangedScheduleRecords()
     {
     	$myResult = Vnas_record::where( 'USER_SK' , '=' , Auth::user()->id )
-				->where( 'SCHEDULE_START_DTTM' , '>=' , Carbon\Carbon::now() )
+				->where( 'SCHEDULE_START_DTTM' , '>=' , Carbon::now() )
 				->where( 'STS' , '=' , 'C' )
 				->get( array('SCHEDULE_SK') );
     	
