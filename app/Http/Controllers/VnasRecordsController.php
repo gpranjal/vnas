@@ -15,7 +15,6 @@ use Auth;
 use Mail;
 use App\Caregiver_record;
 use App\UserSettings;
-use Carbon\Carbon;
 
 class VnasRecordsController extends Controller {
 
@@ -54,19 +53,16 @@ class VnasRecordsController extends Controller {
             $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
             	->distinct();
             
-            if( $isCareGiver && $isPatient ) // Is both roles
+            /* Filter the records based on the usere selecting the select box */
+            if( $myRole == "Client" )
             {
-            	/* Filter the records based on the usere selecting the select box */
-                if( $myRole == "Client" )
-                {
-                	$Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
-                		->whereIn( 'CLIENT_ID' , $myClientIds );
-                }
-                else if( $myRole == "Caregiver" )
-                {
-                    $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
-                    	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds );
-                }
+            	$Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+            		->whereIn( 'CLIENT_ID' , $myClientIds );
+            }
+            else if( $myRole == "Caregiver" )
+            {
+            	$Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+                	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds );
             }
             
             /* Determine Current or historical query logic */
@@ -86,20 +82,17 @@ class VnasRecordsController extends Controller {
 
     public function multirolesch($id, $myRangeValue = 'Current')
     {
-        $myCurrUserSk      = Auth::user()->id;
+        $myCurrUserSk   = Auth::user()->id;
         $Vnas_records   = null;
+        $myView 		= null;
 
         $myRoles 		= User_role_rel::where( 'user_sk' , '=' , $myCurrUserSk )
             ->get( array('vna_user_role_cd','vna_user_id') );
         
         $myCurrRole       = User_role_rel::getCurrRole($myRoles);
-        $myClientIds 	  = User_role_rel::getClientIds($myRoles);
         $myCareGiverIds   = User_role_rel::getCaregiverIds($myRoles);
+        $myClientIds 	  = User_role_rel::getClientIds($myRoles);
 
-        $isClient = ( !empty( $myClientIds ) ) ? 1 : 0;
-        $isCareGiver = ( !empty( $myCareGiverIds ) ) ? 1 : 0;
-
-        $myView = "";
         $Vnas_records = Vnas_record::where( 'SCHEDULE_SK' , '=' , $id )
         	->distinct()
         	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
@@ -117,7 +110,7 @@ class VnasRecordsController extends Controller {
         return view( $myView , compact('Vnas_records','myRangeValue', 'dateRange'));
     }
 
-    public function sch($id)
+    public function sch($id, $myRangeValue = 'Current')
     {
         $myCurrUserSk    = Auth::user()->id;
         $Vnas_records   = null;
@@ -125,17 +118,17 @@ class VnasRecordsController extends Controller {
         $Vnas_records = Vnas_record::where( 'schedule_sk' , '=' , $id )
         	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
-        return view('vnas_records.sch', compact('Vnas_records'));
+        return view('vnas_records.sch', compact('Vnas_records') );
     }
 
-    public function patientsch($id)
+    public function patientsch($id, $myRangeValue = 'Current')
     {
         $myCurrUserSk      = Auth::user()->id;
         
         $Vnas_records = Vnas_record::where( 'schedule_sk' , '=' , $id )
         	->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
-        return view('vnas_records.patientsch', compact('Vnas_records'));
+        return view('vnas_records.patientsch', compact('Vnas_records') );
     }
 
     public function create()

@@ -7,7 +7,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ol class="breadcrumb">
                 <li><a name="HomeToolbarLink" href="{{ url('/') }}">Home</a></li>
-                <li><a name="ScheduleToolbarLink" href="{{ url('vnas_records') }}">My Schedule</a></li>
+                <li><a name="ScheduleToolbarLink" href="{{ url('vnas_records' ) }}">My Schedule</a></li>
                 <li class="active">Details</li>
             </ol>
             <div class="panel panel-default">

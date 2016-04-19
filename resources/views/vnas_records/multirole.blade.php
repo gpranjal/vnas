@@ -76,7 +76,7 @@
 							<?php $count = 1; ?>
 							@foreach ($Vnas_records as $Vnas_record)
 
-								<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->SCHEDULE_SK]) }}'>
+								<tr name="{{'idLink' . $count}}" class='whole-row-click click_row' data-href='{{ action( $nextCntl , [$Vnas_record->SCHEDULE_SK] , $myRole , $myRangeValue ) }}'>
 									<td>{{ $Vnas_record->CALENDAR_TYPE }}</td>
 									<td name="{{'dateText' . $count}}">{{ date_format( date_create( $Vnas_record->SCHEDULE_START_DTTM )  , 'm/d/y' ) }}</td>
 									<td name="{{'timeText' . $count}}">
