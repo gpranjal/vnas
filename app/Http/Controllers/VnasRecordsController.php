@@ -68,19 +68,13 @@ class VnasRecordsController extends Controller {
             {
                 if( $myRole == "Client" )
                 {
-                    foreach( $myClientIds as $myClientId )
-                    {
-                        $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
-                        	->where( 'CLIENT_ID' , '=' , $myClientId );
-                    }
+                	$Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+                		->whereIn( 'CLIENT_ID' , $myClientIds );
                 }
                 else if( $myRole == "Caregiver" )
                 {
-                    foreach( $myCareGiverIds as $myCareGiverId )
-                    {
-                        $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
-                        	->where( 'CARE_GIVER_ID' , '=' , $myCareGiverId );
-                    }
+                    $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
+                    	->whereIn( 'CARE_GIVER_ID' , $myCareGiverIds );
                 }
 
                 $nextCntl = "VnasRecordsController@multirolesch";
