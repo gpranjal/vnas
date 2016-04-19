@@ -21,6 +21,8 @@
 						</div>
 					@endif
 
+
+
 					<p style="margin-top: 50px;">
 						<a type="button" name="myAccountButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;" href="{{ url('vnas_users') }}">
 							<span class="glyphicon glyphicon-th-list" aria-hidden="true" style="padding-right: 10px;"></span>My Account
