@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
-use Carbon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class Vnas_record extends Model {
@@ -56,7 +56,7 @@ class Vnas_record extends Model {
     public static function getChangedScheduleRecords()
     {
     	$myResult = Vnas_record::where( 'USER_SK' , '=' , Auth::user()->id )
-				->where( 'SCHEDULE_START_DTTM' , '>=' , Carbon\Carbon::now() )
+				->where( 'SCHEDULE_START_DTTM' , '>=' , Carbon::now() )
 				->where( 'STS' , '=' , 'C' )
 				->get( array('SCHEDULE_SK') );
     	
@@ -66,5 +66,57 @@ class Vnas_record extends Model {
 		}
 		
     	return $myResult;
+    }
+   
+    public static function getNextCntl( $isCareGiver , $isPatient )
+    {
+    	$nextCntl = null;
+    	if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
+    	{
+    		$nextCntl = "VnasRecordsController@sch";
+    	}
+    	else if ( $isPatient && !$isCareGiver  ) // Is a patient only
+    	{
+    		$nextCntl = "VnasRecordsController@patientsch";
+    	}
+    	else if( $isCareGiver && $isPatient ) // Is both roles
+    	{
+    		$nextCntl = "VnasRecordsController@multirolesch";
+    	}
+    	return $nextCntl;
+    }
+    
+    public static function getNextView( $isCareGiver , $isPatient )
+    {
+    	$myView = null;
+    	if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
+    	{
+    		$myView = "vnas_records.care";
+    	}
+    	else if ( $isPatient && !$isCareGiver  ) // Is a patient only
+    	{
+    		$myView = "vnas_records.index";
+    	}
+    	else if( $isCareGiver && $isPatient ) // Is both roles
+    	{
+    		$myView = "vnas_records.multirole";//{{ action( $nextCntl , [$Vnas_record->id]) }}
+    	}
+    	return $myView;
+    }
+    
+    public static function filterForSchType( $Vnas_records , $myRangeValue )
+    {
+    	if($myRangeValue == "Current")
+    	{
+    		$Vnas_records = $Vnas_records->where( 'SCHEDULE_END_DTTM' , '>=' , Carbon::now() )
+    		->orderBy('SCHEDULE_START_DTTM', 'ASC');
+    	}
+    	else if($myRangeValue == "History")
+    	{
+    		$Vnas_records = $Vnas_records->where( 'SCHEDULE_END_DTTM' , '<=' , Carbon::now() )
+    		->orderBy('SCHEDULE_START_DTTM', 'DESC');
+    	}
+    	
+    	return $Vnas_records;
     }
 }
