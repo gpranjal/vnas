@@ -21,6 +21,11 @@
 					<br>
 					<br>
 
+					<p>
+						<a name="myLoginButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;"  href="{{ url('auth/login') }}">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true" style="padding-right: 10px;"></span>Login
+						</a>
+					</p>
 
 					<P>
 						<a name="faqButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;" href="{{ url('faq') }}">
