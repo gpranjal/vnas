@@ -96,15 +96,13 @@ class VnasRecordsController extends Controller {
             }
             else if($myRangeValue == "History")
             {
-                $Vnas_records = $Vnas_records->where( 'STS' , ['H'])
-                	->orWhere( 'SCHEDULE_END_DTTM' , '<=' , Carbon::now() )
+                $Vnas_records = $Vnas_records->where( 'SCHEDULE_END_DTTM' , '<=' , Carbon::now() )
                 	->orderBy('SCHEDULE_START_DTTM', 'DESC');
                 
                 $myRangeValue == "History";
             }
 
-            $Vnas_records = $Vnas_records
-            	->distinct()
+            $Vnas_records = $Vnas_records->distinct()
                 ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
 
             return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage','myRangeValue', 'dateRange'));
