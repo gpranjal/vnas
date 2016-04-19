@@ -89,7 +89,7 @@ class VnasRecordsController extends Controller {
             if($myRangeValue == "Current")
             {
                 $Vnas_records = $Vnas_records->where( 'SCHEDULE_END_DTTM' , '>=' , Carbon::now() )
-                	->whereIn( 'STS', ['F','C'])
+                	->whereIn( 'STS', ['F','C'] )
                 	->orderBy('SCHEDULE_START_DTTM', 'ASC');
                 	
                 $myRangeValue == "Current";
@@ -98,7 +98,7 @@ class VnasRecordsController extends Controller {
             {
                 $Vnas_records = $Vnas_records->where( 'STS' , ['H'])
                 	->orWhere( 'SCHEDULE_END_DTTM' , '<=' , Carbon::now() )
-                	->orderBy('SCHEDULE_START_DTTM', 'DESC')->toSQL();
+                	->orderBy('SCHEDULE_START_DTTM', 'DESC');
                 
                 $myRangeValue == "History";
             }
@@ -132,8 +132,6 @@ class VnasRecordsController extends Controller {
 
         $myView = "";
         $Vnas_records = Vnas_record::where( 'SCHEDULE_SK' , '=' , $id )
-            ->where( 'user_sk' , '=' , $myCurrUserSk )
-            ->orderBy('SCHEDULE_START_DTTM', 'asc')
             ->distinct();
         
         
@@ -152,8 +150,6 @@ class VnasRecordsController extends Controller {
         }
         
         // Need to check the roles from the ORM query and return the appropriate view.
-        
-        
         if (in_array($Vnas_records[0]->CLIENT_ID, $myClientIds))
         {
         	$myView         = "vnas_records.patientsch";
