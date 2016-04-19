@@ -12,10 +12,10 @@ use Request;
 use DB;
 use View;
 use Auth;
-use Carbon\Carbon;
 use Mail;
 use App\Caregiver_record;
 use App\UserSettings;
+use Carbon\Carbon;
 
 class VnasRecordsController extends Controller {
 
@@ -50,29 +50,22 @@ class VnasRecordsController extends Controller {
             $dateRange    = ['Current','History'];
             $Vnas_records   = null;
             $myMessage		= false;
+            
+            $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
+            	->distinct();
 
             if( ( $isCareGiver && !$isPatient )  ) // Is a caregiver only
             {
-                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->distinct();
-                //->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-
                 $nextCntl = "VnasRecordsController@sch";
                 $myView = "vnas_records.care";
             }
             else if ( $isPatient && !$isCareGiver  ) // Is a patient only
             {
-                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->distinct();
-                
                 $nextCntl = "VnasRecordsController@patientsch";
                 $myView = "vnas_records.index";
             }
             else if( $isCareGiver && $isPatient ) // Is both roles
             {
-                $Vnas_records = Vnas_record::where( 'user_sk' , '=' , $myCurrUserSk )
-                    ->distinct();
-
                 if( $myRole == "Client" )
                 {
                     foreach( $myClientIds as $myClientId )
@@ -86,7 +79,7 @@ class VnasRecordsController extends Controller {
                     foreach( $myCareGiverIds as $myCareGiverId )
                     {
                         $Vnas_records = $Vnas_records->where( 'user_sk' , '=' , $myCurrUserSk )
-                        	->where( 'care_giver_id' , '=' , $myCareGiverId );
+                        	->where( 'CARE_GIVER_ID' , '=' , $myCareGiverId );
                     }
                 }
 
@@ -101,21 +94,24 @@ class VnasRecordsController extends Controller {
 
             if($myRangeValue == "Current")
             {
-                $Vnas_records = $Vnas_records->where( 'STS', '=', 'F')
-                	->orWhere( 'STS', '=', 'C');
+                $Vnas_records = $Vnas_records->where( 'SCHEDULE_END_DTTM' , '>=' , Carbon::now() )
+                	->whereIn( 'STS', ['F','C'])
+                	->orderBy('SCHEDULE_START_DTTM', 'ASC');
+                	
                 $myRangeValue == "Current";
             }
             else if($myRangeValue == "History")
             {
-                $Vnas_records = $Vnas_records->where( 'STS' , ['H']);
+                $Vnas_records = $Vnas_records->where( 'STS' , ['H'])
+                	->orWhere( 'SCHEDULE_END_DTTM' , '<=' , Carbon::now() )
+                	->orderBy('SCHEDULE_START_DTTM', 'DESC')->toSQL();
+                
                 $myRangeValue == "History";
             }
 
             $Vnas_records = $Vnas_records
             	->distinct()
-            	->orderBy('SCHEDULE_START_DTTM', 'asc')
                 ->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
-
 
             return view( $myView , compact('Vnas_records','isCareGiver','isPatient','nextCntl','myRoleList','myRole','myMessage','myRangeValue', 'dateRange'));
         }
