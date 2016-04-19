@@ -23,7 +23,7 @@
 
 					<p>
 						<a name="myLoginButton" class="btn btn-primary btn-lg btn-width-lg" style="width: 250px;"  href="{{ url('auth/login') }}">
-							<span class="glyphicon glyphicon-th-list" aria-hidden="true" style="padding-right: 10px;"></span>Login
+							<span class="glyphicon glyphicon-user" aria-hidden="true" style="padding-right: 10px;"></span>Login
 						</a>
 					</p>
 
