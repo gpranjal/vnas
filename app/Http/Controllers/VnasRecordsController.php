@@ -69,6 +69,7 @@ class VnasRecordsController extends Controller {
             $Vnas_records = Vnas_record::filterForSchType( $Vnas_records , $myRangeValue );
 
             $Vnas_records = $Vnas_records->get( array('SCHEDULE_SK','CLIENT_ID','CARE_GIVER_ID','CLIENT_FIRST_NME','CLIENT_LAST_NME','CLIENT_ADDRESS','CLIENT_PHONE','CALENDAR_TYPE','SCHEDULE_START_DTTM','SCHEDULE_END_DTTM','COMMENTS','CARE_GIVER_FIRST_NME','CARE_GIVER_LAST_NME','CARE_GIVER_OFFICE_PH','CARE_GIVER_MOBILE_PH'));
+          
             if( count( $Vnas_records ) == 0 )
             {
             	$myMessage  = UserSettings::getSchNoRcrdMsg();
