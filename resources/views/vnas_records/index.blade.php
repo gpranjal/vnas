@@ -17,12 +17,6 @@
 				<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 				<br />
 
-				@if( $myMessage )
-					<div class="alert alert-info">
-						{{ $myMessage }}
-					</div>
-				@else
-
 				<div id="dateRangeFilterOuter">
 					<form name="dateRangeForm" id="dateRangeCheck" action="{{ url('vnas_records/') }}" method="post">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -40,6 +34,12 @@
 						</fieldset>
 					</form>
 				</div>
+
+				@if( $myMessage )
+					<div class="alert alert-info">
+						{{ $myMessage }}
+					</div>
+				@else
 
 				<table class="table table-hover text-left">
 					<thead>

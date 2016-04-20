@@ -35,7 +35,7 @@ class CreateUserSettingsTable extends Migration {
 					'email_lockout_count'=> '5',
 					'email_lockout_duration_mins'=> '60',
 					'my_acct_no_rcrd_msg' => 'You currently have no schedule records with VNA.  Contact VNA by clicking the email or phone buttons below to set up your account!',
-					'sch_no_rcrd_msg' => 'You currently have no VNA accounts assigned to you; therefore, you have no schedule records.  Contact VNA by clicking the contact buttons below to get scheduled today!',
+					'sch_no_rcrd_msg' => 'There are no VNA schedule records matching the selected criteria assigned to you. Contact VNA by clicking the contact buttons below to get scheduled today!',
 					'sch_chg_msg' => 'Your schedule has changed since your last login.  Please view your schedule by clicking the \"My Schedule\" button.'
 			)
 		);

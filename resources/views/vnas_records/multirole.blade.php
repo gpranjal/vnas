@@ -16,51 +16,51 @@
 
 					<img src="{{ asset('img/brandmark_main.png') }}" class="img-responsive center-block" alt="VNA logo">
 					<br />
+					
+					<div id="scheduleForms"  style="width: 100%; display: table;">
+						<div style="display: table-row">
+							<div id="tfheader" style="width: 500px; display: table-cell;">
+								<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
+										<label>Select Role:</label>
+										<select name="multiroleFilter" id="multiroleFilter" class="form-control">
+											@foreach ($myRoleList as $myRoleVal)
+												<option value="{{ $myRoleVal }}" @if( $myRoleVal == $myRole ) selected="selected" @endif>{{ $myRoleVal }}</option>
+											@endforeach
+										</select>
+									</fieldset>
+								</form>
+							</div>
+
+							<div id="dateRangeFilterOuter" style="width: 500px; display: table-cell;">
+								<form name="dateRangeForm" id="dateRangeCheck" action="{{ url('vnas_records/') }}" method="post">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
+										<label>Select Date Range:</label>
+										<!-- <?php echo ($myRole); echo(" -- I am in ".$myRangeValue." view"); ?> -->
+										<select name="dateRangeFilterInner" id="dateRangeFilterInner" class="form-control">
+
+											@foreach ($dateRange as $mydateRangeVal)
+
+												<option value="{{ $mydateRangeVal }}" @if( $mydateRangeVal == $myRangeValue ) selected="selected" @endif>{{ $mydateRangeVal }}</option>
+											@endforeach
+
+										</select>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+
+						<br>
+						<br>
 
 					@if( $myMessage )
 						<div class="alert alert-info">
 							{{ $myMessage }}
 						</div>
 					@else
-						<div id="scheduleForms"  style="width: 100%; display: table;">
-							<div style="display: table-row">
-								<div id="tfheader" style="width: 500px; display: table-cell;">
-									<form name="tstingForm" id="tfnewsearch" action="{{ url('vnas_records/') }}" method="post">
-										<input type="hidden" name="_token" value="{{ csrf_token() }}">
-										<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
-											<label>Select Role:</label>
-											<select name="multiroleFilter" id="multiroleFilter" class="form-control">
-												@foreach ($myRoleList as $myRoleVal)
-													<option value="{{ $myRoleVal }}" @if( $myRoleVal == $myRole ) selected="selected" @endif>{{ $myRoleVal }}</option>
-												@endforeach
-											</select>
-										</fieldset>
-									</form>
-								</div>
-
-								<div id="dateRangeFilterOuter" style="width: 500px; display: table-cell;">
-									<form name="dateRangeForm" id="dateRangeCheck" action="{{ url('vnas_records/') }}" method="post">
-										<input type="hidden" name="_token" value="{{ csrf_token() }}">
-										<fieldset class="form-group" style="width: 50%; float:none; margin: 0 auto;">
-											<label>Select Date Range:</label>
-											<!-- <?php echo ($myRole); echo(" -- I am in ".$myRangeValue." view"); ?> -->
-											<select name="dateRangeFilterInner" id="dateRangeFilterInner" class="form-control">
-
-												@foreach ($dateRange as $mydateRangeVal)
-
-													<option value="{{ $mydateRangeVal }}" @if( $mydateRangeVal == $myRangeValue ) selected="selected" @endif>{{ $mydateRangeVal }}</option>
-												@endforeach
-
-											</select>
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<br>
-						<br>
-
 						<table class="table table-hover text-left">
 							<thead>
 							<tr>
@@ -91,18 +91,17 @@
 							@endforeach
 							</tbody>
 						</table>
-
-						<br />
-						<div class="row">
-							<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
-								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-							</a>
-							<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
-								<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-							</a>
-						</div>
-						<br />
 					@endif
+					
+					<br />
+					<div class="row">
+						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</a>
+						<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
