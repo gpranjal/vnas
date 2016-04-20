@@ -58,7 +58,7 @@
     </div>
     <br>
     <div id="contactDiv" class="bg-info col-md-6 col-md-offset-3" align="center">
-        <h3 style="font-family: 'Calibri'; ">Conact VNA</h3>
+        <h3 style="font-family: 'Calibri'; ">Contact VNA</h3>
         <a class="btn btn-primary btn-lg btn-width-lg" style="width: 90px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
         </a>
