@@ -69,14 +69,15 @@
 					</tbody>
 				</table>
 				@endif
-				
-				<br />
-				<div class="row">
-					<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
+
+				<br>
+				<div id="contactDiv" class="bg-info col-md-6 col-md-offset-3" align="center">
+					<h3 style="font-family: 'Calibri'; ">Conact VNA</h3>
+					<a class="btn btn-primary btn-lg btn-width-lg" style="width: 90px;" role="button" href="mailto:eschlake@thevnacares.org" name="mailtoButton">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 					</a>
-					<a class="btn btn-primary btn-lg btn-width-lg" style="width: 118px;" href="tel:402-930-4240" role="button" name="callButton">
-						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+					<a class="btn btn-primary btn-lg btn-width-lg" style="width: 90px;" href="tel:402-930-4240" role="button" name="callButton">
+						<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
 					</a>
 				</div>
 			</div>
