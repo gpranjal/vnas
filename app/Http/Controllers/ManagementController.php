@@ -354,7 +354,9 @@ class ManagementController extends Controller {
 		
 		$myMessage = null;
 		$myError = null;
-		
+		$filePresent = null;
+		$fileNotPresent = null;
+
 		//$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')))->take(500);  //same source types of DataSet
 		$grid = \DataGrid::source
 		(
@@ -388,7 +390,14 @@ class ManagementController extends Controller {
 // 				$row->style("color:#f00");
 // 			}
 		});
-		
+
+		if (file_exists('/../../../../mysql/data/app/vnasdata.csv')) {
+			$filePresent = "VNA data file exists.";
+		}
+		else {
+			$fileNotPresent = "VNA data file does not exist.";
+		}
+
 		if( $myBit == 1 )
 		{
 			$myMessage = "ETL successfully started.";
@@ -398,7 +407,7 @@ class ManagementController extends Controller {
 			$myError = "There was issue starting the ETL.";
 		}
 	   
-	   return view('admin.etl_process_log', compact('grid','myMessage','myError'));
+	   return view('admin.etl_process_log', compact('grid','myMessage','myError','filePresent', 'fileNotPresent'));
 	}
 
 	public function remove_patient_role($id){
