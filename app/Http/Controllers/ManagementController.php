@@ -36,9 +36,8 @@ class ManagementController extends Controller {
 		if(Auth::User()->role != 'admin') return view('home');
 		$users = User::all();
 		return view('admin.management' , compact('users'));
-	}
 
-	
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -391,12 +390,19 @@ class ManagementController extends Controller {
 // 			}
 		});
 
-		if (file_exists('/../../../../mysql/data/app/vnasdata.csv')) {
-			$filePresent = "VNA data file exists.";
+		$fileLocation = getenv('DB_DATA_PATH');
+
+		if (file_exists($fileLocation))
+		{
+			$filePresent = "VNA data file exists in the location";
+			$fileNotPresent = "";
 		}
-		else {
-			$fileNotPresent = "VNA data file does not exist.";
+		else
+		{
+			$filePresent = "";
+			$fileNotPresent = "VNA data file does not exist in the location";
 		}
+
 
 		if( $myBit == 1 )
 		{
@@ -407,7 +413,7 @@ class ManagementController extends Controller {
 			$myError = "There was issue starting the ETL.";
 		}
 	   
-	   return view('admin.etl_process_log', compact('grid','myMessage','myError','filePresent', 'fileNotPresent'));
+	   return view('admin.etl_process_log', compact('grid','myMessage','myError','filePresent','fileNotPresent'));
 	}
 
 	public function remove_patient_role($id){
