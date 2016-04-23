@@ -368,13 +368,12 @@ class ManagementController extends Controller {
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
 		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
 		$grid->add('LANDING_TBL_DATE_RANGE','Date Range', false); //field name, label, sortable
-		$grid->add('cHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
+		$grid->add('CHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
 		$grid->add('ETL_PROCESS_STATUS','ETL Process Status', false); //field name, label, sortable
 		$grid->add('ERROR_CNT','Number of Errors', false); //field name, label, sortable
 		$grid->add('ERROR_DESC','Error(s) Description', false); //field name, label, sortable
-		
-		
-		
+		$grid->add('CREATED_DATE','Created Date', false); //field name, label, sortable
+
 		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
 		$grid->link('/etl/fire',"Execute ETL job", "TR");
 		$grid->orderBy('PROCESS_LOG_SKEY','desc');
