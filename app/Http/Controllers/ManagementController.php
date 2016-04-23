@@ -390,6 +390,7 @@ class ManagementController extends Controller {
 		});
 
 		$fileLocation = getenv('DB_DATA_PATH');
+		echo $fileLocation;
 
 		if (file_exists($fileLocation))
 		{
