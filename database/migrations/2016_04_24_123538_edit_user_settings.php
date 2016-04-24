@@ -17,16 +17,4 @@ class EditUserSettings extends Migration {
 			$table->string('app_root_key',255);
 		});
 	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::table('users', function ($table) {
-			$table->dropColumn('app_root_key');
-		});
-	}
 }
