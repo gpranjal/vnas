@@ -394,11 +394,7 @@ class ManagementController extends Controller {
 		$fileLocation = getenv('DB_DATA_PATH');
 		$appRoot = UserSettings::getAppRootKey();
 
-		//echo $appRoot;
-		//echo $fileLocation;
-
 		$fileRootPath = $appRoot.$fileLocation;
-		echo $fileRootPath;
 
 		if (file_exists($fileRootPath))
 		{
