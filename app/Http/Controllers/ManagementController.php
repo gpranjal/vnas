@@ -390,9 +390,15 @@ class ManagementController extends Controller {
 		});
 
 		$fileLocation = getenv('DB_DATA_PATH');
-		echo $fileLocation;
+		$appRoot = UserSettings::getAppRootKey();
 
-		if (file_exists($fileLocation))
+		//echo $appRoot;
+		//echo $fileLocation;
+
+		$fileRootPath = $appRoot.$fileLocation;
+		//echo $fileRootPath;
+
+		if (file_exists($fileRootPath))
 		{
 			$filePresent = "VNA data file exists in the location";
 			$fileNotPresent = "";
@@ -402,7 +408,6 @@ class ManagementController extends Controller {
 			$filePresent = "";
 			$fileNotPresent = "VNA data file does not exist in the location";
 		}
-
 
 		if( $myBit == 1 )
 		{

@@ -74,4 +74,11 @@ class UserSettings extends Model {
 		$result = $mySettings[0]->sch_chg_msg;
 		return $result;
 	}
+
+	public static function getAppRootKey() {
+		$mySettings = UserSettings::get(array('app_root_key'))
+			->take(1);
+		$appRootKey = $mySettings[0]->app_root_key;
+		return $appRootKey;
+	}
 }
