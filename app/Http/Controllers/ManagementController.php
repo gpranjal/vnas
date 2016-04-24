@@ -336,6 +336,8 @@ class ManagementController extends Controller {
 		$form->add('my_acct_no_rcrd_msg','No Records - My Account Message:', 'text');
 		$form->add('sch_no_rcrd_msg','No Records - My Schedule Message:', 'text');
 		$form->add('sch_chg_msg','Schedule Change - Home Screen Message:', 'text');
+		$form->add('app_root_key','Application root:', 'text');
+		
 				
 		$form->submit('Save');
 		$form->saved(function() use ($form)

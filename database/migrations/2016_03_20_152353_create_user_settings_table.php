@@ -23,6 +23,7 @@ class CreateUserSettingsTable extends Migration {
 			$table->string('my_acct_no_rcrd_msg');
 			$table->string('sch_no_rcrd_msg');
 			$table->string('sch_chg_msg');
+			$table->string('app_root_key',255);
 			$table->timestamps();
 		});
 
@@ -36,7 +37,8 @@ class CreateUserSettingsTable extends Migration {
 					'email_lockout_duration_mins'=> '60',
 					'my_acct_no_rcrd_msg' => 'You currently have no schedule records with VNA.  Contact VNA by clicking the email or phone buttons below to set up your account!',
 					'sch_no_rcrd_msg' => 'There are no VNA schedule records matching the selected criteria assigned to you. Contact VNA by clicking the contact buttons below to get scheduled today!',
-					'sch_chg_msg' => 'Your schedule has changed since your last login.  Please view your schedule by clicking the \"My Schedule\" button.'
+					'sch_chg_msg' => 'Your schedule has changed since your last login.  Please view your schedule by clicking the \"My Schedule\" button.',
+					'app_root_key' => '/var/lib/openshift/56b6e9612d527164d3000155/'
 			)
 		);
 	}
