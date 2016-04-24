@@ -36,9 +36,8 @@ class ManagementController extends Controller {
 		if(Auth::User()->role != 'admin') return view('home');
 		$users = User::all();
 		return view('admin.management' , compact('users'));
-	}
 
-	
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -337,6 +336,8 @@ class ManagementController extends Controller {
 		$form->add('my_acct_no_rcrd_msg','No Records - My Account Message:', 'text');
 		$form->add('sch_no_rcrd_msg','No Records - My Schedule Message:', 'text');
 		$form->add('sch_chg_msg','Schedule Change - Home Screen Message:', 'text');
+		$form->add('app_root_key','Application root:', 'text');
+		
 				
 		$form->submit('Save');
 		$form->saved(function() use ($form)
@@ -354,7 +355,9 @@ class ManagementController extends Controller {
 		
 		$myMessage = null;
 		$myError = null;
-		
+		$filePresent = null;
+		$fileNotPresent = null;
+
 		//$grid = \DataGrid::source(DB::table("ETL_PROCESS_LOG")->get(array('PROCESS_LOG_SKEY','LANDING_TBL_REC_CNT','LANDING_TBL_DATE_RANGE','cHANGED_CALENDAR_CNT','ETL_PROCESS_STATUS','ERROR_CNT','ERROR_DESC')))->take(500);  //same source types of DataSet
 		$grid = \DataGrid::source
 		(
@@ -367,13 +370,12 @@ class ManagementController extends Controller {
 		$grid->add('PROCESS_LOG_SKEY','ETL Process Key', true); //field name, label, sortable
 		$grid->add('LANDING_TBL_REC_CNT','Record Count', true); //field name, label, sortable		
 		$grid->add('LANDING_TBL_DATE_RANGE','Date Range', false); //field name, label, sortable
-		$grid->add('cHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
+		$grid->add('CHANGED_CALENDAR_CNT','Calendar Notications', false); //field name, label, sortable
 		$grid->add('ETL_PROCESS_STATUS','ETL Process Status', false); //field name, label, sortable
 		$grid->add('ERROR_CNT','Number of Errors', false); //field name, label, sortable
 		$grid->add('ERROR_DESC','Error(s) Description', false); //field name, label, sortable
-		
-		
-		
+		$grid->add('CREATED_DATE','Created Date', false); //field name, label, sortable
+
 		//$grid->edit('/rapyd-demo/edit', 'Edit','show|modify');
 		$grid->link('/etl/fire',"Execute ETL job", "TR");
 		$grid->orderBy('PROCESS_LOG_SKEY','desc');
@@ -388,7 +390,23 @@ class ManagementController extends Controller {
 // 				$row->style("color:#f00");
 // 			}
 		});
-		
+
+		$fileLocation = getenv('DB_DATA_PATH');
+		$appRoot = UserSettings::getAppRootKey();
+
+		$fileRootPath = $appRoot.$fileLocation;
+
+		if (file_exists($fileRootPath))
+		{
+			$filePresent = "VNA data file exists in the location";
+			$fileNotPresent = "";
+		}
+		else
+		{
+			$filePresent = "";
+			$fileNotPresent = "VNA data file does not exist in the location";
+		}
+
 		if( $myBit == 1 )
 		{
 			$myMessage = "ETL successfully started.";
@@ -398,7 +416,7 @@ class ManagementController extends Controller {
 			$myError = "There was issue starting the ETL.";
 		}
 	   
-	   return view('admin.etl_process_log', compact('grid','myMessage','myError'));
+	   return view('admin.etl_process_log', compact('grid','myMessage','myError','filePresent','fileNotPresent'));
 	}
 
 	public function remove_patient_role($id){
