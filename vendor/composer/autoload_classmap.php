@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddTrackerRefererColumnToLog' => $baseDir . '/database/migrations/2015_11_23_311096_add_tracker_referer_column_to_log.php',
     'AddTrackerRefererColumns' => $baseDir . '/database/migrations/2015_03_13_311095_add_tracker_referer_columns.php',
-    'CreateEtlProcessLog' => $baseDir . '/database/migrations/2016_04_04_164139_create_etl_process_log.php',
+    'CreateEtlProcessLog' => $baseDir . '/database/migrations/2016_04_16_131203_create_etl_process_log.php',
     'CreateFaqsTable' => $baseDir . '/database/migrations/2015_11_11_192153_create_faqs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateTrackerAgentsTable' => $baseDir . '/database/migrations/2015_03_07_311076_create_tracker_agents_table.php',
@@ -46,6 +46,7 @@ return array(
     'CreateVnasUserLog' => $baseDir . '/database/migrations/2016_04_04_164737_create_vnas_user_log.php',
     'CreateVnasVnaUserRel' => $baseDir . '/database/migrations/2016_04_04_182836_create_vnas_vna_user_rel.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'EditUserSettings' => $baseDir . '/database/migrations/2016_04_24_121035_edit_user_settings.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',

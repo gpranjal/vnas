@@ -25,7 +25,7 @@ class CreateUserSettingsTable extends Migration {
 			$table->string('sch_chg_msg');
 			$table->timestamps();
 		});
-		
+
 		// Insert default values provided by VNA
 		DB::table('user_settings')->insert(
 			array(
