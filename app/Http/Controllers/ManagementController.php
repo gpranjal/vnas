@@ -396,7 +396,7 @@ class ManagementController extends Controller {
 		//echo $fileLocation;
 
 		$fileRootPath = $appRoot.$fileLocation;
-		//echo $fileRootPath;
+		echo $fileRootPath;
 
 		if (file_exists($fileRootPath))
 		{
