@@ -118,18 +118,5 @@ Route::group(['middleware' => ['auth' , 'timeout']], function()
 	Route::get('/remove/caregiver_role/{id}', 'ManagementController@remove_caregiver_role');
 	Route::get('/unlock_user/{id}','ManagementController@unlock_user');
 	
-	Route::get('etl/fire' , function() {
-		$myBit = 1;
-
-		try {
-			//$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < ./database/ETL/ETL_LoadScript.sql");
-			Artisan::call("exec:etl");
-		}
-		catch (Exception $e)
-		{
-			$myBit = -1;
-		}
-		
-		return redirect( '/system_etl_stats/'.$myBit );
-	});
+	Route::get('etl/fire', 'ManagementController@etlfire');
 });
