@@ -18,7 +18,6 @@ public class AdminTests extends BaseTestCase{
 		for (WebDriver driver : super.getDrivers()) {
 			LoginScreen.loginAsAdminTest(driver);
 			assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
-			
 			ToolbarScreen.getUserMenuLink(driver).click();
 			ToolbarScreen.getManageLink(driver).click();
 	        assertEquals(AdminScreen.getURL(), driver.getCurrentUrl());
@@ -46,7 +45,7 @@ public class AdminTests extends BaseTestCase{
 			ToolbarScreen.getManageLink(driver).click();
 			//Admin Screen select
 	        AdminScreen.getUserManagement(driver).click();
-	        AdminScreen.getEditUserManagement(driver, 6).click();
+	        AdminScreen.getEditUserManagement(driver, 7).click();
 	        AdminScreen.getChangeRoleToAdmin(driver).click();
 	        AdminScreen.getChangeRoleToAdmin(driver).sendKeys("a");
 	        AdminScreen.getChangeRoleToAdmin(driver).sendKeys(Keys.ENTER);
@@ -73,7 +72,7 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getEditUserManagement(driver, 6).click();
+		        AdminScreen.getEditUserManagement(driver, 7).click();
 		        AdminScreen.getChangeRoleToAdmin(driver).click();
 		        AdminScreen.getChangeRoleToAdmin(driver).sendKeys("r");
 		        AdminScreen.getChangeRoleToAdmin(driver).sendKeys(Keys.ENTER);
@@ -92,7 +91,7 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getRemoveButton(driver, 6).click();
+		        AdminScreen.getRemoveButton(driver, 7).click();
 		        assertEquals(AdminScreen.getRemoveURL(), driver.getCurrentUrl());
 		        AdminScreen.getRemoveButtonVer(driver).sendKeys(Keys.BACK_SPACE);
 			}
@@ -109,7 +108,7 @@ public class AdminTests extends BaseTestCase{
     	for (WebDriver driver : super.getDrivers()) {
 	    	driver.get(LoginScreen.getURL());
 	    	LoginScreen.loginAsAdminTest(driver);
-	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/7");
     		//This is the piece of the test that matters
 	    	//Get the WebElement
     		WebElement we = driver.findElement(By.id("patient_search"));
@@ -130,7 +129,7 @@ public class AdminTests extends BaseTestCase{
     	for (WebDriver driver : super.getDrivers()) {
 	    	driver.get(LoginScreen.getURL());
 	    	LoginScreen.loginAsAdminTest(driver);
-	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/7");
     		AdminScreen.getRemovePatientID(driver).click();
 	        AdminScreen.getChangeRoleToPatientSbmtBtn(driver).click();
     	}
@@ -139,7 +138,7 @@ public class AdminTests extends BaseTestCase{
     	for (WebDriver driver : super.getDrivers()) {
 	    	driver.get(LoginScreen.getURL());
 	    	LoginScreen.loginAsAdminTest(driver);
-	    	driver.get("https://app-vnasdev.rhcloud.com/role/6");
+	    	driver.get("https://app-vnasdev.rhcloud.com/role/7");
 	    	assertEquals(AdminScreen.getUserManagementPatientRole(driver).getText(),"");
     	}
     }
@@ -156,7 +155,7 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getUnlockButton(driver, 6).click();	
+		        AdminScreen.getUnlockButton(driver, 7).click();	
 			}
 		}
 		public void test_M2LoginAsAdminUserTestUserAdminTest() throws Exception{
@@ -173,7 +172,7 @@ public class AdminTests extends BaseTestCase{
 				ToolbarScreen.getManageLink(driver).click();
 				//Admin Screen select
 		        AdminScreen.getUserManagement(driver).click();
-		        AdminScreen.getRemoveButton(driver, 6).click();
+		        AdminScreen.getRemoveButton(driver, 7).click();
 		        assertEquals(AdminScreen.getRemoveURL(), driver.getCurrentUrl());
 			}
 		}
@@ -208,7 +207,20 @@ public class AdminTests extends BaseTestCase{
 			AdminScreen.getFAQSaveBtn(driver).click();
 			}
 		}
-		public void test_P2ValidatePatientTestFAQTest() throws Exception{
+	    public void test_P2AdminAddPatientUserRole() throws Exception {
+	    	for (WebDriver driver : super.getDrivers()) {
+		    	driver.get(LoginScreen.getURL());
+		    	LoginScreen.loginAsAdminTest(driver);
+		    	driver.get("https://app-vnasdev.rhcloud.com/role/8");
+	    		//This is the piece of the test that matters
+		    	//Get the WebElement
+	    		WebElement we = driver.findElement(By.id("patient_search"));
+	    		//Use the other function to set the value
+	    		setAttributeValue(driver, we, "value", "910001");
+		        AdminScreen.getChangeRoleToPatientSbmtBtn(driver).click();
+	    	}
+	    }
+		public void test_P3ValidatePatientTestFAQTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 			LoginScreen.loginAsPatientUser(driver);
 			//Click FAQ
@@ -216,7 +228,7 @@ public class AdminTests extends BaseTestCase{
 			assertEquals(FAQScreen.getQuestion(driver,1).getText(), "Automation Test Patient Question");
 			}
 		}
-		public void test_P3RemovePatientTestFAQTest() throws Exception{
+		public void test_P4RemovePatientTestFAQTest() throws Exception{
 			for (WebDriver driver : super.getDrivers()){
 				LoginScreen.loginAsAdminTest(driver);
 				//Dropdown menu select

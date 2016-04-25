@@ -337,6 +337,7 @@ class ManagementController extends Controller {
 		$form->add('sch_no_rcrd_msg','No Records - My Schedule Message:', 'text');
 		$form->add('sch_chg_msg','Schedule Change - Home Screen Message:', 'text');
 		$form->add('app_root_key','Application root:', 'text');
+		$form->add('ETLLoadScriptPath','ETL Load Script Path:', 'text');
 		
 				
 		$form->submit('Save');
@@ -456,5 +457,22 @@ class ManagementController extends Controller {
 		$user->failed_attemps = 0 ;
 		$user->save();
 		return Redirect('mnge');
+	}
+
+	public function etlfire() {
+		$myBit = 1;
+
+		try {
+			$etlPath = UserSettings::getETLScriptPath();
+
+			$myMessage = exec("mysql --protocol=TCP -h$_ENV[OPENSHIFT_MYSQL_DB_HOST] -P3306 -udevuser -pdevpass app < " . $etlPath);
+			//Artisan::call("exec:etl");
+		}
+		catch (Exception $e)
+		{
+			$myBit = -1;
+		}
+
+		return redirect( '/system_etl_stats/'.$myBit );
 	}
 }

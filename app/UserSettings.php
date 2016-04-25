@@ -81,4 +81,11 @@ class UserSettings extends Model {
 		$appRootKey = $mySettings[0]->app_root_key;
 		return $appRootKey;
 	}
+
+	public static function getETLScriptPath() {
+		$mySettings = UserSettings::get(array('ETLLoadScriptPath'))
+			->take(1);
+		$etlLoadScriptPath = $mySettings[0]->ETLLoadScriptPath;
+		return $etlLoadScriptPath;
+	}
 }

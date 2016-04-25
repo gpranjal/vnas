@@ -15,6 +15,7 @@ class EditUserSettings extends Migration {
 		Schema::table('user_settings', function($table)
 		{
 			$table->string('app_root_key',255);
+			$table->string('ETLLoadScriptPath',255);
 		});
 	}
 }
