@@ -15,13 +15,12 @@ public class DonationTests extends BaseTestCase{
 
 	public void test_LoginAsAdminTestAndVerifyDonationURL() throws Exception {
 		for (WebDriver driver : super.getDrivers()) {
-			LoginScreen.loginAsAdminTest(driver);
-			assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
-			
+			LoginScreen.loginAsPatientUser(driver);
+			//assertEquals(HomeScreen.getURL(), driver.getCurrentUrl());
 			HomeScreen.getDonateButton(driver).click();
-	    	String actualText = DonateScreen.getPath();
-	    	Boolean incorrectURL = actualText.startsWith("https://www.paypal.com");
-	    	assertTrue(incorrectURL);
+			driver.switchTo().activeElement().sendKeys(Keys.LEFT_CONTROL, Keys.TAB);
+			Thread.sleep(5000);
+	    	assertEquals(DonateScreen.getURL(), driver.getCurrentUrl());	
 		}
 	}
 }

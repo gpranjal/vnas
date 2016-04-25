@@ -10,7 +10,7 @@ public class MyScheduleScreen extends BaseScreen{
 	}
 	
 	public static String getPath() {
-		return "/vnas_records";
+		return "/vnas_records/filter/All/History";
 	}
 	
 	public static WebElement getRowLink(WebDriver driver, int row) {
@@ -39,5 +39,8 @@ public class MyScheduleScreen extends BaseScreen{
 	
 	public static WebElement getLOVText(WebDriver driver, int row) {
 		return driver.findElement(By.name("lovText" + row));
+	}
+	public static WebElement getHistoryMenu(WebDriver driver){
+		return driver.findElement(By.name("dateRangeFilterInner"));
 	}
 }

@@ -17,11 +17,10 @@ public class WelcomeScreen extends BaseScreen {
 	public static WebElement getCallButton(WebDriver driver) {
 		return driver.findElement(By.name("callButton"));
 	}
-	
-	public static WebElement getDonateButton(WebDriver driver) {
-		return driver.findElement(By.name("submit"));
-	}
 	public static WebElement getRegisterLink(WebDriver driver) {
 		return driver.findElement(By.name("registerButton"));
+	}
+	public static WebElement getDonateButton(WebDriver driver){
+		return driver.findElement(By.name("donateButton"));
 	}
 }

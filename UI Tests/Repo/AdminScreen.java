@@ -35,7 +35,7 @@ public class AdminScreen extends BaseScreen{
 		return "/mnge";
 	}
 	public static String getRemovePath(){
-		return "/remove/6";
+		return "/remove/7";
 	}
 	public static String getRemoveURL(){
 		return BaseScreen.getURL()+getRemovePath();
